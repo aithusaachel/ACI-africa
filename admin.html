@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ACI Africa — Admin Portal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #FF6B6B;
+      --primary-end: #FF8E53;
+      --primary-grad: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+      --primary-glow: rgba(255, 107, 107, 0.25);
+      --bg: #F8FAFC;
+      --white: #FFFFFF;
+      --text: #1E293B;
+      --muted: #64748B;
+      --border: #E2E8F0;
+      --surface: #FFFFFF;
+      --surface2: #F1F5F9;
+      --danger: #EF4444;
+      --danger-light: rgba(239,68,68,0.08);
+      --success: #22C55E;
+      --success-light: rgba(34,197,94,0.08);
+      --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+      --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.08), 0 10px 10px -5px rgba(0,0,0,0.04);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-pill: 50px;
+      --font-head: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ─── LOGIN ─── */
+    #login-screen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #fff5f5 0%, #fff8f3 50%, #f8fafc 100%);
+      position: relative; overflow: hidden;
+    }
+    #login-screen::before {
+      content: ''; position: absolute; width: 600px; height: 600px;
+      background: var(--primary-grad); border-radius: 50%;
+      top: -200px; right: -200px; opacity: 0.07; pointer-events: none;
+    }
+    #login-screen::after {
+      content: ''; position: absolute; width: 400px; height: 400px;
+      background: var(--primary-grad); border-radius: 50%;
+      bottom: -150px; left: -100px; opacity: 0.05; pointer-events: none;
+    }
+    .login-card {
+      background: var(--white); border-radius: 24px;
+      padding: 52px 44px; width: 100%; max-width: 440px;
+      box-shadow: var(--shadow-lg); position: relative; z-index: 1;
+      border: 1px solid rgba(255,107,107,0.08);
+      text-align: center;
+    }
+    .login-logo { margin: 0 auto 20px; height: 60px; }
+    .login-logo img { height: 100%; object-fit: contain; }
+    .login-card h1 { font-family: var(--font-head); font-size: 1.75rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .login-card .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 36px; }
+    .login-badge {
+      display: inline-block; background: var(--primary-grad); color: white;
+      font-size: 0.7rem; font-weight: 700; padding: 3px 12px;
+      border-radius: var(--radius-pill); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 28px;
+    }
+    .form-field { margin-bottom: 18px; text-align: left; }
+    .form-field label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .form-field input {
+      width: 100%; padding: 13px 16px;
+      background: var(--surface2); border: 2px solid transparent;
+      border-radius: var(--radius-sm); color: var(--text);
+      font-family: var(--font-body); font-size: 0.95rem; transition: var(--transition);
+    }
+    .form-field input:focus { outline: none; background: white; border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
+    .login-btn {
+      width: 100%; padding: 14px; margin-top: 8px;
+      background: var(--primary-grad); color: white; border: none;
+      border-radius: var(--radius-pill); font-family: var(--font-head);
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 8px 20px var(--primary-glow); transition: var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .login-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px var(--primary-glow); }
+    .login-btn:active { transform: scale(0.98); }
+    .login-error { color: var(--danger); font-size: 0.85rem; margin-top: 14px; display: none; background: var(--danger-light); padding: 10px 14px; border-radius: 8px; }
+
+    /* ─── TOPBAR ─── */
+    #dashboard { display: none; }
+    .topbar {
+      background: white; border-bottom: 1px solid var(--border);
+      padding: 0 32px; height: 68px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 200;
+      box-shadow: var(--shadow-sm);
+    }
+    .topbar-brand { display: flex; align-items: center; gap: 12px; }
+    .topbar-brand img { height: 38px; }
+    .topbar-brand-name { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: var(--text); }
+    .admin-pill {
+      background: var(--primary-grad); color: white; font-size: 0.65rem;
+      font-weight: 700; padding: 3px 10px; border-radius: var(--radius-pill);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .topbar-right { display: flex; align-items: center; gap: 14px; }
+    .db-status {
+      display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--muted);
+    }
+    .db-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; box-shadow: 0 0 6px var(--success); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:0.5; } }
+    .logout-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: white; border: 1.5px solid var(--border); color: var(--muted);
+      padding: 8px 18px; border-radius: var(--radius-pill); cursor: pointer;
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+      transition: var(--transition);
+    }
+    .logout-btn:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-light); }
+
+    /* ─── MAIN ─── */
+    .main-content { padding: 36px; max-width: 1400px; margin: 0 auto; }
+    .page-title { font-family: var(--font-head); font-size: 1.75rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .page-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; }
+
+    /* ─── STATS ─── */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 36px; }
+    .stat-card {
+      background: var(--white); border-radius: var(--radius); padding: 28px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+      transition: var(--transition); display: flex; align-items: flex-start; gap: 18px;
+    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(255,107,107,0.2); }
+    .stat-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(255,107,107,0.12) 0%, rgba(255,142,83,0.12) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .stat-icon-wrap svg { width: 22px; height: 22px; stroke: var(--primary); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+    .stat-body {}
+    .stat-value { font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; color: var(--text); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* ─── TABS ─── */
+    .tabs-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .tabs { display: flex; gap: 4px; background: var(--surface2); padding: 4px; border-radius: var(--radius-sm); width: fit-content; }
+    .tab-btn {
+      display: flex; align-items: center; gap: 7px;
+      padding: 9px 20px; border: none; background: transparent; color: var(--muted);
+      border-radius: 8px; cursor: pointer; font-family: var(--font-body);
+      font-size: 0.88rem; font-weight: 500; transition: var(--transition);
+    }
+    .tab-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .tab-btn.active { background: white; color: var(--primary); font-weight: 600; box-shadow: var(--shadow-sm); }
+    .refresh-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: white; border: 1.5px solid var(--border); color: var(--muted);
+      padding: 9px 18px; border-radius: var(--radius-pill); cursor: pointer;
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+      transition: var(--transition);
+    }
+    .refresh-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .refresh-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ─── TABLE ─── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .table-wrapper {
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid var(--border); overflow: hidden; overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: var(--surface2); }
+    th {
+      padding: 14px 20px; text-align: left; font-size: 0.72rem; font-weight: 700;
+      color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; white-space: nowrap;
+    }
+    td { padding: 16px 20px; font-size: 0.875rem; border-top: 1px solid var(--border); vertical-align: middle; }
+    tbody tr { transition: background 0.15s; }
+    tbody tr:hover td { background: #FFF5F5; }
+    .td-id { font-weight: 700; color: var(--muted); font-size: 0.8rem; }
+    .td-name { font-weight: 600; color: var(--text); }
+    .td-email { color: var(--primary); font-weight: 500; }
+    .td-date { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+    .td-amount { font-weight: 700; color: var(--text); font-family: var(--font-head); font-size: 1rem; }
+    .td-msg { color: var(--muted); max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .actions { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .view-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: transparent; border: 1.5px solid var(--border);
+      color: var(--text); padding: 6px 14px; border-radius: var(--radius-pill);
+      cursor: pointer; font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
+      transition: var(--transition);
+    }
+    .view-btn:hover { border-color: var(--primary); color: var(--primary); background: rgba(255,107,107,0.05); }
+    .view-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .delete-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: transparent; border: 1.5px solid transparent;
+      color: var(--muted); padding: 6px 14px; border-radius: var(--radius-pill);
+      cursor: pointer; font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
+      transition: var(--transition);
+    }
+    .delete-btn:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-light); }
+    .delete-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .empty-state { text-align: center; padding: 70px 20px; color: var(--muted); }
+    .empty-state svg { width: 48px; height: 48px; display: block; margin: 0 auto 16px; stroke: var(--border); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .empty-state p { font-size: 0.95rem; }
+
+    .spinner-wrap { display: flex; justify-content: center; align-items: center; padding: 60px 20px; }
+    .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15,23,42,0.5);
+      backdrop-filter: blur(4px); z-index: 1000;
+      display: flex; align-items: center; justify-content: center; padding: 24px;
+      opacity: 0; pointer-events: none; transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: white; border-radius: 24px; width: 100%; max-width: 560px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+      transform: scale(0.95) translateY(10px); transition: transform 0.25s, opacity 0.25s;
+      opacity: 0; overflow: hidden;
+    }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); opacity: 1; }
+    .modal-header {
+      padding: 28px 32px 20px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; justify-content: space-between;
+    }
+    .modal-header-left {}
+    .modal-type-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 3px 10px;
+      border-radius: var(--radius-pill); text-transform: uppercase; letter-spacing: 0.08em;
+      background: var(--primary-grad); color: white; margin-bottom: 8px;
+    }
+    .modal-title { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; color: var(--text); }
+    .modal-close {
+      background: var(--surface2); border: none; width: 36px; height: 36px;
+      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: var(--muted); transition: var(--transition); flex-shrink: 0; margin-left: 12px;
+    }
+    .modal-close:hover { background: var(--danger-light); color: var(--danger); }
+    .modal-close svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; }
+    .modal-body { padding: 28px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .modal-field {}
+    .modal-field.full { grid-column: 1 / -1; }
+    .modal-field label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 6px; }
+    .modal-field .val { font-size: 0.95rem; color: var(--text); font-weight: 500; word-break: break-word; background: var(--surface2); padding: 12px 16px; border-radius: var(--radius-sm); line-height: 1.6; min-height: 44px; }
+    .modal-field .val.email { color: var(--primary); }
+    .modal-field .val.amount { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; color: var(--text); }
+    .modal-footer { padding: 20px 32px 28px; display: flex; justify-content: flex-end; gap: 10px; }
+    .modal-delete-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--danger-light); border: 1.5px solid rgba(239,68,68,0.3);
+      color: var(--danger); padding: 10px 22px; border-radius: var(--radius-pill);
+      cursor: pointer; font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+      transition: var(--transition);
+    }
+    .modal-delete-btn:hover { background: var(--danger); color: white; }
+    .modal-delete-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .modal-close-btn {
+      background: var(--surface2); border: none; color: var(--muted);
+      padding: 10px 22px; border-radius: var(--radius-pill); cursor: pointer;
+      font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; transition: var(--transition);
+    }
+    .modal-close-btn:hover { background: var(--border); color: var(--text); }
+
+    /* ─── TOAST ─── */
+    .toast {
+      position: fixed; bottom: 28px; right: 28px;
+      background: var(--text); color: white; padding: 14px 22px;
+      border-radius: var(--radius-pill); font-size: 0.88rem; font-weight: 500;
+      box-shadow: var(--shadow-lg); z-index: 9999;
+      transform: translateY(80px); opacity: 0; transition: all 0.3s;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { background: var(--success); }
+    .toast.error { background: var(--danger); }
+    .toast svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2.5; stroke-linecap: round; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════ LOGIN ══════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo"><img src="images/aciicon-withgreen.png" alt="ACI Africa"></div>
+    <div class="login-badge">Admin Portal</div>
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Sign in to manage your ACI Africa dashboard.</p>
+    <div class="form-field">
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="admin" autocomplete="username">
+    </div>
+    <div class="form-field">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <p class="login-error" id="login-error">Invalid credentials. Please try again.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════ DASHBOARD ══════════════════════════ -->
+<div id="dashboard">
+  <nav class="topbar">
+    <div class="topbar-brand">
+      <img src="images/aciicon-withgreen.png" alt="ACI Africa">
+      <span class="topbar-brand-name">ACI Africa</span>
+      <span class="admin-pill">Admin</span>
+    </div>
+    <div class="topbar-right">
+      <div class="db-status">
+        <span class="db-dot"></span>
+        <span>Neon DB Connected</span>
+      </div>
+      <button class="logout-btn" onclick="doLogout()">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <div class="page-title">Dashboard</div>
+    <div class="page-sub">All form submissions from your website.</div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-contacts">—</div>
+          <div class="stat-label">Contact Messages</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-donations">—</div>
+          <div class="stat-label">Donation Submissions</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-wrap">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-total">$0</div>
+          <div class="stat-label">Total Donated</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs + Refresh -->
+    <div class="tabs-row">
+      <div class="tabs">
+        <button class="tab-btn active" id="tab-contacts" onclick="switchTab('contacts', this)">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contact Messages
+        </button>
+        <button class="tab-btn" id="tab-donations" onclick="switchTab('donations', this)">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Donations
+        </button>
+      </div>
+      <button class="refresh-btn" onclick="refreshCurrent()">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Refresh
+      </button>
+    </div>
+
+    <!-- Contacts Panel -->
+    <div class="tab-panel active" id="panel-contacts">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Subject</th>
+              <th>Message</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="contacts-tbody">
+            <tr><td colspan="7"><div class="spinner-wrap"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Donations Panel -->
+    <div class="tab-panel" id="panel-donations">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Amount</th>
+              <th>Message / Cause</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="donations-tbody">
+            <tr><td colspan="7"><div class="spinner-wrap"><div class="spinner"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ DETAIL MODAL ══════════════════════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-type-badge" id="modal-badge">Contact</div>
+        <div class="modal-title" id="modal-title">Message Details</div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="modal-close-btn" onclick="closeModalDirect()">Close</button>
+      <button class="modal-delete-btn" id="modal-delete-btn">
+        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        Delete Record
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ TOAST ══════════════════════════ -->
+<div class="toast" id="toast"></div>
+
+<script>
+  const API = 'http://localhost:3000';
+  const ADMIN_USER = 'admin';
+  const ADMIN_PASS = 'aciafrica2024';
+  let currentTab = 'contacts';
+
+  /* ── Auth ── */
+  function doLogin() {
+    const u = document.getElementById('login-user').value.trim();
+    const p = document.getElementById('login-pass').value.trim();
+    const err = document.getElementById('login-error');
+    if (u === ADMIN_USER && p === ADMIN_PASS) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      err.style.display = 'none';
+      loadContacts();
+      loadDonations();
+    } else {
+      err.style.display = 'block';
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.getElementById('login-screen').style.display !== 'none') doLogin();
+    if (e.key === 'Escape') closeModalDirect();
+  });
+
+  function doLogout() {
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('login-user').value = '';
+    document.getElementById('login-pass').value = '';
+  }
+
+  /* ── Tabs ── */
+  function switchTab(name, btn) {
+    currentTab = name;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + name).classList.add('active');
+  }
+
+  function refreshCurrent() {
+    if (currentTab === 'contacts') loadContacts();
+    else loadDonations();
+  }
+
+  /* ── Toast ── */
+  function showToast(msg, type = 'success') {
+    const t = document.getElementById('toast');
+    const icon = type === 'success'
+      ? '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
+      : '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+    t.innerHTML = icon + msg;
+    t.className = 'toast ' + type + ' show';
+    setTimeout(() => t.classList.remove('show'), 3200);
+  }
+
+  function fmtDate(d) {
+    return new Date(d).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ── Load Contacts ── */
+  async function loadContacts() {
+    const tbody = document.getElementById('contacts-tbody');
+    tbody.innerHTML = '<tr><td colspan="7"><div class="spinner-wrap"><div class="spinner"></div></div></td></tr>';
+    try {
+      const res = await fetch(API + '/api/admin/contacts');
+      const data = await res.json();
+      document.getElementById('stat-contacts').textContent = data.length;
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <p>No contact messages yet.</p></div></td></tr>`;
+        return;
+      }
+      tbody.innerHTML = data.map(r => `
+        <tr>
+          <td class="td-id">#${r.id}</td>
+          <td class="td-name">${esc(r.name)}</td>
+          <td class="td-email">${esc(r.email)}</td>
+          <td>${esc(r.subject || '—')}</td>
+          <td class="td-msg">${esc(r.message)}</td>
+          <td class="td-date">${fmtDate(r.submitted_at)}</td>
+          <td><div class="actions">
+            <button class="view-btn" onclick='openContactModal(${JSON.stringify(r)})'>
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              View
+            </button>
+            <button class="delete-btn" onclick="deleteContact(${r.id}, this)">
+              <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M9 6V4h6v2"/></svg>
+              Delete
+            </button>
+          </div></td>
+        </tr>`).join('');
+    } catch {
+      tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <p>Could not connect to server. Is it running?</p></div></td></tr>`;
+    }
+  }
+
+  /* ── Load Donations ── */
+  async function loadDonations() {
+    const tbody = document.getElementById('donations-tbody');
+    tbody.innerHTML = '<tr><td colspan="7"><div class="spinner-wrap"><div class="spinner"></div></div></td></tr>';
+    try {
+      const res = await fetch(API + '/api/admin/donations');
+      const data = await res.json();
+      document.getElementById('stat-donations').textContent = data.length;
+      const total = data.reduce((s, r) => s + parseFloat(r.amount || 0), 0);
+      document.getElementById('stat-total').textContent = '$' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <p>No donations yet.</p></div></td></tr>`;
+        return;
+      }
+      tbody.innerHTML = data.map(r => `
+        <tr>
+          <td class="td-id">#${r.id}</td>
+          <td class="td-name">${esc(r.name)}</td>
+          <td class="td-email">${esc(r.email)}</td>
+          <td class="td-amount">$${parseFloat(r.amount || 0).toFixed(2)}</td>
+          <td class="td-msg">${esc(r.message || '—')}</td>
+          <td class="td-date">${fmtDate(r.submitted_at)}</td>
+          <td><div class="actions">
+            <button class="view-btn" onclick='openDonationModal(${JSON.stringify(r)})'>
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              View
+            </button>
+            <button class="delete-btn" onclick="deleteDonation(${r.id}, this)">
+              <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M9 6V4h6v2"/></svg>
+              Delete
+            </button>
+          </div></td>
+        </tr>`).join('');
+    } catch {
+      tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <p>Could not connect to server. Is it running?</p></div></td></tr>`;
+    }
+  }
+
+  /* ── Modal ── */
+  function openModal() {
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+  }
+
+  function closeModalDirect() {
+    document.getElementById('modal-overlay').classList.remove('open');
+  }
+
+  function openContactModal(r) {
+    document.getElementById('modal-badge').textContent = 'Contact Message';
+    document.getElementById('modal-title').textContent = r.name;
+    document.getElementById('modal-body').innerHTML = `
+      <div class="modal-field">
+        <label>Full Name</label>
+        <div class="val">${esc(r.name)}</div>
+      </div>
+      <div class="modal-field">
+        <label>Email Address</label>
+        <div class="val email">${esc(r.email)}</div>
+      </div>
+      <div class="modal-field">
+        <label>Subject</label>
+        <div class="val">${esc(r.subject || 'No subject')}</div>
+      </div>
+      <div class="modal-field">
+        <label>Submitted</label>
+        <div class="val">${fmtDate(r.submitted_at)}</div>
+      </div>
+      <div class="modal-field full">
+        <label>Message</label>
+        <div class="val" style="white-space: pre-wrap;">${esc(r.message)}</div>
+      </div>`;
+    const delBtn = document.getElementById('modal-delete-btn');
+    delBtn.onclick = () => { closeModalDirect(); deleteContact(r.id, null); };
+    openModal();
+  }
+
+  function openDonationModal(r) {
+    document.getElementById('modal-badge').textContent = 'Donation';
+    document.getElementById('modal-title').textContent = r.name;
+    document.getElementById('modal-body').innerHTML = `
+      <div class="modal-field">
+        <label>Full Name</label>
+        <div class="val">${esc(r.name)}</div>
+      </div>
+      <div class="modal-field">
+        <label>Email Address</label>
+        <div class="val email">${esc(r.email)}</div>
+      </div>
+      <div class="modal-field">
+        <label>Donation Amount</label>
+        <div class="val amount">$${parseFloat(r.amount || 0).toFixed(2)}</div>
+      </div>
+      <div class="modal-field">
+        <label>Submitted</label>
+        <div class="val">${fmtDate(r.submitted_at)}</div>
+      </div>
+      <div class="modal-field full">
+        <label>Message / Cause</label>
+        <div class="val" style="white-space: pre-wrap;">${esc(r.message || 'No message provided.')}</div>
+      </div>`;
+    const delBtn = document.getElementById('modal-delete-btn');
+    delBtn.onclick = () => { closeModalDirect(); deleteDonation(r.id, null); };
+    openModal();
+  }
+
+  /* ── Delete ── */
+  async function deleteContact(id, btn) {
+    if (!confirm('Permanently delete this contact message?')) return;
+    if (btn) { btn.disabled = true; btn.textContent = '…'; }
+    try {
+      await fetch(API + '/api/admin/contacts/' + id, { method: 'DELETE' });
+      showToast('Contact message deleted.', 'success');
+      loadContacts();
+    } catch {
+      showToast('Delete failed.', 'error');
+      if (btn) { btn.disabled = false; btn.textContent = 'Delete'; }
+    }
+  }
+
+  async function deleteDonation(id, btn) {
+    if (!confirm('Permanently delete this donation record?')) return;
+    if (btn) { btn.disabled = true; btn.textContent = '…'; }
+    try {
+      await fetch(API + '/api/admin/donations/' + id, { method: 'DELETE' });
+      showToast('Donation record deleted.', 'success');
+      loadDonations();
+    } catch {
+      showToast('Delete failed.', 'error');
+      if (btn) { btn.disabled = false; btn.textContent = 'Delete'; }
+    }
+  }
+</script>
+</body>
+</html>

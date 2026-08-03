@@ -1,0 +1,583 @@
+/* 
+  Stellar Design System for Welfare Redesign 
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap');
+
+:root {
+  /* Colors */
+  --stellar-primary: #FF6B6B;
+  --stellar-primary-gradient: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+  --stellar-primary-glow: rgba(255, 107, 107, 0.4);
+  --stellar-secondary: #4A90E2;
+  --stellar-secondary-gradient: linear-gradient(135deg, #4A90E2 0%, #50E3C2 100%);
+  
+  --stellar-bg-light: #F8FAFC;
+  --stellar-text-dark: #1E293B;
+  --stellar-text-muted: #64748B;
+  --stellar-white: #FFFFFF;
+
+  /* Typography */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --shadow-glow: 0 10px 20px var(--stellar-primary-glow);
+  
+  /* Borders */
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 50px;
+  
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: var(--font-body) !important;
+  color: var(--stellar-text-muted);
+  background-color: var(--stellar-bg-light);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6, .heading {
+  font-family: var(--font-heading) !important;
+  color: var(--stellar-text-dark);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   GLASSMORPHISM NAVBAR
+   ========================================================================== */
+.stellar-navbar {
+  background: transparent !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  transition: var(--transition-smooth);
+}
+
+.stellar-navbar.scrolled,
+.stellar-navbar.awake {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.stellar-navbar .navbar-brand {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 28px;
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stellar-navbar.scrolled .navbar-brand,
+.stellar-navbar.awake .navbar-brand {
+  background: none !important;
+  color: var(--stellar-primary) !important;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: currentcolor;
+}
+
+.stellar-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 0 10px;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.stellar-navbar.scrolled .nav-link,
+.stellar-navbar.awake .nav-link {
+  color: var(--stellar-text-dark) !important;
+}
+
+.stellar-navbar .nav-item.active .nav-link,
+.stellar-navbar .nav-link:hover,
+.stellar-navbar.scrolled .nav-item.active .nav-link,
+.stellar-navbar.scrolled .nav-link:hover,
+.stellar-navbar.awake .nav-item.active .nav-link,
+.stellar-navbar.awake .nav-link:hover {
+  color: var(--stellar-primary) !important;
+}
+
+.stellar-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--stellar-primary-gradient);
+  transition: var(--transition-smooth);
+  border-radius: 2px;
+}
+
+.stellar-navbar .nav-link:hover::after,
+.stellar-navbar .nav-item.active .nav-link::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-wrap.stellar-hero {
+  position: relative;
+  border-radius: 0 0 40px 40px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background-color: #000;
+}
+
+.stellar-video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 Aspect Ratio */
+  min-height: 100vh;
+  min-width: 177.77vh; 
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-wrap.stellar-hero .overlay {
+  background: linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(30,41,59,0.4) 100%);
+  z-index: 1;
+}
+
+.hero-wrap.stellar-hero .slider-text {
+  z-index: 2;
+  position: relative;
+}
+
+.hero-wrap.stellar-hero h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--stellar-white);
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  margin-bottom: 24px !important;
+}
+
+.hero-wrap.stellar-hero p {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn.stellar-btn-primary {
+  background: var(--stellar-primary-gradient) !important;
+  border: none !important;
+  color: white !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 12px 32px !important;
+  font-weight: 600;
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-glow) !important;
+  transition: var(--transition-smooth) !important;
+  text-transform: none;
+}
+
+.btn.stellar-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px var(--stellar-primary-glow) !important;
+}
+
+.btn.stellar-btn-outline {
+  background: rgba(255,255,255,0.1) !important;
+  backdrop-filter: blur(10px);
+  border: 2px solid white !important;
+  color: white !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 10px 30px !important;
+  font-weight: 600;
+  transition: var(--transition-smooth) !important;
+}
+
+.btn.stellar-btn-outline:hover {
+  background: white !important;
+  color: var(--stellar-text-dark) !important;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* ==========================================================================
+   CARDS (Services, Causes, Blog)
+   ========================================================================== */
+.stellar-card {
+  background: var(--stellar-white) !important;
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid rgba(0,0,0,0.03) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: var(--transition-smooth) !important;
+  overflow: hidden;
+  height: 100%;
+  padding: 30px !important;
+}
+
+.stellar-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.stellar-card .icon {
+  width: 80px;
+  height: 80px;
+  background: var(--stellar-primary-glow) !important;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--stellar-primary) !important;
+  font-size: 32px;
+  transition: var(--transition-smooth);
+}
+
+.stellar-card:hover .icon {
+  background: var(--stellar-primary-gradient) !important;
+  color: white !important;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.stellar-card-cause {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: var(--stellar-white);
+  transition: var(--transition-smooth);
+}
+.stellar-card-cause:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stellar-card-cause .text,
+.blog-entry .text {
+  position: relative;
+  z-index: 2;
+  background-color: var(--stellar-white);
+}
+
+.stellar-card-cause .img,
+.blog-entry .block-20 {
+  position: relative;
+  z-index: 1;
+  transition: var(--transition-smooth) !important;
+}
+
+.stellar-card-img {
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;
+}
+
+.stellar-card-img .img, .stellar-card-img .block-20 {
+  transition: var(--transition-smooth) !important;
+}
+
+.stellar-card-cause:hover .img,
+.stellar-card-cause:hover .block-20,
+.blog-entry:hover .block-20 {
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   PROGRESS BARS
+   ========================================================================== */
+.stellar-progress {
+  height: 10px !important;
+  border-radius: var(--radius-pill) !important;
+  background: rgba(0,0,0,0.05) !important;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.stellar-progress .progress-bar {
+  background: var(--stellar-primary-gradient) !important;
+  border-radius: var(--radius-pill) !important;
+  box-shadow: 0 0 10px var(--stellar-primary-glow);
+}
+
+/* ==========================================================================
+   SECTIONS & LAYOUT
+   ========================================================================== */
+.stellar-section {
+  padding: 100px 0 !important;
+  background-color: var(--stellar-white) !important;
+}
+
+.stellar-section-light {
+  padding: 100px 0 !important;
+  background-color: var(--stellar-bg-light) !important;
+}
+
+.stellar-heading {
+  font-size: 3rem !important;
+  font-weight: 800 !important;
+  background: var(--stellar-primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px !important;
+  display: inline-block;
+}
+
+/* Statistics Counter */
+.stellar-counter-box {
+  background: var(--stellar-white) !important;
+  padding: 40px !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-md) !important;
+  text-align: center;
+  transition: var(--transition-smooth) !important;
+  margin: 15px;
+}
+
+.stellar-counter-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.stellar-counter-box .number {
+  font-size: 3.5rem !important;
+  font-weight: 800 !important;
+  color: var(--stellar-text-dark) !important;
+  font-family: var(--font-heading) !important;
+  display: block;
+  margin: 10px 0;
+}
+
+.stellar-counter-box h3 {
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.stellar-footer {
+  background: #0F172A !important;
+  color: rgba(255,255,255,0.7) !important;
+  padding-top: 80px !important;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.stellar-footer .ftco-heading-2 {
+  color: var(--stellar-white) !important;
+  font-weight: 700 !important;
+}
+
+.stellar-footer a {
+  color: rgba(255,255,255,0.7);
+  transition: var(--transition-smooth);
+}
+
+.stellar-footer a:hover {
+  color: var(--stellar-primary) !important;
+}
+
+.stellar-social li a {
+  background: rgba(255,255,255,0.05) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  transition: var(--transition-smooth) !important;
+}
+
+.stellar-social li a:hover {
+  background: var(--stellar-primary-gradient) !important;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow) !important;
+}
+
+/* ==========================================================================
+   CUSTOM CHATBOT WIDGET
+   ========================================================================== */
+.stellar-chatbot-container {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 9999;
+  font-family: var(--font-body);
+}
+
+.stellar-chatbot-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--stellar-primary-gradient);
+  border: none;
+  color: white;
+  font-size: 24px;
+  box-shadow: var(--shadow-glow);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.stellar-chatbot-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 25px var(--stellar-primary-glow);
+}
+
+.stellar-chatbot-window {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 340px;
+  height: 450px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.stellar-chatbot-window.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
+}
+
+.stellar-chatbot-header {
+  background: var(--stellar-primary-gradient);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.stellar-chatbot-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.stellar-chatbot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.stellar-chatbot-close:hover {
+  opacity: 1;
+}
+
+.stellar-chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(248, 249, 250, 0.8);
+}
+
+.stellar-chat-msg {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  animation: chatFadeIn 0.3s ease forwards;
+  word-wrap: break-word;
+}
+
+@keyframes chatFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stellar-chat-msg.bot {
+  background: white;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stellar-chat-msg.user {
+  background: var(--stellar-primary);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 8px var(--stellar-primary-glow);
+}
+
+.stellar-chatbot-input {
+  display: flex;
+  padding: 15px;
+  background: white;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.stellar-chatbot-input input {
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-pill);
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-smooth);
+  background: #f8f9fa;
+}
+
+.stellar-chatbot-input input:focus {
+  border-color: var(--stellar-primary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(249, 109, 0, 0.1);
+}
+
+.stellar-chatbot-input button {
+  background: var(--stellar-primary-gradient);
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: 0 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-glow);
+}
+
+.stellar-chatbot-input button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--stellar-primary-glow);
+}
