@@ -42,6 +42,37 @@ async function initDB() {
         submitted_at TIMESTAMP DEFAULT NOW()
       );
     `);
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS member_applications (
+        id SERIAL PRIMARY KEY,
+        firstname VARCHAR(255) NOT NULL,
+        lastname VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        phone VARCHAR(100),
+        country VARCHAR(100),
+        occupation VARCHAR(255),
+        interests TEXT,
+        motivation TEXT,
+        submitted_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS leader_applications (
+        id SERIAL PRIMARY KEY,
+        firstname VARCHAR(255) NOT NULL,
+        lastname VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        phone VARCHAR(100),
+        country VARCHAR(100),
+        position VARCHAR(255),
+        experience VARCHAR(100),
+        availability VARCHAR(100),
+        linkedin VARCHAR(500),
+        background TEXT,
+        vision TEXT,
+        submitted_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
     console.log('Database tables are ready.');
   } catch (err) {
     console.error('Error initializing database tables:', err.message);
@@ -70,7 +101,65 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// POST /api/donate — save a donation form submission
+// POST /api/join-member — save a membership application
+app.post('/api/join-member', async (req, res) => {
+  const { firstname, lastname, email, phone, country, occupation, interest, motivation } = req.body;
+  if (!firstname || !lastname || !email) {
+    return res.status(400).json({ error: 'First name, last name, and email are required.' });
+  }
+  const interests = Array.isArray(interest) ? interest.join(', ') : (interest || '');
+  try {
+    const result = await pool.query(
+      `INSERT INTO member_applications (firstname, lastname, email, phone, country, occupation, interests, motivation)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+      [firstname, lastname, email, phone || '', country || '', occupation || '', interests, motivation || '']
+    );
+    res.status(201).json({ success: true, data: result.rows[0] });
+  } catch (err) {
+    console.error('Member application insert error:', err.message);
+    res.status(500).json({ error: 'Failed to save application.' });
+  }
+});
+
+// POST /api/join-leader — save a leadership application
+app.post('/api/join-leader', async (req, res) => {
+  const { firstname, lastname, email, phone, country, position, experience, availability, linkedin, background, vision } = req.body;
+  if (!firstname || !lastname || !email || !position) {
+    return res.status(400).json({ error: 'First name, last name, email, and position are required.' });
+  }
+  try {
+    const result = await pool.query(
+      `INSERT INTO leader_applications (firstname, lastname, email, phone, country, position, experience, availability, linkedin, background, vision)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
+      [firstname, lastname, email, phone || '', country || '', position, experience || '', availability || '', linkedin || '', background || '', vision || '']
+    );
+    res.status(201).json({ success: true, data: result.rows[0] });
+  } catch (err) {
+    console.error('Leader application insert error:', err.message);
+    res.status(500).json({ error: 'Failed to save application.' });
+  }
+});
+
+// GET /api/admin/members — fetch all membership applications
+app.get('/api/admin/members', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM member_applications ORDER BY submitted_at DESC');
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch applications.' });
+  }
+});
+
+// GET /api/admin/leaders — fetch all leadership applications
+app.get('/api/admin/leaders', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM leader_applications ORDER BY submitted_at DESC');
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch applications.' });
+  }
+});
+
 app.post('/api/donate', async (req, res) => {
   const { name, email, amount, message } = req.body;
   if (!name || !email) {

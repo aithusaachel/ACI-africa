@@ -8,9 +8,9 @@ $white: #fff;
 $black: #000;
 $darken: #4a5562;
 
-$primary: #f86f2d;
-$secondary: #fa8f3d;
-$tertiary: #faaa3a;
+$primary: #F5C400;
+$secondary: #F7CE35;
+$tertiary: #FAE060;
 $quarternary: #7cbd1e;
 
 
@@ -615,7 +615,6 @@ h1, h2, h3, h4, h5,
 }
 .cause-entry{
 	background: $white;
-	border: 1px solid lighten($black,98%);
 	-webkit-box-shadow: 0px 3px 66px -24px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 3px 66px -24px rgba(0,0,0,0.2);
 	box-shadow: 0px 3px 66px -24px rgba(0,0,0,0.2);
@@ -788,7 +787,6 @@ h1, h2, h3, h4, h5,
 	.img{
 		width: 110px;
 		height: 105px;
-		border: 4px solid lighten($black,94%);
 		@include border-radius(50%);
 	}
 	.text{
@@ -891,7 +889,7 @@ h1, h2, h3, h4, h5,
 #accordion{
 	.card{
 		margin-bottom: 5px;
-		border: 1px solid lighten($primary,40%);
+
 		@include border-radius(0);
 		.card-header{
 			padding: 0;

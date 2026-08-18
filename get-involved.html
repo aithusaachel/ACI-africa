@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Get Involved – Join ACI Africa | Become a Member or Leader</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Join the ACI Africa team. Become a community member or apply for a leadership position and help drive sustainable impact across Africa.">
+    <meta property="og:title" content="Get Involved – ACI Africa">
+    <meta property="og:description" content="Join ACI Africa as a member or as a leader. Fill out our form and become part of the movement.">
+    <meta property="og:image" content="images/aciicon-withgreen.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stellar.css">
+
+    <style>
+      .gi-tab-switcher {
+        display: flex;
+        gap: 0;
+        background: #F0F4F8;
+        border-radius: 50px;
+        padding: 6px;
+        width: fit-content;
+        margin: 0 auto 50px;
+        box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
+      }
+      .gi-tab-btn {
+        padding: 14px 36px;
+        border: none;
+        background: transparent;
+        border-radius: 50px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        color: #64748B;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+      .gi-tab-btn.active {
+        background: #F5C400;
+        color: #1E293B;
+      }
+      .gi-tab-btn:not(.active):hover {
+        color: #1E293B;
+        background: rgba(245,196,0,0.12);
+      }
+      .gi-form-panel { display: none; }
+      .gi-form-panel.active { display: block; }
+      .gi-form-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 48px;
+        max-width: 780px;
+        margin: 0 auto;
+      }
+      @media(max-width:576px){ .gi-form-card { padding: 28px 18px; } .gi-tab-btn { padding: 11px 20px; font-size: 13px; } }
+      .gi-form-card .section-badge {
+        display: inline-block;
+        background: rgba(245,196,0,0.15);
+        color: #b38f00;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 50px;
+        margin-bottom: 16px;
+      }
+      .gi-form-card h2 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1E293B;
+        margin-bottom: 8px;
+      }
+      .gi-form-card .gi-subtitle {
+        color: #64748B;
+        font-size: 15px;
+        margin-bottom: 32px;
+        line-height: 1.6;
+      }
+      .gi-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media(max-width:600px){ .gi-form-row { grid-template-columns: 1fr; } }
+      .gi-field { margin-bottom: 20px; }
+      .gi-field label {
+        display: block;
+        font-weight: 600;
+        font-size: 13px;
+        color: #1E293B;
+        margin-bottom: 7px;
+        letter-spacing: 0.3px;
+      }
+      .gi-field label .req { color: #F5C400; }
+      .gi-field input,
+      .gi-field select,
+      .gi-field textarea {
+        width: 100%;
+        padding: 13px 16px;
+        border: 2px solid #E2E8F0;
+        border-radius: 10px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #1E293B;
+        background: #FAFBFC;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        outline: none;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+      .gi-field input:focus,
+      .gi-field select:focus,
+      .gi-field textarea:focus {
+        border-color: #F5C400;
+        box-shadow: 0 0 0 3px rgba(245,196,0,0.15);
+        background: #fff;
+      }
+      .gi-field textarea { resize: vertical; min-height: 110px; }
+      .gi-checkbox-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      @media(max-width:480px){ .gi-checkbox-group { grid-template-columns: 1fr; } }
+      .gi-checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #F8FAFC;
+        border: 2px solid #E2E8F0;
+        border-radius: 10px;
+        padding: 11px 14px;
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
+        font-size: 13px;
+        font-weight: 500;
+        color: #334155;
+        user-select: none;
+      }
+      .gi-checkbox-item input[type="checkbox"] { accent-color: #F5C400; width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+      .gi-checkbox-item svg { pointer-events: none; flex-shrink: 0; }
+      .gi-checkbox-item:has(input:checked) {
+        border-color: #F5C400;
+        background: rgba(245, 196, 0, 0.1);
+        color: #1E293B;
+        font-weight: 600;
+      }
+      .gi-divider { border: none; border-top: 1px solid #E2E8F0; margin: 28px 0; }
+      .gi-submit-btn {
+        width: 100%;
+        padding: 16px;
+        background: #F5C400;
+        color: #1E293B;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        letter-spacing: 0.5px;
+        margin-top: 8px;
+      }
+      .gi-submit-btn:hover { background: #e6b800; transform: translateY(-2px); }
+      .gi-submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+      .gi-feedback {
+        display: none;
+        margin-top: 16px;
+        padding: 14px 18px;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 14px;
+      }
+      .gi-feedback.success { background: #F0FFF4; color: #15803D; border: 1.5px solid #86EFAC; }
+      .gi-feedback.error   { background: #FFF5F5; color: #DC2626; border: 1.5px solid #FCA5A5; }
+      .gi-path-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        max-width: 860px;
+        margin: 0 auto 60px;
+      }
+      @media(max-width:640px){ .gi-path-cards { grid-template-columns: 1fr; } }
+      .gi-path-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 32px 28px;
+        cursor: pointer;
+        border: 2.5px solid #E2E8F0;
+        transition: border-color 0.25s, transform 0.25s;
+        text-align: center;
+      }
+      .gi-path-card:hover, .gi-path-card.selected {
+        border-color: #F5C400;
+        transform: translateY(-4px);
+      }
+      .gi-path-card .path-icon {
+        width: 64px; height: 64px;
+        background: rgba(245,196,0,0.12);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 28px;
+        margin: 0 auto 16px;
+      }
+      .gi-path-card h4 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 17px; color: #1E293B; margin-bottom: 8px; }
+      .gi-path-card p { font-size: 13px; color: #64748B; line-height: 1.6; margin: 0; }
+    </style>
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light stellar-navbar" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/aciicon-withgreen.png" alt="ACI Africa Logo" style="height: 40px; margin-right: 10px;"> ACI AFRICA
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link">Programs</a></li>
+          <li class="nav-item"><a href="causes.html" class="nav-link">Causes</a></li>
+          <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item active"><a href="get-involved.html" class="nav-link" style="color:#F5C400; font-weight:700;">Get Involved</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-wrap stellar-hero" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+        <div class="col-md-8 ftco-animate text-center" data-scrollax="properties: { translateY: '70%' }">
+          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+            <span class="mr-2"><a href="index.html">Home</a></span>
+            <span>Get Involved</span>
+          </p>
+          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Get Involved with ACI Africa</h1>
+          <p style="color:rgba(255,255,255,0.85); font-size:17px; max-width:560px; margin:0 auto;" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+            Whether you want to be a member of our community or step into a leadership role — there's a place for you here.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATH CARDS -->
+  <section class="ftco-section" style="padding-top: 80px; padding-bottom: 40px; background: #F8FAFC;">
+    <div class="container">
+      <div class="text-center ftco-animate" style="margin-bottom:50px;">
+        <h2 style="font-family:'Outfit',sans-serif; font-size:2.4rem; font-weight:800; color:#1E293B; margin-bottom:12px;">Choose Your Path</h2>
+        <p style="color:#64748B; font-size:16px; max-width:540px; margin:0 auto; line-height:1.7;">
+          Click a card below to jump to the right form. Both paths are equally valued within ACI Africa.
+        </p>
+      </div>
+      <div class="gi-path-cards">
+        <div class="gi-path-card ftco-animate selected" id="card-member" onclick="switchTab('member')">
+          <div class="path-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Become a Member</h4>
+          <p>Join our community of change-makers. Access events, resources, newsletters, and the chance to volunteer on programs across Africa.</p>
+        </div>
+        <div class="gi-path-card ftco-animate" id="card-leader" onclick="switchTab('leader')">
+          <div class="path-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h4>Join as a Leader</h4>
+          <p>Apply for an executive or leadership position within ACI Africa. Help shape strategy, manage programs, and lead teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMS -->
+  <section class="ftco-section" style="padding-top: 20px; padding-bottom: 80px; background: #F8FAFC;">
+    <div class="container">
+
+      <div class="gi-tab-switcher ftco-animate">
+        <button class="gi-tab-btn active" id="tab-member" onclick="switchTab('member')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:7px;vertical-align:middle;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Become a Member
+        </button>
+        <button class="gi-tab-btn" id="tab-leader" onclick="switchTab('leader')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:7px;vertical-align:middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Join as a Leader
+        </button>
+      </div>
+
+      <!-- MEMBER FORM -->
+      <div class="gi-form-panel active ftco-animate" id="panel-member">
+        <div class="gi-form-card">
+          <span class="section-badge">Community Membership</span>
+          <h2>Become a Member</h2>
+          <p class="gi-subtitle">Membership is free and open to everyone who shares our mission of advancing wellbeing across Africa.</p>
+
+          <form id="member-form" novalidate>
+            <div class="gi-form-row">
+              <div class="gi-field">
+                <label for="m-firstname">First Name <span class="req">*</span></label>
+                <input type="text" id="m-firstname" name="firstname" placeholder="e.g. Abena" required>
+              </div>
+              <div class="gi-field">
+                <label for="m-lastname">Last Name <span class="req">*</span></label>
+                <input type="text" id="m-lastname" name="lastname" placeholder="e.g. Mensah" required>
+              </div>
+            </div>
+            <div class="gi-form-row">
+              <div class="gi-field">
+                <label for="m-email">Email Address <span class="req">*</span></label>
+                <input type="email" id="m-email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="gi-field">
+                <label for="m-phone">Phone Number</label>
+                <input type="tel" id="m-phone" name="phone" placeholder="+233 00 000 0000">
+              </div>
+            </div>
+            <div class="gi-form-row">
+              <div class="gi-field">
+                <label for="m-country">Country <span class="req">*</span></label>
+                <select id="m-country" name="country" required>
+                  <option value="" disabled selected>Select your country</option>
+                  <option>Ghana</option><option>Nigeria</option><option>Kenya</option>
+                  <option>South Africa</option><option>Uganda</option><option>Tanzania</option>
+                  <option>Rwanda</option><option>Cameroon</option><option>Senegal</option>
+                  <option>Ethiopia</option><option>Other (Africa)</option>
+                  <option>Outside Africa (Diaspora)</option>
+                </select>
+              </div>
+              <div class="gi-field">
+                <label for="m-occupation">Occupation</label>
+                <input type="text" id="m-occupation" name="occupation" placeholder="e.g. Teacher, Student, Engineer">
+              </div>
+            </div>
+
+            <hr class="gi-divider">
+
+            <div class="gi-field">
+              <label>Areas of Interest <span class="req">*</span></label>
+              <p style="font-size:12px; color:#94a3b8; margin-bottom:12px; margin-top:-4px;">Select all that apply</p>
+              <div class="gi-checkbox-group">
+                <label class="gi-checkbox-item"><input type="checkbox" name="interest" value="Education">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Education
+                </label>
+                <label class="gi-checkbox-item"><input type="checkbox" name="interest" value="Mental Health">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Mental Health
+                </label>
+                <label class="gi-checkbox-item"><input type="checkbox" name="interest" value="Digital Empowerment">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Digital Empowerment
+                </label>
+                <label class="gi-checkbox-item"><input type="checkbox" name="interest" value="Climate &amp; Environment">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2s-9.5 0-14 5c-3.5 3.5-3.5 9-3.5 9s5.5 0 9-3.5C17 8 21 2 21 2z"/><line x1="2" y1="22" x2="12" y2="12"/></svg> Climate &amp; Environment
+                </label>
+                <label class="gi-checkbox-item"><input type="checkbox" name="interest" value="Community Development">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Community Development
+                </label>
+                <label class="gi-checkbox-item"><input type="checkbox" name="interest" value="Fundraising &amp; Advocacy">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Fundraising &amp; Advocacy
+                </label>
+              </div>
+            </div>
+
+            <div class="gi-field" style="margin-top:20px;">
+              <label for="m-motivation">Why do you want to join ACI Africa? <span class="req">*</span></label>
+              <textarea id="m-motivation" name="motivation" placeholder="Tell us a little about yourself and why you want to be part of ACI Africa..." required></textarea>
+            </div>
+
+            <div class="gi-field">
+              <label class="gi-checkbox-item" style="border:none; padding:0; background:transparent; font-weight:400;">
+                <input type="checkbox" id="m-consent" name="consent" required>
+                <span style="font-size:13px; color:#64748B;">I agree to receive updates from ACI Africa. I can unsubscribe at any time.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="gi-submit-btn" id="m-submit">Submit Membership Application &rarr;</button>
+            <div class="gi-feedback" id="m-feedback"></div>
+          </form>
+        </div>
+      </div>
+
+      <!-- LEADER FORM -->
+      <div class="gi-form-panel ftco-animate" id="panel-leader">
+        <div class="gi-form-card">
+          <span class="section-badge">Leadership Application</span>
+          <h2>Join as a Leader</h2>
+          <p class="gi-subtitle">Apply for an executive or staff leadership position. We review all applications and contact shortlisted candidates.</p>
+
+          <form id="leader-form" novalidate>
+            <div class="gi-form-row">
+              <div class="gi-field">
+                <label for="l-firstname">First Name <span class="req">*</span></label>
+                <input type="text" id="l-firstname" name="firstname" placeholder="e.g. Kofi" required>
+              </div>
+              <div class="gi-field">
+                <label for="l-lastname">Last Name <span class="req">*</span></label>
+                <input type="text" id="l-lastname" name="lastname" placeholder="e.g. Asante" required>
+              </div>
+            </div>
+            <div class="gi-form-row">
+              <div class="gi-field">
+                <label for="l-email">Email Address <span class="req">*</span></label>
+                <input type="email" id="l-email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="gi-field">
+                <label for="l-phone">Phone Number <span class="req">*</span></label>
+                <input type="tel" id="l-phone" name="phone" placeholder="+233 00 000 0000" required>
+              </div>
+            </div>
+            <div class="gi-form-row">
+              <div class="gi-field">
+                <label for="l-country">Country <span class="req">*</span></label>
+                <select id="l-country" name="country" required>
+                  <option value="" disabled selected>Select your country</option>
+                  <option>Ghana</option><option>Nigeria</option><option>Kenya</option>
+                  <option>South Africa</option><option>Uganda</option><option>Tanzania</option>
+                  <option>Rwanda</option><option>Cameroon</option><option>Senegal</option>
+                  <option>Ethiopia</option><option>Other (Africa)</option>
+                  <option>Outside Africa (Diaspora)</option>
+                </select>
+              </div>
+              <div class="gi-field">
+                <label for="l-position">Position Applied For <span class="req">*</span></label>
+                <select id="l-position" name="position" required>
+                  <option value="" disabled selected>Select a role</option>
+                  <optgroup label="Executive Leadership">
+                    <option>Executive Director</option>
+                    <option>Deputy Executive Director</option>
+                    <option>Chief of Programs</option>
+                    <option>Chief of Operations</option>
+                    <option>Chief Communications Officer</option>
+                  </optgroup>
+                  <optgroup label="Program Leadership">
+                    <option>Education Programs Manager</option>
+                    <option>Mental Health Programs Manager</option>
+                    <option>Digital Empowerment Lead</option>
+                    <option>Climate &amp; Social Impact Lead</option>
+                    <option>Community Outreach Coordinator</option>
+                  </optgroup>
+                  <optgroup label="Support &amp; Operations">
+                    <option>Finance &amp; Grants Officer</option>
+                    <option>Monitoring &amp; Evaluation Officer</option>
+                    <option>Communications &amp; Media Officer</option>
+                    <option>Partnerships &amp; Fundraising Officer</option>
+                    <option>Volunteer Coordinator</option>
+                  </optgroup>
+                  <option>Other / Suggest a Role</option>
+                </select>
+              </div>
+            </div>
+            <div class="gi-form-row">
+              <div class="gi-field">
+                <label for="l-experience">Years of Relevant Experience <span class="req">*</span></label>
+                <select id="l-experience" name="experience" required>
+                  <option value="" disabled selected>Select range</option>
+                  <option>Less than 1 year</option>
+                  <option>1 – 3 years</option>
+                  <option>3 – 5 years</option>
+                  <option>5 – 10 years</option>
+                  <option>10+ years</option>
+                </select>
+              </div>
+              <div class="gi-field">
+                <label for="l-availability">Availability <span class="req">*</span></label>
+                <select id="l-availability" name="availability" required>
+                  <option value="" disabled selected>Select availability</option>
+                  <option>Full-time (Remote)</option>
+                  <option>Full-time (On-site)</option>
+                  <option>Part-time (Remote)</option>
+                  <option>Part-time (On-site)</option>
+                  <option>Flexible / Project-based</option>
+                </select>
+              </div>
+            </div>
+
+            <hr class="gi-divider">
+
+            <div class="gi-field">
+              <label for="l-linkedin">LinkedIn Profile or Portfolio URL</label>
+              <input type="url" id="l-linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+            </div>
+            <div class="gi-field">
+              <label for="l-background">Professional Background <span class="req">*</span></label>
+              <textarea id="l-background" name="background" placeholder="Briefly describe your work experience, key achievements, and relevant skills..." required style="min-height:130px;"></textarea>
+            </div>
+            <div class="gi-field">
+              <label for="l-vision">Why ACI Africa? What is your leadership vision? <span class="req">*</span></label>
+              <textarea id="l-vision" name="vision" placeholder="Tell us why you want to lead within ACI Africa and what you hope to achieve..." required style="min-height:130px;"></textarea>
+            </div>
+
+            <div class="gi-field">
+              <label class="gi-checkbox-item" style="border:none; padding:0; background:transparent; font-weight:400;">
+                <input type="checkbox" id="l-consent" name="consent" required>
+                <span style="font-size:13px; color:#64748B;">I confirm the information provided is accurate and consent to ACI Africa processing my application.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="gi-submit-btn" id="l-submit">Submit Leadership Application &rarr;</button>
+            <div class="gi-feedback" id="l-feedback"></div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ftco-footer ftco-section img stellar-footer">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-4">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">About ACI Africa</h2>
+            <p>We are a continental non-profit dedicated to advancing education, mental health, and sustainable social development across Africa.</p>
+            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5 stellar-social">
+              <li class="ftco-animate"><a href="https://twitter.com/aciafrica"><span class="icon-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="https://facebook.com/aciafrica"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="https://instagram.com/aci.africa"><span class="icon-instagram"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="ftco-footer-widget mb-4 ml-md-4">
+            <h2 class="ftco-heading-2">Site Links</h2>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="py-2 d-block">Home</a></li>
+              <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+              <li><a href="programs.html" class="py-2 d-block">Programs</a></li>
+              <li><a href="causes.html" class="py-2 d-block">Causes</a></li>
+              <li><a href="donate.html" class="py-2 d-block">Donate</a></li>
+              <li><a href="contact.html" class="py-2 d-block">Contact</a></li>
+              <li><a href="get-involved.html" class="py-2 d-block" style="color:#F5C400; font-weight:600;">Get Involved</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Have Questions?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">Accra, Ghana (HQ)</span></li>
+                <li><a href="mailto:info@aciafrica.org"><span class="icon icon-envelope"></span><span class="text">info@aciafrica.org</span></a></li>
+                <li><a href="https://www.aciafrica.org"><span class="icon icon-globe"></span><span class="text">www.aciafrica.org</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | ACI Africa</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F5C400"/></svg></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function switchTab(tab) {
+      ['member','leader'].forEach(function(t) {
+        document.getElementById('panel-' + t).classList.toggle('active', t === tab);
+        document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+        document.getElementById('card-' + t).classList.toggle('selected', t === tab);
+      });
+      setTimeout(function() {
+        document.getElementById('panel-' + tab).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+
+    function handleForm(formId, submitId, feedbackId, endpoint) {
+      document.getElementById(formId).addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (!this.checkValidity()) { this.reportValidity(); return; }
+        var btn = document.getElementById(submitId);
+        var fb  = document.getElementById(feedbackId);
+        var orig = btn.textContent;
+        btn.textContent = 'Submitting\u2026'; btn.disabled = true;
+        var data = {};
+        new FormData(this).forEach(function(v, k) {
+          if (data[k]) { data[k] = [].concat(data[k], v); } else { data[k] = v; }
+        });
+        try {
+          var res = await fetch('http://localhost:3000/api/' + endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (res.ok) {
+            fb.className = 'gi-feedback success';
+            fb.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><polyline points="20 6 9 17 4 12"/></svg> Application received! We\'ll be in touch soon.';
+            fb.style.display = 'block';
+            this.reset();
+          } else { throw new Error(); }
+        } catch(err) {
+          fb.className = 'gi-feedback error';
+          fb.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Something went wrong. Please email <a href="mailto:info@aciafrica.org">info@aciafrica.org</a>';
+          fb.style.display = 'block';
+        }
+        btn.textContent = orig; btn.disabled = false;
+      });
+    }
+
+    handleForm('member-form', 'm-submit', 'm-feedback', 'join-member');
+    handleForm('leader-form', 'l-submit', 'l-feedback', 'join-leader');
+  </script>
+
+<!-- Custom Automated Chatbot -->
+<div class="stellar-chatbot-container">
+  <button class="stellar-chatbot-btn" id="stellarChatBtn"><span class="icon-chat"></span></button>
+  <div class="stellar-chatbot-window" id="stellarChatWindow">
+    <div class="stellar-chatbot-header">
+      <h4>ACI Africa Bot</h4>
+      <button class="stellar-chatbot-close" id="stellarChatClose">&times;</button>
+    </div>
+    <div class="stellar-chatbot-messages" id="stellarChatMessages">
+      <div class="stellar-chat-msg bot">Hello! I'm the ACI Africa virtual assistant. How can I help you today?</div>
+    </div>
+    <div class="stellar-chatbot-input">
+      <input type="text" id="stellarChatInput" placeholder="Type your message...">
+      <button id="stellarChatSend">Send</button>
+    </div>
+  </div>
+</div>
+<!-- End Custom Chatbot -->
+  </body>
+</html>
