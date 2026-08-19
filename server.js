@@ -256,6 +256,13 @@ initDB().then(() => {
     console.log(`ACI Africa server running at http://localhost:${PORT}`);
     console.log(`Admin portal: http://localhost:${PORT}/admin.html`);
   });
+
+  // Keep-alive ping to prevent Render free-tier spin down
+  const https = require('https');
+  setInterval(() => {
+    https.get('https://aci-africa.onrender.com');
+  }, 14 * 60 * 1000); // Ping every 14 minutes
+
 }).catch(err => {
   console.error('Could not connect to database:', err.message);
   process.exit(1);

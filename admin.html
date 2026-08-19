@@ -303,20 +303,37 @@
   let activeTab = 'contacts';
 
   /* ── AUTH ── */
-  function login(pw = null) {
+  async function login(pw = null) {
     const inputPw = pw || document.getElementById('pw-input').value;
-    // Hardcoded check for client side, though the real check is the backend API
-    if (inputPw === 'aciafrica2024') {
-      ADMIN_PASSWORD = inputPw;
-      sessionStorage.setItem('aci_admin_pass', ADMIN_PASSWORD);
-      document.getElementById('auth-gate').style.display = 'none';
-      document.getElementById('dashboard').style.display = 'block';
-      loadAll();
-    } else {
+    const btn = document.querySelector('.auth-box button');
+    
+    if(!pw) { btn.textContent = 'Verifying...'; btn.disabled = true; }
+
+    try {
+      // Test the password against the live backend
+      const res = await fetch(API + '/admin/contacts', {
+        headers: { 'x-admin-password': inputPw }
+      });
+
+      if (res.ok) {
+        ADMIN_PASSWORD = inputPw;
+        sessionStorage.setItem('aci_admin_pass', ADMIN_PASSWORD);
+        document.getElementById('auth-gate').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        loadAll();
+      } else {
+        const err = document.getElementById('auth-error');
+        err.style.display = 'block';
+        err.textContent = 'Incorrect password. Try again.';
+        sessionStorage.removeItem('aci_admin_pass');
+      }
+    } catch (e) {
       const err = document.getElementById('auth-error');
       err.style.display = 'block';
-      err.textContent = 'Incorrect password. Try again.';
+      err.textContent = 'Server connection failed. Try again.';
     }
+
+    if(!pw) { btn.textContent = 'Access Dashboard'; btn.disabled = false; }
   }
 
   function logout() {
