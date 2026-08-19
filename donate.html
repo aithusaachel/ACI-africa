@@ -104,7 +104,7 @@
               const fb = document.getElementById('d-feedback');
               btn.value = 'Processing…'; btn.disabled = true;
               try {
-                const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api/donate' : '/api/donate';
+                const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api/donate' : 'https://aci-africa.onrender.com/api/donate';
                 const res = await fetch(API, {
                   method: 'POST',
                   headers: {'Content-Type': 'application/json'},

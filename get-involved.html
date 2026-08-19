@@ -617,7 +617,7 @@
           if (data[k]) { data[k] = [].concat(data[k], v); } else { data[k] = v; }
         });
         try {
-          const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api/' + endpoint : '/api/' + endpoint;
+          const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api/' + endpoint : 'https://aci-africa.onrender.com/api/' + endpoint;
           var res = await fetch(API, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

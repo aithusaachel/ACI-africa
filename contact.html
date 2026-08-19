@@ -118,7 +118,7 @@
                 const fb = document.getElementById('c-feedback');
                 btn.value = 'Sending…'; btn.disabled = true;
                 try {
-                  const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api/contact' : '/api/contact';
+                  const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api/contact' : 'https://aci-africa.onrender.com/api/contact';
                   const res = await fetch(API, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},

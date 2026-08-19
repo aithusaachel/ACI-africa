@@ -298,7 +298,7 @@
 
 <script>
   // Dynamically use localhost:3000 for Live Server, or relative path for production
-  const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api' : '/api';
+  const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api' : 'https://aci-africa.onrender.com/api';
   let ADMIN_PASSWORD = sessionStorage.getItem('aci_admin_pass') || '';
   let activeTab = 'contacts';
 
