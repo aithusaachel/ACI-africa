@@ -140,8 +140,19 @@ app.post('/api/join-leader', async (req, res) => {
   }
 });
 
+// ─── Admin API Middleware ───────────────────────────────────────────────────
+const ADMIN_PASS = process.env.ADMIN_PASS || 'aciafrica2024';
+function adminAuth(req, res, next) {
+  const token = req.headers['x-admin-password'];
+  if (token === ADMIN_PASS) {
+    next();
+  } else {
+    res.status(401).json({ error: 'Unauthorized' });
+  }
+}
+
 // GET /api/admin/members — fetch all membership applications
-app.get('/api/admin/members', async (req, res) => {
+app.get('/api/admin/members', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM member_applications ORDER BY submitted_at DESC');
     res.json(result.rows);
@@ -151,7 +162,7 @@ app.get('/api/admin/members', async (req, res) => {
 });
 
 // GET /api/admin/leaders — fetch all leadership applications
-app.get('/api/admin/leaders', async (req, res) => {
+app.get('/api/admin/leaders', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM leader_applications ORDER BY submitted_at DESC');
     res.json(result.rows);
@@ -178,7 +189,7 @@ app.post('/api/donate', async (req, res) => {
 });
 
 // GET /api/admin/contacts — fetch all contact submissions (admin only)
-app.get('/api/admin/contacts', async (req, res) => {
+app.get('/api/admin/contacts', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM contact_submissions ORDER BY submitted_at DESC');
     res.json(result.rows);
@@ -189,7 +200,7 @@ app.get('/api/admin/contacts', async (req, res) => {
 });
 
 // GET /api/admin/donations — fetch all donation submissions (admin only)
-app.get('/api/admin/donations', async (req, res) => {
+app.get('/api/admin/donations', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM donation_submissions ORDER BY submitted_at DESC');
     res.json(result.rows);
@@ -200,7 +211,7 @@ app.get('/api/admin/donations', async (req, res) => {
 });
 
 // DELETE /api/admin/contacts/:id
-app.delete('/api/admin/contacts/:id', async (req, res) => {
+app.delete('/api/admin/contacts/:id', adminAuth, async (req, res) => {
   try {
     await pool.query('DELETE FROM contact_submissions WHERE id = $1', [req.params.id]);
     res.json({ success: true });
@@ -210,9 +221,29 @@ app.delete('/api/admin/contacts/:id', async (req, res) => {
 });
 
 // DELETE /api/admin/donations/:id
-app.delete('/api/admin/donations/:id', async (req, res) => {
+app.delete('/api/admin/donations/:id', adminAuth, async (req, res) => {
   try {
     await pool.query('DELETE FROM donation_submissions WHERE id = $1', [req.params.id]);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete record.' });
+  }
+});
+
+// DELETE /api/admin/members/:id
+app.delete('/api/admin/members/:id', adminAuth, async (req, res) => {
+  try {
+    await pool.query('DELETE FROM member_applications WHERE id = $1', [req.params.id]);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete record.' });
+  }
+});
+
+// DELETE /api/admin/leaders/:id
+app.delete('/api/admin/leaders/:id', adminAuth, async (req, res) => {
+  try {
+    await pool.query('DELETE FROM leader_applications WHERE id = $1', [req.params.id]);
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete record.' });

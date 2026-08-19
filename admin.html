@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Dashboard – ACI Africa</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #F5C400;
+      --yellow-light: rgba(245,196,0,0.12);
+      --dark: #1E293B;
+      --muted: #64748B;
+      --bg: #F8FAFC;
+      --white: #fff;
+      --border: #E2E8F0;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); }
+
+    /* ── AUTH GATE ── */
+    #auth-gate {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; background: var(--dark);
+    }
+    .auth-box {
+      background: var(--white); border-radius: 20px; padding: 48px 40px;
+      width: 380px; text-align: center;
+    }
+    .auth-box .logo {
+      font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800;
+      color: var(--dark); margin-bottom: 8px; letter-spacing: 1px;
+    }
+    .auth-box .logo span { color: var(--yellow); }
+    .auth-box p { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+    .auth-box input {
+      width: 100%; padding: 13px 16px; border: 2px solid var(--border);
+      border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px;
+      outline: none; margin-bottom: 14px; transition: border-color 0.2s;
+    }
+    .auth-box input:focus { border-color: var(--yellow); }
+    .auth-box button {
+      width: 100%; padding: 14px; background: var(--yellow); color: var(--dark);
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;
+      border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s;
+    }
+    .auth-box button:hover { background: #e6b800; }
+    .auth-error { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
+
+    /* ── MAIN DASHBOARD ── */
+    #dashboard { display: none; min-height: 100vh; }
+
+    header {
+      background: var(--dark); padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .header-logo {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800;
+      color: var(--white); letter-spacing: 1px;
+    }
+    .header-logo span { color: var(--yellow); }
+    .header-right { display: flex; align-items: center; gap: 16px; }
+    .header-badge {
+      background: var(--yellow-light); color: var(--yellow);
+      font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+    }
+    .logout-btn {
+      background: none; border: 1.5px solid rgba(255,255,255,0.2); color: #fff;
+      font-family: 'Inter', sans-serif; font-size: 13px; padding: 7px 16px;
+      border-radius: 8px; cursor: pointer; transition: border-color 0.2s;
+    }
+    .logout-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .dashboard-body { padding: 32px; max-width: 1200px; margin: 0 auto; }
+
+    /* ── STAT CARDS ── */
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px;
+    }
+    @media(max-width:768px){ .stat-grid { grid-template-columns: 1fr 1fr; } }
+    .stat-card {
+      background: var(--white); border-radius: 14px; padding: 20px 24px;
+      border: 1.5px solid var(--border);
+    }
+    .stat-card .label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .stat-card .count { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--dark); }
+    .stat-card .icon { font-size: 28px; float: right; opacity: 0.15; margin-top: -8px; }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex; gap: 4px; background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 5px; width: fit-content; margin-bottom: 24px;
+    }
+    .tab-btn {
+      padding: 9px 20px; border: none; background: transparent; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+      color: var(--muted); cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .tab-btn.active { background: var(--yellow); color: var(--dark); font-weight: 700; }
+
+    /* ── TABLE ── */
+    .table-wrap {
+      background: var(--white); border-radius: 14px; border: 1.5px solid var(--border);
+      overflow: hidden;
+    }
+    .table-header {
+      padding: 18px 24px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .table-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px; }
+    .refresh-btn {
+      background: var(--yellow-light); color: #b38f00; border: none;
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+      padding: 6px 14px; border-radius: 8px; cursor: pointer; transition: background 0.2s;
+    }
+    .refresh-btn:hover { background: rgba(245,196,0,0.22); }
+
+    .data-table { display: none; }
+    .data-table.active { display: block; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th {
+      padding: 12px 16px; text-align: left; font-weight: 600; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted);
+      background: #FAFBFC; border-bottom: 1px solid var(--border);
+    }
+    td { padding: 13px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #FAFBFC; }
+
+    .badge {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 600;
+    }
+    .badge-yellow { background: var(--yellow-light); color: #b38f00; }
+    .badge-blue   { background: rgba(74,144,226,0.12); color: #2563eb; }
+    .badge-green  { background: rgba(34,197,94,0.12); color: #15803D; }
+    .badge-purple { background: rgba(139,92,246,0.12); color: #7c3aed; }
+
+    .del-btn {
+      background: none; border: 1.5px solid #fca5a5; color: var(--red);
+      font-size: 11px; padding: 4px 10px; border-radius: 6px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .del-btn:hover { background: var(--red); color: #fff; border-color: var(--red); }
+
+    .empty-state {
+      text-align: center; padding: 60px 20px; color: var(--muted);
+    }
+    .empty-state svg { margin-bottom: 12px; opacity: 0.3; }
+    .empty-state p { font-size: 14px; }
+
+    .loading {
+      text-align: center; padding: 40px; color: var(--muted); font-size: 14px;
+    }
+
+    .interests-list { display: flex; flex-wrap: wrap; gap: 4px; }
+    .interest-tag {
+      background: var(--yellow-light); color: #b38f00;
+      font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px;
+    }
+
+    .ts { font-size: 11px; color: var(--muted); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.6); display: flex; align-items: center; justify-content: center;
+      z-index: 1000; backdrop-filter: blur(4px);
+    }
+    .modal-content {
+      background: var(--white); width: 500px; max-width: 90%; border-radius: 16px;
+      overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .modal-header {
+      padding: 20px 24px; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      background: #FAFBFC;
+    }
+    .modal-header h3 { font-family: 'Outfit', sans-serif; font-size: 18px; margin: 0; }
+    .modal-close {
+      background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted);
+      line-height: 1; padding: 0 5px;
+    }
+    .modal-body { padding: 24px; max-height: 70vh; overflow-y: auto; }
+    
+    .view-btn {
+      background: var(--bg); border: 1.5px solid var(--border); color: var(--dark);
+      font-size: 11px; padding: 4px 10px; border-radius: 6px; cursor: pointer;
+      transition: all 0.2s; margin-right: 6px;
+    }
+    .view-btn:hover { background: var(--border); }
+  </style>
+</head>
+<body>
+
+<!-- AUTH GATE -->
+<div id="auth-gate">
+  <div class="auth-box">
+    <div class="logo">ACI <span>AFRICA</span></div>
+    <p>Admin Dashboard — restricted access</p>
+    <input type="password" id="pw-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter') login()">
+    <button onclick="login()">Sign In</button>
+    <div class="auth-error" id="auth-error">Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <header>
+    <div class="header-logo">ACI <span>AFRICA</span> &mdash; Admin</div>
+    <div class="header-right">
+      <span class="header-badge">Admin Portal</span>
+      <button class="logout-btn" onclick="logout()">Sign Out</button>
+    </div>
+  </header>
+
+  <div class="dashboard-body">
+
+    <!-- Stat cards -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="label">Contact Messages</div>
+        <div class="count" id="stat-contacts">—</div>
+        <div class="icon">✉️</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Donations</div>
+        <div class="count" id="stat-donations">—</div>
+        <div class="icon">💛</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Member Applications</div>
+        <div class="count" id="stat-members">—</div>
+        <div class="icon">🤝</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Leadership Applications</div>
+        <div class="count" id="stat-leaders">—</div>
+        <div class="icon">⭐</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('contacts')">Contact Messages</button>
+      <button class="tab-btn" onclick="switchTab('donations')">Donations</button>
+      <button class="tab-btn" onclick="switchTab('members')">Member Applications</button>
+      <button class="tab-btn" onclick="switchTab('leaders')">Leadership Applications</button>
+    </div>
+
+    <!-- Table container -->
+    <div class="table-wrap">
+      <div class="table-header">
+        <span class="table-title" id="table-title">Contact Messages</span>
+        <button class="refresh-btn" onclick="loadActive()">&#8635; Refresh</button>
+      </div>
+
+      <!-- Contacts -->
+      <div class="data-table active" id="tbl-contacts">
+        <div class="loading">Loading…</div>
+      </div>
+
+      <!-- Donations -->
+      <div class="data-table" id="tbl-donations">
+        <div class="loading">Loading…</div>
+      </div>
+
+      <!-- Members -->
+      <div class="data-table" id="tbl-members">
+        <div class="loading">Loading…</div>
+      </div>
+
+      <!-- Leaders -->
+      <div class="data-table" id="tbl-leaders">
+        <div class="loading">Loading…</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- VIEW MODAL -->
+<div id="view-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Entry Details</h3>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+  // Dynamically use localhost:3000 for Live Server, or relative path for production
+  const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api' : '/api';
+  let ADMIN_PASSWORD = sessionStorage.getItem('aci_admin_pass') || '';
+  let activeTab = 'contacts';
+
+  /* ── AUTH ── */
+  function login(pw = null) {
+    const inputPw = pw || document.getElementById('pw-input').value;
+    // Hardcoded check for client side, though the real check is the backend API
+    if (inputPw === 'aciafrica2024') {
+      ADMIN_PASSWORD = inputPw;
+      sessionStorage.setItem('aci_admin_pass', ADMIN_PASSWORD);
+      document.getElementById('auth-gate').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      loadAll();
+    } else {
+      const err = document.getElementById('auth-error');
+      err.style.display = 'block';
+      err.textContent = 'Incorrect password. Try again.';
+    }
+  }
+
+  function logout() {
+    ADMIN_PASSWORD = '';
+    sessionStorage.removeItem('aci_admin_pass');
+    document.getElementById('auth-gate').style.display = 'flex';
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('auth-error').style.display = 'none';
+  }
+
+  // Auto-login if session exists
+  if (ADMIN_PASSWORD) {
+    login(ADMIN_PASSWORD);
+  }
+
+  /* ── TABS ── */
+  const tabTitles = {
+    contacts: 'Contact Messages',
+    donations: 'Donations',
+    members: 'Member Applications',
+    leaders: 'Leadership Applications'
+  };
+  
+  let currentData = [];
+
+  function switchTab(tab) {
+    activeTab = tab;
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      b.classList.toggle('active', ['contacts','donations','members','leaders'][i] === tab);
+    });
+    document.querySelectorAll('.data-table').forEach(t => t.classList.remove('active'));
+    document.getElementById('tbl-' + tab).classList.add('active');
+    document.getElementById('table-title').textContent = tabTitles[tab];
+    loadTab(tab);
+  }
+
+  function loadActive() { loadTab(activeTab); }
+
+  /* ── FETCH ── */
+  async function loadAll() {
+    await Promise.all(['contacts','donations','members','leaders'].map(t => loadTab(t)));
+  }
+
+  async function loadTab(tab) {
+    const el = document.getElementById('tbl-' + tab);
+    el.innerHTML = '<div class="loading">Loading…</div>';
+    try {
+      const res = await fetch(API + '/admin/' + tab, {
+        headers: { 'x-admin-password': ADMIN_PASSWORD }
+      });
+      if (!res.ok) throw new Error(res.statusText);
+      const rows = await res.json();
+      currentData = rows;
+
+      // update stat
+      const statEl = document.getElementById('stat-' + tab);
+      if (statEl) statEl.textContent = rows.length;
+
+      if (rows.length === 0) {
+        el.innerHTML = '<div class="empty-state"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg><p>No entries yet.</p></div>';
+        return;
+      }
+
+      el.innerHTML = renderTable(tab, rows);
+    } catch(e) {
+      el.innerHTML = '<div class="empty-state"><p style="color:#ef4444">Could not load data. Make sure the server is running on port 3000.</p></div>';
+    }
+  }
+
+  function viewRow(index) {
+    const data = currentData[index];
+    if (!data) return;
+    let html = '';
+    for (const [key, val] of Object.entries(data)) {
+      if (key === 'id') continue;
+      let displayVal = esc(val) || '—';
+      if (key === 'submitted_at') displayVal = fmt(val);
+      
+      html += `<div style="margin-bottom:16px;">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:0.5px;margin-bottom:4px;">${key.replace(/_/g, ' ')}</div>
+        <div style="font-size:14px;color:var(--dark);line-height:1.5;white-space:pre-wrap;">${displayVal}</div>
+      </div>`;
+    }
+    document.getElementById('modal-body').innerHTML = html;
+    document.getElementById('view-modal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('view-modal').style.display = 'none';
+  }
+
+  function fmt(ts) {
+    if (!ts) return '—';
+    return new Date(ts).toLocaleString('en-GB', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  }
+
+  async function deleteRow(tab, id, btn) {
+    if (!confirm('Delete this entry permanently?')) return;
+    btn.textContent = '…'; btn.disabled = true;
+    try {
+      const res = await fetch(API + '/admin/' + tab + '/' + id, { 
+        method: 'DELETE',
+        headers: { 'x-admin-password': ADMIN_PASSWORD }
+      });
+      if (res.ok) {
+        btn.closest('tr').style.opacity = '0.4';
+        btn.closest('tr').style.transition = 'opacity 0.3s';
+        setTimeout(() => loadTab(tab), 350);
+      }
+    } catch(e) { btn.textContent = 'Error'; }
+  }
+
+  function renderTable(tab, rows) {
+    if (tab === 'contacts') return `
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Received</th><th></th></tr></thead>
+        <tbody>${rows.map((r,i) => `
+          <tr>
+            <td class="ts">${i+1}</td>
+            <td><strong>${esc(r.name)}</strong></td>
+            <td><a href="mailto:${esc(r.email)}" style="color:#2563eb">${esc(r.email)}</a></td>
+            <td>${esc(r.subject||'—')}</td>
+            <td style="max-width:260px">${esc(r.message)}</td>
+            <td class="ts">${fmt(r.submitted_at)}</td>
+            <td><button class="view-btn" onclick="viewRow(${i})">View</button><button class="del-btn" onclick="deleteRow('contacts',${r.id},this)">Delete</button></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+
+    if (tab === 'donations') return `
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Amount</th><th>Message</th><th>Date</th><th></th></tr></thead>
+        <tbody>${rows.map((r,i) => `
+          <tr>
+            <td class="ts">${i+1}</td>
+            <td><strong>${esc(r.name)}</strong></td>
+            <td><a href="mailto:${esc(r.email)}" style="color:#2563eb">${esc(r.email)}</a></td>
+            <td><span class="badge badge-green">GH₵ ${r.amount||'0'}</span></td>
+            <td style="max-width:200px">${esc(r.message||'—')}</td>
+            <td class="ts">${fmt(r.submitted_at)}</td>
+            <td><button class="view-btn" onclick="viewRow(${i})">View</button><button class="del-btn" onclick="deleteRow('donations',${r.id},this)">Delete</button></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+
+    if (tab === 'members') return `
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Country</th><th>Occupation</th><th>Interests</th><th>Motivation</th><th>Date</th><th></th></tr></thead>
+        <tbody>${rows.map((r,i) => `
+          <tr>
+            <td class="ts">${i+1}</td>
+            <td><strong>${esc(r.firstname)} ${esc(r.lastname)}</strong><br><span class="ts">${esc(r.phone||'')}</span></td>
+            <td><a href="mailto:${esc(r.email)}" style="color:#2563eb">${esc(r.email)}</a></td>
+            <td><span class="badge badge-blue">${esc(r.country||'—')}</span></td>
+            <td>${esc(r.occupation||'—')}</td>
+            <td><div class="interests-list">${(r.interests||'').split(',').filter(Boolean).map(t=>`<span class="interest-tag">${esc(t.trim())}</span>`).join('')||'—'}</div></td>
+            <td style="max-width:220px">${esc(r.motivation||'—')}</td>
+            <td class="ts">${fmt(r.submitted_at)}</td>
+            <td><button class="view-btn" onclick="viewRow(${i})">View</button><button class="del-btn" onclick="deleteRow('members',${r.id},this)">Delete</button></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+
+    if (tab === 'leaders') return `
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Position</th><th>Country</th><th>Experience</th><th>Availability</th><th>LinkedIn</th><th>Date</th><th></th></tr></thead>
+        <tbody>${rows.map((r,i) => `
+          <tr>
+            <td class="ts">${i+1}</td>
+            <td><strong>${esc(r.firstname)} ${esc(r.lastname)}</strong><br><span class="ts">${esc(r.phone||'')}</span></td>
+            <td><a href="mailto:${esc(r.email)}" style="color:#2563eb">${esc(r.email)}</a></td>
+            <td><span class="badge badge-purple">${esc(r.position||'—')}</span></td>
+            <td><span class="badge badge-blue">${esc(r.country||'—')}</span></td>
+            <td>${esc(r.experience||'—')}</td>
+            <td>${esc(r.availability||'—')}</td>
+            <td>${r.linkedin ? `<a href="${esc(r.linkedin)}" target="_blank" rel="noopener" style="color:#2563eb;font-size:12px;">View ↗</a>` : '—'}</td>
+            <td class="ts">${fmt(r.submitted_at)}</td>
+            <td><button class="view-btn" onclick="viewRow(${i})">View</button><button class="del-btn" onclick="deleteRow('leaders',${r.id},this)">Delete</button></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+  }
+
+  function esc(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+</script>
+</body>
+</html>

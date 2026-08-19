@@ -617,7 +617,8 @@
           if (data[k]) { data[k] = [].concat(data[k], v); } else { data[k] = v; }
         });
         try {
-          var res = await fetch('http://localhost:3000/api/' + endpoint, {
+          const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api/' + endpoint : '/api/' + endpoint;
+          var res = await fetch(API, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
