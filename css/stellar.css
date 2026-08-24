@@ -571,3 +571,24 @@ h6,
   transform: translateY(-2px);
   box-shadow: 0 5px 15px var(--stellar-primary-glow);
 }
+
+/* Responsive Chatbot & Mobile Tweaks */
+@media (max-width: 576px) {
+  .stellar-chatbot-container {
+    bottom: 15px;
+    right: 15px;
+  }
+  .stellar-chatbot-window {
+    width: calc(100vw - 30px);
+    max-width: 350px;
+    height: 70vh;
+    max-height: 460px;
+    bottom: 70px;
+    right: 0;
+  }
+  .stellar-chatbot-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 20px;
+  }
+}

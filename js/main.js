@@ -351,13 +351,17 @@ Rules:
       chatMessages.scrollTop(chatMessages[0].scrollHeight);
 
       try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${API_KEY}`, {
+        const chatApiUrl = (window.location.port && window.location.port !== '3000' && window.location.hostname === 'localhost') 
+          ? 'http://localhost:3000/api/chat' 
+          : '/api/chat';
+
+        const response = await fetch(chatApiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            contents: chatHistory
+            messages: chatHistory
           })
         });
 
@@ -366,8 +370,8 @@ Rules:
         // Remove typing indicator
         $('.typing').remove();
 
-        if (data.candidates && data.candidates.length > 0) {
-          const botReply = data.candidates[0].content.parts[0].text;
+        if (data.reply) {
+          const botReply = data.reply;
           appendMessage(botReply, 'bot');
           
           // Add bot reply to history
@@ -377,15 +381,15 @@ Rules:
           });
         } else if (data.error) {
           console.error("API Error Data:", data.error);
-          appendMessage("API Error: " + data.error.message, 'bot');
+          appendMessage("I'm sorry, I encountered an issue. Please try again or reach out to hello@globalwelfare.org.", 'bot');
         } else {
-          appendMessage("I'm sorry, I received an unknown response format.", 'bot');
+          appendMessage("Thank you for your message! How else can I assist you with ACI Africa's mission?", 'bot');
         }
 
       } catch (error) {
         console.error("Chatbot Fetch Error:", error);
         $('.typing').remove();
-        appendMessage("Fetch Error: " + error.message, 'bot');
+        appendMessage("Thank you for reaching out! Please email us at hello@globalwelfare.org if you need further assistance.", 'bot');
       }
     }
   }

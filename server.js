@@ -188,6 +188,47 @@ app.post('/api/donate', async (req, res) => {
   }
 });
 
+// POST /api/chat — Chatbot proxy using Gemini API
+app.post('/api/chat', async (req, res) => {
+  const { messages } = req.body;
+  if (!messages || !Array.isArray(messages)) {
+    return res.status(400).json({ error: 'Messages array is required.' });
+  }
+
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return res.json({
+      reply: "Thank you for reaching out to ACI Africa! We bring clean water, education, and emergency relief to communities across Africa. For detailed inquiries, please email us at hello@globalwelfare.org or visit our Contact page."
+    });
+  }
+
+  try {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        contents: messages
+      })
+    });
+
+    const data = await response.json();
+    if (data.candidates && data.candidates.length > 0 && data.candidates[0].content?.parts?.[0]?.text) {
+      res.json({ reply: data.candidates[0].content.parts[0].text });
+    } else if (data.error) {
+      console.error('Gemini API Error:', data.error.message);
+      res.json({ reply: "Thank you for contacting ACI Africa! How can we assist you with clean water, education, or disaster relief initiatives today?" });
+    } else {
+      res.json({ reply: "Thank you for reaching out to ACI Africa! Please let us know if you have questions about our causes or donating." });
+    }
+  } catch (err) {
+    console.error('Chat endpoint error:', err.message);
+    res.json({ reply: "Thank you for reaching out to ACI Africa! Feel free to explore our causes or contact us at hello@globalwelfare.org." });
+  }
+});
+
+
 // GET /api/admin/contacts — fetch all contact submissions (admin only)
 app.get('/api/admin/contacts', adminAuth, async (req, res) => {
   try {
