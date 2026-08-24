@@ -592,3 +592,69 @@ h6,
     font-size: 20px;
   }
 }
+
+/* Mobile Header & Dropdown Navigation Contrast Fix */
+@media (max-width: 991.98px) {
+  .stellar-navbar,
+  .ftco-navbar-light {
+    background: #1E293B !important;
+    position: relative !important;
+    top: 0 !important;
+    padding: 12px 15px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .stellar-navbar .navbar-brand,
+  .ftco-navbar-light .navbar-brand {
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+  }
+
+  .stellar-navbar .navbar-toggler,
+  .ftco-navbar-light .navbar-toggler {
+    color: #F5C400 !important;
+    border: 1.5px solid rgba(245, 196, 0, 0.5) !important;
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    outline: none !important;
+  }
+
+  .navbar-collapse {
+    background: #1E293B !important;
+    padding: 15px 20px !important;
+    border-radius: 0 0 16px 16px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 10px !important;
+  }
+
+  .stellar-navbar .navbar-nav,
+  .ftco-navbar-light .navbar-nav {
+    padding: 5px 0 !important;
+  }
+
+  .stellar-navbar .navbar-nav > .nav-item > .nav-link,
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 12px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    display: block !important;
+  }
+
+  .stellar-navbar .navbar-nav > .nav-item:last-child > .nav-link,
+  .ftco-navbar-light .navbar-nav > .nav-item:last-child > .nav-link {
+    border-bottom: none !important;
+  }
+
+  .stellar-navbar .navbar-nav > .nav-item.active > .nav-link,
+  .stellar-navbar .navbar-nav > .nav-item > .nav-link:hover,
+  .ftco-navbar-light .navbar-nav > .nav-item.active > .nav-link,
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
+    color: #F5C400 !important;
+  }
+}
