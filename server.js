@@ -73,6 +73,13 @@ async function initDB() {
         submitted_at TIMESTAMP DEFAULT NOW()
       );
     `);
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS newsletter_signups (
+        id SERIAL PRIMARY KEY,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        signed_up_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
     console.log('Database tables are ready.');
   } catch (err) {
     console.error('Error initializing database tables:', err.message);
@@ -171,6 +178,24 @@ app.get('/api/admin/leaders', adminAuth, async (req, res) => {
   }
 });
 
+// POST /api/newsletter — save a newsletter/notify-me signup
+app.post('/api/newsletter', async (req, res) => {
+  const { email } = req.body;
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'A valid email address is required.' });
+  }
+  try {
+    await pool.query(
+      'INSERT INTO newsletter_signups (email) VALUES ($1) ON CONFLICT (email) DO NOTHING',
+      [email]
+    );
+    res.status(201).json({ success: true });
+  } catch (err) {
+    console.error('Newsletter signup error:', err.message);
+    res.status(500).json({ error: 'Failed to save signup.' });
+  }
+});
+
 app.post('/api/donate', async (req, res) => {
   const { name, email, amount, message } = req.body;
   if (!name || !email) {
@@ -237,6 +262,26 @@ app.get('/api/admin/contacts', adminAuth, async (req, res) => {
   } catch (err) {
     console.error('Fetch contacts error:', err.message);
     res.status(500).json({ error: 'Failed to fetch contacts.' });
+  }
+});
+
+// GET /api/admin/newsletter — fetch all newsletter signups (admin only)
+app.get('/api/admin/newsletter', adminAuth, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM newsletter_signups ORDER BY signed_up_at DESC');
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch signups.' });
+  }
+});
+
+// DELETE /api/admin/newsletter/:id
+app.delete('/api/admin/newsletter/:id', adminAuth, async (req, res) => {
+  try {
+    await pool.query('DELETE FROM newsletter_signups WHERE id = $1', [req.params.id]);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete record.' });
   }
 });
 

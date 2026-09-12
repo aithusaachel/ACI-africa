@@ -547,23 +547,45 @@
 
         if (!btn || !input || !form) return;
 
-        btn.addEventListener('click', function () {
+        function showResult(ok, msg) {
+          form.innerHTML =
+            '<div class="cs-notify-success visible" role="alert" style="' + (ok ? '' : 'color:#ff6b6b;') + '">' +
+            '<span style="font-size:20px;">' + (ok ? '&#10003;' : '&#33;') + '</span> ' + msg +
+            '</div>';
+        }
+
+        function submit() {
           var email = input.value.trim();
           if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             input.style.outline = '2px solid rgba(245,196,0,0.6)';
             input.focus();
             return;
           }
-          // Replace form content with success message
-          form.innerHTML =
-            '<div class="cs-notify-success visible" role="alert">' +
-            '<span style="font-size:20px;">&#10003;</span>' +
-            " You're on the list! We'll let you know when we launch." +
-            '</div>';
-        });
 
+          btn.textContent = '...';
+          btn.disabled = true;
+
+          fetch('/api/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email })
+          })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data.success) {
+              showResult(true, "You're on the list! We'll let you know when we launch.");
+            } else {
+              showResult(false, data.error || 'Something went wrong. Please try again.');
+            }
+          })
+          .catch(function () {
+            showResult(false, 'Could not connect. Please try again later.');
+          });
+        }
+
+        btn.addEventListener('click', submit);
         input.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter') btn.click();
+          if (e.key === 'Enter') submit();
         });
       })();
     </script>
