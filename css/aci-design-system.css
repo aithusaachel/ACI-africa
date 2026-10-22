@@ -1,0 +1,1124 @@
+/**
+ * AbleCares Initiative Africa (ACI Africa)
+ * Master Editorial Design System: "Living Atlas of African Dignity & Potential"
+ * Refinement: Motion Language, Form Feedback Lifecycles & Universal Responsiveness
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Syne:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── 1. TOKENS & SYSTEM VARIABLES ── */
+:root {
+  /* Editorial Palette: Terroir & Tactile Ground */
+  --aci-ink: #111311;                 /* Deep organic black earth */
+  --aci-ink-subtle: #414643;          /* Secondary reading tone */
+  --aci-ink-muted: #6B726E;           /* Metadata, captions, folios */
+  --aci-paper: #F7F5EE;               /* Unbleached linen & warm book paper */
+  --aci-paper-pure: #FFFFFF;          /* Pure crisp white for document plates */
+  --aci-paper-dim: #ECE9DE;           /* Structural dividers and shaded folios */
+  
+  /* Brand Earth Accents */
+  --aci-terracotta: #B6571A;          /* Ghanaian laterite clay & sun-baked earth */
+  --aci-terracotta-dark: #8F3F0D;     /* Deep terracotta for high contrast links */
+  --aci-terracotta-tint: rgba(182, 87, 26, 0.08);
+  
+  --aci-forest: #192621;              /* Deep botanical slate (institutional authority) */
+  --aci-forest-surface: #22322C;
+  --aci-forest-tint: rgba(25, 38, 33, 0.05);
+
+  --aci-ochre: #C88D23;               /* Sun gold / field harvest accent */
+  --aci-ochre-light: #E8B95A;
+
+  /* Hairlines & Structural Grid */
+  --aci-rule: rgba(17, 19, 17, 0.12);
+  --aci-rule-strong: rgba(17, 19, 17, 0.28);
+  --aci-rule-light: rgba(255, 255, 255, 0.15);
+
+  /* Typography Stacks */
+  --aci-font-serif: 'Newsreader', Garamond, Georgia, serif;
+  --aci-font-display: 'Syne', -apple-system, sans-serif;
+  --aci-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --aci-font-mono: 'JetBrains Mono', monospace;
+
+  /* Proportions & Spacing Scale */
+  --aci-max-width: 1360px;
+  --aci-prose-width: 740px;
+  --aci-gutter: clamp(16px, 4vw, 48px);
+  --aci-space-xs: 8px;
+  --aci-space-sm: 16px;
+  --aci-space-md: 32px;
+  --aci-space-lg: clamp(40px, 6vw, 64px);
+  --aci-space-xl: clamp(64px, 9vw, 110px);
+  --aci-space-2xl: clamp(96px, 12vw, 160px);
+
+  /* Subtle Radii (Sharp architectural edges) */
+  --aci-radius: 2px;
+
+  /* Motion & Interaction Easing Tokens */
+  --aci-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --aci-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --aci-duration-fast: 180ms;
+  --aci-duration-base: 280ms;
+  --aci-duration-enter: 520ms;
+}
+
+/* ── 2. RESET & BASE ELEMENTS ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--aci-paper);
+  color: var(--aci-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--aci-font-sans);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--aci-ink);
+  background-color: var(--aci-paper);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Accessible Focus-Visible Ring */
+:focus-visible {
+  outline: 2px solid var(--aci-terracotta);
+  outline-offset: 3px;
+}
+
+/* Editorial Typography with Fluid Clamps for All Screen Sizes */
+h1, h2, h3, h4, .aci-editorial-title {
+  color: var(--aci-ink);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h1, .aci-h1 {
+  font-family: var(--aci-font-serif);
+  font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+h2, .aci-h2 {
+  font-family: var(--aci-font-serif);
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+h3, .aci-h3 {
+  font-family: var(--aci-font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h4, .aci-h4 {
+  font-family: var(--aci-font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+p.aci-lead {
+  font-family: var(--aci-font-serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--aci-ink-subtle);
+  font-style: italic;
+  font-weight: 400;
+}
+
+p {
+  margin-bottom: 1.2em;
+  color: var(--aci-ink-subtle);
+  font-size: 1.02rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+img, picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── 3. SCROLL REVEAL & MOTION LANGUAGE ── */
+/* Progressive enhancement: elements only initialize with opacity 0 if js-motion-ready is set */
+html.js-motion-ready .aci-reveal,
+html.js-motion-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--aci-duration-enter) var(--aci-ease-out),
+              transform var(--aci-duration-enter) var(--aci-ease-out);
+  will-change: opacity, transform;
+}
+
+html.js-motion-ready .aci-reveal.is-revealed,
+html.js-motion-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays for Grouped Editorial Elements */
+[data-reveal-delay="1"] { transition-delay: 70ms !important; }
+[data-reveal-delay="2"] { transition-delay: 140ms !important; }
+[data-reveal-delay="3"] { transition-delay: 210ms !important; }
+[data-reveal-delay="4"] { transition-delay: 280ms !important; }
+
+/* ── 4. EDITORIAL MARGINALIA & METADATA FOLIOS ── */
+.aci-folio {
+  font-family: var(--aci-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aci-terracotta);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.aci-folio-light {
+  color: var(--aci-ochre);
+}
+
+.aci-rule-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--aci-rule);
+  border: none;
+  margin: var(--aci-space-lg) 0;
+}
+
+/* ── 5. MASTHEAD & INSTITUTIONAL HEADER ── */
+.aci-masthead {
+  border-bottom: 1px solid var(--aci-rule);
+  background: var(--aci-paper);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.aci-masthead-inner {
+  max-width: var(--aci-max-width);
+  margin: 0 auto;
+  padding: 16px var(--aci-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aci-masthead-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.aci-crest {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.aci-brand-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.aci-brand-title {
+  font-family: var(--aci-font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--aci-ink);
+  line-height: 1;
+}
+
+.aci-brand-tagline {
+  font-family: var(--aci-font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--aci-ink-muted);
+  margin-top: 4px;
+}
+
+/* Primary Desktop Navigation */
+.aci-nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.5vw, 32px);
+}
+
+.aci-nav-item {
+  font-family: var(--aci-font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--aci-ink);
+  letter-spacing: 0.01em;
+  position: relative;
+  padding: 6px 0;
+  transition: color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--aci-terracotta);
+  transition: width var(--aci-duration-base) var(--aci-ease-out);
+}
+
+.aci-nav-item:hover::after,
+.aci-nav-item.active::after {
+  width: 100%;
+}
+
+.aci-nav-item.active {
+  font-weight: 600;
+  color: var(--aci-ink);
+}
+
+.aci-btn-support {
+  font-family: var(--aci-font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--aci-ink);
+  color: var(--aci-paper);
+  padding: 10px 20px;
+  border-radius: var(--aci-radius);
+  border: 1px solid var(--aci-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  transition: all var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-btn-support:hover {
+  background: var(--aci-terracotta);
+  border-color: var(--aci-terracotta);
+  color: #fff;
+}
+
+.aci-btn-support:active {
+  transform: scale(0.98);
+}
+
+/* Mobile Toggle */
+.aci-nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid transparent;
+  padding: 10px;
+  cursor: pointer;
+  color: var(--aci-ink);
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--aci-radius);
+  transition: background-color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-nav-toggle:hover {
+  background-color: var(--aci-paper-dim);
+}
+
+@media (max-width: 960px) {
+  .aci-nav-desktop {
+    display: none;
+  }
+  .aci-nav-toggle {
+    display: flex;
+  }
+}
+
+/* Mobile Navigation Drawer with Smooth Slide Transition */
+.aci-mobile-drawer {
+  display: none;
+  position: fixed;
+  top: 73px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--aci-paper);
+  padding: 32px var(--aci-gutter);
+  border-top: 1px solid var(--aci-rule);
+  flex-direction: column;
+  gap: 16px;
+  z-index: 999;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity var(--aci-duration-base) var(--aci-ease-out),
+              transform var(--aci-duration-base) var(--aci-ease-out);
+}
+
+.aci-mobile-drawer.open,
+.aci-mobile-drawer.is-open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.aci-mobile-link {
+  font-family: var(--aci-font-serif);
+  font-size: 1.5rem;
+  color: var(--aci-ink);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--aci-rule);
+  transition: color var(--aci-duration-fast) var(--aci-ease-out),
+              padding-left var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-mobile-link:hover,
+.aci-mobile-link:focus {
+  color: var(--aci-terracotta);
+  padding-left: 6px;
+}
+
+/* ── 6. STRUCTURAL CONTAINERS & BROADHEAD GRIDS ── */
+.aci-container {
+  max-width: var(--aci-max-width);
+  margin: 0 auto;
+  padding: 0 var(--aci-gutter);
+  width: 100%;
+}
+
+.aci-editorial-flow {
+  padding: var(--aci-space-lg) 0;
+}
+
+.aci-editorial-flow-lg {
+  padding: var(--aci-space-xl) 0;
+}
+
+/* Broadhead Asymmetrical 2-Column */
+.aci-broadside-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 80px);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .aci-broadside-2 {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* Editorial Monograph Index (3 architectural columns) */
+.aci-monograph-index {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--aci-rule);
+  border-bottom: 1px solid var(--aci-rule);
+}
+
+.aci-monograph-col {
+  padding: clamp(32px, 4vw, 48px) clamp(20px, 3vw, 32px);
+  border-right: 1px solid var(--aci-rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-monograph-col:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.aci-monograph-col:last-child {
+  border-right: none;
+}
+
+@media (max-width: 960px) {
+  .aci-monograph-index {
+    grid-template-columns: 1fr;
+  }
+  .aci-monograph-col {
+    border-right: none;
+    border-bottom: 1px solid var(--aci-rule);
+    padding: 32px 0;
+  }
+  .aci-monograph-col:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ── 7. PHOTOGRAPHIC PLATES ── */
+.aci-plate {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--aci-radius);
+  background: transparent;
+}
+
+.aci-plate picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.aci-plate img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--aci-ease-out);
+  will-change: transform;
+}
+
+.aci-plate:hover img {
+  transform: scale(1.025);
+}
+
+/* Panoramic Document Plate capped safely on huge screens */
+.aci-plate-hero {
+  width: 100%;
+  aspect-ratio: 16/9;
+  max-height: 640px;
+}
+
+@media (max-width: 768px) {
+  .aci-plate-hero {
+    aspect-ratio: 4/3;
+    max-height: none;
+  }
+}
+
+.aci-caption {
+  display: none !important;
+}
+
+/* ── 8. EDITORIAL BUTTONS & ACTIONS ── */
+.aci-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--aci-font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 13px 26px;
+  border-radius: var(--aci-radius);
+  cursor: pointer;
+  min-height: 46px;
+  transition: background-color var(--aci-duration-fast) var(--aci-ease-out),
+              border-color var(--aci-duration-fast) var(--aci-ease-out),
+              color var(--aci-duration-fast) var(--aci-ease-out),
+              transform var(--aci-duration-fast) var(--aci-ease-out),
+              box-shadow var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-action:active {
+  transform: scale(0.98);
+}
+
+.aci-action-primary {
+  background: var(--aci-ink);
+  color: var(--aci-paper);
+  border: 1px solid var(--aci-ink);
+}
+
+.aci-action-primary:hover {
+  background: var(--aci-terracotta);
+  border-color: var(--aci-terracotta);
+  color: #fff;
+}
+
+.aci-action-secondary {
+  background: transparent;
+  color: var(--aci-ink);
+  border: 1px solid var(--aci-rule-strong);
+}
+
+.aci-action-secondary:hover {
+  border-color: var(--aci-ink);
+  background: rgba(17, 19, 17, 0.04);
+}
+
+.aci-action.is-submitting,
+.aci-btn-support.is-submitting {
+  opacity: 0.85;
+  cursor: wait;
+  transform: none;
+}
+
+/* Animated Loading Spinner without layout shifts */
+.aci-spinner {
+  animation: aci-spin 0.85s linear infinite;
+  display: inline-block;
+}
+
+@keyframes aci-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.aci-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--aci-font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--aci-terracotta-dark);
+  text-transform: uppercase;
+  transition: color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-link-arrow span {
+  transition: transform var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-link-arrow:hover span {
+  transform: translateX(5px);
+}
+
+/* ── 9. EDITORIAL QUOTES & TESTIMONIALS ── */
+.aci-quote-monograph {
+  padding: var(--aci-space-md) 0;
+  border-left: 2px solid var(--aci-terracotta);
+  padding-left: clamp(18px, 3vw, 28px);
+  margin: var(--aci-space-md) 0;
+}
+
+.aci-quote-monograph blockquote {
+  font-family: var(--aci-font-serif);
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--aci-ink);
+  margin-bottom: 12px;
+}
+
+.aci-quote-monograph cite {
+  font-family: var(--aci-font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--aci-ink-subtle);
+  font-style: normal;
+  display: block;
+}
+
+.aci-quote-monograph cite span {
+  font-family: var(--aci-font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--aci-ink-muted);
+  display: block;
+  margin-top: 3px;
+}
+
+/* ── 10. INVERTED BOTANICAL SECTIONS (DEEP SLATE) ── */
+.aci-section-inverted {
+  background-color: var(--aci-forest);
+  color: #EBEBE6;
+  padding: var(--aci-space-xl) 0;
+}
+
+.aci-section-inverted h1,
+.aci-section-inverted h2,
+.aci-section-inverted h3,
+.aci-section-inverted .aci-editorial-title {
+  color: #FFFFFF;
+}
+
+.aci-section-inverted p {
+  color: #B5BEBA;
+}
+
+.aci-section-inverted .aci-rule-divider {
+  background-color: var(--aci-rule-light);
+}
+
+.aci-section-inverted .aci-action-primary {
+  background: var(--aci-ochre);
+  color: var(--aci-ink);
+  border-color: var(--aci-ochre);
+}
+
+.aci-section-inverted .aci-action-primary:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
+.aci-section-inverted .aci-action-secondary {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.aci-section-inverted .aci-action-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #FFFFFF;
+}
+
+/* ── 11. COMPLETE FORM LIFECYCLE ARCHITECTURE ── */
+.aci-form-group {
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.aci-label {
+  display: block;
+  font-family: var(--aci-font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--aci-ink);
+  margin-bottom: 8px;
+}
+
+.aci-input,
+.aci-select,
+.aci-textarea {
+  width: 100%;
+  font-family: var(--aci-font-sans);
+  font-size: 0.95rem;
+  color: var(--aci-ink);
+  background-color: #FFFFFF;
+  border: 1px solid var(--aci-rule-strong);
+  border-radius: var(--aci-radius);
+  padding: 12px 16px;
+  outline: none;
+  min-height: 46px;
+  transition: border-color var(--aci-duration-fast) var(--aci-ease-out),
+              box-shadow var(--aci-duration-fast) var(--aci-ease-out),
+              background-color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-textarea {
+  min-height: 110px;
+}
+
+.aci-input:focus,
+.aci-select:focus,
+.aci-textarea:focus {
+  border-color: var(--aci-terracotta);
+  box-shadow: 0 0 0 1px var(--aci-terracotta);
+}
+
+/* Field-Level Validation Error State */
+.aci-input.is-invalid,
+.aci-select.is-invalid,
+.aci-textarea.is-invalid {
+  border-color: #B91C1C !important;
+  background-color: #FFFDFD;
+}
+
+.aci-input.is-invalid:focus,
+.aci-select.is-invalid:focus,
+.aci-textarea.is-invalid:focus {
+  box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.18) !important;
+}
+
+.aci-field-error {
+  font-family: var(--aci-font-sans);
+  font-size: 0.78rem;
+  color: #B91C1C;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.4;
+  animation: aci-fade-in var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+/* Calm, Reassuring Form Feedback Panels */
+.aci-feedback {
+  padding: 16px 20px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  border-radius: var(--aci-radius);
+  margin-top: 16px;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  animation: aci-fade-in var(--aci-duration-base) var(--aci-ease-out);
+}
+
+@keyframes aci-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.aci-feedback.success {
+  background-color: #EDF7EE;
+  color: #1A4D23;
+  border-left: 3px solid #2E7D32;
+  display: flex;
+}
+
+.aci-feedback.error {
+  background-color: #FDF0ED;
+  color: #8C2210;
+  border-left: 3px solid #C62828;
+  display: flex;
+}
+
+/* ── 12. INSTITUTIONAL COLOPHON ── */
+.aci-colophon {
+  background-color: var(--aci-ink);
+  color: #D3D8D5;
+  padding: var(--aci-space-xl) 0 var(--aci-space-md);
+  border-top: 2px solid var(--aci-terracotta);
+}
+
+.aci-colophon h4 {
+  color: #FFFFFF;
+  font-family: var(--aci-font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+
+.aci-colophon-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  margin-bottom: var(--aci-space-lg);
+}
+
+@media (max-width: 960px) {
+  .aci-colophon-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .aci-colophon-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.aci-colophon-links {
+  list-style: none;
+}
+
+.aci-colophon-links li {
+  margin-bottom: 10px;
+}
+
+.aci-colophon-links a {
+  font-size: 0.88rem;
+  color: #9DA6A2;
+  transition: color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-colophon-links a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.aci-colophon-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--aci-font-mono);
+  font-size: 0.72rem;
+  color: #727D78;
+}
+
+/* ── 13. VIRTUAL ASSISTANT DIALOGUE WIDGET ── */
+.aci-chat-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--aci-ink);
+  color: var(--aci-paper);
+  border: 1px solid var(--aci-terracotta);
+  border-radius: var(--aci-radius);
+  padding: 12px 20px;
+  font-family: var(--aci-font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  z-index: 1000;
+  transition: all var(--aci-duration-fast) var(--aci-ease-out);
+  min-height: 44px;
+}
+
+.aci-chat-btn:hover {
+  background: var(--aci-terracotta);
+  color: #fff;
+}
+
+.aci-chat-window {
+  display: none;
+  position: fixed;
+  bottom: 84px;
+  right: 24px;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  background: #FFFFFF;
+  border: 1px solid var(--aci-ink);
+  border-radius: var(--aci-radius);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+  flex-direction: column;
+  z-index: 1001;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--aci-duration-base) var(--aci-ease-out),
+              transform var(--aci-duration-base) var(--aci-ease-out);
+}
+
+.aci-chat-window.open,
+.aci-chat-window.is-active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.aci-chat-header {
+  background: var(--aci-ink);
+  color: #fff;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aci-chat-title {
+  font-family: var(--aci-font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.aci-chat-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+  min-height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aci-chat-messages {
+  flex: 1;
+  padding: 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--aci-paper);
+}
+
+.aci-chat-msg {
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  border-radius: var(--aci-radius);
+  max-width: 85%;
+}
+
+.aci-chat-msg.bot {
+  background: #FFFFFF;
+  color: var(--aci-ink);
+  border: 1px solid var(--aci-rule);
+  align-self: flex-start;
+}
+
+.aci-chat-msg.user {
+  background: var(--aci-ink);
+  color: #FFFFFF;
+  align-self: flex-end;
+}
+
+.aci-typing-dots span {
+  animation: aci-dot 1.2s infinite ease-in-out;
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 0.5;
+}
+.aci-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.aci-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes aci-dot {
+  0%, 80%, 100% { opacity: 0.2; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-4px); }
+}
+
+.aci-chat-input-area {
+  padding: 12px;
+  background: #FFFFFF;
+  border-top: 1px solid var(--aci-rule);
+  display: flex;
+  gap: 8px;
+}
+
+.aci-chat-input {
+  flex: 1;
+  border: 1px solid var(--aci-rule-strong);
+  border-radius: var(--aci-radius);
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.aci-chat-send {
+  background: var(--aci-ink);
+  color: #fff;
+  border: none;
+  border-radius: var(--aci-radius);
+  padding: 10px 18px;
+  font-family: var(--aci-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.aci-chat-send:hover {
+  background: var(--aci-terracotta);
+}
+
+/* ── 14. UNIVERSAL RESPONSIVENESS (ALL SCREENS NO MATTER HOW SMALL OR BIG) ── */
+@media (max-width: 640px) {
+  /* Collapse two-column input grids to single column on small screens */
+  .aci-grid-2,
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .aci-broadside-2 {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .aci-action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .aci-btn-support {
+    width: 100%;
+  }
+
+  .aci-caption {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aci-input,
+  .aci-select,
+  .aci-textarea {
+    font-size: 16px; /* Prevents unwanted auto-zoom on mobile safari */
+  }
+}
+
+@media (max-width: 480px) {
+  .aci-brand-tagline {
+    display: none; /* Keep masthead clean and uncrowded on narrow screens */
+  }
+
+  .aci-chat-window {
+    width: calc(100vw - 24px);
+    right: 12px;
+    bottom: 76px;
+    height: 460px;
+  }
+
+  .aci-chat-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 16px;
+  }
+}
+
+@media (min-width: 1920px) {
+  /* On ultra-wide monitors, ensure containers are centered and proportions remain balanced */
+  .aci-container {
+    max-width: 1440px;
+  }
+
+  .aci-plate-hero {
+    max-height: 680px;
+  }
+}
+
+/* ── 15. ACCESSIBILITY: REDUCED MOTION PREFERENCE ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html.js-motion-ready .aci-reveal,
+  html.js-motion-ready [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .aci-plate img {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .aci-mobile-drawer {
+    transition: none !important;
+  }
+}

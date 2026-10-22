@@ -90,7 +90,7 @@ async function initDB() {
 
 // ─── API Routes ──────────────────────────────────────────────────────────────
 
-// POST /api/contact — save a contact form submission
+// POST /api/contact - save a contact form submission
 app.post('/api/contact', async (req, res) => {
   const { name, email, subject, message } = req.body;
   if (!name || !email || !message) {
@@ -108,7 +108,7 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// POST /api/join-member — save a membership application
+// POST /api/join-member - save a membership application
 app.post('/api/join-member', async (req, res) => {
   const { firstname, lastname, email, phone, country, occupation, interest, motivation } = req.body;
   if (!firstname || !lastname || !email) {
@@ -128,7 +128,7 @@ app.post('/api/join-member', async (req, res) => {
   }
 });
 
-// POST /api/join-leader — save a leadership application
+// POST /api/join-leader - save a leadership application
 app.post('/api/join-leader', async (req, res) => {
   const { firstname, lastname, email, phone, country, position, experience, availability, linkedin, background, vision } = req.body;
   if (!firstname || !lastname || !email || !position) {
@@ -148,17 +148,22 @@ app.post('/api/join-leader', async (req, res) => {
 });
 
 // ─── Admin API Middleware ───────────────────────────────────────────────────
-const ADMIN_PASS = process.env.ADMIN_PASS || 'aciafrica2024';
+// Use environment variable ADMIN_PASS; do not expose or default to insecure credentials
+const ADMIN_PASS = process.env.ADMIN_PASS;
 function adminAuth(req, res, next) {
   const token = req.headers['x-admin-password'];
-  if (token === ADMIN_PASS) {
+  if (!ADMIN_PASS) {
+    console.error('Security alert: ADMIN_PASS environment variable is not configured.');
+    return res.status(500).json({ error: 'Server authentication is not configured.' });
+  }
+  if (token && token === ADMIN_PASS) {
     next();
   } else {
-    res.status(401).json({ error: 'Unauthorized' });
+    res.status(401).json({ error: 'Unauthorized: Invalid admin credentials.' });
   }
 }
 
-// GET /api/admin/members — fetch all membership applications
+// GET /api/admin/members - fetch all membership applications
 app.get('/api/admin/members', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM member_applications ORDER BY submitted_at DESC');
@@ -168,7 +173,7 @@ app.get('/api/admin/members', adminAuth, async (req, res) => {
   }
 });
 
-// GET /api/admin/leaders — fetch all leadership applications
+// GET /api/admin/leaders - fetch all leadership applications
 app.get('/api/admin/leaders', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM leader_applications ORDER BY submitted_at DESC');
@@ -178,7 +183,7 @@ app.get('/api/admin/leaders', adminAuth, async (req, res) => {
   }
 });
 
-// POST /api/newsletter — save a newsletter/notify-me signup
+// POST /api/newsletter - save a newsletter/notify-me signup
 app.post('/api/newsletter', async (req, res) => {
   const { email } = req.body;
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -213,7 +218,7 @@ app.post('/api/donate', async (req, res) => {
   }
 });
 
-// POST /api/chat — Chatbot proxy using Gemini API
+// POST /api/chat - Chatbot proxy using Gemini API with authentic ACI Africa persona
 app.post('/api/chat', async (req, res) => {
   const { messages } = req.body;
   if (!messages || !Array.isArray(messages)) {
@@ -223,7 +228,7 @@ app.post('/api/chat', async (req, res) => {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return res.json({
-      reply: "Thank you for reaching out to ACI Africa! We bring clean water, education, and emergency relief to communities across Africa. For detailed inquiries, please email us at hello@globalwelfare.org or visit our Contact page."
+      reply: "Thank you for reaching out to AbleCares Initiative Africa (ACI Africa)! We are a Pan-African organization based in Accra, Ghana, dedicated to mental health advocacy (PAMHO), special education & neurodiversity support (AbleKids), and youth empowerment. For inquiries, email us at info@aciafrica.org."
     });
   }
 
@@ -243,18 +248,18 @@ app.post('/api/chat', async (req, res) => {
       res.json({ reply: data.candidates[0].content.parts[0].text });
     } else if (data.error) {
       console.error('Gemini API Error:', data.error.message);
-      res.json({ reply: "Thank you for contacting ACI Africa! How can we assist you with clean water, education, or disaster relief initiatives today?" });
+      res.json({ reply: "Thank you for contacting ACI Africa! How can we assist you with our mental health, neurodiversity, or youth education initiatives today? You can also email us directly at info@aciafrica.org." });
     } else {
-      res.json({ reply: "Thank you for reaching out to ACI Africa! Please let us know if you have questions about our causes or donating." });
+      res.json({ reply: "Thank you for reaching out to ACI Africa! Please let us know if you have questions regarding our PAMHO mental health initiatives, AbleKids, or getting involved." });
     }
   } catch (err) {
     console.error('Chat endpoint error:', err.message);
-    res.json({ reply: "Thank you for reaching out to ACI Africa! Feel free to explore our causes or contact us at hello@globalwelfare.org." });
+    res.json({ reply: "Thank you for reaching out to ACI Africa! Please feel free to email our team directly at info@aciafrica.org." });
   }
 });
 
 
-// GET /api/admin/contacts — fetch all contact submissions (admin only)
+// GET /api/admin/contacts - fetch all contact submissions (admin only)
 app.get('/api/admin/contacts', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM contact_submissions ORDER BY submitted_at DESC');
@@ -265,7 +270,7 @@ app.get('/api/admin/contacts', adminAuth, async (req, res) => {
   }
 });
 
-// GET /api/admin/newsletter — fetch all newsletter signups (admin only)
+// GET /api/admin/newsletter - fetch all newsletter signups (admin only)
 app.get('/api/admin/newsletter', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM newsletter_signups ORDER BY signed_up_at DESC');
@@ -285,7 +290,7 @@ app.delete('/api/admin/newsletter/:id', adminAuth, async (req, res) => {
   }
 });
 
-// GET /api/admin/donations — fetch all donation submissions (admin only)
+// GET /api/admin/donations - fetch all donation submissions (admin only)
 app.get('/api/admin/donations', adminAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM donation_submissions ORDER BY submitted_at DESC');
@@ -346,7 +351,12 @@ initDB().then(() => {
   // Keep-alive ping to prevent Render free-tier spin down
   const https = require('https');
   setInterval(() => {
-    https.get('https://aci-africa.onrender.com');
+    try {
+      const req = https.get('https://aci-africa.onrender.com', (res) => {});
+      req.on('error', (e) => {
+        // Silently ignore DNS or connection failures in offline/local environments
+      });
+    } catch (e) {}
   }, 14 * 60 * 1000); // Ping every 14 minutes
 
 }).catch(err => {

@@ -39,8 +39,8 @@ npm install
 cp .env.example .env
 ```
 Open `.env` and fill in your real values:
-- `DATABASE_URL` — your Neon PostgreSQL connection string
-- `ADMIN_USER` / `ADMIN_PASS` — credentials for the admin portal
+- `DATABASE_URL` - your Neon PostgreSQL connection string
+- `ADMIN_USER` / `ADMIN_PASS` - credentials for the admin portal
 
 ### 4. Run the server
 ```bash

@@ -1,593 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>ACI Africa — Coming Soon</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="ACI Africa is launching soon. Empowering communities through education, mental health support, and sustainable social impact across Africa.">
-    <meta property="og:title" content="ACI Africa — Coming Soon">
-    <meta property="og:description" content="Something great is coming. ACI Africa empowers communities through education, mental health support, and sustainable development.">
-    <meta property="og:image" content="images/aciicon-withgreen.png">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AbleCares Initiative Africa (ACI Africa) | An Editorial Atlas of Care & Learning</title>
+  <meta name="description" content="AbleCares Initiative Africa is an African non-profit institution in Accra, Ghana, advancing mental health equity (PAMHO), neurodiversity care (AbleKids), and youth mentorship.">
+  <link rel="icon" type="image/png" href="images/aciicon-withgreen.png">
+  <meta property="og:title" content="AbleCares Initiative Africa (ACI Africa)">
+  <meta property="og:description" content="A Living Editorial Atlas of African Dignity, Mental Health & Youth Potential.">
+  <meta property="og:image" content="images/optimized/IMG_8884.jpg">
 
-    <!-- Fonts (matching existing site) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/aci-design-system.css">
+  <script src="js/aci-config.js" defer></script>
+  <script src="js/aci-app.js" defer></script>
+</head>
+<body>
 
-    <!-- Existing site stylesheets -->
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/stellar.css">
+  <!-- ── 1. ARCHITECTURAL MASTHEAD ── -->
+  <header class="aci-masthead" role="banner">
+    <div class="aci-masthead-inner">
+      <a href="index.html" class="aci-masthead-brand" aria-label="ACI Africa Home">
+        <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" class="aci-crest">
+        <div class="aci-brand-meta">
+          <span class="aci-brand-title">ACI AFRICA</span>
+        </div>
+      </a>
 
-    <style>
+      <nav class="aci-nav-desktop" role="navigation" aria-label="Primary Navigation">
+        <a href="index.html" class="aci-nav-item active" aria-current="page">Home</a>
+        <a href="about.html" class="aci-nav-item">About</a>
+        <a href="programs.html" class="aci-nav-item">Programs</a>
+        <a href="impact.html" class="aci-nav-item">Impact</a>
+        <a href="get-involved.html" class="aci-nav-item">Get Involved</a>
+        <a href="contact.html" class="aci-nav-item">Contact</a>
+        <a href="donate.html" class="aci-btn-support">Donate</a>
+      </nav>
 
-      *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html, body {
-        height: 100%;
-        overflow-x: hidden;
-      }
-
-      /* ── Full-viewport background ── */
-      .cs-page {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        background-color: #0F172A;
-        font-family: var(--font-body);
-      }
-
-      /* Layered background: ACI Africa photo + dark overlay */
-      .cs-page::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background-image: url('images/IMG_8884.jpg');
-        background-size: cover;
-        background-position: center 30%;
-        background-repeat: no-repeat;
-        filter: brightness(0.28) saturate(0.6);
-        z-index: 0;
-      }
-
-      /* Subtle golden gradient overlay from bottom */
-      .cs-page::after {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(15, 23, 42, 0.45) 50%,
-          rgba(15, 23, 42, 0.92) 100%
-        ),
-        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(245, 196, 0, 0.12) 0%, transparent 70%);
-        z-index: 1;
-      }
-
-      /* ── Top brand bar ── */
-      .cs-brand-bar {
-        position: relative;
-        z-index: 10;
-        padding: 28px 40px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .cs-brand-bar img {
-        height: 38px;
-        width: auto;
-        filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
-      }
-
-      .cs-brand-name {
-        font-family: var(--font-heading);
-        font-weight: 800;
-        font-size: 22px;
-        color: #ffffff;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-      }
-
-      /* ── Main centred content ── */
-      .cs-main {
-        position: relative;
-        z-index: 10;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 40px 24px 60px;
-      }
-
-      /* Eyebrow badge */
-      .cs-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(245, 196, 0, 0.12);
-        border: 1px solid rgba(245, 196, 0, 0.35);
-        border-radius: 50px;
-        padding: 8px 20px;
-        font-family: var(--font-body);
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--stellar-primary);
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        margin-bottom: 32px;
-        backdrop-filter: blur(8px);
-        animation: fadeSlideDown 0.8s ease forwards;
-      }
-
-      .cs-badge .cs-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--stellar-primary);
-        animation: pulseDot 2s infinite;
-        flex-shrink: 0;
-      }
-
-      @keyframes pulseDot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50%       { opacity: 0.4; transform: scale(0.7); }
-      }
-
-      /* Headline */
-      .cs-headline {
-        font-family: var(--font-heading);
-        font-weight: 800;
-        font-size: clamp(3rem, 8vw, 6rem);
-        line-height: 1.05;
-        color: #ffffff;
-        letter-spacing: -0.02em;
-        margin-bottom: 12px;
-        text-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        animation: fadeSlideUp 0.9s ease 0.1s both;
-      }
-
-      .cs-headline .cs-highlight {
-        background: var(--stellar-primary-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: block;
-      }
-
-      /* Sub-headline */
-      .cs-sub {
-        font-family: var(--font-body);
-        font-size: clamp(1.05rem, 2.5vw, 1.3rem);
-        font-weight: 300;
-        color: rgba(255, 255, 255, 0.72);
-        max-width: 560px;
-        line-height: 1.8;
-        margin-bottom: 56px;
-        animation: fadeSlideUp 0.9s ease 0.25s both;
-      }
-
-
-      /* ── Email notify form ── */
-      .cs-notify {
-        display: flex;
-        gap: 0;
-        max-width: 460px;
-        width: 100%;
-        margin: 0 auto 56px;
-        border-radius: 50px;
-        overflow: hidden;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255,255,255,0.08);
-        animation: fadeSlideUp 0.9s ease 0.35s both;
-        background: rgba(255, 255, 255, 0.07);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .cs-notify input {
-        flex: 1;
-        background: transparent;
-        border: none;
-        outline: none;
-        padding: 16px 22px;
-        font-family: var(--font-body);
-        font-size: 15px;
-        color: #ffffff;
-        min-width: 0;
-      }
-
-      .cs-notify input::placeholder {
-        color: rgba(255, 255, 255, 0.38);
-      }
-
-      .cs-notify button {
-        background: var(--stellar-primary-gradient);
-        border: none;
-        color: #1E293B;
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 700;
-        padding: 16px 28px;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: var(--transition-smooth);
-        letter-spacing: 0.3px;
-      }
-
-      .cs-notify button:hover {
-        filter: brightness(1.08);
-        transform: scale(1.02);
-      }
-
-      .cs-notify-success {
-        display: none;
-        align-items: center;
-        gap: 10px;
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--stellar-primary);
-        padding: 16px 28px;
-        animation: fadeIn 0.5s ease;
-      }
-
-      .cs-notify-success.visible {
-        display: flex;
-      }
-
-      /* ── Pillar icons row ── */
-      .cs-pillars {
-        display: flex;
-        gap: 16px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-bottom: 60px;
-        animation: fadeSlideUp 0.9s ease 0.45s both;
-      }
-
-      .cs-pillar {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 50px;
-        padding: 10px 20px;
-        font-family: var(--font-body);
-        font-size: 13.5px;
-        color: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(8px);
-        transition: var(--transition-smooth);
-        font-weight: 400;
-      }
-
-      .cs-pillar:hover {
-        background: rgba(245, 196, 0, 0.1);
-        border-color: rgba(245, 196, 0, 0.3);
-        color: #ffffff;
-      }
-
-      .cs-pillar .cs-pillar-icon {
-        font-size: 16px;
-        color: var(--stellar-primary);
-        flex-shrink: 0;
-      }
-
-      /* ── Social links ── */
-      .cs-social {
-        display: flex;
-        gap: 14px;
-        justify-content: center;
-        animation: fadeSlideUp 0.9s ease 0.55s both;
-      }
-
-      .cs-social a {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid rgba(255, 255, 255, 0.13);
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 17px;
-        text-decoration: none;
-        transition: var(--transition-smooth);
-      }
-
-      .cs-social a:hover {
-        background: var(--stellar-primary-gradient);
-        border-color: transparent;
-        color: #1E293B;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(245, 196, 0, 0.35);
-      }
-
-      /* ── Bottom footer strip ── */
-      .cs-footer {
-        position: relative;
-        z-index: 10;
-        padding: 22px 40px;
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      .cs-footer p {
-        font-family: var(--font-body);
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.3);
-      }
-
-      .cs-footer a {
-        color: rgba(245, 196, 0, 0.65);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-
-      .cs-footer a:hover {
-        color: var(--stellar-primary);
-      }
-
-      /* ── Decorative animated rings ── */
-      .cs-rings {
-        position: fixed;
-        inset: 0;
-        z-index: 2;
-        pointer-events: none;
-        overflow: hidden;
-      }
-
-      .cs-ring {
-        position: absolute;
-        border-radius: 50%;
-        border: 1px solid rgba(245, 196, 0, 0.06);
-        animation: ringExpand 8s linear infinite;
-        transform-origin: center;
-      }
-
-      .cs-ring:nth-child(1) {
-        width: 600px; height: 600px;
-        top: 50%; left: 50%;
-        margin: -300px 0 0 -300px;
-        animation-delay: 0s;
-      }
-      .cs-ring:nth-child(2) {
-        width: 900px; height: 900px;
-        top: 50%; left: 50%;
-        margin: -450px 0 0 -450px;
-        animation-delay: 2.5s;
-      }
-      .cs-ring:nth-child(3) {
-        width: 1200px; height: 1200px;
-        top: 50%; left: 50%;
-        margin: -600px 0 0 -600px;
-        animation-delay: 5s;
-      }
-
-      @keyframes ringExpand {
-        0%   { opacity: 0; transform: scale(0.85); }
-        20%  { opacity: 1; }
-        80%  { opacity: 0.4; }
-        100% { opacity: 0; transform: scale(1.1); }
-      }
-
-      /* ── Keyframe utilities ── */
-      @keyframes fadeSlideDown {
-        from { opacity: 0; transform: translateY(-16px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes fadeSlideUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-      }
-
-      /* ── Responsive ── */
-      @media (max-width: 768px) {
-        .cs-brand-bar {
-          padding: 20px 20px;
-        }
-
-        .cs-main {
-          padding: 30px 16px 50px;
-        }
-
-        .cs-notify {
-          flex-direction: column;
-          border-radius: 20px;
-          gap: 0;
-        }
-
-        .cs-notify input {
-          padding: 14px 18px;
-          border-radius: 20px 20px 0 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .cs-notify button {
-          border-radius: 0 0 20px 20px;
-          padding: 14px 18px;
-          text-align: center;
-        }
-
-        .cs-footer {
-          padding: 18px 20px;
-        }
-
-        .cs-pillars {
-          gap: 10px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .cs-pillar {
-          font-size: 12.5px;
-          padding: 8px 14px;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- Decorative ambient rings -->
-    <div class="cs-rings" aria-hidden="true">
-      <div class="cs-ring"></div>
-      <div class="cs-ring"></div>
-      <div class="cs-ring"></div>
+      <button class="aci-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
+  </header>
 
-    <!-- Main page wrapper -->
-    <div class="cs-page">
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer" class="aci-mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <a href="index.html" class="aci-mobile-link">Home</a>
+    <a href="about.html" class="aci-mobile-link">About</a>
+    <a href="programs.html" class="aci-mobile-link">Programs</a>
+    <a href="impact.html" class="aci-mobile-link">Impact</a>
+    <a href="get-involved.html" class="aci-mobile-link">Get Involved</a>
+    <a href="contact.html" class="aci-mobile-link">Contact</a>
+    <a href="donate.html" class="aci-mobile-link" style="color: var(--aci-terracotta);">Donate &rarr;</a>
+  </div>
 
-      <!-- Brand bar -->
-      <header class="cs-brand-bar" role="banner">
-        <img src="images/aciicon-withgreen.png" alt="ACI Africa Logo">
-        <span class="cs-brand-name">ACI Africa</span>
-      </header>
+  <main id="main-content">
 
-      <!-- Core content -->
-      <main class="cs-main" id="main-content">
+    <!-- ── 2. OPENING BROADSIDE: PROCLAMATION & PANORAMIC PLATE ── -->
+    <section class="aci-editorial-flow" aria-labelledby="opening-proclamation">
+      <div class="aci-container">
 
-        <!-- Eyebrow badge -->
-        <div class="cs-badge" role="status" aria-live="polite">
-          <span class="cs-dot" aria-hidden="true"></span>
-          Something Great is Coming
-        </div>
+        <div class="aci-reveal" style="max-width: 1040px; margin-bottom: 48px;">
+          <h1 id="opening-proclamation">
+            A continent’s future is measured by how it dignifies the human mind, educates the young, and protects the vulnerable.
+          </h1>
+          <p class="aci-lead" style="margin-top: 24px; max-width: 860px;">
+            AbleCares Initiative Africa (ACI Africa) addresses the structural silence surrounding African mental health, the widespread exclusion of neurodivergent children, and the untapped leadership of youth across our communities.
+          </p>
 
-        <!-- Main headline -->
-        <h1 class="cs-headline">
-          We're Getting
-          <span class="cs-highlight">Ready for You</span>
-        </h1>
-
-        <!-- Supporting copy -->
-        <p class="cs-sub">
-          ACI Africa is almost here. We're putting the final touches on our platform to better serve communities across the continent through education, mental health, and sustainable social impact.
-        </p>
-
-
-        <!-- Email notify form -->
-        <div class="cs-notify" id="cs-notify-form" role="form" aria-label="Get notified at launch">
-          <input
-            type="email"
-            id="cs-email-input"
-            placeholder="Enter your email to get notified"
-            aria-label="Email address for launch notification"
-          >
-          <button type="button" id="cs-notify-btn" aria-label="Notify me at launch">
-            Notify Me
-          </button>
-        </div>
-
-        <!-- Mission pillars -->
-        <div class="cs-pillars" aria-label="Our focus areas">
-          <div class="cs-pillar">
-            <span class="cs-pillar-icon icon-graduation-cap" aria-hidden="true"></span>
-            Education &amp; Youth
-          </div>
-          <div class="cs-pillar">
-            <span class="cs-pillar-icon icon-heart" aria-hidden="true"></span>
-            Mental Health
-          </div>
-          <div class="cs-pillar">
-            <span class="cs-pillar-icon icon-globe" aria-hidden="true"></span>
-            Social Impact
-          </div>
-          <div class="cs-pillar">
-            <span class="cs-pillar-icon icon-leaf" aria-hidden="true"></span>
-            Sustainability
+          <div style="display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;">
+            <a href="programs.html" class="aci-action aci-action-primary">Explore Programs</a>
+            <a href="about.html" class="aci-action aci-action-secondary">About Our Work</a>
           </div>
         </div>
 
-        <!-- Social links -->
-        <nav class="cs-social" aria-label="Social media links">
-          <a href="https://twitter.com/aciafrica" aria-label="ACI Africa on Twitter" rel="noopener noreferrer">
-            <span class="icon-twitter" aria-hidden="true"></span>
-          </a>
-          <a href="https://facebook.com/aciafrica" aria-label="ACI Africa on Facebook" rel="noopener noreferrer">
-            <span class="icon-facebook" aria-hidden="true"></span>
-          </a>
-          <a href="https://instagram.com/aci.africa" aria-label="ACI Africa on Instagram" rel="noopener noreferrer">
-            <span class="icon-instagram" aria-hidden="true"></span>
-          </a>
-        </nav>
+        <!-- Full-Width Panoramic Documentary Plate -->
+        <div class="aci-plate aci-plate-hero aci-reveal">
+          <picture>
+            <source srcset="images/optimized/IMG_8884.webp" type="image/webp">
+            <img src="images/optimized/IMG_8884.jpg" alt="Participants engaged in an ACI Africa community psychoeducation forum in Ghana" loading="eager" width="1400" height="788">
+          </picture>
+        </div>
 
-      </main>
+      </div>
+    </section>
 
-      <!-- Footer strip -->
-      <footer class="cs-footer">
-        <p>
-          &copy; <script>document.write(new Date().getFullYear());</script> ACI Africa &mdash; All rights reserved &nbsp;|&nbsp;
-          <a href="mailto:info@aciafrica.org">info@aciafrica.org</a>
-        </p>
-      </footer>
+    <!-- ── 3. THE STRATEGIC MONOGRAPH INDEX (3 ARCHITECTURAL COLUMNS) ── -->
+    <section class="aci-editorial-flow-lg" aria-labelledby="monograph-title">
+      <div class="aci-container">
+        
+        <div class="aci-reveal" style="max-width: 680px; margin-bottom: 40px;">
+          <span class="aci-folio">Operational Framework</span>
+          <h2 id="monograph-title">Three Core Pillars of Intervention</h2>
+          <p style="margin-top: 12px;">
+            Rather than dispersing effort across disconnected charitable activities, ACI Africa directs its human and institutional resources into three mutually reinforcing operational divisions.
+          </p>
+        </div>
 
-    </div><!-- /.cs-page -->
+        <!-- Monograph Columns (No Rounded Cards) -->
+        <div class="aci-monograph-index">
 
-    <script>
-      // ── Email notify form ──
-      (function () {
-        var btn   = document.getElementById('cs-notify-btn');
-        var input = document.getElementById('cs-email-input');
-        var form  = document.getElementById('cs-notify-form');
+          <!-- Pillar 1: PAMHO -->
+          <div class="aci-monograph-col aci-reveal" data-reveal-delay="1">
+            <div>
+              <span style="font-family: var(--aci-font-mono); font-size: 0.8rem; font-weight: 700; color: var(--aci-terracotta);">DOSSIER I</span>
+              <h3 style="margin-top: 8px; margin-bottom: 4px;">PAMHO</h3>
+              <p style="font-family: var(--aci-font-serif); font-style: italic; color: var(--aci-ink); font-size: 1.1rem; margin-bottom: 18px;">
+                Pan-African Mental Health Organization
+              </p>
+              <p style="font-size: 0.95rem; line-height: 1.6;">
+                Advancing mental health equity across Africa by confronting cultural stigma, providing community-level psychological first aid, and building culturally attuned mental health literacies.
+              </p>
+            </div>
+            <div style="margin-top: 36px;">
+              <a href="programs.html#pamho" class="aci-link-arrow">
+                Read Program <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
 
-        if (!btn || !input || !form) return;
+          <!-- Pillar 2: AbleKids -->
+          <div class="aci-monograph-col aci-reveal" data-reveal-delay="2">
+            <div>
+              <span style="font-family: var(--aci-font-mono); font-size: 0.8rem; font-weight: 700; color: var(--aci-terracotta);">DOSSIER II</span>
+              <h3 style="margin-top: 8px; margin-bottom: 4px;">AbleKids</h3>
+              <p style="font-family: var(--aci-font-serif); font-style: italic; color: var(--aci-ink); font-size: 1.1rem; margin-bottom: 18px;">
+                Neurodiversity & Special Education Support
+              </p>
+              <p style="font-size: 0.95rem; line-height: 1.6;">
+                Supporting children on the autism spectrum, learning difference communities, and their families. Equipping educators with inclusive classroom strategies and compassionate caregiver counseling.
+              </p>
+            </div>
+            <div style="margin-top: 36px;">
+              <a href="programs.html#ablekids" class="aci-link-arrow">
+                Read Program <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
 
-        function showResult(ok, msg) {
-          form.innerHTML =
-            '<div class="cs-notify-success visible" role="alert" style="' + (ok ? '' : 'color:#ff6b6b;') + '">' +
-            '<span style="font-size:20px;">' + (ok ? '&#10003;' : '&#33;') + '</span> ' + msg +
-            '</div>';
-        }
+          <!-- Pillar 3: EmpoweredTalks Africa -->
+          <div class="aci-monograph-col aci-reveal" data-reveal-delay="3">
+            <div>
+              <span style="font-family: var(--aci-font-mono); font-size: 0.8rem; font-weight: 700; color: var(--aci-terracotta);">DOSSIER III</span>
+              <h3 style="margin-top: 8px; margin-bottom: 4px;">EmpoweredTalks</h3>
+              <p style="font-family: var(--aci-font-serif); font-style: italic; color: var(--aci-ink); font-size: 1.1rem; margin-bottom: 18px;">
+                Youth Leadership & Peer Mentorship
+              </p>
+              <p style="font-size: 0.95rem; line-height: 1.6;">
+                Cultivating next-generation African advocates through secondary and tertiary peer-mentorship networks, equipping youth to lead compassionate mental wellness circles.
+              </p>
+            </div>
+            <div style="margin-top: 36px;">
+              <a href="programs.html#youth" class="aci-link-arrow">
+                Read Program <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
 
-        function submit() {
-          var email = input.value.trim();
-          if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            input.style.outline = '2px solid rgba(245,196,0,0.6)';
-            input.focus();
-            return;
-          }
+        </div>
 
-          btn.textContent = '...';
-          btn.disabled = true;
+      </div>
+    </section>
 
-          fetch('/api/newsletter', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email })
-          })
-          .then(function (res) { return res.json(); })
-          .then(function (data) {
-            if (data.success) {
-              showResult(true, "You're on the list! We'll let you know when we launch.");
-            } else {
-              showResult(false, data.error || 'Something went wrong. Please try again.');
-            }
-          })
-          .catch(function () {
-            showResult(false, 'Could not connect. Please try again later.');
-          });
-        }
+    <!-- ── 4. ASYMMETRICAL EDITORIAL ESSAY & VOICES ── -->
+    <section class="aci-editorial-flow" aria-labelledby="story-heading">
+      <div class="aci-container">
+        
+        <div class="aci-broadside-2 aci-reveal">
+          
+          <!-- Left: Documentary Portrait Plate -->
+          <div>
+            <div class="aci-plate" style="aspect-ratio: 3/2;">
+              <picture>
+                <source srcset="images/optimized/IMG_8877.webp" type="image/webp">
+                <img src="images/optimized/IMG_8877.jpg" alt="Youth leaders and participants in an ACI Africa dialogue session in Ghana" loading="lazy" width="1400" height="933">
+              </picture>
+            </div>
+          </div>
 
-        btn.addEventListener('click', submit);
-        input.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter') submit();
-        });
-      })();
-    </script>
-  </body>
+          <!-- Right: Editorial Monograph Essay -->
+          <div>
+            <span class="aci-folio">The Core Rationale</span>
+            <h2 id="story-heading" style="margin-bottom: 20px;">Moving from Silence to Sustainable Community Care</h2>
+            
+            <p>
+              Across many African communities, emotional distress and developmental differences are too often met with silence, fear, or spiritual misunderstanding. When families lack access to objective psychoeducation, children with learning diversities are excluded from classrooms, and young people experiencing depression navigate isolation alone.
+            </p>
+
+            <div class="aci-quote-monograph">
+              <blockquote>
+                "When a community learns that psychological distress is a human reality rather than a moral failure, fear dissolves into collective care."
+              </blockquote>
+              <cite>
+                Field Leadership Dispatch
+                <span>ACI Africa Outreach Program, Greater Accra</span>
+              </cite>
+            </div>
+
+            <p>
+              ACI Africa operates at the intersection of medical psychology and authentic cultural understanding. We do not replace local community structures; we resource them with scientifically grounded, culturally dignified frameworks.
+            </p>
+
+            <div style="margin-top: 28px;">
+              <a href="impact.html" class="aci-action aci-action-secondary">
+                View Our Impact &rarr;
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 5. INVERTED BOTANICAL SECTION: INSTITUTIONAL CHARTER ── -->
+    <section class="aci-section-inverted" aria-labelledby="charter-title">
+      <div class="aci-container">
+        
+        <div class="aci-reveal" style="max-width: 820px; margin-bottom: 50px;">
+          <span class="aci-folio aci-folio-light">Institutional Rigor</span>
+          <h2 id="charter-title" style="color: #fff;">Our Accountability to Beneficiaries, Partners & Donors</h2>
+          <p style="margin-top: 14px; font-size: 1.1rem; line-height: 1.6;">
+            We believe an African NGO must withstand the most rigorous scrutiny from international grantmakers, philanthropic foundations, and the communities we serve.
+          </p>
+        </div>
+
+        <div class="aci-broadside-2 aci-reveal" style="border-top: 1px solid var(--aci-rule-light); padding-top: 40px;">
+          
+          <div>
+            <h3 style="color: var(--aci-ochre); margin-bottom: 12px; font-size: 1.3rem;">1. Transparent Pledges & Allocation</h3>
+            <p style="font-size: 0.95rem;">
+              We decline to publish fabricated statistics or make unverified claims. Every financial contribution begins as an authorized pledge, tracked directly by our Accra governance council and deployed to verified field logistics.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="color: var(--aci-ochre); margin-bottom: 12px; font-size: 1.3rem;">2. Institutional Grantmaker Access</h3>
+            <p style="font-size: 0.95rem;">
+              We welcome bilateral MoUs, independent audits, and programmatic site inspections with institutional funders, universities, and international development agencies.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="aci-reveal" style="margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="donate.html" class="aci-action aci-action-primary">Donate</a>
+          <a href="contact.html?type=institutional" class="aci-action aci-action-secondary">Request Institutional Briefing</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 6. DISPATCH & NEWSLETTER DISPATCH ── -->
+    <section class="aci-editorial-flow" aria-labelledby="dispatch-title">
+      <div class="aci-container">
+        <div class="aci-reveal" style="border-top: 1px solid var(--aci-rule); padding-top: 48px;">
+          <div class="aci-broadside-2" style="align-items: center;">
+            <div>
+              <span class="aci-folio">Quarterly Gazette</span>
+              <h2 id="dispatch-title" style="font-size: 2rem;">The ACI Africa Gazette</h2>
+              <p style="margin-top: 10px; max-width: 520px;">
+                Direct dispatches from our field operations, community mental health curricula, and policy research across Ghana and West Africa. No marketing noise.
+              </p>
+            </div>
+
+            <div>
+              <form id="gazette-form" novalidate style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="email" id="gazette-email" name="email" class="aci-input" required placeholder="Enter institutional email..." style="flex: 1; min-width: 240px;">
+                <button type="submit" id="gazette-submit-btn" class="aci-action aci-action-primary" style="white-space: nowrap;">
+                  Subscribe
+                </button>
+              </form>
+              <div id="gazette-feedback" class="aci-feedback" role="alert"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── 7. INSTITUTIONAL COLOPHON ── -->
+  <footer class="aci-colophon" role="contentinfo">
+    <div class="aci-container">
+      
+      <div class="aci-colophon-grid">
+        
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" style="height: 38px; width: 38px;">
+            <span style="font-family: var(--aci-font-display); font-weight: 800; font-size: 1.15rem; color: #fff;">ACI AFRICA</span>
+          </div>
+          <p style="font-size: 0.9rem; line-height: 1.6; color: #A6B0AB; max-width: 380px;">
+            AbleCares Initiative Africa is a continental civil society organization headquartered in Accra, Ghana, dedicated to mental health advocacy, neurodiversity education, and youth development.
+          </p>
+        </div>
+
+        <div>
+          <h4>Programs</h4>
+          <ul class="aci-colophon-links">
+            <li><a href="programs.html#pamho">PAMHO Mental Health</a></li>
+            <li><a href="programs.html#ablekids">AbleKids Support</a></li>
+            <li><a href="programs.html#youth">EmpoweredTalks Africa</a></li>
+            <li><a href="programs.html#digital">Digital Futures</a></li>
+            <li><a href="programs.html#school">Support a Schoolchild</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Organization</h4>
+          <ul class="aci-colophon-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Accra Headquarters</h4>
+          <p style="font-size: 0.88rem; color: #A6B0AB; line-height: 1.6; margin-bottom: 8px;">
+            Greater Accra Region, Ghana<br>
+            Direct Inquiry: <a href="mailto:info@aciafrica.org" style="color: var(--aci-ochre);">info@aciafrica.org</a>
+          </p>
+          <p style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: #697470;">
+            Non-Profit Civic Charter • Established for Pan-African Impact
+          </p>
+        </div>
+
+      </div>
+
+      <div class="aci-colophon-bottom">
+        <span>&copy; <script>document.write(new Date().getFullYear());</script> AbleCares Initiative Africa (ACI Africa). All rights reserved.</span>
+        <div>
+          <a href="contact.html" style="color: #A6B0AB; margin-right: 20px;">Contact Team</a>
+          <a href="admin.html" style="color: #697470;">Admin Portal</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ── VIRTUAL ASSISTANT DIALOGUE ── -->
+  <button id="aciChatBtn" class="aci-chat-btn" aria-label="Open ACI Africa Virtual Assistant">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <span>Inquire</span>
+  </button>
+
+  <div id="aciChatWindow" class="aci-chat-window" role="dialog" aria-labelledby="chat-heading" aria-modal="true">
+    <div class="aci-chat-header">
+      <span id="chat-heading" class="aci-chat-title">ACI Africa Field Assistant</span>
+      <button id="aciChatClose" class="aci-chat-close" aria-label="Close Assistant">&times;</button>
+    </div>
+    <div id="aciChatMessages" class="aci-chat-messages">
+      <div class="aci-chat-msg bot">Welcome to AbleCares Initiative Africa (Accra, Ghana). How can we assist you with our mental health advocacy (PAMHO), AbleKids neurodiversity work, or institutional partnerships?</div>
+    </div>
+    <div class="aci-chat-input-area">
+      <input type="text" id="aciChatInput" class="aci-chat-input" placeholder="Type your inquiry...">
+      <button id="aciChatSend" class="aci-chat-send">Send</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.initAciForm) {
+        window.initAciForm(
+          'gazette-form',
+          'gazette-submit-btn',
+          'gazette-feedback',
+          'newsletter',
+          "You're subscribed. Thank you for staying connected with ACI Africa."
+        );
+      }
+    });
+  </script>
+
+</body>
 </html>

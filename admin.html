@@ -1,527 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>window.location.replace('index.html');</script>
-  <title>Admin Dashboard – ACI Africa</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administration Portal | ACI Africa</title>
   <meta name="robots" content="noindex, nofollow">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/aciicon-withgreen.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/aci-design-system.css">
+
+  <script src="js/aci-config.js"></script>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --yellow: #F5C400;
-      --yellow-light: rgba(245,196,0,0.12);
-      --dark: #1E293B;
-      --muted: #64748B;
-      --bg: #F8FAFC;
-      --white: #fff;
-      --border: #E2E8F0;
-      --green: #22c55e;
-      --red: #ef4444;
+    body {
+      background-color: var(--aci-paper);
+      color: var(--aci-ink);
+      font-family: var(--aci-font-sans);
+      min-height: 100vh;
+      margin: 0;
     }
-
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); }
 
     /* ── AUTH GATE ── */
     #auth-gate {
-      display: flex; align-items: center; justify-content: center;
-      min-height: 100vh; background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: var(--aci-ink);
+      padding: 24px;
     }
-    .auth-box {
-      background: var(--white); border-radius: 20px; padding: 48px 40px;
-      width: 380px; text-align: center;
+    .auth-card {
+      background: #fff;
+      border: 1px solid var(--aci-rule-strong);
+      border-top: 3px solid var(--aci-terracotta);
+      border-radius: var(--aci-radius);
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.22);
     }
-    .auth-box .logo {
-      font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800;
-      color: var(--dark); margin-bottom: 8px; letter-spacing: 1px;
+    .auth-logo {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+      margin-bottom: 16px;
     }
-    .auth-box .logo span { color: var(--yellow); }
-    .auth-box p { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
-    .auth-box input {
-      width: 100%; padding: 13px 16px; border: 2px solid var(--border);
-      border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px;
-      outline: none; margin-bottom: 14px; transition: border-color 0.2s;
+    .auth-card h1 {
+      font-family: var(--aci-font-serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--aci-ink);
+      margin-bottom: 8px;
     }
-    .auth-box input:focus { border-color: var(--yellow); }
-    .auth-box button {
-      width: 100%; padding: 14px; background: var(--yellow); color: var(--dark);
-      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;
-      border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s;
+    .auth-card p {
+      font-size: 0.9rem;
+      color: var(--aci-ink-subtle);
+      margin-bottom: 24px;
+      line-height: 1.5;
     }
-    .auth-box button:hover { background: #e6b800; }
-    .auth-error { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
+    .auth-error {
+      background-color: #FDF0ED;
+      color: #8C2210;
+      border-left: 3px solid #C62828;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      display: none;
+      text-align: left;
+    }
 
-    /* ── MAIN DASHBOARD ── */
-    #dashboard { display: none; min-height: 100vh; }
-
-    header {
-      background: var(--dark); padding: 0 32px;
-      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    /* ── DASHBOARD CHROME ── */
+    #dashboard {
+      display: none;
+      min-height: 100vh;
+      flex-direction: column;
     }
-    .header-logo {
-      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800;
-      color: var(--white); letter-spacing: 1px;
+    .admin-bar {
+      background: var(--aci-ink);
+      color: #fff;
+      padding: 0 32px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--aci-terracotta);
     }
-    .header-logo span { color: var(--yellow); }
-    .header-right { display: flex; align-items: center; gap: 16px; }
-    .header-badge {
-      background: var(--yellow-light); color: var(--yellow);
-      font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
     }
-    .logout-btn {
-      background: none; border: 1.5px solid rgba(255,255,255,0.2); color: #fff;
-      font-family: 'Inter', sans-serif; font-size: 13px; padding: 7px 16px;
-      border-radius: 8px; cursor: pointer; transition: border-color 0.2s;
+    .admin-brand img {
+      height: 32px;
+      width: 32px;
     }
-    .logout-btn:hover { border-color: var(--yellow); color: var(--yellow); }
-
-    .dashboard-body { padding: 32px; max-width: 1200px; margin: 0 auto; }
-
-    /* ── STAT CARDS ── */
-    .stat-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px;
+    .admin-title {
+      font-family: var(--aci-font-display);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 1.05rem;
+      text-transform: uppercase;
     }
-    @media(max-width:768px){ .stat-grid { grid-template-columns: 1fr 1fr; } }
-    .stat-card {
-      background: var(--white); border-radius: 14px; padding: 20px 24px;
-      border: 1.5px solid var(--border);
+    .admin-user-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-    .stat-card .label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-    .stat-card .count { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--dark); }
-    .stat-card .icon { font-size: 28px; float: right; opacity: 0.15; margin-top: -8px; }
-
-    /* ── TABS ── */
-    .tabs {
-      display: flex; gap: 4px; background: var(--white); border: 1.5px solid var(--border);
-      border-radius: 12px; padding: 5px; width: fit-content; margin-bottom: 24px;
+    .admin-badge {
+      background: rgba(182, 87, 26, 0.2);
+      color: var(--aci-ochre-light);
+      font-family: var(--aci-font-mono);
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: var(--aci-radius);
+      border: 1px solid var(--aci-terracotta);
+      letter-spacing: 0.05em;
     }
-    .tab-btn {
-      padding: 9px 20px; border: none; background: transparent; border-radius: 8px;
-      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-      color: var(--muted); cursor: pointer; transition: all 0.2s; white-space: nowrap;
-    }
-    .tab-btn.active { background: var(--yellow); color: var(--dark); font-weight: 700; }
-
-    /* ── TABLE ── */
-    .table-wrap {
-      background: var(--white); border-radius: 14px; border: 1.5px solid var(--border);
-      overflow: hidden;
-    }
-    .table-header {
-      padding: 18px 24px; border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .table-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px; }
-    .refresh-btn {
-      background: var(--yellow-light); color: #b38f00; border: none;
-      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
-      padding: 6px 14px; border-radius: 8px; cursor: pointer; transition: background 0.2s;
-    }
-    .refresh-btn:hover { background: rgba(245,196,0,0.22); }
-
-    .data-table { display: none; }
-    .data-table.active { display: block; }
-
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    th {
-      padding: 12px 16px; text-align: left; font-weight: 600; font-size: 11px;
-      text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted);
-      background: #FAFBFC; border-bottom: 1px solid var(--border);
-    }
-    td { padding: 13px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: #FAFBFC; }
-
-    .badge {
-      display: inline-block; padding: 3px 10px; border-radius: 20px;
-      font-size: 11px; font-weight: 600;
-    }
-    .badge-yellow { background: var(--yellow-light); color: #b38f00; }
-    .badge-blue   { background: rgba(74,144,226,0.12); color: #2563eb; }
-    .badge-green  { background: rgba(34,197,94,0.12); color: #15803D; }
-    .badge-purple { background: rgba(139,92,246,0.12); color: #7c3aed; }
-
-    .del-btn {
-      background: none; border: 1.5px solid #fca5a5; color: var(--red);
-      font-size: 11px; padding: 4px 10px; border-radius: 6px; cursor: pointer;
+    .btn-logout {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: var(--aci-radius);
+      font-size: 0.82rem;
+      cursor: pointer;
       transition: all 0.2s;
     }
-    .del-btn:hover { background: var(--red); color: #fff; border-color: var(--red); }
-
-    .empty-state {
-      text-align: center; padding: 60px 20px; color: var(--muted);
-    }
-    .empty-state svg { margin-bottom: 12px; opacity: 0.3; }
-    .empty-state p { font-size: 14px; }
-
-    .loading {
-      text-align: center; padding: 40px; color: var(--muted); font-size: 14px;
+    .btn-logout:hover {
+      border-color: #ef4444;
+      color: #ef4444;
     }
 
-    .interests-list { display: flex; flex-wrap: wrap; gap: 4px; }
-    .interest-tag {
-      background: var(--yellow-light); color: #b38f00;
-      font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px;
+    /* ── DASHBOARD CONTENT ── */
+    .admin-main {
+      padding: 36px var(--aci-gutter);
+      max-width: var(--aci-max-width);
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
     }
 
-    .ts { font-size: 11px; color: var(--muted); }
+    /* ── STATS ── */
+    .admin-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 1024px) {
+      .admin-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .admin-stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .admin-stat-card {
+      background: #fff;
+      padding: 20px 22px;
+      border-radius: var(--aci-radius);
+      border: 1px solid var(--aci-rule);
+      border-top: 2px solid var(--aci-ink);
+    }
+    .admin-stat-label {
+      font-family: var(--aci-font-mono);
+      font-size: 0.72rem;
+      color: var(--aci-ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .admin-stat-val {
+      font-family: var(--aci-font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--aci-ink);
+      line-height: 1;
+    }
+
+    /* ── TABS ── */
+    .admin-tabs {
+      display: flex;
+      gap: 8px;
+      background: #fff;
+      padding: 6px;
+      border-radius: var(--aci-radius);
+      border: 1px solid var(--aci-rule);
+      width: fit-content;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .admin-tab-btn {
+      padding: 8px 18px;
+      border: none;
+      background: transparent;
+      border-radius: var(--aci-radius);
+      font-family: var(--aci-font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--aci-ink-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .admin-tab-btn.active {
+      background: var(--aci-ink);
+      color: #fff;
+    }
+    .admin-tab-btn:not(.active):hover {
+      background: var(--aci-paper-dim);
+      color: var(--aci-ink);
+    }
+
+    /* ── DATA PANEL & TABLE ── */
+    .admin-panel {
+      background: #fff;
+      border-radius: var(--aci-radius);
+      border: 1px solid var(--aci-rule);
+      overflow: hidden;
+    }
+    .admin-panel-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--aci-rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .admin-panel-title {
+      font-family: var(--aci-font-serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--aci-ink);
+    }
+    .admin-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    table.admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+    table.admin-table th {
+      background: #fafaf8;
+      padding: 12px 18px;
+      font-family: var(--aci-font-mono);
+      font-size: 0.72rem;
+      color: var(--aci-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--aci-border);
+      white-space: nowrap;
+    }
+    table.admin-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--aci-border);
+      vertical-align: middle;
+      color: var(--aci-text);
+    }
+    table.admin-table tr:hover td {
+      background-color: #fdfdfc;
+    }
+    table.admin-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tbl-btn {
+      padding: 5px 12px;
+      border-radius: var(--aci-radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .tbl-btn-view {
+      background: var(--aci-warm-alabaster);
+      border-color: var(--aci-border);
+      color: var(--aci-forest);
+      margin-right: 6px;
+    }
+    .tbl-btn-view:hover {
+      background: var(--aci-forest);
+      color: #fff;
+    }
+    .tbl-btn-del {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .tbl-btn-del:hover {
+      background: #b91c1c;
+      color: #fff;
+    }
 
     /* ── MODAL ── */
-    .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.6); display: flex; align-items: center; justify-content: center;
-      z-index: 1000; backdrop-filter: blur(4px);
+    .admin-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 40, 38, 0.6);
+      backdrop-filter: blur(2px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
     }
-    .modal-content {
-      background: var(--white); width: 500px; max-width: 90%; border-radius: 16px;
-      overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    .admin-modal {
+      background: #fff;
+      border-radius: var(--aci-radius-lg);
+      width: 100%;
+      max-width: 600px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 32px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      position: relative;
     }
-    .modal-header {
-      padding: 20px 24px; border-bottom: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-      background: #FAFBFC;
+    .admin-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--aci-text-muted);
     }
-    .modal-header h3 { font-family: 'Outfit', sans-serif; font-size: 18px; margin: 0; }
-    .modal-close {
-      background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted);
-      line-height: 1; padding: 0 5px;
-    }
-    .modal-body { padding: 24px; max-height: 70vh; overflow-y: auto; }
-    
-    .view-btn {
-      background: var(--bg); border: 1.5px solid var(--border); color: var(--dark);
-      font-size: 11px; padding: 4px 10px; border-radius: 6px; cursor: pointer;
-      transition: all 0.2s; margin-right: 6px;
-    }
-    .view-btn:hover { background: var(--border); }
   </style>
 </head>
 <body>
 
-<!-- AUTH GATE -->
-<div id="auth-gate">
-  <div class="auth-box">
-    <div class="logo">ACI <span>AFRICA</span></div>
-    <p>Admin Dashboard — restricted access</p>
-    <input type="password" id="pw-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter') login()">
-    <button onclick="login()">Sign In</button>
-    <div class="auth-error" id="auth-error">Incorrect password. Try again.</div>
+  <!-- ── 1. AUTHENTICATION GATE ── -->
+  <div id="auth-gate">
+    <div class="auth-card">
+      <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" class="auth-logo">
+      <h1>ACI Africa Admin Portal</h1>
+      <p>Authorized access for governance, outreach administration, and data management.</p>
+
+      <div id="auth-error" class="auth-error" role="alert">Invalid credentials. Access denied.</div>
+
+      <form id="auth-form">
+        <div class="aci-form-group" style="text-align: left; margin-bottom: 20px;">
+          <label for="admin-pass-input" class="aci-label">Admin Password</label>
+          <input type="password" id="admin-pass-input" class="aci-input" required placeholder="Enter password" autocomplete="current-password">
+        </div>
+        <button type="submit" id="auth-submit-btn" class="aci-btn aci-btn-forest" style="width: 100%;">
+          Sign In
+        </button>
+      </form>
+      <div style="margin-top: 20px;">
+        <a href="index.html" style="font-size: 0.85rem; color: var(--aci-text-muted); text-decoration: none;">&larr; Return to Website</a>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- DASHBOARD -->
-<div id="dashboard">
-  <header>
-    <div class="header-logo">ACI <span>AFRICA</span> &mdash; Admin</div>
-    <div class="header-right">
-      <span class="header-badge">Admin Portal</span>
-      <button class="logout-btn" onclick="logout()">Sign Out</button>
-    </div>
-  </header>
+  <!-- ── 2. MAIN DASHBOARD ── -->
+  <div id="dashboard">
+    <header class="admin-bar">
+      <a href="index.html" class="admin-brand">
+        <img src="images/aciicon-withgreen.png" alt="ACI Africa Crest">
+        <span class="admin-title">ACI AFRICA | Admin Portal</span>
+      </a>
 
-  <div class="dashboard-body">
-
-    <!-- Stat cards -->
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="label">Contact Messages</div>
-        <div class="count" id="stat-contacts">—</div>
-        <div class="icon">✉️</div>
+      <div class="admin-user-nav">
+        <span class="admin-badge">ADMIN CONSOLE</span>
+        <a href="index.html" class="btn-logout" target="_blank" style="text-decoration: none;">View Site ↗</a>
+        <button class="btn-logout" onclick="logoutAdmin()">Sign Out</button>
       </div>
-      <div class="stat-card">
-        <div class="label">Donations</div>
-        <div class="count" id="stat-donations">—</div>
-        <div class="icon">💛</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Member Applications</div>
-        <div class="count" id="stat-members">—</div>
-        <div class="icon">🤝</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Leadership Applications</div>
-        <div class="count" id="stat-leaders">—</div>
-        <div class="icon">⭐</div>
-      </div>
-    </div>
+    </header>
 
-    <!-- Tabs -->
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('contacts')">Contact Messages</button>
-      <button class="tab-btn" onclick="switchTab('donations')">Donations</button>
-      <button class="tab-btn" onclick="switchTab('members')">Member Applications</button>
-      <button class="tab-btn" onclick="switchTab('leaders')">Leadership Applications</button>
-    </div>
+    <main class="admin-main">
 
-    <!-- Table container -->
-    <div class="table-wrap">
-      <div class="table-header">
-        <span class="table-title" id="table-title">Contact Messages</span>
-        <button class="refresh-btn" onclick="loadActive()">&#8635; Refresh</button>
+      <!-- ── STATS ROW ── -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Inquiries</div>
+          <div class="admin-stat-val" id="stat-contacts">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Pledges</div>
+          <div class="admin-stat-val" id="stat-donations">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Members</div>
+          <div class="admin-stat-val" id="stat-members">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Leaders</div>
+          <div class="admin-stat-val" id="stat-leaders">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Subscribers</div>
+          <div class="admin-stat-val" id="stat-newsletter">0</div>
+        </div>
       </div>
 
-      <!-- Contacts -->
-      <div class="data-table active" id="tbl-contacts">
-        <div class="loading">Loading…</div>
+      <!-- ── TAB CONTROLS ── -->
+      <div class="admin-tabs" role="tablist">
+        <button class="admin-tab-btn active" id="btn-tab-contacts" onclick="selectTab('contacts')">Contact Inquiries</button>
+        <button class="admin-tab-btn" id="btn-tab-donations" onclick="selectTab('donations')">Support Pledges</button>
+        <button class="admin-tab-btn" id="btn-tab-members" onclick="selectTab('members')">Member Applications</button>
+        <button class="admin-tab-btn" id="btn-tab-leaders" onclick="selectTab('leaders')">Leader Applications</button>
+        <button class="admin-tab-btn" id="btn-tab-newsletter" onclick="selectTab('newsletter')">Newsletter Subscribers</button>
       </div>
 
-      <!-- Donations -->
-      <div class="data-table" id="tbl-donations">
-        <div class="loading">Loading…</div>
+      <!-- ── DATA PANEL ── -->
+      <div class="admin-panel">
+        <div class="admin-panel-header">
+          <h2 class="admin-panel-title" id="panel-heading">Contact Inquiries</h2>
+          <div class="admin-actions">
+            <button class="aci-btn aci-btn-outline" style="padding: 6px 14px; font-size: 0.85rem;" onclick="exportCurrentCSV()">
+              Export CSV
+            </button>
+            <button class="aci-btn aci-btn-forest" style="padding: 6px 14px; font-size: 0.85rem;" onclick="reloadCurrentTab()">
+              Refresh
+            </button>
+          </div>
+        </div>
+
+        <div class="table-container" id="table-container">
+          <div style="padding: 40px; text-align: center; color: var(--aci-text-muted);">
+            Loading administrative records...
+          </div>
+        </div>
       </div>
 
-      <!-- Members -->
-      <div class="data-table" id="tbl-members">
-        <div class="loading">Loading…</div>
-      </div>
-
-      <!-- Leaders -->
-      <div class="data-table" id="tbl-leaders">
-        <div class="loading">Loading…</div>
-      </div>
-    </div>
-
+    </main>
   </div>
-</div>
 
-<!-- VIEW MODAL -->
-<div id="view-modal" class="modal-overlay" style="display:none;">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3>Entry Details</h3>
-      <button class="modal-close" onclick="closeModal()">&times;</button>
+  <!-- ── 3. DETAIL VIEW MODAL ── -->
+  <div id="detail-modal" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="admin-modal">
+      <button class="admin-modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button>
+      <h3 id="modal-title" style="font-family: var(--aci-font-display); color: var(--aci-forest); margin-bottom: 20px; font-size: 1.35rem;">
+        Record Dossier
+      </h3>
+      <div id="modal-content" style="line-height: 1.6;"></div>
     </div>
-    <div class="modal-body" id="modal-body"></div>
   </div>
-</div>
 
-<script>
-  // Dynamically use localhost:3000 for Live Server, or relative path for production
-  const API = (window.location.port && window.location.port !== '3000') ? 'http://localhost:3000/api' : 'https://aci-africa.onrender.com/api';
-  let ADMIN_PASSWORD = sessionStorage.getItem('aci_admin_pass') || '';
-  let activeTab = 'contacts';
+  <script>
+    let currentTab = 'contacts';
+    let currentData = [];
+    let adminToken = '';
 
-  /* ── AUTH ── */
-  async function login(pw = null) {
-    const inputPw = pw || document.getElementById('pw-input').value;
-    const btn = document.querySelector('.auth-box button');
-    
-    if(!pw) { btn.textContent = 'Verifying...'; btn.disabled = true; }
+    const tabTitles = {
+      contacts: 'Contact Form Inquiries',
+      donations: 'Financial Support Pledges',
+      members: 'Community Member Applications',
+      leaders: 'Leadership Role Applications',
+      newsletter: 'Newsletter & Dispatch Subscribers'
+    };
 
-    try {
-      // Test the password against the live backend
-      const res = await fetch(API + '/admin/contacts', {
-        headers: { 'x-admin-password': inputPw }
-      });
-
-      if (res.ok) {
-        ADMIN_PASSWORD = inputPw;
-        sessionStorage.setItem('aci_admin_pass', ADMIN_PASSWORD);
-        document.getElementById('auth-gate').style.display = 'none';
-        document.getElementById('dashboard').style.display = 'block';
-        loadAll();
-      } else {
-        const err = document.getElementById('auth-error');
-        err.style.display = 'block';
-        err.textContent = 'Incorrect password. Try again.';
-        sessionStorage.removeItem('aci_admin_pass');
+    // Initialize Auth
+    document.addEventListener('DOMContentLoaded', () => {
+      const stored = sessionStorage.getItem('aci_admin_token');
+      if (stored) {
+        adminToken = stored;
+        verifyAndOpen();
       }
-    } catch (e) {
-      const err = document.getElementById('auth-error');
-      err.style.display = 'block';
-      err.textContent = 'Server connection failed. Try again.';
+
+      document.getElementById('auth-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const pass = document.getElementById('admin-pass-input').value.trim();
+        const errEl = document.getElementById('auth-error');
+        const btn = document.getElementById('auth-submit-btn');
+
+        btn.disabled = true;
+        btn.textContent = 'Verifying...';
+        errEl.style.display = 'none';
+
+        adminToken = pass;
+        const valid = await testAuth(pass);
+        btn.disabled = false;
+        btn.textContent = 'Authenticate Session';
+
+        if (valid) {
+          sessionStorage.setItem('aci_admin_token', pass);
+          showDashboard();
+        } else {
+          errEl.style.display = 'block';
+        }
+      });
+    });
+
+    function getApiBase() {
+      return window.ACI_API_BASE || (window.ACI_CONFIG && window.ACI_CONFIG.apiBase) || '/api';
     }
 
-    if(!pw) { btn.textContent = 'Access Dashboard'; btn.disabled = false; }
-  }
+    async function testAuth(token) {
+      try {
+        const url = getApiBase() + '/admin/contacts';
+        const res = await fetch(url, {
+          headers: { 'x-admin-password': token }
+        });
+        return res.ok;
+      } catch (err) {
+        return false;
+      }
+    }
 
-  function logout() {
-    ADMIN_PASSWORD = '';
-    sessionStorage.removeItem('aci_admin_pass');
-    document.getElementById('auth-gate').style.display = 'flex';
-    document.getElementById('dashboard').style.display = 'none';
-    document.getElementById('pw-input').value = '';
-    document.getElementById('auth-error').style.display = 'none';
-  }
+    async function verifyAndOpen() {
+      const valid = await testAuth(adminToken);
+      if (valid) {
+        showDashboard();
+      } else {
+        sessionStorage.removeItem('aci_admin_token');
+      }
+    }
 
-  // Auto-login if session exists
-  if (ADMIN_PASSWORD) {
-    login(ADMIN_PASSWORD);
-  }
+    function showDashboard() {
+      document.getElementById('auth-gate').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'flex';
+      refreshAllStats();
+      selectTab('contacts');
+    }
 
-  /* ── TABS ── */
-  const tabTitles = {
-    contacts: 'Contact Messages',
-    donations: 'Donations',
-    members: 'Member Applications',
-    leaders: 'Leadership Applications'
-  };
-  
-  let currentData = [];
+    function logoutAdmin() {
+      sessionStorage.removeItem('aci_admin_token');
+      adminToken = '';
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('auth-gate').style.display = 'flex';
+      document.getElementById('admin-pass-input').value = '';
+    }
 
-  function switchTab(tab) {
-    activeTab = tab;
-    document.querySelectorAll('.tab-btn').forEach((b, i) => {
-      b.classList.toggle('active', ['contacts','donations','members','leaders'][i] === tab);
-    });
-    document.querySelectorAll('.data-table').forEach(t => t.classList.remove('active'));
-    document.getElementById('tbl-' + tab).classList.add('active');
-    document.getElementById('table-title').textContent = tabTitles[tab];
-    loadTab(tab);
-  }
+    function selectTab(tabKey) {
+      currentTab = tabKey;
+      document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('btn-tab-' + tabKey);
+      if (activeBtn) activeBtn.classList.add('active');
 
-  function loadActive() { loadTab(activeTab); }
+      document.getElementById('panel-heading').textContent = tabTitles[tabKey] || 'Administrative Records';
+      loadTabData(tabKey);
+    }
 
-  /* ── FETCH ── */
-  async function loadAll() {
-    await Promise.all(['contacts','donations','members','leaders'].map(t => loadTab(t)));
-  }
+    function reloadCurrentTab() {
+      loadTabData(currentTab);
+      refreshAllStats();
+    }
 
-  async function loadTab(tab) {
-    const el = document.getElementById('tbl-' + tab);
-    el.innerHTML = '<div class="loading">Loading…</div>';
-    try {
-      const res = await fetch(API + '/admin/' + tab, {
-        headers: { 'x-admin-password': ADMIN_PASSWORD }
+    async function refreshAllStats() {
+      const endpoints = ['contacts', 'donations', 'members', 'leaders', 'newsletter'];
+      endpoints.forEach(async (ep) => {
+        try {
+          const res = await fetch(getApiBase() + '/admin/' + ep, {
+            headers: { 'x-admin-password': adminToken }
+          });
+          if (res.ok) {
+            const data = await res.json();
+            const statEl = document.getElementById('stat-' + ep);
+            if (statEl) statEl.textContent = Array.isArray(data) ? data.length : '0';
+          }
+        } catch (e) {}
       });
-      if (!res.ok) throw new Error(res.statusText);
-      const rows = await res.json();
-      currentData = rows;
+    }
 
-      // update stat
-      const statEl = document.getElementById('stat-' + tab);
-      if (statEl) statEl.textContent = rows.length;
+    async function loadTabData(tabKey) {
+      const container = document.getElementById('table-container');
+      container.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--aci-text-muted);">Fetching live records...</div>';
 
-      if (rows.length === 0) {
-        el.innerHTML = '<div class="empty-state"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg><p>No entries yet.</p></div>';
+      try {
+        const res = await fetch(getApiBase() + '/admin/' + tabKey, {
+          headers: { 'x-admin-password': adminToken }
+        });
+
+        if (res.status === 401) {
+          logoutAdmin();
+          alert('Session expired or unauthorized. Please re-authenticate.');
+          return;
+        }
+
+        if (!res.ok) throw new Error('Failed to load ' + tabKey);
+
+        const rows = await res.json();
+        currentData = rows;
+
+        const statEl = document.getElementById('stat-' + tabKey);
+        if (statEl) statEl.textContent = rows.length;
+
+        if (rows.length === 0) {
+          container.innerHTML = '<div style="padding: 60px 20px; text-align: center; color: var(--aci-text-muted);"><p style="font-size: 1.1rem; margin-bottom: 6px;">No entries recorded yet.</p><p style="font-size: 0.85rem;">New submissions will appear here automatically.</p></div>';
+          return;
+        }
+
+        renderTableMarkup(tabKey, rows);
+      } catch (err) {
+        container.innerHTML = `<div style="padding: 40px; text-align: center; color: #b91c1c;"><p>Error retrieving records: ${esc(err.message)}</p><button class="aci-btn aci-btn-outline" style="margin-top: 10px;" onclick="loadTabData('${tabKey}')">Retry</button></div>`;
+      }
+    }
+
+    function renderTableMarkup(tabKey, rows) {
+      const container = document.getElementById('table-container');
+      let html = '<table class="admin-table">';
+
+      if (tabKey === 'contacts') {
+        html += `
+          <thead>
+            <tr><th>#</th><th>Name</th><th>Email</th><th>Subject</th><th>Message Snippet</th><th>Date</th><th style="text-align: right;">Actions</th></tr>
+          </thead>
+          <tbody>
+            ${rows.map((r, i) => `
+              <tr>
+                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td><strong>${esc(r.name)}</strong></td>
+                <td><a href="mailto:${esc(r.email)}" style="color: var(--aci-forest); font-weight: 500;">${esc(r.email)}</a></td>
+                <td>${esc(r.subject || 'General Inquiry')}</td>
+                <td style="max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${esc(r.message)}</td>
+                <td style="font-size: 0.82rem; color: var(--aci-text-muted);">${fmt(r.submitted_at)}</td>
+                <td style="text-align: right; white-space: nowrap;">
+                  <button class="tbl-btn tbl-btn-view" onclick="viewRow(${i})">View</button>
+                  <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('contacts', ${r.id}, this)">Delete</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>`;
+      } else if (tabKey === 'donations') {
+        html += `
+          <thead>
+            <tr><th>#</th><th>Supporter</th><th>Email</th><th>Pledged Amount</th><th>Message Note</th><th>Date</th><th style="text-align: right;">Actions</th></tr>
+          </thead>
+          <tbody>
+            ${rows.map((r, i) => `
+              <tr>
+                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td><strong>${esc(r.name)}</strong></td>
+                <td><a href="mailto:${esc(r.email)}" style="color: var(--aci-forest); font-weight: 500;">${esc(r.email)}</a></td>
+                <td><span style="font-family: var(--aci-font-mono); font-weight: 700; color: var(--aci-forest);">GH₵ ${esc(r.amount || '0')}</span></td>
+                <td style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${esc(r.message || '-')}</td>
+                <td style="font-size: 0.82rem; color: var(--aci-text-muted);">${fmt(r.submitted_at)}</td>
+                <td style="text-align: right; white-space: nowrap;">
+                  <button class="tbl-btn tbl-btn-view" onclick="viewRow(${i})">View</button>
+                  <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('donations', ${r.id}, this)">Delete</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>`;
+      } else if (tabKey === 'members') {
+        html += `
+          <thead>
+            <tr><th>#</th><th>Applicant</th><th>Email</th><th>Country</th><th>Occupation</th><th>Interests</th><th>Date</th><th style="text-align: right;">Actions</th></tr>
+          </thead>
+          <tbody>
+            ${rows.map((r, i) => `
+              <tr>
+                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td><strong>${esc(r.firstname)} ${esc(r.lastname)}</strong><br><span style="font-size: 0.78rem; color: var(--aci-text-subtle);">${esc(r.phone || '')}</span></td>
+                <td><a href="mailto:${esc(r.email)}" style="color: var(--aci-forest); font-weight: 500;">${esc(r.email)}</a></td>
+                <td>${esc(r.country || '-')}</td>
+                <td>${esc(r.occupation || '-')}</td>
+                <td style="max-width: 220px; font-size: 0.82rem;">${esc(r.interests || '-')}</td>
+                <td style="font-size: 0.82rem; color: var(--aci-text-muted);">${fmt(r.submitted_at)}</td>
+                <td style="text-align: right; white-space: nowrap;">
+                  <button class="tbl-btn tbl-btn-view" onclick="viewRow(${i})">View</button>
+                  <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('members', ${r.id}, this)">Delete</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>`;
+      } else if (tabKey === 'leaders') {
+        html += `
+          <thead>
+            <tr><th>#</th><th>Candidate</th><th>Email</th><th>Target Position</th><th>Experience</th><th>Availability</th><th>Date</th><th style="text-align: right;">Actions</th></tr>
+          </thead>
+          <tbody>
+            ${rows.map((r, i) => `
+              <tr>
+                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td><strong>${esc(r.firstname)} ${esc(r.lastname)}</strong><br><span style="font-size: 0.78rem; color: var(--aci-text-subtle);">${esc(r.phone || '')}</span></td>
+                <td><a href="mailto:${esc(r.email)}" style="color: var(--aci-forest); font-weight: 500;">${esc(r.email)}</a></td>
+                <td><strong style="color: var(--aci-gold-dark);">${esc(r.position || '-')}</strong></td>
+                <td>${esc(r.experience || '-')}</td>
+                <td>${esc(r.availability || '-')}</td>
+                <td style="font-size: 0.82rem; color: var(--aci-text-muted);">${fmt(r.submitted_at)}</td>
+                <td style="text-align: right; white-space: nowrap;">
+                  <button class="tbl-btn tbl-btn-view" onclick="viewRow(${i})">View</button>
+                  <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('leaders', ${r.id}, this)">Delete</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>`;
+      } else if (tabKey === 'newsletter') {
+        html += `
+          <thead>
+            <tr><th>#</th><th>Subscriber Email</th><th>Signed Up At</th><th style="text-align: right;">Actions</th></tr>
+          </thead>
+          <tbody>
+            ${rows.map((r, i) => `
+              <tr>
+                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td><strong>${esc(r.email)}</strong></td>
+                <td style="font-size: 0.85rem; color: var(--aci-text-muted);">${fmt(r.signed_up_at)}</td>
+                <td style="text-align: right; white-space: nowrap;">
+                  <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('newsletter', ${r.id}, this)">Remove</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>`;
+      }
+
+      html += '</table>';
+      container.innerHTML = html;
+    }
+
+    function viewRow(index) {
+      const data = currentData[index];
+      if (!data) return;
+
+      let html = '<div style="display: flex; flex-direction: column; gap: 14px;">';
+      for (const [key, val] of Object.entries(data)) {
+        if (key === 'id') continue;
+        let displayVal = esc(val) || '-';
+        if (key.includes('_at')) displayVal = fmt(val);
+
+        html += `
+          <div style="background: var(--aci-warm-alabaster); padding: 12px 16px; border-radius: var(--aci-radius-sm); border-left: 3px solid var(--aci-gold);">
+            <div style="font-family: var(--aci-font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--aci-text-muted); margin-bottom: 4px;">
+              ${key.replace(/_/g, ' ')}
+            </div>
+            <div style="font-size: 0.95rem; color: var(--aci-text); white-space: pre-wrap; word-break: break-word;">
+              ${displayVal}
+            </div>
+          </div>`;
+      }
+      html += '</div>';
+
+      document.getElementById('modal-content').innerHTML = html;
+      document.getElementById('detail-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('detail-modal').style.display = 'none';
+    }
+
+    async function deleteEntry(tabKey, id, btn) {
+      if (!confirm('Are you sure you want to permanently delete this record? This action cannot be undone.')) {
         return;
       }
 
-      el.innerHTML = renderTable(tab, rows);
-    } catch(e) {
-      el.innerHTML = '<div class="empty-state"><p style="color:#ef4444">Could not load data. Make sure the server is running on port 3000.</p></div>';
-    }
-  }
+      btn.disabled = true;
+      btn.textContent = 'Deleting...';
 
-  function viewRow(index) {
-    const data = currentData[index];
-    if (!data) return;
-    let html = '';
-    for (const [key, val] of Object.entries(data)) {
-      if (key === 'id') continue;
-      let displayVal = esc(val) || '—';
-      if (key === 'submitted_at') displayVal = fmt(val);
-      
-      html += `<div style="margin-bottom:16px;">
-        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:0.5px;margin-bottom:4px;">${key.replace(/_/g, ' ')}</div>
-        <div style="font-size:14px;color:var(--dark);line-height:1.5;white-space:pre-wrap;">${displayVal}</div>
-      </div>`;
-    }
-    document.getElementById('modal-body').innerHTML = html;
-    document.getElementById('view-modal').style.display = 'flex';
-  }
+      try {
+        const res = await fetch(`${getApiBase()}/admin/${tabKey}/${id}`, {
+          method: 'DELETE',
+          headers: { 'x-admin-password': adminToken }
+        });
 
-  function closeModal() {
-    document.getElementById('view-modal').style.display = 'none';
-  }
+        if (!res.ok) throw new Error('Deletion failed.');
 
-  function fmt(ts) {
-    if (!ts) return '—';
-    return new Date(ts).toLocaleString('en-GB', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
-  }
-
-  async function deleteRow(tab, id, btn) {
-    if (!confirm('Delete this entry permanently?')) return;
-    btn.textContent = '…'; btn.disabled = true;
-    try {
-      const res = await fetch(API + '/admin/' + tab + '/' + id, { 
-        method: 'DELETE',
-        headers: { 'x-admin-password': ADMIN_PASSWORD }
-      });
-      if (res.ok) {
-        btn.closest('tr').style.opacity = '0.4';
-        btn.closest('tr').style.transition = 'opacity 0.3s';
-        setTimeout(() => loadTab(tab), 350);
+        // Optimistically fade out and reload
+        btn.closest('tr').style.opacity = '0.3';
+        setTimeout(() => {
+          loadTabData(tabKey);
+          refreshAllStats();
+        }, 300);
+      } catch (err) {
+        alert('Could not delete record: ' + err.message);
+        btn.disabled = false;
+        btn.textContent = 'Delete';
       }
-    } catch(e) { btn.textContent = 'Error'; }
-  }
+    }
 
-  function renderTable(tab, rows) {
-    if (tab === 'contacts') return `
-      <table>
-        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Received</th><th></th></tr></thead>
-        <tbody>${rows.map((r,i) => `
-          <tr>
-            <td class="ts">${i+1}</td>
-            <td><strong>${esc(r.name)}</strong></td>
-            <td><a href="mailto:${esc(r.email)}" style="color:#2563eb">${esc(r.email)}</a></td>
-            <td>${esc(r.subject||'—')}</td>
-            <td style="max-width:260px">${esc(r.message)}</td>
-            <td class="ts">${fmt(r.submitted_at)}</td>
-            <td><button class="view-btn" onclick="viewRow(${i})">View</button><button class="del-btn" onclick="deleteRow('contacts',${r.id},this)">Delete</button></td>
-          </tr>`).join('')}
-        </tbody>
-      </table>`;
+    function exportCurrentCSV() {
+      if (!currentData || currentData.length === 0) {
+        alert('No data available to export.');
+        return;
+      }
 
-    if (tab === 'donations') return `
-      <table>
-        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Amount</th><th>Message</th><th>Date</th><th></th></tr></thead>
-        <tbody>${rows.map((r,i) => `
-          <tr>
-            <td class="ts">${i+1}</td>
-            <td><strong>${esc(r.name)}</strong></td>
-            <td><a href="mailto:${esc(r.email)}" style="color:#2563eb">${esc(r.email)}</a></td>
-            <td><span class="badge badge-green">GH₵ ${r.amount||'0'}</span></td>
-            <td style="max-width:200px">${esc(r.message||'—')}</td>
-            <td class="ts">${fmt(r.submitted_at)}</td>
-            <td><button class="view-btn" onclick="viewRow(${i})">View</button><button class="del-btn" onclick="deleteRow('donations',${r.id},this)">Delete</button></td>
-          </tr>`).join('')}
-        </tbody>
-      </table>`;
+      const headers = Object.keys(currentData[0]);
+      const csvRows = [headers.join(',')];
 
-    if (tab === 'members') return `
-      <table>
-        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Country</th><th>Occupation</th><th>Interests</th><th>Motivation</th><th>Date</th><th></th></tr></thead>
-        <tbody>${rows.map((r,i) => `
-          <tr>
-            <td class="ts">${i+1}</td>
-            <td><strong>${esc(r.firstname)} ${esc(r.lastname)}</strong><br><span class="ts">${esc(r.phone||'')}</span></td>
-            <td><a href="mailto:${esc(r.email)}" style="color:#2563eb">${esc(r.email)}</a></td>
-            <td><span class="badge badge-blue">${esc(r.country||'—')}</span></td>
-            <td>${esc(r.occupation||'—')}</td>
-            <td><div class="interests-list">${(r.interests||'').split(',').filter(Boolean).map(t=>`<span class="interest-tag">${esc(t.trim())}</span>`).join('')||'—'}</div></td>
-            <td style="max-width:220px">${esc(r.motivation||'—')}</td>
-            <td class="ts">${fmt(r.submitted_at)}</td>
-            <td><button class="view-btn" onclick="viewRow(${i})">View</button><button class="del-btn" onclick="deleteRow('members',${r.id},this)">Delete</button></td>
-          </tr>`).join('')}
-        </tbody>
-      </table>`;
+      for (const row of currentData) {
+        const values = headers.map(header => {
+          const escaped = ('' + (row[header] || '')).replace(/"/g, '""');
+          return `"${escaped}"`;
+        });
+        csvRows.push(values.join(','));
+      }
 
-    if (tab === 'leaders') return `
-      <table>
-        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Position</th><th>Country</th><th>Experience</th><th>Availability</th><th>LinkedIn</th><th>Date</th><th></th></tr></thead>
-        <tbody>${rows.map((r,i) => `
-          <tr>
-            <td class="ts">${i+1}</td>
-            <td><strong>${esc(r.firstname)} ${esc(r.lastname)}</strong><br><span class="ts">${esc(r.phone||'')}</span></td>
-            <td><a href="mailto:${esc(r.email)}" style="color:#2563eb">${esc(r.email)}</a></td>
-            <td><span class="badge badge-purple">${esc(r.position||'—')}</span></td>
-            <td><span class="badge badge-blue">${esc(r.country||'—')}</span></td>
-            <td>${esc(r.experience||'—')}</td>
-            <td>${esc(r.availability||'—')}</td>
-            <td>${r.linkedin ? `<a href="${esc(r.linkedin)}" target="_blank" rel="noopener" style="color:#2563eb;font-size:12px;">View ↗</a>` : '—'}</td>
-            <td class="ts">${fmt(r.submitted_at)}</td>
-            <td><button class="view-btn" onclick="viewRow(${i})">View</button><button class="del-btn" onclick="deleteRow('leaders',${r.id},this)">Delete</button></td>
-          </tr>`).join('')}
-        </tbody>
-      </table>`;
-  }
+      const blob = new Blob([csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `aci_africa_${currentTab}_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
 
-  function esc(s) {
-    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-</script>
+    function esc(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function fmt(ts) {
+      if (!ts) return '-';
+      try {
+        return new Date(ts).toLocaleString('en-GB', {
+          day: '2-digit', month: 'short', year: 'numeric',
+          hour: '2-digit', minute: '2-digit'
+        });
+      } catch {
+        return ts;
+      }
+    }
+  </script>
+
 </body>
 </html>
