@@ -396,10 +396,16 @@
     }
 
     var chatHistory = [];
-    var systemPrompt = "You are the official institutional virtual assistant for AbleCares Initiative Africa (ACI Africa), a non-profit organization headquartered in Accra, Ghana. " +
-      "Mission: Advancing mental health advocacy (PAMHO), neurodiversity & special needs support (AbleKids), youth mentorship (EmpoweredTalks Africa), digital literacy (Digital Futures Ghana), and rural classroom infrastructure (Support a Schoolchild). " +
-      "Contact: Official email is info@aciafrica.org, based in Accra, Ghana. " +
-      "Guidelines: Maintain a warm, dignified, professional tone. Keep responses concise (1-3 sentences). Never invent false certifications, partner logos, or payment accounts. Direct institutional or partnership inquiries to info@aciafrica.org.";
+    var systemPrompt = "You are the official institutional virtual assistant for AbleCares Initiatives Africa (ACI Africa), a continental non-profit organization headquartered in Accra, Ghana. " +
+      "Tagline: Education • Mental Health • Social Impact. " +
+      "Vision: To build a world-class, youth-centered African organization that empowers young people, strengthens mental health systems, promotes quality education, and advances sustainable development across the continent. " +
+      "Mission: To improve the lives of children, youth, families, and communities through education, mental health support, digital empowerment, and social impact initiatives. " +
+      "Three Core Divisions: " +
+      "1. Education & Youth Development: Support a Schoolchild Project, The Entrepreneurial Mindset Program (EMP), Digital Futures Ghana (AI literacy, tech skills), Pan-African Leadership Blueprint Summit, and foundational EmpowerTalks Africa. " +
+      "2. Mental Health & Social Psychology: PAMHO (Pan-African Mental Health Organization), The Man-to-Man Mental Health Summit, Mental Health Conversations Series, AbleKids Mental Health Program (autism & neurodiversity), and caregiver/teacher training. " +
+      "3. Climate, Sanitation & Social Impact: Reaching the Unreached Project, Environmental & Sanitation Campaigns, and Community Development Projects (water & livelihoods). " +
+      "Contact Info: Website: www.aciafrica.org | Email: info@aciafrica.org | Social Media: Instagram @aci.africa, Facebook 'ACI Africa', Twitter/X @aciafrica. " +
+      "Guidelines: Maintain a warm, dignified, professional tone. Keep responses concise (1-3 sentences). Never invent unverified certifications or bank details. Direct institutional inquiries to info@aciafrica.org.";
 
     async function sendChatMessage() {
       var text = (chatInput ? chatInput.value : '').trim();
@@ -437,7 +443,7 @@
         var data = await res.json();
         if (typing.parentNode) typing.parentNode.removeChild(typing);
 
-        var reply = data.reply || "Thank you for contacting ACI Africa! How can we assist you with our mental health advocacy, AbleKids, or youth initiatives today?";
+        var reply = data.reply || "Thank you for contacting ACI Africa! How can we assist you with our Education & Youth programs, PAMHO Mental Health, or Climate & Social Impact initiatives today?";
         appendMsg(reply, 'bot');
 
         chatHistory.push({
@@ -446,7 +452,7 @@
         });
       } catch(e) {
         if (typing.parentNode) typing.parentNode.removeChild(typing);
-        appendMsg("Thank you for reaching out to ACI Africa. Our team in Accra is available at info@aciafrica.org.", 'bot');
+        appendMsg("Thank you for reaching out to ACI Africa. Our secretariat in Accra is available at info@aciafrica.org.", 'bot');
       }
     }
 
@@ -466,11 +472,110 @@
     }
   }
 
+  // ─── 4B. Interactive Living Division Stage ─────────────────────────────────
+  function initDivisionStage() {
+    var stage = document.querySelector('.aci-stage');
+    if (!stage) return;
+
+    var tabs = stage.querySelectorAll('.aci-stage-tab');
+    var panels = stage.querySelectorAll('.aci-stage-panel');
+
+    tabs.forEach(function(tab, index) {
+      tab.addEventListener('click', function() {
+        var targetId = tab.getAttribute('data-stage-target');
+        
+        tabs.forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(function(p) {
+          p.classList.remove('active');
+        });
+
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        var targetPanel = document.getElementById(targetId) || panels[index];
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+  }
+
+  // ─── 4C. High-Fidelity Animated Stat Counters ──────────────────────────────
+  function initStatCounters() {
+    var counters = document.querySelectorAll('[data-counter-target]');
+    if (!counters.length) return;
+
+    if (prefersReducedMotion) {
+      counters.forEach(function(c) {
+        c.textContent = c.getAttribute('data-counter-target');
+      });
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      counters.forEach(function(c) {
+        c.textContent = c.getAttribute('data-counter-target');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries, obs) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var targetVal = parseInt(el.getAttribute('data-counter-target'), 10);
+          if (isNaN(targetVal)) return;
+
+          var duration = 1500;
+          var startTime = null;
+
+          function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            // Ease-out cubic curve
+            var easeProgress = 1 - Math.pow(1 - progress, 3);
+            var currentVal = Math.floor(easeProgress * targetVal);
+            el.textContent = currentVal.toLocaleString();
+
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              el.textContent = targetVal.toLocaleString();
+            }
+          }
+
+          window.requestAnimationFrame(step);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    counters.forEach(function(c) {
+      observer.observe(c);
+    });
+  }
+
+  // ─── 4F. Hero Video Reduced Motion Controller ──────────────────────────────
+  function initHeroVideo() {
+    var heroVideo = document.querySelector('.aci-hero-video');
+    if (!heroVideo) return;
+    if (prefersReducedMotion) {
+      heroVideo.pause();
+    }
+  }
+
   // ─── 5. Document Lifecycle Initialization ──────────────────────────────────
   document.addEventListener('DOMContentLoaded', function() {
     initMotionSystem();
     initNavigation();
+    initHeroVideo();
     initChatAssistant();
+    initDivisionStage();
+    initStatCounters();
   });
 
 })(window, document);
+

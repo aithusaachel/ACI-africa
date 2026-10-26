@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/aci-design-system.css">
 
   <script src="js/aci-config.js"></script>
@@ -36,7 +36,7 @@
       background: #fff;
       border: 1px solid var(--aci-rule-strong);
       border-top: 3px solid var(--aci-terracotta);
-      border-radius: var(--aci-radius);
+      border-radius: var(--radius-card);
       padding: 48px 40px;
       width: 100%;
       max-width: 440px;
@@ -118,7 +118,7 @@
       font-family: var(--aci-font-mono);
       font-size: 0.72rem;
       padding: 4px 10px;
-      border-radius: var(--aci-radius);
+      border-radius: var(--radius-card);
       border: 1px solid var(--aci-terracotta);
       letter-spacing: 0.05em;
     }
@@ -127,7 +127,7 @@
       border: 1px solid rgba(255,255,255,0.25);
       color: #fff;
       padding: 6px 14px;
-      border-radius: var(--aci-radius);
+      border-radius: var(--radius-button);
       font-size: 0.82rem;
       cursor: pointer;
       transition: all 0.2s;
@@ -166,7 +166,7 @@
     .admin-stat-card {
       background: #fff;
       padding: 20px 22px;
-      border-radius: var(--aci-radius);
+      border-radius: var(--radius-card);
       border: 1px solid var(--aci-rule);
       border-top: 2px solid var(--aci-ink);
     }
@@ -192,7 +192,7 @@
       gap: 8px;
       background: #fff;
       padding: 6px;
-      border-radius: var(--aci-radius);
+      border-radius: var(--radius-card);
       border: 1px solid var(--aci-rule);
       width: fit-content;
       margin-bottom: 24px;
@@ -202,7 +202,7 @@
       padding: 8px 18px;
       border: none;
       background: transparent;
-      border-radius: var(--aci-radius);
+      border-radius: var(--radius-button);
       font-family: var(--aci-font-sans);
       font-size: 0.88rem;
       font-weight: 600;
@@ -222,7 +222,7 @@
     /* ── DATA PANEL & TABLE ── */
     .admin-panel {
       background: #fff;
-      border-radius: var(--aci-radius);
+      border-radius: var(--radius-card);
       border: 1px solid var(--aci-rule);
       overflow: hidden;
     }
@@ -282,7 +282,7 @@
 
     .tbl-btn {
       padding: 5px 12px;
-      border-radius: var(--aci-radius-sm);
+      border-radius: var(--radius-button);
       font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
@@ -322,7 +322,7 @@
     }
     .admin-modal {
       background: #fff;
-      border-radius: var(--aci-radius-lg);
+      border-radius: var(--radius-card);
       width: 100%;
       max-width: 600px;
       max-height: 85vh;
@@ -728,7 +728,7 @@
         if (key.includes('_at')) displayVal = fmt(val);
 
         html += `
-          <div style="background: var(--aci-warm-alabaster); padding: 12px 16px; border-radius: var(--aci-radius-sm); border-left: 3px solid var(--aci-gold);">
+          <div style="background: var(--aci-warm-alabaster); padding: 12px 16px; border-radius: var(--radius-card); border-left: 3px solid var(--aci-gold);">
             <div style="font-family: var(--aci-font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--aci-text-muted); margin-bottom: 4px;">
               ${key.replace(/_/g, ' ')}
             </div>

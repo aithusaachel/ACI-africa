@@ -4,7 +4,7 @@
  * Refinement: Motion Language, Form Feedback Lifecycles & Universal Responsiveness
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Syne:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
 
 /* ── 1. TOKENS & SYSTEM VARIABLES ── */
 :root {
@@ -33,16 +33,21 @@
   --aci-rule-strong: rgba(17, 19, 17, 0.28);
   --aci-rule-light: rgba(255, 255, 255, 0.15);
 
-  /* Typography Stacks */
-  --aci-font-serif: 'Newsreader', Garamond, Georgia, serif;
-  --aci-font-display: 'Syne', -apple-system, sans-serif;
-  --aci-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --aci-font-mono: 'JetBrains Mono', monospace;
+  /* Typography Stacks (Headings: Poppins; Body/Buttons/Nav/Forms/Footer: Inter) */
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  /* Proportions & Spacing Scale */
-  --aci-max-width: 1360px;
-  --aci-prose-width: 740px;
-  --aci-gutter: clamp(16px, 4vw, 48px);
+  /* Legacy variable mappings ensuring zero fallback to old fonts */
+  --aci-font-serif: var(--font-heading);
+  --aci-font-display: var(--font-heading);
+  --aci-font-sans: var(--font-body);
+  --aci-font-mono: var(--font-mono);
+
+  /* Proportions & Spacing Scale (Widened to 1440px with clamp(16px, 4vw, 64px)) */
+  --aci-max-width: 1440px;
+  --aci-prose-width: 70ch;
+  --aci-gutter: clamp(16px, 4vw, 64px);
   --aci-space-xs: 8px;
   --aci-space-sm: 16px;
   --aci-space-md: 32px;
@@ -50,8 +55,12 @@
   --aci-space-xl: clamp(64px, 9vw, 110px);
   --aci-space-2xl: clamp(96px, 12vw, 160px);
 
-  /* Subtle Radii (Sharp architectural edges) */
-  --aci-radius: 2px;
+  /* Border Radius Tokens */
+  --radius-button: 9999px;
+  --radius-card: 16px;
+  --aci-radius: var(--radius-card); /* Guarantees backwards compatibility for all 16px elements */
+  --aci-radius-sm: var(--radius-card);
+  --aci-radius-lg: var(--radius-card);
 
   /* Motion & Interaction Easing Tokens */
   --aci-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -78,7 +87,7 @@ html {
 }
 
 body {
-  font-family: var(--aci-font-sans);
+  font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.65;
   color: var(--aci-ink);
@@ -93,37 +102,38 @@ body {
   outline-offset: 3px;
 }
 
-/* Editorial Typography with Fluid Clamps for All Screen Sizes */
-h1, h2, h3, h4, .aci-editorial-title {
+/* Editorial Typography (Headings in Poppins, Fluid Clamps) */
+h1, h2, h3, h4, h5, h6, .aci-editorial-title {
   color: var(--aci-ink);
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
 h1, .aci-h1 {
-  font-family: var(--aci-font-serif);
+  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 5.2vw, 4.2rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.08;
 }
 
 h2, .aci-h2 {
-  font-family: var(--aci-font-serif);
+  font-family: var(--font-heading);
   font-size: clamp(1.8rem, 3.6vw, 2.8rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.15;
 }
 
 h3, .aci-h3 {
-  font-family: var(--aci-font-display);
+  font-family: var(--font-heading);
   font-size: clamp(1.2rem, 2vw, 1.6rem);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 h4, .aci-h4 {
-  font-family: var(--aci-font-sans);
+  font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -131,15 +141,15 @@ h4, .aci-h4 {
 }
 
 p.aci-lead {
-  font-family: var(--aci-font-serif);
+  font-family: var(--font-body);
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   line-height: 1.5;
   color: var(--aci-ink-subtle);
-  font-style: italic;
   font-weight: 400;
 }
 
 p {
+  max-width: 70ch;
   margin-bottom: 1.2em;
   color: var(--aci-ink-subtle);
   font-size: 1.02rem;
@@ -184,24 +194,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 [data-reveal-delay="3"] { transition-delay: 210ms !important; }
 [data-reveal-delay="4"] { transition-delay: 280ms !important; }
 
-/* ── 4. EDITORIAL MARGINALIA & METADATA FOLIOS ── */
-.aci-folio {
-  font-family: var(--aci-font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--aci-terracotta);
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.aci-folio-light {
-  color: var(--aci-ochre);
-}
-
+/* ── 4. STRUCTURAL DIVIDERS ── */
 .aci-rule-divider {
   width: 100%;
   height: 1px;
@@ -249,7 +242,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-brand-title {
-  font-family: var(--aci-font-display);
+  font-family: var(--font-heading);
   font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -274,7 +267,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-nav-item {
-  font-family: var(--aci-font-sans);
+  font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--aci-ink);
@@ -306,15 +299,15 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-btn-support {
-  font-family: var(--aci-font-display);
+  font-family: var(--font-body);
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background: var(--aci-ink);
   color: var(--aci-paper);
-  padding: 10px 20px;
-  border-radius: var(--aci-radius);
+  padding: 10px 22px;
+  border-radius: var(--radius-button);
   border: 1px solid var(--aci-ink);
   display: inline-flex;
   align-items: center;
@@ -345,7 +338,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   min-width: 44px;
   align-items: center;
   justify-content: center;
-  border-radius: var(--aci-radius);
+  border-radius: var(--radius-button);
   transition: background-color var(--aci-duration-fast) var(--aci-ease-out);
 }
 
@@ -393,10 +386,11 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-mobile-link {
-  font-family: var(--aci-font-serif);
-  font-size: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 500;
   color: var(--aci-ink);
-  padding: 8px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--aci-rule);
   transition: color var(--aci-duration-fast) var(--aci-ease-out),
               padding-left var(--aci-duration-fast) var(--aci-ease-out);
@@ -410,9 +404,20 @@ html.js-motion-ready [data-reveal].is-revealed {
 
 /* ── 6. STRUCTURAL CONTAINERS & BROADHEAD GRIDS ── */
 .aci-container {
-  max-width: var(--aci-max-width);
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 var(--aci-gutter);
+  padding-left: clamp(16px, 4vw, 64px);
+  padding-right: clamp(16px, 4vw, 64px);
+  width: 100%;
+}
+
+.aci-masthead-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px clamp(16px, 4vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -482,14 +487,13 @@ html.js-motion-ready [data-reveal].is-revealed {
 .aci-plate {
   position: relative;
   overflow: hidden;
-  border-radius: var(--aci-radius);
+  border-radius: var(--radius-card);
   background: transparent;
 }
 
-.aci-plate picture {
-  display: block;
-  width: 100%;
-  height: 100%;
+.aci-plate picture,
+.aci-plate img {
+  border-radius: inherit;
 }
 
 .aci-plate img {
@@ -510,6 +514,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   width: 100%;
   aspect-ratio: 16/9;
   max-height: 640px;
+  border-radius: var(--radius-card);
 }
 
 @media (max-width: 768px) {
@@ -523,19 +528,134 @@ html.js-motion-ready [data-reveal].is-revealed {
   display: none !important;
 }
 
+/* ── FULL-BLEED HERO VIDEO BACKGROUND ── */
+.aci-hero {
+  position: relative;
+  width: 100%;
+  min-height: clamp(560px, 80vh, 840px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--aci-ink);
+  color: #FFFFFF;
+}
+
+.aci-hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.aci-hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.aci-hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(17, 19, 17, 0.72) 0%, rgba(17, 19, 17, 0.86) 100%);
+  pointer-events: none;
+}
+
+.aci-hero-container {
+  position: relative;
+  z-index: 2;
+  padding-top: var(--aci-space-xl);
+  padding-bottom: var(--aci-space-xl);
+}
+
+.aci-hero-content {
+  max-width: 1040px;
+}
+
+.aci-hero h1,
+.aci-hero .aci-h1 {
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.aci-hero p.aci-lead {
+  margin-top: 20px;
+  max-width: 840px;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-body);
+  font-style: normal;
+}
+
+.aci-hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.aci-hero .aci-action-primary {
+  background: var(--aci-terracotta);
+  border-color: var(--aci-terracotta);
+  color: #FFFFFF;
+}
+
+.aci-hero .aci-action-primary:hover {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: var(--aci-ink);
+}
+
+.aci-hero .aci-action-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #FFFFFF;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.aci-hero .aci-action-secondary:hover {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aci-hero-video {
+    display: none;
+  }
+  .aci-hero-media {
+    background-image: url('../images/optimized/IMG_8884.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 /* ── 8. EDITORIAL BUTTONS & ACTIONS ── */
+button, .aci-btn {
+  font-family: var(--font-body);
+  border-radius: var(--radius-button);
+}
+
 .aci-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-family: var(--aci-font-display);
+  font-family: var(--font-body);
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 13px 26px;
-  border-radius: var(--aci-radius);
+  padding: 13px 28px;
+  border-radius: var(--radius-button);
   cursor: pointer;
   min-height: 46px;
   transition: background-color var(--aci-duration-fast) var(--aci-ease-out),
@@ -594,9 +714,9 @@ html.js-motion-ready [data-reveal].is-revealed {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--aci-font-display);
+  font-family: var(--font-body);
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--aci-terracotta-dark);
   text-transform: uppercase;
@@ -620,7 +740,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-quote-monograph blockquote {
-  font-family: var(--aci-font-serif);
+  font-family: var(--font-heading);
   font-size: clamp(1.2rem, 2.2vw, 1.75rem);
   font-style: italic;
   line-height: 1.35;
@@ -629,7 +749,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-quote-monograph cite {
-  font-family: var(--aci-font-sans);
+  font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--aci-ink-subtle);
@@ -644,6 +764,349 @@ html.js-motion-ready [data-reveal].is-revealed {
   color: var(--aci-ink-muted);
   display: block;
   margin-top: 3px;
+}
+
+/* ── 9B. THE LIVING DIVISION STAGE (SEAMLESS INTERACTIVE CANVAS) ── */
+.aci-stage {
+  background: #FFFFFF;
+  border: 1px solid var(--aci-rule);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-top: var(--aci-space-md);
+  position: relative;
+  box-shadow: 0 4px 20px rgba(17, 19, 17, 0.04);
+}
+
+.aci-stage-nav {
+  display: flex;
+  background: var(--aci-paper-dim);
+  border-bottom: 1px solid var(--aci-rule);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.aci-stage-nav::-webkit-scrollbar { display: none; }
+
+.aci-stage-tab {
+  flex: 1;
+  min-width: 220px;
+  padding: 18px 24px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--aci-rule);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all var(--aci-duration-fast) var(--aci-ease-out);
+  position: relative;
+}
+
+.aci-stage-tab:last-child {
+  border-right: none;
+}
+
+.aci-stage-tab .tab-idx {
+  font-family: var(--aci-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--aci-ink-muted);
+  letter-spacing: 0.08em;
+  transition: color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-stage-tab .tab-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--aci-ink);
+  letter-spacing: -0.01em;
+  transition: color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-stage-tab:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.aci-stage-tab.active {
+  background: #FFFFFF;
+  box-shadow: inset 0 3px 0 var(--aci-terracotta);
+}
+
+.aci-stage-tab.active .tab-idx {
+  color: var(--aci-terracotta);
+}
+
+.aci-stage-tab.active .tab-name {
+  color: var(--aci-ink);
+}
+
+.aci-stage-viewport {
+  position: relative;
+  min-height: 480px;
+  border-radius: var(--radius-card);
+}
+
+.aci-stage-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 340ms var(--aci-ease-out), transform 340ms var(--aci-ease-out);
+  padding: clamp(28px, 4vw, 52px);
+  border-radius: var(--radius-card);
+}
+
+.aci-stage-panel.active {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 860px) {
+  .aci-stage-panel.active {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .aci-stage-viewport {
+    min-height: auto;
+  }
+}
+
+/* Chips & Tags */
+.aci-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 24px;
+}
+
+.aci-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--aci-font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  background: var(--aci-paper);
+  border: 1px solid var(--aci-rule);
+  border-radius: var(--radius-card);
+  color: var(--aci-ink);
+  letter-spacing: 0.03em;
+  transition: all var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-chip:hover {
+  border-color: var(--aci-terracotta);
+  color: var(--aci-terracotta-dark);
+}
+
+/* ── 9C. ANIMATED STAT RIBBON & COUNTERS ── */
+.aci-stat-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--aci-rule);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+.aci-stat-box {
+  padding: clamp(24px, 3vw, 36px) clamp(16px, 2.5vw, 28px);
+  border-right: 1px solid var(--aci-rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: background-color var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-stat-box:last-child {
+  border-right: none;
+}
+
+.aci-stat-box:hover {
+  background: var(--aci-paper);
+}
+
+.aci-stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--aci-terracotta);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.aci-stat-number.forest { color: var(--aci-forest); }
+.aci-stat-number.ochre { color: var(--aci-ochre); }
+.aci-stat-number.ink { color: var(--aci-ink); }
+
+.aci-stat-suffix {
+  font-family: var(--font-heading);
+  font-size: 0.6em;
+  font-weight: 700;
+}
+
+.aci-stat-label {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--aci-ink);
+  margin-top: 8px;
+}
+
+.aci-stat-desc {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--aci-ink-muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 960px) {
+  .aci-stat-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .aci-stat-box:nth-child(2) {
+    border-right: none;
+  }
+  .aci-stat-box:nth-child(1),
+  .aci-stat-box:nth-child(2) {
+    border-bottom: 1px solid var(--aci-rule);
+  }
+}
+
+@media (max-width: 540px) {
+  .aci-stat-ribbon {
+    grid-template-columns: 1fr;
+  }
+  .aci-stat-box {
+    border-right: none;
+    border-bottom: 1px solid var(--aci-rule);
+  }
+  .aci-stat-box:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ── 9D. DOCUMENTARY CONTACT FILMSTRIP ── */
+.aci-filmstrip-wrap {
+  position: relative;
+  margin: var(--aci-space-lg) 0;
+}
+
+.aci-filmstrip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.aci-filmstrip {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--aci-terracotta) var(--aci-paper-dim);
+  -webkit-overflow-scrolling: touch;
+}
+
+.aci-filmstrip::-webkit-scrollbar {
+  height: 4px;
+}
+
+.aci-filmstrip::-webkit-scrollbar-track {
+  background: var(--aci-paper-dim);
+}
+
+.aci-filmstrip::-webkit-scrollbar-thumb {
+  background: var(--aci-terracotta);
+  border-radius: var(--radius-button);
+}
+
+.aci-filmstrip-item {
+  flex: 0 0 clamp(280px, 32vw, 380px);
+  scroll-snap-align: start;
+  background: #FFFFFF;
+  border: 1px solid var(--aci-rule);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--aci-duration-fast) var(--aci-ease-out),
+              box-shadow var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-filmstrip-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(17, 19, 17, 0.08);
+}
+
+.aci-filmstrip-photo {
+  aspect-ratio: 16/10;
+  width: 100%;
+  overflow: hidden;
+  background: var(--aci-paper-dim);
+}
+
+.aci-filmstrip-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--aci-ease-out);
+}
+
+.aci-filmstrip-item:hover .aci-filmstrip-photo img {
+  transform: scale(1.04);
+}
+
+.aci-filmstrip-meta {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aci-filmstrip-tag {
+  font-family: var(--aci-font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--aci-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.aci-filmstrip-title {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--aci-ink);
+  line-height: 1.35;
+}
+
+/* Tactile Card Lift */
+.aci-card-lift {
+  border-radius: var(--radius-card);
+  transition: transform 260ms var(--aci-ease-out),
+              box-shadow 260ms var(--aci-ease-out),
+              border-color 260ms var(--aci-ease-out);
+}
+.aci-card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(17, 19, 17, 0.06);
+  border-color: rgba(17, 19, 17, 0.25);
 }
 
 /* ── 10. INVERTED BOTANICAL SECTIONS (DEEP SLATE) ── */
@@ -697,7 +1160,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 
 .aci-label {
   display: block;
-  font-family: var(--aci-font-sans);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -709,12 +1172,12 @@ html.js-motion-ready [data-reveal].is-revealed {
 .aci-select,
 .aci-textarea {
   width: 100%;
-  font-family: var(--aci-font-sans);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   color: var(--aci-ink);
   background-color: #FFFFFF;
   border: 1px solid var(--aci-rule-strong);
-  border-radius: var(--aci-radius);
+  border-radius: var(--radius-card);
   padding: 12px 16px;
   outline: none;
   min-height: 46px;
@@ -749,7 +1212,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-field-error {
-  font-family: var(--aci-font-sans);
+  font-family: var(--font-body);
   font-size: 0.78rem;
   color: #B91C1C;
   margin-top: 6px;
@@ -765,7 +1228,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   padding: 16px 20px;
   font-size: 0.92rem;
   line-height: 1.5;
-  border-radius: var(--aci-radius);
+  border-radius: var(--radius-card);
   margin-top: 16px;
   display: none;
   align-items: center;
@@ -802,7 +1265,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 
 .aci-colophon h4 {
   color: #FFFFFF;
-  font-family: var(--aci-font-display);
+  font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -839,6 +1302,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-colophon-links a {
+  font-family: var(--font-body);
   font-size: 0.88rem;
   color: #9DA6A2;
   transition: color var(--aci-duration-fast) var(--aci-ease-out);
@@ -870,11 +1334,11 @@ html.js-motion-ready [data-reveal].is-revealed {
   background: var(--aci-ink);
   color: var(--aci-paper);
   border: 1px solid var(--aci-terracotta);
-  border-radius: var(--aci-radius);
-  padding: 12px 20px;
-  font-family: var(--aci-font-display);
+  border-radius: var(--radius-button);
+  padding: 12px 22px;
+  font-family: var(--font-body);
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   display: inline-flex;
@@ -902,7 +1366,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   height: 520px;
   background: #FFFFFF;
   border: 1px solid var(--aci-ink);
-  border-radius: var(--aci-radius);
+  border-radius: var(--radius-card);
   box-shadow: 0 16px 40px rgba(0,0,0,0.22);
   flex-direction: column;
   z-index: 1001;
@@ -930,7 +1394,7 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-chat-title {
-  font-family: var(--aci-font-display);
+  font-family: var(--font-heading);
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -949,6 +1413,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--radius-button);
 }
 
 .aci-chat-messages {
@@ -965,7 +1430,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   padding: 10px 14px;
   font-size: 0.88rem;
   line-height: 1.5;
-  border-radius: var(--aci-radius);
+  border-radius: var(--radius-card);
   max-width: 85%;
 }
 
@@ -1007,8 +1472,9 @@ html.js-motion-ready [data-reveal].is-revealed {
 .aci-chat-input {
   flex: 1;
   border: 1px solid var(--aci-rule-strong);
-  border-radius: var(--aci-radius);
+  border-radius: var(--radius-card);
   padding: 10px 14px;
+  font-family: var(--font-body);
   font-size: 0.88rem;
   outline: none;
 }
@@ -1017,17 +1483,80 @@ html.js-motion-ready [data-reveal].is-revealed {
   background: var(--aci-ink);
   color: #fff;
   border: none;
-  border-radius: var(--aci-radius);
-  padding: 10px 18px;
-  font-family: var(--aci-font-display);
+  border-radius: var(--radius-button);
+  padding: 10px 20px;
+  font-family: var(--font-body);
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   min-height: 44px;
 }
 
 .aci-chat-send:hover {
   background: var(--aci-terracotta);
+}
+
+/* ── SOCIAL BRAND ICONS ── */
+.aci-social-links,
+.aci-masthead-social,
+.aci-mobile-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aci-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: var(--radius-button);
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--aci-duration-fast) var(--aci-ease-out),
+              background-color var(--aci-duration-fast) var(--aci-ease-out),
+              transform var(--aci-duration-fast) var(--aci-ease-out);
+}
+
+.aci-social-link svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  display: block;
+}
+
+.aci-social-link:hover {
+  color: var(--aci-terracotta);
+  background-color: var(--aci-terracotta-tint);
+  transform: translateY(-2px);
+}
+
+.aci-colophon .aci-social-link {
+  color: #A6B0AB;
+}
+
+.aci-colophon .aci-social-link:hover {
+  color: var(--aci-ochre);
+  background-color: rgba(200, 141, 35, 0.15);
+}
+
+.aci-masthead-social {
+  margin-left: 12px;
+}
+
+@media (max-width: 1100px) {
+  .aci-masthead-social {
+    display: none;
+  }
+}
+
+.aci-mobile-social {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--aci-rule);
 }
 
 /* ── 14. UNIVERSAL RESPONSIVENESS (ALL SCREENS NO MATTER HOW SMALL OR BIG) ── */
