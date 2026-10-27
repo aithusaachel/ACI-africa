@@ -11,6 +11,7 @@
   <meta property="og:title" content="Programs | ACI Africa">
   <meta property="og:description"
     content="Five focused operational divisions driving measurable change across African communities.">
+  <meta property="og:image" content="images/IMG_8900.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -97,49 +98,65 @@
 
   <main id="main-content">
 
-    <!-- ── PAGE TITLE SECTION ── -->
-    <section class="aci-editorial-flow" aria-labelledby="dossiers-heading"
-      style="padding-top: 48px; margin-bottom: 70px;">
+    <!-- ── 2. HERO BANNER: THREE OPERATIONAL DIVISIONS ── -->
+    <section class="aci-page-hero" aria-labelledby="dossiers-heading">
+      <div class="aci-container">
+        <div class="aci-page-hero-banner aci-reveal">
+          <div class="aci-page-hero-banner-media">
+            <img src="images/IMG_8900.jpg" alt="ACI Africa field operations and community engagement assembly in Ghana" loading="eager" width="1600" height="700">
+          </div>
+          <div class="aci-page-hero-banner-overlay"></div>
+          <div class="aci-page-hero-banner-content">
+            <h1 id="dossiers-heading">Our Three Operational Divisions</h1>
+            <p class="aci-lead">
+              Three key divisions delivering sustainable education, mental health, and social impact interventions.
+            </p>
+            <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+              <a href="#education" class="aci-action aci-action-primary">Education Division</a>
+              <a href="#mental-health" class="aci-action aci-action-secondary">PAMHO Mental Health</a>
+              <a href="#social-impact" class="aci-action aci-action-secondary">Social Impact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. MAIN DIVISIONS DOSSIER ── -->
+    <div class="aci-editorial-flow">
       <div class="aci-container">
 
-        <div style="max-width: 920px; margin-bottom: 50px;">
-          <h1 id="dossiers-heading">Our Three Operational Divisions</h1>
-          <p class="aci-lead" style="margin-top: 18px;">
-            ACI Africa operates through three key divisions, each addressing high-impact areas of African
-            development—delivering sustainable interventions with compassion, innovation, and cultural relevance.
-          </p>
-        </div>
-
-        <!--
-             DIVISION A: EDUCATION & YOUTH DEVELOPMENT DIVISION-->
-        <section id="education" class="aci-reveal">
-          <div style="max-width: 820px; margin-bottom: 40px;">
+        <!-- DIVISION A: EDUCATION & YOUTH DEVELOPMENT DIVISION -->
+        <section id="education" class="aci-reveal" style="margin-bottom: 50px;">
+          <div style="max-width: 820px; margin-bottom: 32px;">
             <span
               style="font-family: var(--aci-font-mono); font-size: 0.8rem; font-weight: 700; color: var(--aci-terracotta);">DIVISION
               A</span>
             <h2 style="font-size: clamp(1.9rem, 3.5vw, 2.6rem); margin-top: 6px;">Education & Youth Development Division
             </h2>
             <p style="font-size: 1.05rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-top: 10px;">
-              We believe education is the foundation of African development. This division equips children and young
-              people with tools, resources, and opportunities to thrive in modern economies.
+              Equipping African children and youth with tools and opportunities to thrive.
             </p>
           </div>
 
           <!-- Feature Diptych: Support a Schoolchild & EMP -->
-          <div class="aci-broadside-2" style="margin-bottom: 40px;">
+          <div class="aci-broadside-2" style="margin-bottom: 36px;">
 
             <!-- Program 1: Support a Schoolchild -->
             <div id="schoolchild" class="aci-card-lift"
-              style="background: #fff; border: 1px solid var(--aci-rule); padding: 32px; border-top: 3px solid var(--aci-terracotta); border-radius: var(--radius-card);">
+              style="background: #fff; border: 1px solid var(--aci-rule); padding: 32px; border-radius: var(--radius-card);">
               <h3 style="font-size: 1.45rem; margin: 4px 0 10px;">Support a Schoolchild Project</h3>
-              <p style="font-size: 0.92rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-bottom: 16px;">
-                Providing children in rural and underserved communities with essential learning materials, mentorship,
-                encouragement, and foundational school support to eliminate barriers to quality education.
+              <p style="font-size: 0.92rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-bottom: 12px;">
+                Providing rural pupils with essential learning materials, mentorship, and foundational school support.
               </p>
+              <details class="aci-details">
+                <summary>Learn more</summary>
+                <div class="aci-details-content">
+                  Providing children in rural and underserved communities with essential learning materials, mentorship, encouragement, and foundational school support to eliminate barriers to quality education.
+                </div>
+              </details>
               <div class="aci-plate" style="aspect-ratio: 16/10; margin-top: 20px;">
                 <picture>
-                  <source srcset="images/optimized/IMG_8932.webp" type="image/webp">
-                  <img src="images/optimized/IMG_8932.jpg"
+                  <img src="images/IMG_8902.jpg"
                     alt="Support a Schoolchild learning materials and classroom assistance in Ghana" loading="lazy"
                     width="700" height="438">
                 </picture>
@@ -148,22 +165,24 @@
 
             <!-- Program 2: EMP -->
             <div id="emp" class="aci-card-lift"
-              style="background: #fff; border: 1px solid var(--aci-rule); padding: 32px; border-top: 3px solid var(--aci-forest); border-radius: var(--radius-card);">
+              style="background: #fff; border: 1px solid var(--aci-rule); padding: 32px; border-radius: var(--radius-card);">
               <h3 style="font-size: 1.45rem; margin: 4px 0 10px;">The Entrepreneurial Mindset Program (EMP)</h3>
-              <p style="font-size: 0.92rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-bottom: 16px;">
-                A youth training initiative focusing on entrepreneurial thinking, opportunity creation, business
-                psychology, and leadership—positioning ACI Africa as a launchpad for young African innovators.
+              <p style="font-size: 0.92rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-bottom: 12px;">
+                Fostering entrepreneurial thinking, opportunity creation, business psychology, and youth leadership.
               </p>
-              <ul
-                style="font-size: 0.88rem; line-height: 1.7; color: var(--aci-ink); margin-left: 18px; margin-bottom: 20px;">
-                <li>Entrepreneurial thinking & creative ideation</li>
-                <li>Business launch support & market validation</li>
-                <li>Leadership psychology & personal development</li>
-              </ul>
-              <div class="aci-plate" style="aspect-ratio: 16/10;">
+              <details class="aci-details">
+                <summary>Learn more</summary>
+                <div class="aci-details-content">
+                  <ul style="font-size: 0.86rem; line-height: 1.6; padding-left: 16px;">
+                    <li>Entrepreneurial thinking & creative ideation</li>
+                    <li>Business launch support & market validation</li>
+                    <li>Leadership psychology & personal development</li>
+                  </ul>
+                </div>
+              </details>
+              <div class="aci-plate" style="aspect-ratio: 16/10; margin-top: 16px;">
                 <picture>
-                  <source srcset="images/optimized/IMG_8923.webp" type="image/webp">
-                  <img src="images/optimized/IMG_8923.jpg"
+                  <img src="images/IMG_8903.jpg"
                     alt="Youth leaders engaging in an entrepreneurial workshop session" loading="lazy" width="700"
                     height="438">
                 </picture>
@@ -182,9 +201,14 @@
                 INITIATIVE</span>
               <h4 style="font-size: 1.2rem; margin: 6px 0 8px;">Digital Futures Ghana</h4>
               <p style="font-size: 0.88rem; line-height: 1.6; color: var(--aci-ink-subtle);">
-                Preparing young Africans for the digital age through AI literacy, digital skills training, personal
-                branding, and tech transformation workshops.
+                Training young Africans in AI literacy, digital skills, and tech capabilities.
               </p>
+              <details class="aci-details">
+                <summary>Learn more</summary>
+                <div class="aci-details-content">
+                  Preparing young Africans for the digital age through AI literacy, digital skills training, personal branding, and tech transformation workshops.
+                </div>
+              </details>
             </div>
 
             <div id="summit" class="aci-card-lift"
@@ -194,8 +218,7 @@
                 FORUM</span>
               <h4 style="font-size: 1.2rem; margin: 6px 0 8px;">Pan-African Leadership Blueprint Summit</h4>
               <p style="font-size: 0.88rem; line-height: 1.6; color: var(--aci-ink-subtle);">
-                A continental summit bringing together emerging leaders, policymakers, and professionals to share
-                governance expertise and the African Renaissance mindset.
+                Convening emerging African leaders and professionals to advance governance and civic leadership.
               </p>
             </div>
 
@@ -206,8 +229,7 @@
                 MILESTONE</span>
               <h4 style="font-size: 1.2rem; margin: 6px 0 8px;">EmpowerTalks Africa</h4>
               <p style="font-size: 0.88rem; line-height: 1.6; color: var(--aci-ink-subtle);">
-                A foundational youth motivation program that impacted 1,500+ young people through mentorship, providing
-                the basis for our current youth leadership chapters.
+                Mentored 1,500+ young people, establishing the foundation for our continental youth chapters.
               </p>
             </div>
 
@@ -222,11 +244,9 @@
             <span
               style="font-family: var(--aci-font-mono); font-size: 0.8rem; font-weight: 700; color: var(--aci-terracotta);">DIVISION
               B</span>
-            <h2 style="font-size: clamp(1.9rem, 3.5vw, 2.6rem); margin-top: 6px;">Mental Health & Social Psychology
-              Division</h2>
+            <h2 style="font-size: clamp(1.9rem, 3.5vw, 2.6rem); margin-top: 6px;">Mental Health & Social Psychology</h2>
             <p style="font-size: 1.05rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-top: 10px;">
-              Committed to promoting awareness, advocacy, research-backed education, and accessible mental health
-              support across Africa.
+              Committed to awareness, advocacy, research-backed education, and accessible mental health support.
             </p>
           </div>
 
@@ -239,30 +259,26 @@
                 Reframing mental health as an essential foundation of human dignity.
               </p>
               <p style="font-size: 0.92rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-bottom: 14px;">
-                PAMHO leads continental advocacy, community psychoeducation, and policy dialogue to combat social stigma
-                and equip communities with psychological first-aid literacies.
+                Leading continental advocacy, community psychoeducation, and psychological first-aid literacies.
               </p>
-              <div
-                style="background: var(--aci-paper-dim); border-left: 3px solid var(--aci-terracotta); padding: 14px 18px; margin-bottom: 20px;">
-                <strong style="font-size: 0.88rem; color: var(--aci-ink); display: block; margin-bottom: 4px;">Flagship
-                  Summits & Series:</strong>
-                <ul style="font-size: 0.85rem; line-height: 1.6; color: var(--aci-ink-subtle); padding-left: 16px;">
-                  <li><strong>The Man-to-Man Mental Health Summit:</strong> Confronting male vulnerability and emotional
-                    stigma.</li>
-                  <li><strong>Mental Health Conversations Series:</strong> Ongoing community townhalls and webinars.
-                  </li>
-                  <li><strong>Pan-African Mental Health Summit / Forum:</strong> Convening researchers, clinicians, and
-                    advocates.</li>
-                </ul>
-              </div>
+              <details class="aci-details" style="margin-bottom: 20px;">
+                <summary>Learn more</summary>
+                <div class="aci-details-content">
+                  <strong>Flagship Summits & Series:</strong>
+                  <ul style="font-size: 0.85rem; line-height: 1.6; padding-left: 16px; margin-top: 4px;">
+                    <li><strong>The Man-to-Man Mental Health Summit:</strong> Confronting male vulnerability and emotional stigma.</li>
+                    <li><strong>Mental Health Conversations Series:</strong> Community townhalls and webinars.</li>
+                    <li><strong>Pan-African Mental Health Summit:</strong> Convening researchers, clinicians, and advocates.</li>
+                  </ul>
+                </div>
+              </details>
               <a href="get-involved.html?role=member" class="aci-action aci-action-primary">Support PAMHO Programs</a>
             </div>
 
             <div>
               <div class="aci-plate" style="aspect-ratio: 3/2;">
                 <picture>
-                  <source srcset="images/optimized/IMG_8884.webp" type="image/webp">
-                  <img src="images/optimized/IMG_8884.jpg"
+                  <img src="images/IMG_8904.jpg"
                     alt="Community members gathered for an ACI Africa PAMHO mental health dialogue in Ghana"
                     loading="lazy" width="1400" height="933">
                 </picture>
@@ -275,16 +291,20 @@
 
             <!-- AbleKids -->
             <div id="ablekids" class="aci-card-lift"
-              style="background: #fff; border: 1px solid var(--aci-rule); padding: 32px; border-top: 3px solid var(--aci-terracotta); border-radius: var(--radius-card);">
+              style="background: #fff; border: 1px solid var(--aci-rule); padding: 32px; border-radius: var(--radius-card);">
               <h3 style="font-size: 1.45rem; margin: 4px 0 10px;">AbleKids Mental Health Program</h3>
               <p style="font-size: 0.92rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-bottom: 14px;">
-                Supporting special needs children, adolescents, and young adults (autism spectrum, learning differences)
-                through tailored psychoeducation, emotional intelligence development, and caregiver wellness circles.
+                Supporting neurodivergent children and families through psychoeducation and caregiver wellness circles.
               </p>
+              <details class="aci-details">
+                <summary>Learn more</summary>
+                <div class="aci-details-content">
+                  Supporting special needs children, adolescents, and young adults (autism spectrum, learning differences) through tailored psychoeducation, emotional intelligence development, and caregiver wellness circles.
+                </div>
+              </details>
               <div class="aci-plate" style="aspect-ratio: 16/10; margin-top: 16px;">
                 <picture>
-                  <source srcset="images/optimized/IMG_8893.webp" type="image/webp">
-                  <img src="images/optimized/IMG_8893.jpg"
+                  <img src="images/IMG_8905.jpg"
                     alt="Children participating in an AbleKids special educational session" loading="lazy" width="700"
                     height="438">
                 </picture>
@@ -293,16 +313,20 @@
 
             <!-- Training & Capacity Building -->
             <div id="training" class="aci-card-lift"
-              style="background: #fff; border: 1px solid var(--aci-rule); padding: 32px; border-top: 3px solid var(--aci-forest); border-radius: var(--radius-card);">
+              style="background: #fff; border: 1px solid var(--aci-rule); padding: 32px; border-radius: var(--radius-card);">
               <h3 style="font-size: 1.45rem; margin: 4px 0 10px;">Training & Capacity Building</h3>
               <p style="font-size: 0.92rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-bottom: 14px;">
-                Targeted, evidence-based workshops for parents, educators, youth leaders, and first responders to
-                recognize early distress indicators and implement neuro-inclusive environments.
+                Workshops equipping educators, parents, and leaders with early psychological support skills.
               </p>
+              <details class="aci-details">
+                <summary>Learn more</summary>
+                <div class="aci-details-content">
+                  Targeted, evidence-based workshops for parents, educators, youth leaders, and first responders to recognize early distress indicators and implement neuro-inclusive environments.
+                </div>
+              </details>
               <div class="aci-plate" style="aspect-ratio: 16/10; margin-top: 16px;">
                 <picture>
-                  <source srcset="images/optimized/IMG_8913.webp" type="image/webp">
-                  <img src="images/optimized/IMG_8913.jpg"
+                  <img src="images/IMG_8906.jpg"
                     alt="Primary schoolchildren and educators during an ACI Africa capacity building session"
                     loading="lazy" width="700" height="438">
                 </picture>
@@ -320,54 +344,48 @@
             <span
               style="font-family: var(--aci-font-mono); font-size: 0.8rem; font-weight: 700; color: var(--aci-terracotta);">DIVISION
               C</span>
-            <h2 style="font-size: clamp(1.9rem, 3.5vw, 2.6rem); margin-top: 6px;">Climate, Sanitation & Social Impact
-              Division</h2>
+            <h2 style="font-size: clamp(1.9rem, 3.5vw, 2.6rem); margin-top: 6px;">Climate & Social Impact Division</h2>
             <p style="font-size: 1.05rem; line-height: 1.6; color: var(--aci-ink-subtle); margin-top: 10px;">
-              Advancing environmental health, community sanitation, sustainability, and community resilience for
-              vulnerable populations.
+              Advancing environmental health, community sanitation, sustainability, and community resilience for vulnerable populations.
             </p>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
 
             <div id="unreached" class="aci-card-lift"
-              style="background: #fff; border: 1px solid var(--aci-rule); padding: 30px; border-top: 3px solid var(--aci-terracotta); border-radius: var(--radius-card);">
+              style="background: #fff; border: 1px solid var(--aci-rule); padding: 30px; border-radius: var(--radius-card);">
               <h3 style="font-size: 1.35rem; margin: 6px 0 10px;">Reaching the Unreached Project</h3>
               <p style="font-size: 0.9rem; line-height: 1.6; color: var(--aci-ink-subtle);">
-                Providing essential supplies, educational materials, and psychosocial services to remote, vulnerable,
-                and underserved rural communities across Ghana.
+                Delivering essential supplies and psychosocial relief to remote rural communities in Ghana.
               </p>
             </div>
 
             <div id="sanitation" class="aci-card-lift"
-              style="background: #fff; border: 1px solid var(--aci-rule); padding: 30px; border-top: 3px solid var(--aci-forest); border-radius: var(--radius-card);">
+              style="background: #fff; border: 1px solid var(--aci-rule); padding: 30px; border-radius: var(--radius-card);">
               <h3 style="font-size: 1.35rem; margin: 6px 0 10px;">Environmental & Sanitation Campaigns</h3>
               <p style="font-size: 0.9rem; line-height: 1.6; color: var(--aci-ink-subtle);">
-                Grassroots clean-up initiatives, community hygiene awareness campaigns, and climate education programs
-                promoting environmental stewardship.
+                Grassroots clean-ups, community hygiene campaigns, and environmental education initiatives.
               </p>
             </div>
 
             <div id="community-dev" class="aci-card-lift"
-              style="background: #fff; border: 1px solid var(--aci-rule); padding: 30px; border-top: 3px solid var(--aci-ochre); border-radius: var(--radius-card);">
+              style="background: #fff; border: 1px solid var(--aci-rule); padding: 30px; border-radius: var(--radius-card);">
               <h3 style="font-size: 1.35rem; margin: 6px 0 10px;">Community Development Projects</h3>
               <p style="font-size: 0.9rem; line-height: 1.6; color: var(--aci-ink-subtle);">
-                Targeted, community-led interventions addressing clean water access, hygiene infrastructure, and
-                sustainable livelihood support for families.
+                Community-led interventions addressing clean water access, hygiene, and family livelihoods.
               </p>
             </div>
 
           </div>
 
           <div style="margin-top: 48px; text-align: center;">
-            <a href="contact.html?type=partnership" class="aci-action aci-action-primary">Partner with Our Divisions</a>
-            <a href="donate.html" class="aci-action aci-action-secondary" style="margin-left: 12px;">Support a Specific
-              Project</a>
+            <a href="contact.html?type=partnership" class="aci-action aci-action-primary">Partner with Us</a>
+            <a href="donate.html" class="aci-action aci-action-secondary" style="margin-left: 12px;">Support Projects</a>
           </div>
         </section>
 
       </div>
-    </section>
+    </div>
 
   </main>
 

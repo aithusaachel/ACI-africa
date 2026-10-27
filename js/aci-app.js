@@ -17,6 +17,9 @@
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function initMotionSystem() {
+    // Progressive enhancement markers
+    document.documentElement.classList.add('js-enabled');
+
     if (prefersReducedMotion) {
       // User requested reduced motion: ensure all elements are immediately visible
       var reveals = document.querySelectorAll('.aci-reveal, [data-reveal]');
@@ -558,18 +561,67 @@
     });
   }
 
-  // ─── 4F. Hero Video Reduced Motion Controller ──────────────────────────────
+  // ─── 4F. Hero Video Controller ─────────────────────────────────────────────
   function initHeroVideo() {
     var heroVideo = document.querySelector('.aci-hero-video');
     if (!heroVideo) return;
     if (prefersReducedMotion) {
       heroVideo.pause();
+    } else {
+      var playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function(err) {
+          // In some browsers, play() may require user gesture or is handled natively
+          console.log('Hero video autoplay handled natively or delayed:', err);
+        });
+      }
     }
+  }
+
+  // ─── 4G. Sticky Masthead Controller ────────────────────────────────────────
+  function initStickyMasthead() {
+    var masthead = document.querySelector('.aci-masthead');
+    if (!masthead) return;
+
+    var ticking = false;
+    function updateMasthead() {
+      if (window.scrollY > 30) {
+        masthead.classList.add('is-scrolled');
+      } else {
+        masthead.classList.remove('is-scrolled');
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateMasthead);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateMasthead();
+  }
+
+  // ─── 4H. Signature Moment: Hero Interactive Spotlight ──────────────────────
+  function initHeroSpotlight() {
+    var hero = document.querySelector('.aci-hero');
+    if (!hero || prefersReducedMotion) return;
+
+    hero.addEventListener('mousemove', function(e) {
+      var rect = hero.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      hero.style.setProperty('--mouse-x', x + 'px');
+      hero.style.setProperty('--mouse-y', y + 'px');
+    }, { passive: true });
   }
 
   // ─── 5. Document Lifecycle Initialization ──────────────────────────────────
   document.addEventListener('DOMContentLoaded', function() {
     initMotionSystem();
+    initStickyMasthead();
+    initHeroSpotlight();
     initNavigation();
     initHeroVideo();
     initChatAssistant();

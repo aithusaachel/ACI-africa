@@ -10,6 +10,7 @@
   <link rel="icon" type="image/png" href="images/aciicon-withgreen.png">
   <meta property="og:title" content="Contact | ACI Africa">
   <meta property="og:description" content="Official contact channels for AbleCares Initiative Africa in Accra, Ghana.">
+  <meta property="og:image" content="images/IMG_8914.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -96,21 +97,40 @@
 
   <main id="main-content">
 
-    <!-- ── OPENING SECTION ── -->
-    <section class="aci-editorial-flow" aria-labelledby="contact-heading">
+    <!-- ── 2. HERO SECTION: ACCRA SECRETARIAT (SPLIT HERO) ── -->
+    <section class="aci-page-hero" aria-labelledby="contact-heading">
+      <div class="aci-container">
+        <div class="aci-page-hero-split aci-reveal">
+          <div>
+            <h1 id="contact-heading">
+              Connect with Our Team in Accra
+            </h1>
+            <p class="aci-lead" style="margin-top: 20px;">
+              Managing continental campaigns, school outreaches, and institutional partnerships from Greater Accra, Ghana.
+            </p>
+          </div>
+
+          <div>
+            <div class="aci-plate" style="aspect-ratio: 4/3;">
+              <picture>
+                <img src="images/IMG_8914.jpg" alt="ACI Africa administrative secretariat and continental coordination team in Accra, Ghana"
+                  loading="eager" width="1400" height="933">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. INSTITUTIONAL DIRECTORY & DISPATCH ── -->
+    <section class="aci-editorial-flow" aria-label="Institutional Directory and Inquiry Dispatch">
       <div class="aci-container">
 
         <div class="aci-broadside-2 aci-reveal">
 
           <!-- Column 1: Institutional Directory -->
           <div class="aci-reveal" data-reveal-delay="1">
-            <h1 id="contact-heading" style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 20px;">
-              Connect with Our Team in Accra
-            </h1>
-            <p class="aci-lead" style="margin-bottom: 32px;">
-              Our administrative secretariat manages continental campaigns, school outreach schedules, and institutional
-              partnerships from Greater Accra, Ghana.
-            </p>
+            <h2 style="font-size: 1.8rem; margin-bottom: 24px;">Institutional Directory</h2>
 
             <div style="display: flex; flex-direction: column; gap: 24px;">
               <div style="border-top: 1px solid var(--aci-rule); padding-top: 16px;">
@@ -161,17 +181,19 @@
                   style="font-family: var(--aci-font-mono); font-size: 0.75rem; color: var(--aci-terracotta); text-transform: uppercase;">Scope
                   Notice</span>
                 <p style="font-size: 0.85rem; color: var(--aci-ink-muted); line-height: 1.5; margin-top: 4px;">
-                  ACI Africa is an advocacy, educational, and community initiative. We do not operate an emergency
-                  psychiatric facility or crisis helpline. In medical distress, please contact your nearest accredited
-                  medical facility.
+                  ACI Africa provides educational and advocacy support, not emergency clinical psychiatric services.
                 </p>
+                <details class="aci-details" style="margin-top: 6px;">
+                  <summary>Learn more</summary>
+                  <p>ACI Africa is an advocacy, educational, and community initiative. We do not operate an emergency psychiatric facility or crisis helpline. In medical distress, please contact your nearest accredited medical facility.</p>
+                </details>
               </div>
             </div>
           </div>
 
           <!-- Column 2: Inquiry Dispatch Form -->
           <div class="aci-reveal aci-card-lift" data-reveal-delay="2"
-            style="background: #fff; padding: 40px; border: 1px solid var(--aci-rule); border-top: 3px solid var(--aci-terracotta); border-radius: var(--radius-card);">
+            style="background: #fff; padding: 40px; border: 1px solid var(--aci-rule); border-radius: var(--radius-card);">
             <h2 style="font-size: 1.7rem; margin-top: 6px; margin-bottom: 10px;">Dispatch an Inquiry</h2>
             <p style="font-size: 0.9rem; margin-bottom: 24px; color: var(--aci-ink-muted);">
               Messages are routed directly to the administrative secretariat in Accra.
@@ -206,7 +228,7 @@
 
               <button type="submit" id="contact-submit-btn" class="aci-action aci-action-primary"
                 style="width: 100%; margin-top: 10px;">
-                Dispatch Message to Headquarters
+                Send Inquiry
               </button>
             </form>
           </div>

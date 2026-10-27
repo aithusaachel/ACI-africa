@@ -44,16 +44,16 @@
   --aci-font-sans: var(--font-body);
   --aci-font-mono: var(--font-mono);
 
-  /* Proportions & Spacing Scale (Widened to 1440px with clamp(16px, 4vw, 64px)) */
-  --aci-max-width: 1440px;
+  /* Proportions & Spacing Scale (Widened to 1600px with clamp(12px, 3vw, 48px)) */
+  --aci-max-width: 1600px;
   --aci-prose-width: 70ch;
-  --aci-gutter: clamp(16px, 4vw, 64px);
+  --aci-gutter: clamp(12px, 3vw, 48px);
   --aci-space-xs: 8px;
-  --aci-space-sm: 16px;
-  --aci-space-md: 32px;
-  --aci-space-lg: clamp(40px, 6vw, 64px);
-  --aci-space-xl: clamp(64px, 9vw, 110px);
-  --aci-space-2xl: clamp(96px, 12vw, 160px);
+  --aci-space-sm: 14px;
+  --aci-space-md: 24px;
+  --aci-space-lg: clamp(28px, 3.5vw, 48px);
+  --aci-space-xl: clamp(40px, 5vw, 88px);
+  --aci-space-2xl: clamp(56px, 6vw, 100px);
 
   /* Border Radius Tokens */
   --radius-button: 9999px;
@@ -172,27 +172,41 @@ img, picture {
 }
 
 /* ── 3. SCROLL REVEAL & MOTION LANGUAGE ── */
-/* Progressive enhancement: elements only initialize with opacity 0 if js-motion-ready is set */
+/* Progressive enhancement: elements only initialize with opacity 0 if js-motion-ready or js-enabled is set */
 html.js-motion-ready .aci-reveal,
-html.js-motion-ready [data-reveal] {
+html.js-enabled .aci-reveal,
+html.js-motion-ready [data-reveal],
+html.js-enabled [data-reveal] {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity var(--aci-duration-enter) var(--aci-ease-out),
-              transform var(--aci-duration-enter) var(--aci-ease-out);
+  transform: translateY(24px);
+  transition: opacity 620ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 html.js-motion-ready .aci-reveal.is-revealed,
-html.js-motion-ready [data-reveal].is-revealed {
+html.js-enabled .aci-reveal.is-revealed,
+html.js-motion-ready [data-reveal].is-revealed,
+html.js-enabled [data-reveal].is-revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Stagger Delays for Grouped Editorial Elements */
-[data-reveal-delay="1"] { transition-delay: 70ms !important; }
-[data-reveal-delay="2"] { transition-delay: 140ms !important; }
-[data-reveal-delay="3"] { transition-delay: 210ms !important; }
-[data-reveal-delay="4"] { transition-delay: 280ms !important; }
+/* Stagger Delays for Grouped Editorial Elements (80ms cadence) */
+[data-reveal-delay="1"] { transition-delay: 80ms !important; }
+[data-reveal-delay="2"] { transition-delay: 160ms !important; }
+[data-reveal-delay="3"] { transition-delay: 240ms !important; }
+[data-reveal-delay="4"] { transition-delay: 320ms !important; }
+[data-reveal-delay="5"] { transition-delay: 400ms !important; }
+[data-reveal-delay="6"] { transition-delay: 480ms !important; }
+
+/* Automatic Stagger Group for Children */
+.aci-reveal-stagger > *:nth-child(1) { transition-delay: 0ms; }
+.aci-reveal-stagger > *:nth-child(2) { transition-delay: 80ms; }
+.aci-reveal-stagger > *:nth-child(3) { transition-delay: 160ms; }
+.aci-reveal-stagger > *:nth-child(4) { transition-delay: 240ms; }
+.aci-reveal-stagger > *:nth-child(5) { transition-delay: 320ms; }
+.aci-reveal-stagger > *:nth-child(6) { transition-delay: 400ms; }
 
 /* ── 4. STRUCTURAL DIVIDERS ── */
 .aci-rule-divider {
@@ -210,7 +224,14 @@ html.js-motion-ready [data-reveal].is-revealed {
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease, -webkit-backdrop-filter 0.35s ease;
+}
+
+.aci-masthead.is-scrolled {
+  background: rgba(247, 245, 238, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(17, 19, 17, 0.06);
 }
 
 .aci-masthead-inner {
@@ -404,17 +425,17 @@ html.js-motion-ready [data-reveal].is-revealed {
 
 /* ── 6. STRUCTURAL CONTAINERS & BROADHEAD GRIDS ── */
 .aci-container {
-  max-width: 1440px;
+  max-width: var(--aci-max-width);
   margin: 0 auto;
-  padding-left: clamp(16px, 4vw, 64px);
-  padding-right: clamp(16px, 4vw, 64px);
+  padding-left: var(--aci-gutter);
+  padding-right: var(--aci-gutter);
   width: 100%;
 }
 
 .aci-masthead-inner {
-  max-width: 1440px;
+  max-width: var(--aci-max-width);
   margin: 0 auto;
-  padding: 16px clamp(16px, 4vw, 64px);
+  padding: 14px var(--aci-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -422,25 +443,29 @@ html.js-motion-ready [data-reveal].is-revealed {
 }
 
 .aci-editorial-flow {
+  padding: var(--aci-space-xl) 0;
+}
+
+.aci-editorial-flow-sm {
   padding: var(--aci-space-lg) 0;
 }
 
 .aci-editorial-flow-lg {
-  padding: var(--aci-space-xl) 0;
+  padding: var(--aci-space-2xl) 0;
 }
 
 /* Broadhead Asymmetrical 2-Column */
 .aci-broadside-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(28px, 5vw, 80px);
+  gap: clamp(24px, 3.5vw, 48px);
   align-items: start;
 }
 
 @media (max-width: 860px) {
   .aci-broadside-2 {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 24px;
   }
 }
 
@@ -501,12 +526,13 @@ html.js-motion-ready [data-reveal].is-revealed {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s var(--aci-ease-out);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
-.aci-plate:hover img {
-  transform: scale(1.025);
+.aci-plate:hover img,
+.aci-card-lift:hover .aci-plate img {
+  transform: scale(1.04);
 }
 
 /* Panoramic Document Plate capped safely on huge screens */
@@ -528,11 +554,11 @@ html.js-motion-ready [data-reveal].is-revealed {
   display: none !important;
 }
 
-/* ── FULL-BLEED HERO VIDEO BACKGROUND ── */
+/* ── FULL-BLEED HERO VIDEO BACKGROUND & SIGNATURE SPOTLIGHT ── */
 .aci-hero {
   position: relative;
   width: 100%;
-  min-height: clamp(560px, 80vh, 840px);
+  min-height: clamp(500px, 72vh, 740px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -549,12 +575,20 @@ html.js-motion-ready [data-reveal].is-revealed {
   overflow: hidden;
 }
 
+@keyframes aciVideoSlowZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+  100% { transform: scale(1); }
+}
+
 .aci-hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
+  animation: aciVideoSlowZoom 26s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .aci-hero-overlay {
@@ -564,17 +598,41 @@ html.js-motion-ready [data-reveal].is-revealed {
   height: 100%;
   background: linear-gradient(180deg, rgba(17, 19, 17, 0.72) 0%, rgba(17, 19, 17, 0.86) 100%);
   pointer-events: none;
+  z-index: 2;
+}
+
+/* Signature Ambient Radial Spotlight */
+.aci-hero-spotlight {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(550px circle at var(--mouse-x, 50%) var(--mouse-y, 45%), rgba(200, 141, 35, 0.16), transparent 70%);
+  transition: opacity 0.4s ease;
 }
 
 .aci-hero-container {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding-top: var(--aci-space-xl);
   padding-bottom: var(--aci-space-xl);
 }
 
 .aci-hero-content {
   max-width: 1040px;
+}
+
+@keyframes aciHeroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .aci-hero h1,
@@ -584,6 +642,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  animation: aciHeroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .aci-hero p.aci-lead {
@@ -592,6 +651,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   color: rgba(255, 255, 255, 0.92);
   font-family: var(--font-body);
   font-style: normal;
+  animation: aciHeroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
 }
 
 .aci-hero-actions {
@@ -599,6 +659,7 @@ html.js-motion-ready [data-reveal].is-revealed {
   gap: 16px;
   margin-top: 32px;
   flex-wrap: wrap;
+  animation: aciHeroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
 }
 
 .aci-hero .aci-action-primary {
@@ -611,6 +672,8 @@ html.js-motion-ready [data-reveal].is-revealed {
   background: #FFFFFF;
   border-color: #FFFFFF;
   color: var(--aci-ink);
+  box-shadow: 0 6px 20px rgba(182, 87, 26, 0.35);
+  transform: translateY(-2px);
 }
 
 .aci-hero .aci-action-secondary {
@@ -625,6 +688,8 @@ html.js-motion-ready [data-reveal].is-revealed {
   background: rgba(255, 255, 255, 0.24);
   border-color: #FFFFFF;
   color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -632,9 +697,91 @@ html.js-motion-ready [data-reveal].is-revealed {
     display: none;
   }
   .aci-hero-media {
-    background-image: url('../images/optimized/IMG_8884.jpg');
+    background-image: url('../images/IMG_8884.jpg');
     background-size: cover;
     background-position: center;
+  }
+}
+
+/* ── NON-INDEX PAGE HEROES ── */
+.aci-page-hero {
+  padding: var(--aci-space-xl) 0 var(--aci-space-lg);
+  border-bottom: 1px solid var(--aci-rule);
+  background-color: var(--aci-paper);
+}
+
+.aci-page-hero-split {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .aci-page-hero-split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.aci-page-hero-banner {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  min-height: clamp(340px, 42vh, 460px);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(28px, 4vw, 56px);
+  color: #FFFFFF;
+  background-color: var(--aci-ink);
+}
+
+.aci-page-hero-banner-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.aci-page-hero-banner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.aci-page-hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 19, 17, 0.42) 0%, rgba(17, 19, 17, 0.88) 100%);
+  z-index: 2;
+}
+
+.aci-page-hero-banner-content {
+  position: relative;
+  z-index: 3;
+  max-width: 860px;
+}
+
+.aci-page-hero-banner-content h1 {
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.aci-page-hero-banner-content p.aci-lead {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.aci-hero-diptych {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .aci-hero-diptych {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -734,7 +881,7 @@ button, .aci-btn {
 /* ── 9. EDITORIAL QUOTES & TESTIMONIALS ── */
 .aci-quote-monograph {
   padding: var(--aci-space-md) 0;
-  border-left: 2px solid var(--aci-terracotta);
+  border-left: 2px solid var(--aci-rule-strong);
   padding-left: clamp(18px, 3vw, 28px);
   margin: var(--aci-space-md) 0;
 }
@@ -900,8 +1047,8 @@ button, .aci-btn {
 }
 
 .aci-chip:hover {
-  border-color: var(--aci-terracotta);
-  color: var(--aci-terracotta-dark);
+  border-color: var(--aci-rule-strong);
+  color: var(--aci-ink);
 }
 
 /* ── 9C. ANIMATED STAT RIBBON & COUNTERS ── */
@@ -1099,14 +1246,88 @@ button, .aci-btn {
 /* Tactile Card Lift */
 .aci-card-lift {
   border-radius: var(--radius-card);
-  transition: transform 260ms var(--aci-ease-out),
-              box-shadow 260ms var(--aci-ease-out),
-              border-color 260ms var(--aci-ease-out);
+  transition: transform 320ms var(--aci-ease-out),
+              box-shadow 320ms var(--aci-ease-out),
+              border-color 320ms var(--aci-ease-out);
 }
 .aci-card-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(17, 19, 17, 0.06);
-  border-color: rgba(17, 19, 17, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(17, 19, 17, 0.08);
+  border-color: rgba(17, 19, 17, 0.22);
+}
+
+/* Accessible Editorial Disclosure Accordion */
+.aci-details {
+  margin-top: 12px;
+  font-size: 0.88rem;
+}
+
+.aci-details summary {
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--aci-terracotta);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  list-style: none;
+  transition: color 0.2s ease;
+  padding: 4px 0;
+}
+
+.aci-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.aci-details summary::after {
+  content: "↓";
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.aci-details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.aci-details summary:hover {
+  color: var(--aci-terracotta-dark);
+}
+
+.aci-details-content {
+  margin-top: 8px;
+  padding: 12px 16px;
+  background: rgba(17, 19, 17, 0.035);
+  border-radius: var(--radius-card);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--aci-ink-subtle);
+  animation: aciDetailsFade 0.28s var(--aci-ease-out);
+}
+
+.aci-section-inverted .aci-details summary {
+  color: var(--aci-ochre);
+}
+
+.aci-section-inverted .aci-details summary:hover {
+  color: var(--aci-ochre-light);
+}
+
+.aci-section-inverted .aci-details-content {
+  background: rgba(255, 255, 255, 0.06);
+  color: #D7DDD9;
+}
+
+@keyframes aciDetailsFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── 10. INVERTED BOTANICAL SECTIONS (DEEP SLATE) ── */
@@ -1260,7 +1481,7 @@ button, .aci-btn {
   background-color: var(--aci-ink);
   color: #D3D8D5;
   padding: var(--aci-space-xl) 0 var(--aci-space-md);
-  border-top: 2px solid var(--aci-terracotta);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .aci-colophon h4 {
@@ -1333,7 +1554,7 @@ button, .aci-btn {
   right: 24px;
   background: var(--aci-ink);
   color: var(--aci-paper);
-  border: 1px solid var(--aci-terracotta);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-button);
   padding: 12px 22px;
   font-family: var(--font-body);
@@ -1636,15 +1857,39 @@ button, .aci-btn {
   }
 
   html.js-motion-ready .aci-reveal,
-  html.js-motion-ready [data-reveal] {
+  html.js-enabled .aci-reveal,
+  html.js-motion-ready [data-reveal],
+  html.js-enabled [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
 
-  .aci-plate img {
+  .aci-hero-content h1,
+  .aci-hero-content .aci-lead,
+  .aci-hero-content .aci-hero-actions,
+  .aci-hero-video {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .aci-hero-spotlight {
+    display: none !important;
+  }
+
+  .aci-plate img,
+  .aci-filmstrip-photo img {
     transition: none !important;
     transform: none !important;
+  }
+
+  .aci-card-lift,
+  .aci-action,
+  .aci-btn-support {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
   }
 
   .aci-mobile-drawer {
