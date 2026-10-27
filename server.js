@@ -228,7 +228,7 @@ app.post('/api/chat', async (req, res) => {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return res.json({
-      reply: "Thank you for reaching out to AbleCares Initiative Africa (ACI Africa)! We are a Pan-African organization based in Accra, Ghana, dedicated to mental health advocacy (PAMHO), special education & neurodiversity support (AbleKids), and youth empowerment. For inquiries, email us at info@aciafrica.org."
+      reply: "Thank you for reaching out to AbleCares Initiative Africa (ACI Africa)! We are a Pan-African organization based in Accra, Ghana, dedicated to mental health advocacy (PAMHO: pamhoafrica.org), special education & neurodiversity support (AbleKids), and youth empowerment. For inquiries, email us at info@aciafrica.org."
     });
   }
 
@@ -248,9 +248,9 @@ app.post('/api/chat', async (req, res) => {
       res.json({ reply: data.candidates[0].content.parts[0].text });
     } else if (data.error) {
       console.error('Gemini API Error:', data.error.message);
-      res.json({ reply: "Thank you for contacting ACI Africa! How can we assist you with our mental health, neurodiversity, or youth education initiatives today? You can also email us directly at info@aciafrica.org." });
+      res.json({ reply: "Thank you for contacting ACI Africa! How can we assist you with our mental health (pamhoafrica.org), neurodiversity, or youth education initiatives today? You can also email us directly at info@aciafrica.org." });
     } else {
-      res.json({ reply: "Thank you for reaching out to ACI Africa! Please let us know if you have questions regarding our PAMHO mental health initiatives, AbleKids, or getting involved." });
+      res.json({ reply: "Thank you for reaching out to ACI Africa! Please let us know if you have questions regarding our PAMHO mental health initiatives (visit pamhoafrica.org), AbleKids, or getting involved." });
     }
   } catch (err) {
     console.error('Chat endpoint error:', err.message);

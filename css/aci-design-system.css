@@ -48,12 +48,13 @@
   --aci-max-width: 1600px;
   --aci-prose-width: 70ch;
   --aci-gutter: clamp(12px, 3vw, 48px);
+  --aci-section-padding-y: clamp(40px, 5vw, 88px);
   --aci-space-xs: 8px;
   --aci-space-sm: 14px;
   --aci-space-md: 24px;
-  --aci-space-lg: clamp(28px, 3.5vw, 48px);
+  --aci-space-lg: clamp(24px, 3vw, 40px);
   --aci-space-xl: clamp(40px, 5vw, 88px);
-  --aci-space-2xl: clamp(56px, 6vw, 100px);
+  --aci-space-2xl: clamp(40px, 5vw, 88px);
 
   /* Border Radius Tokens */
   --radius-button: 9999px;
@@ -235,12 +236,10 @@ html.js-enabled [data-reveal].is-revealed {
 }
 
 .aci-masthead-inner {
-  max-width: var(--aci-max-width);
-  margin: 0 auto;
-  padding: 16px var(--aci-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-block: 14px;
 }
 
 .aci-masthead-brand {
@@ -424,34 +423,20 @@ html.js-enabled [data-reveal].is-revealed {
 }
 
 /* ── 6. STRUCTURAL CONTAINERS & BROADHEAD GRIDS ── */
-.aci-container {
-  max-width: var(--aci-max-width);
-  margin: 0 auto;
-  padding-left: var(--aci-gutter);
-  padding-right: var(--aci-gutter);
-  width: 100%;
-}
-
+.aci-container,
 .aci-masthead-inner {
-  max-width: var(--aci-max-width);
-  margin: 0 auto;
-  padding: 14px var(--aci-gutter);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(12px, 3vw, 48px);
 }
 
-.aci-editorial-flow {
-  padding: var(--aci-space-xl) 0;
-}
-
-.aci-editorial-flow-sm {
-  padding: var(--aci-space-lg) 0;
-}
-
-.aci-editorial-flow-lg {
-  padding: var(--aci-space-2xl) 0;
+.aci-editorial-flow,
+.aci-editorial-flow-sm,
+.aci-editorial-flow-lg,
+.aci-page-hero,
+.aci-section-inverted {
+  padding-block: clamp(40px, 5vw, 88px);
 }
 
 /* Broadhead Asymmetrical 2-Column */
@@ -677,18 +662,17 @@ html.js-enabled [data-reveal].is-revealed {
 }
 
 .aci-hero .aci-action-secondary {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.45);
-  color: #FFFFFF;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: #FFFFFF;
+  border: 1.5px solid #FFFFFF;
+  color: var(--aci-ink);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .aci-hero .aci-action-secondary:hover {
-  background: rgba(255, 255, 255, 0.24);
-  border-color: #FFFFFF;
+  background: var(--aci-terracotta);
+  border-color: var(--aci-terracotta);
   color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 18px rgba(182, 87, 26, 0.35);
   transform: translateY(-2px);
 }
 
@@ -773,6 +757,36 @@ html.js-enabled [data-reveal].is-revealed {
   color: rgba(255, 255, 255, 0.92);
 }
 
+.aci-page-hero-banner-content .aci-action-primary {
+  background: var(--aci-terracotta);
+  border: 1.5px solid var(--aci-terracotta);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(182, 87, 26, 0.4);
+}
+
+.aci-page-hero-banner-content .aci-action-primary:hover {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: var(--aci-ink);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.aci-page-hero-banner-content .aci-action-secondary {
+  background: #FFFFFF;
+  border: 1.5px solid #FFFFFF;
+  color: var(--aci-ink);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.aci-page-hero-banner-content .aci-action-secondary:hover {
+  background: var(--aci-terracotta);
+  border-color: var(--aci-terracotta);
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(182, 87, 26, 0.35);
+  transform: translateY(-2px);
+}
+
 .aci-hero-diptych {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -829,14 +843,37 @@ button, .aci-btn {
 }
 
 .aci-action-secondary {
-  background: transparent;
+  background: #FFFFFF;
   color: var(--aci-ink);
-  border: 1px solid var(--aci-rule-strong);
+  border: 1.5px solid var(--aci-ink);
+  box-shadow: 0 2px 6px rgba(17, 19, 17, 0.08);
 }
 
 .aci-action-secondary:hover {
   border-color: var(--aci-ink);
-  background: rgba(17, 19, 17, 0.04);
+  background: var(--aci-ink);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(17, 19, 17, 0.18);
+  transform: translateY(-2px);
+}
+
+.pledge-preset.aci-action-secondary {
+  background: #FFFFFF;
+  border: 1.5px solid var(--aci-rule-strong);
+  color: var(--aci-ink);
+}
+
+.pledge-preset.aci-action-secondary:hover {
+  border-color: var(--aci-terracotta);
+  color: var(--aci-terracotta);
+  background: #FFFFFF;
+}
+
+.pledge-preset.aci-action-primary {
+  background: var(--aci-terracotta);
+  border-color: var(--aci-terracotta);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(182, 87, 26, 0.3);
 }
 
 .aci-action.is-submitting,
@@ -1364,13 +1401,18 @@ button, .aci-btn {
 }
 
 .aci-section-inverted .aci-action-secondary {
-  color: #FFFFFF;
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #FFFFFF;
+  color: var(--aci-ink);
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 .aci-section-inverted .aci-action-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: #FFFFFF;
+  background: var(--aci-terracotta);
+  border-color: var(--aci-terracotta);
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(182, 87, 26, 0.35);
+  transform: translateY(-2px);
 }
 
 /* ── 11. COMPLETE FORM LIFECYCLE ARCHITECTURE ── */
@@ -1480,7 +1522,7 @@ button, .aci-btn {
 .aci-colophon {
   background-color: var(--aci-ink);
   color: #D3D8D5;
-  padding: var(--aci-space-xl) 0 var(--aci-space-md);
+  padding: clamp(40px, 5vw, 88px) 0 clamp(24px, 3vw, 40px);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -1837,11 +1879,6 @@ button, .aci-btn {
 }
 
 @media (min-width: 1920px) {
-  /* On ultra-wide monitors, ensure containers are centered and proportions remain balanced */
-  .aci-container {
-    max-width: 1440px;
-  }
-
   .aci-plate-hero {
     max-height: 680px;
   }

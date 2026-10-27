@@ -405,7 +405,7 @@
       "Mission: To improve the lives of children, youth, families, and communities through education, mental health support, digital empowerment, and social impact initiatives. " +
       "Three Core Divisions: " +
       "1. Education & Youth Development: Support a Schoolchild Project, The Entrepreneurial Mindset Program (EMP), Digital Futures Ghana (AI literacy, tech skills), Pan-African Leadership Blueprint Summit, and foundational EmpowerTalks Africa. " +
-      "2. Mental Health & Social Psychology: PAMHO (Pan-African Mental Health Organization), The Man-to-Man Mental Health Summit, Mental Health Conversations Series, AbleKids Mental Health Program (autism & neurodiversity), and caregiver/teacher training. " +
+      "2. Mental Health & Social Psychology: PAMHO (Pan-African Mental Health Organization: https://pamhoafrica.org), The Man-to-Man Mental Health Summit, Mental Health Conversations Series, AbleKids Mental Health Program (autism & neurodiversity), and caregiver/teacher training. " +
       "3. Climate, Sanitation & Social Impact: Reaching the Unreached Project, Environmental & Sanitation Campaigns, and Community Development Projects (water & livelihoods). " +
       "Contact Info: Website: www.aciafrica.org | Email: info@aciafrica.org | Social Media: Instagram @aci.africa, Facebook 'ACI Africa', Twitter/X @aciafrica. " +
       "Guidelines: Maintain a warm, dignified, professional tone. Keep responses concise (1-3 sentences). Never invent unverified certifications or bank details. Direct institutional inquiries to info@aciafrica.org.";
@@ -446,7 +446,7 @@
         var data = await res.json();
         if (typing.parentNode) typing.parentNode.removeChild(typing);
 
-        var reply = data.reply || "Thank you for contacting ACI Africa! How can we assist you with our Education & Youth programs, PAMHO Mental Health, or Climate & Social Impact initiatives today?";
+        var reply = data.reply || 'Thank you for contacting ACI Africa! How can we assist you with our Education & Youth programs, PAMHO Mental Health (<a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" style="color:var(--aci-terracotta);text-decoration:underline;">pamhoafrica.org</a>), or Climate & Social Impact initiatives today?';
         appendMsg(reply, 'bot');
 
         chatHistory.push({
