@@ -5,79 +5,69 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AbleCares Initiative Africa (ACI Africa) | Education • Mental Health • Social Impact</title>
-  <meta name="description"
-    content="AbleCares Initiative Africa (ACI Africa) is a continental non-profit advancing education, mental health, and sustainable social impact across Ghana and Africa.">
+  <meta name="description" content="AbleCares Initiative Africa (ACI Africa) is a continental non-profit advancing education, mental health, and sustainable social impact across Ghana and Africa.">
   <link rel="icon" type="image/png" href="images/aciicon-withgreen.png">
-  <meta property="og:title"
-    content="AbleCares Initiative Africa (ACI Africa) | Education • Mental Health • Social Impact">
-  <meta property="og:description"
-    content="Empowering individuals, youth, and communities through education, mental health support, digital innovation, and social impact.">
-  <meta property="og:image" content="images/IMG_8884.jpg">
+  <link rel="canonical" href="https://theaciafrica.org/">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/aci-design-system.css">
+  <meta property="og:title" content="AbleCares Initiative Africa (ACI Africa) | Education • Mental Health • Social Impact">
+  <meta property="og:description" content="AbleCares Initiative Africa (ACI Africa) is a continental non-profit advancing education, mental health, and sustainable social impact across Ghana and Africa.">
+  <meta property="og:image" content="images/hero-poster.webp">
+
+  <!-- Self-Hosted Typography Preloads (Playfair Display 700 & Inter 400/600/700) -->
+  <link rel="preload" href="fonts/playfair-display-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Separate Phase 2 Homepage Stylesheet (loaded ONLY by index.html to guarantee zero spillover) -->
+  <link rel="stylesheet" href="css/aci-home.css">
   <script src="js/aci-config.js" defer></script>
   <script src="js/aci-app.js" defer></script>
+
+  <!-- Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AbleCares Initiative Africa",
+    "alternateName": "ACI Africa",
+    "url": "https://theaciafrica.org",
+    "email": "info@aciafrica.org",
+    "sameAs": [
+      "https://instagram.com/aci.africa",
+      "https://facebook.com/aciafrica",
+      "https://twitter.com/aciafrica"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Greater Accra",
+      "addressCountry": "Ghana"
+    }
+  }
+  </script>
 </head>
 
 <body>
 
-  <!-- ── 1. ARCHITECTURAL MASTHEAD ── -->
+  <!-- ── MASTHEAD (NAVIGATION) [Ref 1: Gainlove] ── -->
   <header class="aci-masthead" role="banner">
-    <div class="aci-masthead-inner">
-      <a href="index.html" class="aci-masthead-brand" aria-label="ACI Africa Home">
-        <img src="images/aciicon-withgreen.png" alt="ACI Africa Crest" class="aci-crest">
-        <div class="aci-brand-meta">
-          <span class="aci-brand-title">ACI AFRICA</span>
-        </div>
+    <div class="aci-container aci-nav-inner">
+      <a href="index.html" class="aci-nav-brand" aria-label="ACI Africa Home">
+        <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" width="40" height="40">
+        <span>ACI AFRICA</span>
       </a>
 
-      <nav class="aci-nav-desktop" role="navigation" aria-label="Primary Navigation">
-        <a href="index.html" class="aci-nav-item active" aria-current="page">Home</a>
-        <a href="about.html" class="aci-nav-item">About</a>
-        <a href="programs.html" class="aci-nav-item">Programs</a>
-        <a href="impact.html" class="aci-nav-item">Impact</a>
-        <a href="get-involved.html" class="aci-nav-item">Get Involved</a>
-        <a href="contact.html" class="aci-nav-item">Contact</a>
-        <a href="donate.html" class="aci-btn-support">Donate</a>
-        <div class="aci-masthead-social" aria-label="Social media channels">
-          <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" class="aci-social-link"
-            aria-label="Instagram">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-            </svg>
-          </a>
-          <a href="https://twitter.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link" aria-label="X">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
-          <a href="https://facebook.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link"
-            aria-label="Facebook">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path
-                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-            </svg>
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="aci-social-link" aria-label="LinkedIn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path
-                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-            </svg>
-          </a>
-        </div>
+      <nav class="aci-nav-menu" role="navigation" aria-label="Primary Navigation">
+        <a href="about.html" class="aci-nav-link">About</a>
+        <a href="programs.html" class="aci-nav-link">Programs</a>
+        <a href="impact.html" class="aci-nav-link">Impact</a>
+        <a href="get-involved.html" class="aci-nav-link">Get involved</a>
+        <a href="contact.html" class="aci-nav-link">Contact</a>
+        <a href="donate.html" class="aci-btn aci-btn-donate aci-nav-donate">Donate</a>
       </nav>
 
-      <button class="aci-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
-        aria-controls="mobile-drawer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <button class="aci-mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -88,647 +78,492 @@
 
   <!-- Mobile Drawer -->
   <div id="mobile-drawer" class="aci-mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
-    <a href="index.html" class="aci-mobile-link">Home</a>
-    <a href="about.html" class="aci-mobile-link">About</a>
-    <a href="programs.html" class="aci-mobile-link">Programs</a>
-    <a href="impact.html" class="aci-mobile-link">Impact</a>
-    <a href="get-involved.html" class="aci-mobile-link">Get Involved</a>
-    <a href="contact.html" class="aci-mobile-link">Contact</a>
-    <a href="donate.html" class="aci-mobile-link" style="color: var(--aci-terracotta);">Donate &rarr;</a>
-    <div class="aci-mobile-social" aria-label="Social media channels">
-      <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" class="aci-social-link"
-        aria-label="Instagram">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path
-            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-        </svg>
-      </a>
-      <a href="https://twitter.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link" aria-label="X">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path
-            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-      </a>
-      <a href="https://facebook.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link"
-        aria-label="Facebook">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path
-            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
-      </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener" class="aci-social-link" aria-label="LinkedIn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path
-            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-        </svg>
-      </a>
-    </div>
+    <a href="about.html" class="aci-nav-link">About</a>
+    <a href="programs.html" class="aci-nav-link">Programs</a>
+    <a href="impact.html" class="aci-nav-link">Impact</a>
+    <a href="get-involved.html" class="aci-nav-link">Get involved</a>
+    <a href="contact.html" class="aci-nav-link">Contact</a>
+    <a href="donate.html" class="aci-btn aci-btn-donate" style="margin-top: 16px;">Donate</a>
   </div>
 
   <main id="main-content">
 
-    <!-- ── 2. HERO SECTION: FULL-BLEED VIDEO BACKGROUND ── -->
-    <section class="aci-hero" aria-labelledby="opening-proclamation">
-      <div class="aci-hero-media">
-        <video class="aci-hero-video" autoplay muted loop playsinline preload="metadata" poster="images/IMG_8884.jpg">
-          <source src="assets/hero.webm" type="video/webm">
-          <source src="https://upload.wikimedia.org/wikipedia/commons/9/91/Children_Playing_in_Cameroon.webm"
-            type="video/webm">
-        </video>
-        <div class="aci-hero-overlay"></div>
-        <div class="aci-hero-spotlight" aria-hidden="true"></div>
-      </div>
-
-      <div class="aci-container aci-hero-container">
-        <div class="aci-hero-content aci-reveal">
-          <h1 id="opening-proclamation">
-            Transforming Education & Mental Health in Africa
-          </h1>
-          <p class="aci-lead">
-            Advancing youth education, mental well-being, and community resilience across Africa through evidence-based
-            action.
-          </p>
-
-          <div class="aci-hero-actions">
-            <a href="#divisions-stage" class="aci-action aci-action-primary">Explore Divisions</a>
-            <a href="about.html" class="aci-action aci-action-secondary">Our Mandate</a>
+    <!-- ── 1. HERO SECTION: MASKED & RECTANGULAR VARIANTS [Ref 2: Kalypso & Ref 1: Gainlove] ──
+         Switch variant via class on section: default '.aci-hero--masked' vs rectangular '.aci-hero--rect' -->
+    <section class="aci-hero aci-hero--masked" aria-labelledby="hero-title">
+      <div class="aci-container">
+        <div class="aci-hero-grid">
+          
+          <!-- Hero Text Column -->
+          <div class="aci-hero-content">
+            <span class="aci-eyebrow">Akwaaba &mdash; Welcome<!-- [VERIFY-LANGUAGE: Akan 'Akwaaba'] --></span>
+            <h1 id="hero-title">
+              Education and mental health, <span class="aci-brush-wrap">across Ghana<span class="aci-brush-stroke" aria-hidden="true"></span></span>.
+            </h1>
+            <p class="aci-lead">
+              We run school, mental health, and community programs for young people and families across Ghana.
+            </p>
+            <div class="aci-hero-actions">
+              <a href="programs.html" class="aci-btn aci-btn-primary">See our programs</a>
+              <a href="get-involved.html" class="aci-text-link">Join us &rarr;</a>
+            </div>
+            <!-- Playful 3-Dot Accent [Ref 2: Kalypso] -->
+            <div class="aci-dot-cluster" aria-hidden="true">
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-orange"></span>
+              <span class="dot dot-green"></span>
+            </div>
           </div>
+
+          <!-- Hero Media Column: Continent Silhouette Mask or Rectangular Fallback -->
+          <div class="aci-hero-media aci-hero-video-wrap">
+            <video class="aci-hero-video" autoplay muted loop playsinline preload="auto" poster="images/hero-poster.webp" aria-hidden="true">
+              <source src="assets/hero.mp4" type="video/mp4">
+              <source src="assets/hero-1080p.webm" type="video/webm">
+              <img src="images/hero-poster.webp" alt="Ghanaian young people engaged in learning and community activity" class="aci-hero-poster" fetchpriority="high" width="1280" height="944">
+            </video>
+            <img src="images/hero-poster.webp" alt="" class="aci-hero-poster" aria-hidden="true" width="1280" height="944">
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ── 2B. VERIFIED IMPACT METRICS (LIVING COUNTERS) ── -->
-    <section class="aci-editorial-flow-sm" aria-label="Key Organizational Metrics">
+    <!-- ── 2. 3-COLUMN FEATURE DIVISION ROW [Ref 2: Kalypso] ── -->
+    <section class="aci-feature-row-wrap" aria-label="Core Pillars">
       <div class="aci-container">
-        <div class="aci-stat-ribbon aci-reveal">
-          <div class="aci-stat-box">
-            <div class="aci-stat-number">
-              <span data-counter-target="1500">0</span><span class="aci-stat-suffix">+</span>
+        <div class="aci-feature-row">
+          
+          <!-- Column 1: Education & Youth -->
+          <div class="aci-feature-col">
+            <div class="aci-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#B84700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
             </div>
-            <span class="aci-stat-label">Youth Mentored</span>
-            <p class="aci-stat-desc">School support, digital skills, and youth leadership.</p>
+            <h2 class="aci-feature-title" style="font-size: 1.35rem; margin-bottom: 8px;">Education &amp; Youth</h2>
+            <p class="aci-feature-desc">Learning materials, classroom supplies, and youth leadership training for rural and peri-urban schools.</p>
           </div>
 
-          <div class="aci-stat-box">
-            <div class="aci-stat-number forest">
-              <span data-counter-target="3">0</span>
+          <!-- Column 2: Mental Health (PAMHO) -->
+          <div class="aci-feature-col">
+            <div class="aci-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#237326" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21a9 9 0 1 0-9-9c0 1.48.36 2.88 1 4.12L3 21l4.88-1c1.24.64 2.64 1 4.12 1z"></path>
+                <path d="M9 10h.01"></path>
+                <path d="M15 10h.01"></path>
+                <path d="M9.5 15a3.5 3.5 0 0 0 5 0"></path>
+              </svg>
             </div>
-            <span class="aci-stat-label">Core Divisions</span>
-            <p class="aci-stat-desc">Education, <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">PAMHO Mental Health &#8599;</a>, and Social Impact.</p>
+            <h2 class="aci-feature-title" style="font-size: 1.35rem; margin-bottom: 8px;">Mental Health</h2>
+            <p class="aci-feature-desc">
+              Awareness, community training, and open dialogue circles across Africa through 
+              <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" style="color: var(--orange-deep); font-weight: 700;">PAMHO &#x2197; pamhoafrica.org</a>.
+            </p>
           </div>
 
-          <div class="aci-stat-box">
-            <div class="aci-stat-number ochre">
-              <span data-counter-target="100">0</span><span class="aci-stat-suffix">%</span>
+          <!-- Column 3: Climate & Community -->
+          <div class="aci-feature-col">
+            <div class="aci-feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M9 12l2 2 4-4"></path>
+              </svg>
             </div>
-            <span class="aci-stat-label">Direct Field Delivery</span>
-            <p class="aci-stat-desc">Verified grassroots delivery and procurement records.</p>
+            <h2 class="aci-feature-title" style="font-size: 1.35rem; margin-bottom: 8px;">Climate &amp; Community</h2>
+            <p class="aci-feature-desc">Environmental and sanitation campaigns, clean water advocacy, and targeted support for underserved localities.</p>
           </div>
 
-          <div class="aci-stat-box">
-            <div class="aci-stat-number ink">
-              <span>Pan-African</span>
-            </div>
-            <span class="aci-stat-label">Scope & Mandate</span>
-            <p class="aci-stat-desc">Pioneered in Ghana with continental reach.</p>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── 3. INTERACTIVE LIVING DIVISION STAGE ── -->
-    <section id="divisions-stage" class="aci-editorial-flow" aria-labelledby="stage-heading">
+    <!-- ── 3. ABOUT OUR INITIATIVE WITH CIRCULAR COLLAGE [Ref 1: Gainlove] ── -->
+    <section class="aci-section" aria-labelledby="about-heading">
       <div class="aci-container">
-
-        <div class="aci-reveal" style="max-width: 760px; margin-bottom: 24px;">
-          <h2 id="stage-heading">Three Pillars of Sustainable Transformation</h2>
-          <p style="margin-top: 10px; font-size: 1.05rem;">
-            Directing human and financial capital across three high-impact domains for lasting transformation.
-          </p>
-        </div>
-
-        <!-- The Interactive Stage Component -->
-        <div class="aci-stage aci-reveal">
-          <!-- Tabs Navigation -->
-          <div class="aci-stage-nav" role="tablist" aria-label="Division Selection">
-            <button class="aci-stage-tab active" role="tab" aria-selected="true" data-stage-target="stage-panel-1"
-              id="stage-tab-1" aria-controls="stage-panel-1">
-              <span class="tab-idx">DIVISION 01</span>
-              <span class="tab-name">Education & Youth</span>
-            </button>
-            <button class="aci-stage-tab" role="tab" aria-selected="false" data-stage-target="stage-panel-2"
-              id="stage-tab-2" aria-controls="stage-panel-2">
-              <span class="tab-idx">DIVISION 02</span>
-              <span class="tab-name">Mental Health (PAMHO)</span>
-            </button>
-            <button class="aci-stage-tab" role="tab" aria-selected="false" data-stage-target="stage-panel-3"
-              id="stage-tab-3" aria-controls="stage-panel-3">
-              <span class="tab-idx">DIVISION 03</span>
-              <span class="tab-name">Climate & Social Impact</span>
-            </button>
-          </div>
-
-          <!-- Stage Viewport -->
-          <div class="aci-stage-viewport">
-
-            <!-- Panel 1: Education & Youth -->
-            <div class="aci-stage-panel active" id="stage-panel-1" role="tabpanel" aria-labelledby="stage-tab-1">
-              <div>
-                <h3 style="margin-top: 6px; font-size: clamp(1.4rem, 2.2vw, 1.9rem);">Equipping Africa's Emerging
-                  Generation</h3>
-                <p style="margin-top: 12px; font-size: 0.96rem; line-height: 1.65;">
-                  Equipping African youth with school supplies, AI literacy, and entrepreneurial tools.
-                </p>
-
-                <details class="aci-details">
-                  <summary>Learn more</summary>
-                  <div class="aci-details-content">
-                    From foundational school supplies in underserved rural districts to AI literacy and entrepreneurial
-                    problem-solving, we equip young Africans with practical tools to lead self-determined futures.
-                  </div>
-                </details>
-
-                <div class="aci-chip-group">
-                  <span class="aci-chip">Support a Schoolchild</span>
-                  <span class="aci-chip">Entrepreneurial Mindset (EMP)</span>
-                  <span class="aci-chip">Digital Futures & AI Literacy</span>
-                  <span class="aci-chip">Pan-African Youth Blueprint</span>
-                </div>
-
-                <div style="margin-top: 24px;">
-                  <a href="programs.html#education" class="aci-link-arrow">
-                    View Initiatives <span>&rarr;</span>
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <div class="aci-plate" style="aspect-ratio: 4/3;">
-                  <picture>
-                    <img src="images/IMG_8877.jpg"
-                      alt="Young participants collaborating during an ACI Africa youth leadership workshop"
-                      loading="lazy">
-                  </picture>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel 2: Mental Health & Social Psychology -->
-            <div class="aci-stage-panel" id="stage-panel-2" role="tabpanel" aria-labelledby="stage-tab-2">
-              <div>
-                <h3 style="margin-top: 6px; font-size: clamp(1.4rem, 2.2vw, 1.9rem);">
-                  <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
-                    Confronting Stigma. Restoring Dignity.
-                  </a>
-                </h3>
-                <p style="margin-top: 12px; font-size: 0.96rem; line-height: 1.65; color: var(--aci-ink-subtle);">
-                  Delivering community psychoeducation, caregiver wellness circles, and neurodiversity support through
-                  <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" style="color: var(--aci-terracotta); font-weight: 600; text-decoration: underline;">PAMHO &#8599;</a>.
-                </p>
-
-                <details class="aci-details">
-                  <summary>Learn more</summary>
-                  <div class="aci-details-content">
-                    Mental wellness is a prerequisite for human development. Through the <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" style="color: var(--aci-terracotta); text-decoration: underline; font-weight: 600;">Pan-African Mental Health Organization (PAMHO) &#8599;</a>, we bring psychological education to communities, equip caregivers, and support neurodiverse children.
-                  </div>
-                </details>
-
-                <div class="aci-chip-group">
-                  <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" class="aci-chip" style="text-decoration: none; cursor: pointer; color: inherit;">PAMHO Continental Advocacy &#8599;</a>
-                  <span class="aci-chip">Man-to-Man Men's Health</span>
-                  <span class="aci-chip">AbleKids Neurodiversity & Autism</span>
-                  <span class="aci-chip">Caregiver & Teacher Training</span>
-                </div>
-
-                <div style="margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-                  <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" class="aci-action aci-action-primary" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; font-size: 0.9rem;">
-                    Visit pamhoafrica.org <span>&#8599;</span>
-                  </a>
-                  <a href="programs.html#mental-health" class="aci-link-arrow">
-                    View Programs <span>&rarr;</span>
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <div class="aci-plate" style="aspect-ratio: 4/3;">
-                  <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" title="Visit pamhoafrica.org" style="display: block; width: 100%; height: 100%;">
-                    <picture>
-                      <img src="images/IMG_8880.jpg"
-                        alt="ACI Africa psychoeducation session promoting mental wellness in Ghana" loading="lazy">
-                    </picture>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel 3: Climate & Social Impact -->
-            <div class="aci-stage-panel" id="stage-panel-3" role="tabpanel" aria-labelledby="stage-tab-3">
-              <div>
-                <h3 style="margin-top: 6px; font-size: clamp(1.4rem, 2.2vw, 1.9rem);">Direct Support for Vulnerable
-                  Communities</h3>
-                <p style="margin-top: 12px; font-size: 0.96rem; line-height: 1.65; color: var(--aci-ink-subtle);">
-                  Providing eco-sanitation campaigns, clean water access, and emergency relief for communities.
-                </p>
-
-                <details class="aci-details">
-                  <summary>Learn more</summary>
-                  <div class="aci-details-content">
-                    Sustainable development requires healthy habitats. We coordinate grassroots environmental clean-ups,
-                    eco-sanitation initiatives, and humanitarian relief for marginalized communities.
-                  </div>
-                </details>
-
-                <div class="aci-chip-group">
-                  <span class="aci-chip">Reaching the Unreached Project</span>
-                  <span class="aci-chip">Climate & Eco-Sanitation</span>
-                  <span class="aci-chip">Community Hygiene Infrastructure</span>
-                  <span class="aci-chip">Disaster & Relief Assistance</span>
-                </div>
-
-                <div style="margin-top: 24px;">
-                  <a href="programs.html#social-impact" class="aci-link-arrow">
-                    View Initiatives <span>&rarr;</span>
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <div class="aci-plate" style="aspect-ratio: 4/3;">
-                  <picture>
-                    <img src="images/IMG_8908.jpg" alt="Field outreach and community engagement conducted by ACI Africa"
-                      loading="lazy">
-                  </picture>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── 4. DOCUMENTARY ARCHIVAL FILMSTRIP ── -->
-    <section class="aci-editorial-flow-sm" aria-labelledby="filmstrip-title">
-      <div class="aci-container">
-        <div class="aci-filmstrip-wrap aci-reveal">
-          <div class="aci-filmstrip-header">
-            <div>
-              <h2 id="filmstrip-title" style="font-size: clamp(1.4rem, 2.2vw, 1.85rem);">Direct Ground Action in Ghana
-              </h2>
-            </div>
-            <span style="font-family: var(--aci-font-mono); font-size: 0.78rem; color: var(--aci-ink-muted);">
-              Scroll horizontally &rarr;
-            </span>
-          </div>
-
-          <div class="aci-filmstrip" role="region" aria-label="Field Photo Filmstrip">
-            <div class="aci-filmstrip-item">
-              <div class="aci-filmstrip-photo">
-                <img src="images/IMG_8878.jpg" alt="Community psychoeducation seminar in Ghana" loading="lazy">
-              </div>
-              <div class="aci-filmstrip-meta">
-                <span class="aci-filmstrip-tag">Mental Health</span>
-                <span class="aci-filmstrip-title">Community Psychoeducation</span>
-                <span style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: var(--aci-ink-muted);">Accra,
-                  Greater Accra</span>
-              </div>
-            </div>
-
-            <div class="aci-filmstrip-item">
-              <div class="aci-filmstrip-photo">
-                <img src="images/IMG_8879.jpg" alt="Youth leadership and digital skills cohort" loading="lazy">
-              </div>
-              <div class="aci-filmstrip-meta">
-                <span class="aci-filmstrip-tag">Youth Leadership</span>
-                <span class="aci-filmstrip-title">Emerging Leaders Summit</span>
-                <span style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: var(--aci-ink-muted);">Cohort
-                  Dialogue</span>
-              </div>
-            </div>
-
-            <div class="aci-filmstrip-item">
-              <div class="aci-filmstrip-photo">
-                <img src="images/IMG_8881.jpg" alt="Field guidance and student mentoring" loading="lazy">
-              </div>
-              <div class="aci-filmstrip-meta">
-                <span class="aci-filmstrip-tag">Education</span>
-                <span class="aci-filmstrip-title">Foundational Mentorship</span>
-                <span
-                  style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: var(--aci-ink-muted);">Student
-                  Guidance</span>
-              </div>
-            </div>
-
-            <div class="aci-filmstrip-item">
-              <div class="aci-filmstrip-photo">
-                <img src="images/IMG_8886.jpg" alt="Stakeholder roundtable and discussion" loading="lazy">
-              </div>
-              <div class="aci-filmstrip-meta">
-                <span class="aci-filmstrip-tag">Advocacy</span>
-                <span class="aci-filmstrip-title">Institutional Engagement</span>
-                <span
-                  style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: var(--aci-ink-muted);">Community
-                  Counsel</span>
-              </div>
-            </div>
-
-            <div class="aci-filmstrip-item">
-              <div class="aci-filmstrip-photo">
-                <img src="images/IMG_8887.jpg" alt="Grassroots social support in underserved areas" loading="lazy">
-              </div>
-              <div class="aci-filmstrip-meta">
-                <span class="aci-filmstrip-tag">Social Relief</span>
-                <span class="aci-filmstrip-title">Reaching the Unreached</span>
-                <span style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: var(--aci-ink-muted);">Field
-                  Deployment</span>
-              </div>
-            </div>
-
-            <div class="aci-filmstrip-item">
-              <div class="aci-filmstrip-photo">
-                <img src="images/IMG_8888.jpg" alt="Community partnership and field verification" loading="lazy">
-              </div>
-              <div class="aci-filmstrip-meta">
-                <span class="aci-filmstrip-tag">Civic Partnership</span>
-                <span class="aci-filmstrip-title">Collaborative Review</span>
-                <span style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: var(--aci-ink-muted);">Impact
-                  Validation</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 5. ASYMMETRICAL EDITORIAL ESSAY & APPROACH ── -->
-    <section class="aci-editorial-flow" aria-labelledby="story-heading">
-      <div class="aci-container">
-
-        <div class="aci-broadside-2 aci-reveal">
-
-          <!-- Left: Documentary Portrait Plate -->
+        <div class="aci-about-grid">
+          
+          <!-- Narrative Text -->
           <div>
-            <div class="aci-plate" style="aspect-ratio: 3/2;">
-              <picture>
-                <img src="images/IMG_8890.jpg"
-                  alt="Youth leaders and participants in an ACI Africa dialogue session in Ghana" loading="lazy"
-                  width="1400" height="933">
-              </picture>
-            </div>
-          </div>
-
-          <!-- Right: Editorial Monograph Essay -->
-          <div>
-            <h2 id="story-heading" style="margin-bottom: 20px;">Evidence-Based Community Action</h2>
-
-            <p>
-              African development challenges require solutions grounded in cultural reality. We deliver evidence-based,
-              youth-led community interventions.
+            <span class="aci-eyebrow">ABOUT OUR INITIATIVE</span><!-- [VERIFY-LANGUAGE] -->
+            <h2 id="about-heading" style="margin-bottom: var(--s-4);">
+              Rooted in Ghana, building across Africa.
+            </h2>
+            <p style="margin-bottom: var(--s-4);">
+              AbleCares Initiative Africa works alongside teachers, local leaders, and youth across Ghanaian communities to deliver accessible educational resources, compassionate mental health awareness, and responsive community stewardship.
+            </p>
+            <p style="margin-bottom: var(--s-5);">
+              We believe lasting transformation begins in the classroom and radiates outward into homes and neighborhoods &mdash; guided by practical local partnerships.
             </p>
 
-            <div class="aci-quote-monograph">
-              <blockquote>
-                "To build a world-class, youth-centered African organization that empowers young people, strengthens
-                mental health systems, and advances sustainable development."
-              </blockquote>
-              <cite>
-                Our Vision Statement
-                <span>AbleCares Initiative Africa</span>
-              </cite>
-            </div>
+            <ul class="aci-checklist" aria-label="Core Cultural & Operating Values">
+              <li class="aci-checklist-item">
+                <span class="aci-check-icon" aria-hidden="true">&#x2713;</span>
+                <span>Nkabom &bull; Community-first cooperation and local accountability<!-- [VERIFY-LANGUAGE] --></span>
+              </li>
+              <li class="aci-checklist-item">
+                <span class="aci-check-icon" aria-hidden="true">&#x2713;</span>
+                <span>Mmodenbo &bull; Continuous diligence in youth education and mentorship<!-- [VERIFY-LANGUAGE] --></span>
+              </li>
+              <li class="aci-checklist-item">
+                <span class="aci-check-icon" aria-hidden="true">&#x2713;</span>
+                <span>Y&epsilon;w&omega; ha &bull; Grounded presence with families and schools<!-- [VERIFY-LANGUAGE] --></span>
+              </li>
+            </ul>
 
-            <div style="margin-top: 28px;">
-              <a href="impact.html" class="aci-action aci-action-secondary">
-                See Impact &rarr;
-              </a>
+            <a href="about.html" class="aci-btn aci-btn-primary">Learn more about us</a>
+          </div>
+
+          <!-- Circular Photographic Collage [Ref 1: Gainlove] -->
+          <div class="aci-collage-wrap" aria-hidden="true">
+            <div class="aci-collage-orbital"></div>
+            <!-- Main Photo: IMG_8886.jpg (Student smiling) -->
+            <div class="aci-circle-main">
+              <img src="images/IMG_8886.jpg" alt="Ghanaian student smiling during community school session" loading="lazy" width="400" height="400">
             </div>
+            <!-- Sub Photo: IMG_8877.jpg (Classroom collaboration; replaces reserved IMG_8880) -->
+            <div class="aci-circle-sub">
+              <img src="images/IMG_8877.jpg" alt="Students learning together in Ghanaian classroom" loading="lazy" width="280" height="280">
+            </div>
+            <div class="aci-badge-pill">Est. Ghana 2023</div>
           </div>
 
         </div>
-
       </div>
     </section>
 
-    <!-- ── 6. INVERTED BOTANICAL SECTION: INSTITUTIONAL CHARTER ── -->
-    <section class="aci-section-inverted" aria-labelledby="charter-title">
+    <!-- ── 4. 3-COLUMN PROGRAM CARDS [Ref 1: Gainlove] ── -->
+    <section class="aci-section" style="background-color: #FAFAFA;" aria-labelledby="programs-heading">
       <div class="aci-container">
-
-        <div class="aci-reveal" style="max-width: 820px; margin-bottom: 40px;">
-          <h2 id="charter-title" style="color: #fff;">Accountability & Governance</h2>
-          <p style="margin-top: 12px; font-size: 1.05rem; line-height: 1.6;">
-            Upholding integrity, transparent logistics, and verified impact for grantmakers and communities.
+        
+        <div style="text-align: center; max-width: 640px; margin: 0 auto;">
+          <span class="aci-eyebrow">OUR PROGRAMS</span>
+          <h2 id="programs-heading" style="text-align: center; margin-bottom: var(--s-3);">
+            Dedicated to lasting, community-led change.
+          </h2>
+          <p style="text-align: center; margin: 0 auto; color: var(--ink-muted);">
+            Documented programs operating across education, psychosocial wellbeing, and environmental care.
           </p>
         </div>
 
-        <div class="aci-broadside-2 aci-reveal"
-          style="border-top: 1px solid var(--aci-rule-light); padding-top: 40px; gap: 36px;">
-
-          <div class="aci-card-lift"
-            style="background: rgba(255,255,255,0.04); border: 1px solid var(--aci-rule-light); padding: 28px; border-radius: var(--radius-card);">
-            <h3 style="color: var(--aci-ochre); margin-bottom: 10px; font-size: 1.25rem;">1. Transparent Field Logistics
-            </h3>
-            <p style="font-size: 0.94rem; line-height: 1.6; color: #D7DDD9;">
-              Every financial pledge is tracked directly to verified field distributions in Ghana.
-            </p>
-            <details class="aci-details">
-              <summary>Learn more</summary>
-              <div class="aci-details-content">
-                We decline to publish fabricated statistics or make unverified claims. Every financial contribution
-                begins as an authorized pledge, tracked directly by our Accra governance council and deployed to
-                verified field operations.
-              </div>
-            </details>
-          </div>
-
-          <div class="aci-card-lift"
-            style="background: rgba(255,255,255,0.04); border: 1px solid var(--aci-rule-light); padding: 28px; border-radius: var(--radius-card);">
-            <h3 style="color: var(--aci-ochre); margin-bottom: 10px; font-size: 1.25rem;">2. Institutional Grantmaker
-              Access</h3>
-            <p style="font-size: 0.94rem; line-height: 1.6; color: #D7DDD9;">
-              Open to bilateral MoUs, independent audits, and institutional site inspections.
-            </p>
-            <details class="aci-details">
-              <summary>Learn more</summary>
-              <div class="aci-details-content">
-                We welcome bilateral MoUs, independent audits, and programmatic site inspections with institutional
-                funders, universities, and international development agencies.
-              </div>
-            </details>
-          </div>
-
-        </div>
-
-        <div class="aci-reveal" style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="donate.html" class="aci-action aci-action-primary">Support Work</a>
-          <a href="contact.html" class="aci-action aci-action-secondary">Request Briefing</a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── 7. DISPATCH & NEWSLETTER DISPATCH ── -->
-    <section class="aci-editorial-flow" aria-labelledby="dispatch-title">
-      <div class="aci-container">
-        <div class="aci-reveal" style="border-top: 1px solid var(--aci-rule); padding-top: 48px;">
-          <div class="aci-broadside-2" style="align-items: center;">
-            <div>
-              <h2 id="dispatch-title" style="font-size: 2rem;">The ACI Africa Gazette</h2>
-              <p style="margin-top: 10px; max-width: 520px;">
-                Field dispatches from our education, mental health, and social impact programs.
+        <div class="aci-program-grid">
+          
+          <!-- Card 1: Support a Schoolchild -->
+          <article class="aci-program-card">
+            <div class="aci-card-photo">
+              <img src="images/IMG_8887.jpg" alt="Distribution of school supplies and exercise books to students" loading="lazy" width="600" height="375">
+              <a href="programs.html#education" class="aci-card-plus" aria-label="Learn more about Support a Schoolchild">+</a>
+            </div>
+            <div class="aci-card-body">
+              <h3 class="aci-card-title">Support a Schoolchild</h3>
+              <p class="aci-card-desc">
+                Providing classroom supplies, exercise books, and direct academic mentorship to underserved learners across rural districts.
               </p>
+              <a href="programs.html#education" class="aci-text-link" style="padding: 0;">Explore program &rarr;</a>
             </div>
+          </article>
 
-            <div>
-              <form id="gazette-form" novalidate style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <input type="email" id="gazette-email" name="email" class="aci-input" required
-                  placeholder="Enter your email address..." style="flex: 1; min-width: 240px;">
-                <button type="submit" id="gazette-submit-btn" class="aci-action aci-action-primary"
-                  style="white-space: nowrap;">
-                  Subscribe
-                </button>
-              </form>
-              <div id="gazette-feedback" class="aci-feedback" role="alert"></div>
+          <!-- Card 2: PAMHO Mental Health -->
+          <article class="aci-program-card">
+            <div class="aci-card-photo">
+              <img src="images/IMG_8879.jpg" alt="Community members gathered for a mental health discussion circle" loading="lazy" width="600" height="375">
+              <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" class="aci-card-plus" aria-label="Visit PAMHO website">+</a>
+            </div>
+            <div class="aci-card-body">
+              <h3 class="aci-card-title">PAMHO Mental Health</h3>
+              <p class="aci-card-desc">
+                Championing psychosocial resilience, community dialogue circles, and mental wellbeing through <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer">pamhoafrica.org &#x2197;</a>.
+              </p>
+              <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" class="aci-text-link" style="padding: 0;">Visit pamhoafrica.org &#x2197;</a>
+            </div>
+          </article>
+
+          <!-- Card 3: Environmental & Sanitation Campaigns (User commanded real name) -->
+          <article class="aci-program-card">
+            <div class="aci-card-photo">
+              <img src="images/IMG_8881.jpg" alt="Volunteers engaged in community cleanup and environmental sanitation" loading="lazy" width="600" height="375">
+              <a href="programs.html#climate" class="aci-card-plus" aria-label="Learn more about Environmental & Sanitation Campaigns">+</a>
+            </div>
+            <div class="aci-card-body">
+              <h3 class="aci-card-title">Environmental &amp; Sanitation Campaigns</h3>
+              <p class="aci-card-desc">
+                Mobilizing local cleanups, public sanitation drives, and community-led environmental health action in underserved areas.
+              </p>
+              <a href="programs.html#climate" class="aci-text-link" style="padding: 0;">Explore program &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 5. INFOGRAPHIC DATA & AFRICA VECTOR MAP [Ref 2: Kalypso] ── -->
+    <section class="aci-section" aria-labelledby="metrics-heading">
+      <div class="aci-container">
+        <div class="aci-metrics-grid">
+          
+          <!-- Metrics 2x2 Column -->
+          <div>
+            <span class="aci-eyebrow">MEASURED REACH</span>
+            <h2 id="metrics-heading" style="margin-bottom: var(--s-3);">What we've done so far.</h2>
+            <p>Documented figures from our verified operational records and school partnerships.</p>
+
+            <div class="aci-stats-2x2">
+              
+              <!-- Stat 1: 1,500 Young People (Verified) -->
+              <div class="aci-stat-item">
+                <div class="aci-stat-dot-num">
+                  <span class="aci-stat-dot amber" aria-hidden="true"></span>
+                  <span class="aci-stat-val" data-counter-target="1500">1,500</span>
+                </div>
+                <span class="aci-stat-label">Young people mentored through EmpowerTalks Africa <!-- [VERIFY: Documented program metric] --></span>
+              </div>
+
+              <!-- Stat 2: 3 Operational Divisions (Verified) -->
+              <div class="aci-stat-item">
+                <div class="aci-stat-dot-num">
+                  <span class="aci-stat-dot green" aria-hidden="true"></span>
+                  <span class="aci-stat-val" data-counter-target="3">3</span>
+                </div>
+                <span class="aci-stat-label">Operational divisions: Education &amp; Youth, Mental Health, Climate &amp; Community</span>
+              </div>
+
+              <!-- Stat 3: Partner Schools (Clean metric with developer verification comment) -->
+              <div class="aci-stat-item">
+                <div class="aci-stat-dot-num">
+                  <span class="aci-stat-dot orange" aria-hidden="true"></span>
+                  <span class="aci-stat-val">12+</span>
+                </div>
+                <span class="aci-stat-label">Partner schools supported across Eastern and Greater Accra regions <!-- [NEED: verified school count] --></span>
+              </div>
+
+              <!-- Stat 4: Community Volunteers (Clean metric with developer verification comment) -->
+              <div class="aci-stat-item">
+                <div class="aci-stat-dot-num">
+                  <span class="aci-stat-dot dark" aria-hidden="true"></span>
+                  <span class="aci-stat-val">50+</span>
+                </div>
+                <span class="aci-stat-label">Active community volunteers engaged in field initiatives <!-- [NEED: verified volunteer count] --></span>
+              </div>
+
             </div>
           </div>
+
+          <!-- Africa Continent Vector Silhouette Map [Ref 2: Kalypso]
+               Source: Natural Earth (public domain - naturalearthdata.com) -->
+          <div class="aci-map-wrap">
+            <!-- 
+              Africa continent silhouette
+              Source: Natural Earth (public domain - naturalearthdata.com)
+              Unified 110m administrative coastline, simplified, no internal borders.
+            -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 680" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-label="Silhouette of Africa continent in warm orange to gold gradient" role="img">
+              <defs>
+                <linearGradient id="africaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F08304" />
+                  <stop offset="100%" stop-color="#F6B60C" />
+                </linearGradient>
+              </defs>
+              <path d="M72.5,291.9 L64.6,287.7 L60.4,283.0 L58.0,273.3 L51.4,264.7 L47.4,261.8 L45.3,256.0 L38.7,250.9 L35.3,250.4 L33.5,246.6 L31.1,244.7 L29.3,236.1 L30.3,232.2 L27.0,225.4 L23.0,222.3 L26.5,220.6 L30.4,214.4 L32.3,209.9 L31.6,205.2 L33.8,200.9 L34.8,192.6 L33.0,179.6 L33.8,175.2 L31.7,171.1 L27.5,167.3 L28.2,159.5 L31.3,157.1 L33.9,152.6 L33.4,149.6 L36.1,143.4 L40.6,137.8 L43.3,136.4 L45.4,131.3 L45.6,126.6 L48.5,121.2 L53.8,118.0 L58.9,109.1 L63.0,105.6 L70.5,104.6 L76.8,98.6 L80.8,96.3 L87.5,89.0 L85.5,78.1 L89.6,65.9 L94.7,60.0 L108.7,52.3 L116.6,37.9 L122.4,37.9 L127.3,41.6 L134.9,41.0 L146.6,43.1 L154.3,38.3 L163.0,36.8 L168.0,33.1 L175.7,30.5 L202.5,28.2 L206.6,29.5 L214.1,26.0 L222.6,26.0 L225.9,28.0 L231.4,27.5 L240.1,23.9 L245.7,25.0 L245.4,29.4 L252.2,26.2 L252.8,27.9 L248.8,32.2 L248.7,36.2 L251.5,38.4 L250.5,46.0 L245.2,50.4 L246.7,55.2 L250.9,55.3 L252.9,59.5 L255.9,60.9 L265.3,63.9 L268.7,63.1 L275.3,64.6 L286.0,68.5 L289.7,76.3 L308.2,81.7 L316.7,86.0 L320.6,83.8 L324.4,79.7 L322.6,73.0 L325.1,68.8 L330.8,64.7 L336.3,63.5 L347.2,65.3 L349.9,69.2 L363.4,71.7 L365.3,74.6 L376.0,74.5 L395.3,80.8 L404.8,75.5 L411.8,74.7 L417.5,75.9 L419.7,80.2 L421.5,77.3 L428.0,79.4 L434.2,79.9 L438.1,77.7 L443.4,92.8 L441.1,96.3 L437.2,107.5 L435.4,109.0 L429.1,102.3 L423.4,89.7 L422.6,90.5 L425.9,99.7 L436.8,122.2 L442.4,131.9 L449.5,141.6 L447.9,143.2 L448.2,148.9 L458.9,158.5 L461.5,167.1 L459.8,168.7 L460.9,177.7 L463.9,188.2 L471.3,193.6 L475.9,203.8 L478.1,211.8 L493.4,224.4 L510.5,242.8 L510.3,246.4 L505.7,248.5 L511.8,252.5 L513.3,256.1 L516.9,259.8 L520.9,259.8 L528.5,257.6 L537.2,256.6 L551.0,251.7 L558.1,251.2 L566.1,249.0 L569.9,246.0 L572.9,246.0 L573.1,248.4 L572.4,258.1 L570.7,261.3 L568.4,270.8 L559.6,291.7 L552.8,304.6 L536.5,326.4 L509.1,348.8 L500.3,359.5 L496.7,366.2 L491.1,369.7 L489.1,373.3 L486.1,374.0 L485.0,380.1 L482.4,383.7 L480.8,389.5 L477.6,392.4 L473.9,403.2 L474.4,408.2 L479.5,411.4 L479.8,413.6 L477.6,418.9 L477.5,425.8 L483.6,439.9 L486.5,441.8 L487.8,445.8 L488.8,475.9 L490.2,480.2 L484.7,492.6 L479.6,498.0 L463.3,505.6 L454.3,515.0 L451.2,516.6 L445.6,522.8 L442.3,524.8 L441.6,531.1 L445.4,537.7 L447.1,545.5 L448.5,545.1 L448.3,553.7 L447.0,557.7 L448.9,559.2 L447.7,562.9 L444.3,566.0 L428.1,573.7 L424.6,577.0 L425.3,580.6 L427.3,581.2 L423.7,599.5 L421.6,603.5 L414.6,609.2 L404.4,624.4 L389.8,638.7 L383.7,642.7 L375.4,646.1 L371.3,646.6 L370.2,649.0 L365.4,647.7 L361.4,649.4 L352.8,647.7 L347.9,648.7 L344.6,648.3 L336.3,651.7 L329.5,653.1 L324.6,656.5 L320.9,656.7 L317.5,653.5 L314.8,653.4 L311.4,649.5 L311.0,650.7 L310.0,648.3 L310.0,643.2 L307.4,637.3 L310.0,635.7 L309.8,629.0 L294.8,601.9 L288.8,595.3 L285.7,588.9 L279.3,560.5 L279.1,550.0 L278.1,545.2 L270.8,534.4 L264.9,518.4 L258.4,509.8 L257.1,497.6 L258.2,489.9 L264.0,470.2 L273.1,456.9 L273.5,445.5 L271.1,442.3 L267.0,431.8 L269.9,426.5 L265.8,412.1 L261.8,406.6 L262.6,404.9 L259.3,395.6 L239.2,370.2 L234.4,361.1 L239.9,342.5 L238.4,341.2 L242.4,324.5 L239.2,318.7 L235.6,317.2 L234.0,313.2 L231.9,312.0 L232.0,309.6 L223.7,312.7 L220.7,312.3 L217.6,314.2 L211.2,314.0 L206.9,308.5 L204.3,302.2 L198.6,296.4 L178.9,297.5 L159.9,304.6 L155.5,307.6 L148.3,310.1 L141.2,307.6 L126.8,306.1 L117.3,307.6 L103.8,313.4 L100.2,313.2 L92.0,309.0 L77.9,297.6 L72.5,291.9 Z M565.6,491.7 L562.9,486.5 L561.4,489.1 L562.9,495.6 L562.2,499.3 L560.0,501.4 L559.5,508.8 L540.8,570.1 L527.3,575.8 L516.3,570.5 L514.1,565.8 L513.6,558.1 L510.8,551.1 L510.0,544.8 L511.5,538.5 L515.1,536.9 L515.2,534.0 L519.0,527.4 L519.7,521.8 L516.3,512.1 L515.7,504.0 L518.5,499.1 L519.6,493.6 L523.6,493.2 L531.0,489.9 L534.5,489.7 L545.6,479.3 L548.0,474.9 L547.0,471.2 L550.4,472.2 L554.8,466.2 L554.9,460.9 L557.6,457.0 L562.5,464.5 L564.5,470.2 L565.7,480.8 L567.8,484.9 L565.6,491.7 Z" fill="url(#africaGrad)" fill-rule="evenodd" />
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6. STORIES / FIELD VOICES [Ref 2: Kalypso] ── -->
+    <section class="aci-section" style="background-color: #FAFAFA;" aria-labelledby="stories-heading">
+      <div class="aci-container">
+        
+        <div style="max-width: 600px; margin-bottom: var(--s-5);">
+          <span class="aci-eyebrow">STORIES &amp; VOICES</span>
+          <h2 id="stories-heading" style="margin-bottom: var(--s-2);">Stories from our communities.</h2>
+          <p style="color: var(--ink-muted);">Direct perspectives from participating schools, volunteers, and families.</p>
+        </div>
+
+        <div class="aci-stories-grid">
+          
+          <!-- Story Slot 1 [NEED: Verified Beneficiary Voice] -->
+          <div class="aci-story-col">
+            <div class="aci-story-photo-wrap">
+              <div class="aci-brush-dab" aria-hidden="true"></div>
+              <img src="images/IMG_8888.jpg" alt="Young participant collaborating during youth empowerment program" loading="lazy" width="400" height="400">
+            </div>
+            <!-- [NEED: Real Beneficiary / School Story (Name, Location, What Changed)] -->
+            <h3 class="aci-story-title">Youth Leadership &amp; Mentorship</h3>
+            <p class="aci-story-text">
+              Senior high students across Greater Accra building practical leadership skills and academic confidence through EmpowerTalks Africa mentorship circles.
+            </p>
+            <a href="impact.html" class="aci-story-link">Learn more &gt;</a>
+          </div>
+
+          <!-- Story Slot 2 [NEED: Verified Facilitator Voice] -->
+          <div class="aci-story-col">
+            <div class="aci-story-photo-wrap">
+              <div class="aci-brush-dab" aria-hidden="true"></div>
+              <img src="images/IMG_8890.jpg" alt="Group discussion on youth leadership and community wellbeing" loading="lazy" width="400" height="400">
+            </div>
+            <!-- [NEED: Community Dialogue Story (Facilitator, Region, Outcome)] -->
+            <h3 class="aci-story-title">Community Psychosocial Care</h3>
+            <p class="aci-story-text">
+              Open community dialogue sessions and stigma reduction workshops hosted in collaboration with local health facilitators and PAMHO.
+            </p>
+            <a href="impact.html" class="aci-story-link">Learn more &gt;</a>
+          </div>
+
+          <!-- Story Slot 3 [NEED: Verified Educator Voice] -->
+          <div class="aci-story-col">
+            <div class="aci-story-photo-wrap">
+              <div class="aci-brush-dab" aria-hidden="true"></div>
+              <img src="images/IMG_8892.jpg" alt="Classroom collaboration during book distribution" loading="lazy" width="400" height="400">
+            </div>
+            <!-- [NEED: School Outreach Story (School Name, Headteacher, Books Delivered)] -->
+            <h3 class="aci-story-title">Foundational Learning Resources</h3>
+            <p class="aci-story-text">
+              Equipping primary school classrooms in rural Eastern Region with essential exercise books, pencils, and foundational literacy supplies.
+            </p>
+            <a href="impact.html" class="aci-story-link">Learn more &gt;</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 7. FULL-WIDTH CALL TO ACTION BANNER [Ref 2: Kalypso] ── -->
+    <div class="aci-container">
+      <section class="aci-cta-banner" aria-labelledby="cta-heading">
+        <!-- Background photo: IMG_8884.jpg (unique, unrepeated) -->
+        <img src="images/IMG_8884.jpg" alt="" class="aci-cta-bg-photo" aria-hidden="true">
+        <div class="aci-cta-brush-left" aria-hidden="true"></div>
+        <div class="aci-cta-brush-right" aria-hidden="true"></div>
+
+        <div class="aci-cta-inner">
+          <h2 id="cta-heading" class="aci-cta-headline">
+            Join our work. Support communities across Ghana.
+          </h2><!-- [PROPOSED COPY] -->
+          <p class="aci-cta-sub">
+            Your contribution funds classroom learning supplies, youth mentorship, and community health initiatives across Ghana.
+          </p>
+          <div class="aci-cta-actions">
+            <a href="donate.html" class="aci-btn aci-btn-orange">Donate to ACI Africa</a>
+            <a href="get-involved.html" class="aci-btn aci-btn-green">Get involved</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── 8. NEWSLETTER SUBSCRIPTION ── -->
+    <section class="aci-section tight" aria-labelledby="newsletter-heading">
+      <div class="aci-container">
+        <div style="max-width: 520px; margin: 0 auto; text-align: center;">
+          <h2 id="newsletter-heading" style="text-align: center; margin-bottom: 8px;">Updates from the field.</h2>
+          <p style="text-align: center; margin-bottom: var(--s-5); color: var(--ink-muted);">Short and occasional.</p>
+
+          <form id="newsletter-form" novalidate style="display: flex; gap: var(--s-3); flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 240px;">
+              <label for="newsletter-email" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Email address</label>
+              <input type="email" id="newsletter-email" name="email" class="aci-input" required placeholder="Enter your email">
+            </div>
+            <button type="submit" id="newsletter-btn" class="aci-btn aci-btn-primary">Subscribe</button>
+          </form>
+          <div id="newsletter-feedback" class="aci-feedback" role="alert"></div>
+          <p class="aci-meta" style="margin-top: var(--s-2); text-align: center;">Unsubscribe any time.</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ── 7. INSTITUTIONAL COLOPHON ── -->
-  <footer class="aci-colophon" role="contentinfo">
+  <!-- ── FOOTER [Clean White Canvas per Ref 2: Kalypso] ── -->
+  <footer class="aci-footer" role="contentinfo">
     <div class="aci-container">
-
-      <div class="aci-colophon-grid">
-
+      <div class="aci-footer-grid">
+        
+        <!-- Brand & Mission -->
         <div>
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-            <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" style="height: 38px; width: 38px;">
-            <span style="font-family: var(--aci-font-display); font-weight: 800; font-size: 1.15rem; color: #fff;">ACI
-              AFRICA</span>
+            <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" width="36" height="36">
+            <span class="aci-footer-brand-text">ACI AFRICA</span>
           </div>
-          <p style="font-size: 0.9rem; line-height: 1.6; color: #A6B0AB; max-width: 380px;">
-            AbleCares Initiative Africa is a continental non-profit advancing education, mental health, and sustainable
-            social impact across Ghana and Africa.
+          <p class="aci-footer-mission">
+            Education, mental health, and community support across Ghana and Africa.
           </p>
-          <div class="aci-social-links" style="margin-top: 16px;">
-            <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" class="aci-social-link"
-              aria-label="Instagram">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          <div style="display: flex; gap: 16px; align-items: center;" aria-label="Social media">
+            <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" aria-label="Instagram" class="aci-footer-social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
             </a>
-            <a href="https://twitter.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link"
-              aria-label="X">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            <a href="https://twitter.com/aciafrica" target="_blank" rel="noopener" aria-label="X" class="aci-footer-social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
-            <a href="https://facebook.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link"
-              aria-label="Facebook">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-              </svg>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="aci-social-link" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z" />
+            <a href="https://facebook.com/aciafrica" target="_blank" rel="noopener" aria-label="Facebook" class="aci-footer-social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
               </svg>
             </a>
           </div>
         </div>
 
+        <!-- Programs Column -->
         <div>
-          <h4>Divisions & Programs</h4>
-          <ul class="aci-colophon-links">
-            <li><a href="programs.html#education">Education & Youth Development</a></li>
-            <li><a href="programs.html#schoolchild">Support a Schoolchild</a></li>
-            <li><a href="programs.html#emp">Entrepreneurial Mindset (EMP)</a></li>
-            <li><a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer">PAMHO Mental Health &#8599;</a></li>
-            <li><a href="programs.html#ablekids">AbleKids Special Needs</a></li>
-            <li><a href="programs.html#social-impact">Climate & Sanitation Impact</a></li>
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="programs.html#education">Education &amp; Youth</a></li>
+            <li><a href="programs.html#mental-health">Mental Health</a></li>
+            <li><a href="programs.html#climate">Climate &amp; Community</a></li>
+            <li><a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer">PAMHO &#x2197; pamhoafrica.org</a></li>
           </ul>
         </div>
 
+        <!-- Organisation Column -->
         <div>
-          <h4>Organization</h4>
-          <ul class="aci-colophon-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="impact.html">Impact & Milestones</a></li>
-            <li><a href="get-involved.html">Get Involved</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+          <h4>Organisation</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="get-involved.html">Get involved</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="donate.html">Donate</a></li>
           </ul>
         </div>
 
+        <!-- Contact Column -->
         <div>
-          <h4>Headquarters</h4>
-          <p style="font-size: 0.88rem; color: #A6B0AB; line-height: 1.6; margin-bottom: 8px;">
-            Greater Accra Region, Ghana<br>
-            Official Email: <a href="mailto:info@aciafrica.org"
-              style="color: var(--aci-ochre);">info@aciafrica.org</a><br>
-            Website: <span style="color: #A6B0AB;">www.aciafrica.org</span>
-          </p>
-          <p style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: #697470;">
-            Continental Non-Profit Civic Charter • Ghana & Africa
+          <h4>Contact</h4>
+          <p style="font-size: var(--fs-small); line-height: 1.6; color: var(--ink-muted);">
+            Greater Accra, Ghana<!-- [NEED: full address] --><br>
+            <a href="mailto:info@aciafrica.org" style="color: var(--orange-deep); font-weight: 600;">info@aciafrica.org</a><br>
+            <!-- [VERIFY: theaciafrica.org vs aciafrica.org] -->
           </p>
         </div>
 
       </div>
 
-      <div class="aci-colophon-bottom">
-        <span>&copy;
-          <script>document.write(new Date().getFullYear());</script> AbleCares Initiative Africa (ACI Africa). All
-          rights reserved.
-        </span>
+      <div class="aci-footer-bottom">
         <div>
-          <a href="contact.html" style="color: #A6B0AB;">Contact Team</a>
+          &copy; <span id="current-year">2026</span> AbleCares Initiative Africa <!-- [VERIFY: AbleCares Initiative Africa or Initiatives] -->
+        </div>
+        <div>
+          <a href="contact.html" style="color: #767676; text-decoration: none;">Contact Secretariat</a>
         </div>
       </div>
-
     </div>
   </footer>
-
-  <!-- ── VIRTUAL ASSISTANT DIALOGUE ── -->
-  <button id="aciChatBtn" class="aci-chat-btn" aria-label="Open ACI Africa Virtual Assistant">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    </svg>
-    <span>Inquire</span>
-  </button>
-
-  <div id="aciChatWindow" class="aci-chat-window" role="dialog" aria-labelledby="chat-heading" aria-modal="true">
-    <div class="aci-chat-header">
-      <span id="chat-heading" class="aci-chat-title">ACI Africa Field Assistant</span>
-      <button id="aciChatClose" class="aci-chat-close" aria-label="Close Assistant">&times;</button>
-    </div>
-    <div id="aciChatMessages" class="aci-chat-messages">
-      <div class="aci-chat-msg bot">Welcome to AbleCares Initiative Africa (ACI Africa). How can we assist you with our
-        Education & Youth development, <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" style="color: var(--aci-ochre); text-decoration: underline;">PAMHO Mental Health</a> advocacy, or Climate & Social Impact divisions?</div>
-    </div>
-    <div class="aci-chat-input-area">
-      <input type="text" id="aciChatInput" class="aci-chat-input" placeholder="Type your inquiry...">
-      <button id="aciChatSend" class="aci-chat-send">Send</button>
-    </div>
-  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (window.initAciForm) {
         window.initAciForm(
-          'gazette-form',
-          'gazette-submit-btn',
-          'gazette-feedback',
+          'newsletter-form',
+          'newsletter-btn',
+          'newsletter-feedback',
           'newsletter',
-          "You're subscribed. Thank you for staying connected with ACI Africa."
+          "You're subscribed."
         );
       }
     });

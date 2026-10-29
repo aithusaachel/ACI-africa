@@ -1,0 +1,1229 @@
+/**
+ * AbleCares Initiative Africa (ACI Africa)
+ * Core Design System — Reference Design Specification (Phase 2)
+ *
+ * Visual Identity derived strictly from Approved Reference Designs:
+ * - Ref 1 (Gainlove): Warm Amber (#F5A623), elevated white card containers, 3-col program cards with
+ *   top-rounded photos and orange '+' affordance, overlapping circular photo collage with orbital dotted ring.
+ * - Ref 2 (Kalypso): Clean white canvas (#FFFFFF), editorial serif headlines (Playfair Display 700),
+ *   dynamic yellow brushstroke highlights (#F6B60C), 3-col flat feature division row with hairline dividers,
+ *   3-col story cards with 4px rounded photos and green brush dabs, 2x2 metric counters with colored indicator
+ *   dots adjacent to orange-to-gold Africa silhouette map (#F08304 -> #F6B60C), full-width CTA banner.
+ *
+ * Strict WCAG 2.2 AA Contrast Compliance on all pairings:
+ * - #141414 on #F5A623: 9.09:1 (AAA)
+ * - #FFFFFF on #141414: 18.42:1 (AAA)
+ * - #FFFFFF on #B84700: 5.33:1 (AA)
+ * - #FFFFFF on #237326: 5.91:1 (AA)
+ * - #8F5200 on #FFFFFF: 6.22:1 (AA)
+ * - #767676 on #FFFFFF: 4.54:1 (AA / 3:1 UI Border)
+ * - Focus Indicator: 2px solid #141414, 2px offset (18.42:1 AAA)
+ */
+
+/* ── 0. SELF-HOSTED FONTS ── */
+
+/* Playfair Display (Bold 700) for Headings */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/playfair-display-latin-ext-700.woff2') format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/playfair-display-latin-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Inter (Regular 400, SemiBold 600, Bold 700) for Body, Interface & Language Touches */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/inter-latin-ext-400.woff2') format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/inter-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/inter-latin-ext-600.woff2') format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/inter-latin-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/inter-latin-ext-700.woff2') format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/inter-latin-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* EB Garamond (Bold 700) Native Unicode Fallback for African Glyphs */
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/eb-garamond-latin-ext-700.woff2') format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/eb-garamond-latin-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── 1. DESIGN TOKENS (PHASE 2 APPROVED) ── */
+:root {
+  /* Canvas & Ink */
+  --ground: #FFFFFF;          /* Pure white ground [Ref 2: Kalypso] */
+  --ink: #141414;             /* High-contrast dark ink (18.42:1 on ground) [Ref 1 & 2] */
+  --ink-2: #2B2B2B;           /* Secondary dark body */
+  --ink-muted: #5A5A5A;       /* Accessible secondary slate (6.90:1 on ground) */
+  --muted: #5A5A5A;
+
+  /* Accent & Action Tokens */
+  --amber: #F5A623;           /* Primary Donate Pill background [Ref 1: Gainlove] (9.09:1 with #141414) */
+  --amber-hover: #DF951E;
+  --orange-deep: #B84700;     /* Banner Primary & Card '+' button [Ref 2 & 1] (5.33:1 with white) */
+  --orange-hover: #963A00;
+  --green-deep: #237326;      /* Banner Secondary Action [Ref 2: Kalypso] (5.91:1 with white) */
+  --green-hover: #1A591C;
+  --amber-deep: #8F5200;      /* Section Eyebrow text on white (6.22:1 AA Pass) */
+  --brush-yellow: #F6B60C;    /* Headline highlight underline [Ref 2: Kalypso] */
+  --rule: #E5E5E5;            /* Hairline divider rule */
+  --border-form: #767676;     /* Accessible form border (4.54:1 on white, >= 3:1 WCAG AA) */
+  --c-error: #B00020;         /* Form error crimson (6.8:1 on white) */
+
+  /* Backward Compatibility Aliases for non-home pages */
+  --red: var(--orange-deep);
+  --red-hover: var(--orange-hover);
+  --green: var(--green-deep);
+  --gold: var(--amber);
+  --indigo: #141414;
+
+  /* Typography Stacks */
+  --font-display: "Playfair Display", "EB Garamond", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Type Scale */
+  --fs-hero: clamp(2.4rem, 1.4rem + 4.2vw, 4.4rem);
+  --fs-display: var(--fs-hero);
+  --fs-h1: clamp(2.2rem, 1.3rem + 3.6vw, 3.8rem);
+  --fs-h2: clamp(1.75rem, 1.1rem + 2.2vw, 2.75rem);
+  --fs-h3: clamp(1.2rem, 1rem + 0.8vw, 1.55rem);
+  --fs-lead: 1.1875rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-btn: 0.9375rem;
+
+  /* Layout & Spacing */
+  --max: 1240px;
+  --gutter: clamp(16px, 3.5vw, 36px);
+  --section-y: clamp(56px, 7vw, 100px);
+  --prose: 65ch;
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 72px; --s-9: 96px;
+
+  /* Radii */
+  --radius-button: 9999px;
+  --radius-card: 16px;
+  --radius-photo: 4px;
+
+  /* Transitions */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --t-fast: 160ms;
+  --t-base: 240ms;
+}
+
+/* ── 2. RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--ground);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--ground);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Accessible Focus Indicator (3:1 WCAG AA Required) */
+:focus-visible {
+  outline: 2px solid var(--ink, #141414);
+  outline-offset: 2px;
+}
+
+/* Editorial Headlines (Playfair Display) */
+h1, h2, h3, h4, h5, h6, .aci-title {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-align: left;
+  text-wrap: balance;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+h1, .aci-h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.12;
+}
+
+h2, .aci-h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.18;
+}
+
+h3, .aci-h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.25;
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: var(--prose);
+  text-align: left;
+}
+
+.aci-lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: var(--prose);
+  font-weight: 400;
+}
+
+.aci-meta, .aci-caption {
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--ink-muted);
+}
+
+strong, b {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+  transition: color var(--t-fast) var(--ease);
+}
+a:hover {
+  color: var(--orange-deep);
+}
+
+/* Section Eyebrow (Deep Earth Amber on White: 6.22:1 AA Pass) */
+.aci-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--amber-deep, #8F5200);
+  margin-bottom: var(--s-3);
+}
+
+/* Dynamic Watercolor Underline [Ref 2: Kalypso] */
+.aci-brush-wrap {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+.aci-brush-stroke {
+  position: absolute;
+  left: -3%;
+  bottom: -6px;
+  width: 106%;
+  height: 18px;
+  background-image: url('../images/brush/underline-yellow.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ── 3. BUTTONS & ACTIONS ── */
+.aci-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 48px;
+  padding: 12px 28px;
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-size: var(--fs-btn);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  line-height: 1.2;
+  transition: all var(--t-fast) var(--ease);
+}
+
+/* Primary Donate Pill [Ref 1: Gainlove] - Warm Amber #F5A623 with Dark Ink #141414 (9.09:1 AAA Pass) */
+.aci-btn-donate, .aci-nav-donate {
+  background-color: var(--amber, #F5A623) !important;
+  color: var(--ink, #141414) !important;
+  border-color: var(--amber, #F5A623) !important;
+}
+.aci-btn-donate:hover, .aci-nav-donate:hover {
+  background-color: var(--amber-hover, #DF951E) !important;
+  border-color: var(--amber-hover, #DF951E) !important;
+  color: #000000 !important;
+  transform: translateY(-1px);
+}
+
+/* Dark Hero Pill [Ref 1 & Ref 2] - Dark Ink #141414 with White #FFFFFF (18.42:1 AAA Pass) */
+.aci-btn-primary, .aci-btn-dark {
+  background-color: var(--ink, #141414);
+  color: #FFFFFF !important;
+  border-color: var(--ink, #141414);
+}
+.aci-btn-primary:hover, .aci-btn-dark:hover {
+  background-color: #2E2E2E;
+  border-color: #2E2E2E;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+/* Secondary Button - Subtle Outline */
+.aci-btn-secondary {
+  background-color: transparent;
+  color: var(--ink, #141414);
+  border-color: var(--ink, #141414);
+}
+.aci-btn-secondary:hover {
+  background-color: rgba(20, 20, 20, 0.06);
+  color: var(--ink, #141414);
+}
+
+/* Banner Actions [Ref 2: Kalypso] */
+.aci-btn-orange {
+  background-color: var(--orange-deep, #B84700);
+  color: #FFFFFF !important;
+  border-color: var(--orange-deep, #B84700);
+}
+.aci-btn-orange:hover {
+  background-color: var(--orange-hover, #963A00);
+  border-color: var(--orange-hover, #963A00);
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+.aci-btn-green {
+  background-color: var(--green-deep, #237326);
+  color: #FFFFFF !important;
+  border-color: var(--green-deep, #237326);
+}
+.aci-btn-green:hover {
+  background-color: var(--green-hover, #1A591C);
+  border-color: var(--green-hover, #1A591C);
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+/* Text Link with Arrow */
+.aci-text-link {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--fs-btn);
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  transition: color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.aci-text-link:hover {
+  color: var(--orange-deep);
+  transform: translateX(3px);
+}
+
+/* ── 4. CONTAINER & SECTION LAYOUT ── */
+.aci-container {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.aci-section {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+  position: relative;
+}
+.aci-section.tight {
+  padding-top: var(--s-6);
+  padding-bottom: var(--s-6);
+}
+
+/* ── 5. NAVIGATION MASTHEAD ── */
+.aci-masthead {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--rule, #E5E5E5);
+  transition: background-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.aci-masthead.is-scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+.aci-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+.aci-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.aci-nav-brand img {
+  height: 40px;
+  width: auto;
+}
+.aci-nav-brand span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.aci-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 36px);
+  list-style: none;
+}
+.aci-nav-link {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 8px 0;
+  position: relative;
+  transition: color var(--t-fast) var(--ease);
+}
+.aci-nav-link:hover, .aci-nav-link.active {
+  color: var(--orange-deep);
+}
+.aci-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--amber);
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform var(--t-fast) var(--ease);
+}
+.aci-nav-link:hover::after, .aci-nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* Mobile Toggle & Drawer */
+.aci-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+}
+.aci-mobile-drawer {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: #FFFFFF;
+  padding: var(--s-6) var(--gutter);
+  z-index: 99;
+  flex-direction: column;
+  gap: var(--s-5);
+  border-top: 1px solid var(--rule);
+  overflow-y: auto;
+}
+.aci-mobile-drawer.open, .aci-mobile-drawer.is-open { display: flex; }
+.aci-mobile-drawer .aci-nav-link { font-size: 1.25rem; padding: 12px 0; }
+@media (max-width: 991px) {
+  .aci-nav-menu { display: none; }
+  .aci-mobile-toggle { display: flex; }
+}
+
+/* ── 6. HERO SECTION: MASKED & RECTANGULAR VARIANTS ── */
+.aci-hero {
+  position: relative;
+  background-color: var(--ground, #FFFFFF);
+  padding: clamp(36px, 5vw, 68px) 0 clamp(48px, 6vw, 88px);
+  overflow: hidden;
+}
+.aci-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(28px, 4.5vw, 64px);
+  align-items: center;
+}
+.aci-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+.aci-hero-content h1 {
+  font-size: var(--fs-hero);
+  margin-bottom: var(--s-4);
+  line-height: 1.08;
+}
+.aci-hero-content .aci-lead {
+  margin-bottom: var(--s-6);
+  color: var(--ink-muted);
+}
+.aci-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-5);
+}
+
+/* Playful 3-Dot Cluster [Ref 2: Kalypso] */
+.aci-dot-cluster {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.aci-dot-cluster .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.aci-dot-cluster .dot-yellow { background-color: var(--brush-yellow, #F6B60C); }
+.aci-dot-cluster .dot-orange { background-color: #F08304; }
+.aci-dot-cluster .dot-green { background-color: var(--green-deep, #237326); }
+
+/* Hero Visual Media Frame */
+.aci-hero-media {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 600 / 680;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Default Variant: Masked Africa Silhouette (.aci-hero--masked) */
+.aci-hero--masked .aci-hero-media {
+  mask-image: url('../images/africa-mask.svg');
+  -webkit-mask-image: url('../images/africa-mask.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+/* Variant 2: Full-Bleed Rectangular Hero (.aci-hero--rect) */
+.aci-hero--rect .aci-hero-media {
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.12);
+}
+
+/* Video & Poster Fallbacks inside Hero Media */
+.aci-hero-media video,
+.aci-hero-media .aci-hero-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+.aci-hero-media .aci-hero-poster {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+.aci-hero-media video.is-playing + .aci-hero-poster {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Reduced Motion & Save-Data Fallback */
+@media (prefers-reduced-motion: reduce) {
+  .aci-hero-media video {
+    display: none !important;
+  }
+  .aci-hero-media .aci-hero-poster {
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile Stacking for Hero */
+@media (max-width: 991px) {
+  .aci-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .aci-hero-media {
+    max-width: 380px;
+    order: 2;
+  }
+}
+
+/* ── 7. 3-COLUMN FEATURE DIVISION ROW [Ref 2: Kalypso] ── */
+.aci-feature-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule, #E5E5E5);
+  border-bottom: 1px solid var(--rule, #E5E5E5);
+  background-color: #FFFFFF;
+}
+.aci-feature-col {
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.aci-feature-col:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background-color: var(--rule, #E5E5E5);
+}
+.aci-feature-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: var(--s-3);
+  color: var(--ink);
+}
+.aci-feature-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.aci-feature-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: var(--s-2);
+  color: var(--ink);
+}
+.aci-feature-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+@media (max-width: 768px) {
+  .aci-feature-row {
+    grid-template-columns: 1fr;
+  }
+  .aci-feature-col:not(:last-child)::after {
+    display: none;
+  }
+  .aci-feature-col {
+    border-bottom: 1px solid var(--rule, #E5E5E5);
+  }
+}
+
+/* ── 8. ABOUT SECTION WITH CIRCULAR COLLAGE [Ref 1: Gainlove] ── */
+.aci-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.aci-collage-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+.aci-collage-orbital {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border: 2px dashed rgba(245, 166, 35, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.aci-circle-main {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  width: 66%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid #FFFFFF;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+.aci-circle-sub {
+  position: absolute;
+  bottom: 8%;
+  right: 6%;
+  width: 48%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #FFFFFF;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  z-index: 3;
+}
+.aci-circle-main img, .aci-circle-sub img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.aci-badge-pill {
+  position: absolute;
+  top: 10%;
+  right: 4%;
+  background: var(--amber, #F5A623);
+  color: #141414;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  box-shadow: 0 6px 16px rgba(245, 166, 35, 0.35);
+  z-index: 4;
+}
+.aci-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin: var(--s-5) 0 var(--s-6);
+}
+.aci-checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.aci-check-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--amber, #F5A623);
+  color: #141414;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+@media (max-width: 991px) {
+  .aci-about-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ── 9. PROGRAM CARDS [Ref 1: Gainlove] ── */
+.aci-program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 32px);
+  margin-top: var(--s-6);
+}
+.aci-program-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid #F0F0F0;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.aci-program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+.aci-card-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.aci-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.aci-program-card:hover .aci-card-photo img {
+  transform: scale(1.04);
+}
+.aci-card-body {
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.aci-card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+.aci-card-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+  flex: 1;
+}
+/* Orange corner '+' affordance button [Ref 1: Gainlove] */
+.aci-card-plus {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--orange-deep, #B84700);
+  color: #FFFFFF !important;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(184, 71, 0, 0.3);
+  transition: transform var(--t-fast) var(--ease), background-color var(--t-fast) var(--ease);
+  z-index: 5;
+}
+.aci-card-plus:hover {
+  transform: scale(1.08);
+  background-color: var(--orange-hover, #963A00);
+}
+@media (max-width: 991px) {
+  .aci-program-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 10. INFOGRAPHIC & AFRICA VECTOR MAP [Ref 2: Kalypso] ── */
+.aci-metrics-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.aci-stats-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 24px;
+  margin-top: 32px;
+}
+.aci-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+.aci-stat-dot-num {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.aci-stat-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.aci-stat-dot.amber { background-color: var(--amber, #F5A623); }
+.aci-stat-dot.green { background-color: var(--green-deep, #237326); }
+.aci-stat-dot.orange { background-color: var(--orange-deep, #B84700); }
+.aci-stat-dot.dark { background-color: var(--ink, #141414); }
+
+.aci-stat-val {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.aci-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+.aci-map-wrap {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aci-map-wrap svg, .aci-map-wrap img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 28px rgba(240, 131, 4, 0.15));
+}
+@media (max-width: 860px) {
+  .aci-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .aci-map-wrap {
+    order: 2;
+    max-width: 320px;
+  }
+}
+
+/* ── 11. STORIES / VOICES [Ref 2: Kalypso] ── */
+.aci-stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3.5vw, 40px);
+  margin-top: var(--s-6);
+}
+.aci-story-col {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.aci-story-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 20px;
+}
+.aci-story-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.aci-brush-dab {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 85px;
+  height: 65px;
+  background-image: url('../images/brush/dab-green.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+.aci-story-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.aci-story-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+  flex: 1;
+}
+.aci-story-link {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--orange-deep, #B84700);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.aci-story-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 860px) {
+  .aci-stories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 12. FULL-WIDTH CTA BANNER [Ref 2: Kalypso] ── */
+.aci-cta-banner {
+  position: relative;
+  background-color: #141414;
+  color: #FFFFFF;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: clamp(52px, 7vw, 92px) clamp(24px, 4vw, 56px);
+  text-align: center;
+  margin: clamp(48px, 6vw, 84px) 0;
+}
+.aci-cta-bg-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+  filter: grayscale(40%);
+}
+.aci-cta-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.aci-cta-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.4rem + 2.5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+.aci-cta-sub {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 32px;
+}
+.aci-cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.aci-cta-brush-left, .aci-cta-brush-right {
+  position: absolute;
+  width: 140px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.6;
+}
+.aci-cta-brush-left {
+  top: 10%;
+  left: 2%;
+  background-image: url('../images/brush/dab-green.svg');
+}
+.aci-cta-brush-right {
+  bottom: 10%;
+  right: 2%;
+  background-image: url('../images/brush/dab-gold.svg');
+}
+
+/* ── 13. ACCESSIBLE FORMS & INPUTS ── */
+.aci-input, input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--border-form, #767676);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  padding: 12px 16px;
+  transition: border-color var(--t-fast) var(--ease), outline var(--t-fast) var(--ease);
+}
+.aci-input:focus, input:focus, textarea:focus, select:focus,
+.aci-input:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+  border-color: #141414;
+}
+.aci-input.is-invalid, textarea.is-invalid, select.is-invalid {
+  border-color: var(--c-error);
+}
+.aci-field-error {
+  color: var(--c-error);
+  font-size: var(--fs-small);
+  margin-top: var(--s-1);
+}
+.aci-feedback {
+  display: none;
+  padding: var(--s-3) var(--s-4);
+  border-radius: 8px;
+  margin-top: var(--s-3);
+  font-size: 0.9375rem;
+}
+.aci-feedback.success {
+  display: block;
+  background-color: rgba(35, 115, 38, 0.12);
+  color: var(--green-deep);
+  border: 1px solid var(--green-deep);
+}
+.aci-feedback.error {
+  display: block;
+  background-color: rgba(176, 0, 32, 0.1);
+  color: var(--c-error);
+  border: 1px solid var(--c-error);
+}
+
+/* ── 14. FOOTER [Clean White Canvas per Ref 2: Kalypso] ── */
+.aci-footer {
+  background-color: #FFFFFF;
+  color: var(--ink, #141414);
+  border-top: 1px solid var(--rule, #E5E5E5);
+  padding: clamp(48px, 6vw, 80px) 0 var(--s-6);
+}
+.aci-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  margin-bottom: var(--s-7);
+}
+.aci-footer h4 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink, #141414);
+  margin-bottom: var(--s-4);
+}
+.aci-footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.aci-footer ul a {
+  color: var(--ink-muted, #5A5A5A);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: color var(--t-fast) var(--ease);
+}
+.aci-footer ul a:hover {
+  color: var(--orange-deep, #B84700);
+}
+.aci-footer-brand-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--ink, #141414);
+  letter-spacing: -0.01em;
+}
+.aci-footer-mission {
+  color: var(--ink-muted, #5A5A5A);
+  margin-bottom: 20px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.aci-footer-social-link {
+  color: var(--ink, #141414);
+  transition: color var(--t-fast) var(--ease);
+}
+.aci-footer-social-link:hover {
+  color: var(--orange-deep, #B84700);
+}
+.aci-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--rule, #E5E5E5);
+  font-size: 0.8125rem;
+  color: #767676;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 860px) {
+  .aci-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .aci-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

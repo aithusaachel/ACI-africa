@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Administration Portal | ACI Africa</title>
+  <title>Administration Console | ACI Africa</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" href="images/aciicon-withgreen.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <!-- Self-Hosted Typography Preloads -->
+  <link rel="preload" href="fonts/source-sans-3-latin-ext-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-sans-3-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/aci-design-system.css">
 
   <script src="js/aci-config.js"></script>
 
   <style>
     body {
-      background-color: var(--aci-paper);
-      color: var(--aci-ink);
-      font-family: var(--aci-font-sans);
+      background-color: var(--ground);
+      color: var(--ink);
+      font-family: var(--font-body);
       min-height: 100vh;
       margin: 0;
     }
@@ -29,13 +30,13 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background: var(--aci-ink);
+      background: var(--ink);
       padding: 24px;
     }
     .auth-card {
-      background: #fff;
-      border: 1px solid var(--aci-rule-strong);
-      border-top: 3px solid var(--aci-terracotta);
+      background: var(--ground);
+      border: 2px solid var(--ink);
+      border-top: 4px solid var(--red);
       border-radius: var(--radius-card);
       padding: 48px 40px;
       width: 100%;
@@ -50,22 +51,23 @@
       margin-bottom: 16px;
     }
     .auth-card h1 {
-      font-family: var(--aci-font-serif);
+      font-family: var(--font-display);
       font-size: 1.8rem;
-      font-weight: 500;
-      color: var(--aci-ink);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--ink);
       margin-bottom: 8px;
     }
     .auth-card p {
       font-size: 0.9rem;
-      color: var(--aci-ink-subtle);
+      color: var(--ink-2);
       margin-bottom: 24px;
       line-height: 1.5;
     }
     .auth-error {
       background-color: #FDF0ED;
       color: #8C2210;
-      border-left: 3px solid #C62828;
+      border-left: 3px solid var(--red);
       padding: 10px 14px;
       font-size: 0.85rem;
       margin-bottom: 16px;
@@ -80,32 +82,31 @@
       flex-direction: column;
     }
     .admin-bar {
-      background: var(--aci-ink);
-      color: #fff;
+      background: var(--ink);
+      color: var(--ground);
       padding: 0 32px;
       height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid var(--aci-terracotta);
+      border-bottom: 3px solid var(--red);
     }
     .admin-brand {
       display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: #fff;
+      color: var(--ground);
     }
     .admin-brand img {
       height: 32px;
       width: 32px;
     }
     .admin-title {
-      font-family: var(--aci-font-display);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 1.05rem;
-      text-transform: uppercase;
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      font-size: 1.1rem;
     }
     .admin-user-nav {
       display: flex;
@@ -113,19 +114,20 @@
       gap: 16px;
     }
     .admin-badge {
-      background: rgba(182, 87, 26, 0.2);
-      color: var(--aci-ochre-light);
-      font-family: var(--aci-font-mono);
+      background: rgba(244, 180, 0, 0.15);
+      color: var(--gold);
+      font-family: var(--font-body);
       font-size: 0.72rem;
       padding: 4px 10px;
       border-radius: var(--radius-card);
-      border: 1px solid var(--aci-terracotta);
+      border: 1px solid var(--gold);
       letter-spacing: 0.05em;
+      font-weight: 700;
     }
     .btn-logout {
       background: transparent;
       border: 1px solid rgba(255,255,255,0.25);
-      color: #fff;
+      color: var(--ground);
       padding: 6px 14px;
       border-radius: var(--radius-button);
       font-size: 0.82rem;
@@ -133,14 +135,14 @@
       transition: all 0.2s;
     }
     .btn-logout:hover {
-      border-color: #ef4444;
-      color: #ef4444;
+      border-color: var(--red);
+      color: var(--red);
     }
 
     /* ── DASHBOARD CONTENT ── */
     .admin-main {
-      padding: 36px var(--aci-gutter);
-      max-width: var(--aci-max-width);
+      padding: 36px var(--gutter);
+      max-width: var(--max);
       margin: 0 auto;
       width: 100%;
       flex: 1;
@@ -164,36 +166,37 @@
       }
     }
     .admin-stat-card {
-      background: #fff;
+      background: var(--ground);
       padding: 20px 22px;
       border-radius: var(--radius-card);
-      border: 1px solid var(--aci-rule);
-      border-top: 2px solid var(--aci-ink);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--ink);
     }
     .admin-stat-label {
-      font-family: var(--aci-font-mono);
+      font-family: var(--font-body);
       font-size: 0.72rem;
-      color: var(--aci-ink-muted);
-      text-transform: uppercase;
+      color: var(--muted);
       letter-spacing: 0.08em;
       margin-bottom: 6px;
+      font-weight: 700;
     }
     .admin-stat-val {
-      font-family: var(--aci-font-display);
+      font-family: var(--font-display);
       font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--aci-ink);
+      font-weight: 900;
+      color: var(--ink);
       line-height: 1;
+      letter-spacing: -0.02em;
     }
 
     /* ── TABS ── */
     .admin-tabs {
       display: flex;
       gap: 8px;
-      background: #fff;
+      background: var(--ground);
       padding: 6px;
       border-radius: var(--radius-card);
-      border: 1px solid var(--aci-rule);
+      border: 1px solid var(--rule);
       width: fit-content;
       margin-bottom: 24px;
       flex-wrap: wrap;
@@ -203,32 +206,32 @@
       border: none;
       background: transparent;
       border-radius: var(--radius-button);
-      font-family: var(--aci-font-sans);
+      font-family: var(--font-body);
       font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--aci-ink-muted);
+      font-weight: 700;
+      color: var(--muted);
       cursor: pointer;
       transition: all 0.2s;
     }
     .admin-tab-btn.active {
-      background: var(--aci-ink);
-      color: #fff;
+      background: var(--ink);
+      color: var(--ground);
     }
     .admin-tab-btn:not(.active):hover {
-      background: var(--aci-paper-dim);
-      color: var(--aci-ink);
+      background: rgba(23, 19, 14, 0.06);
+      color: var(--ink);
     }
 
     /* ── DATA PANEL & TABLE ── */
     .admin-panel {
-      background: #fff;
+      background: var(--ground);
       border-radius: var(--radius-card);
-      border: 1px solid var(--aci-rule);
+      border: 2px solid var(--ink);
       overflow: hidden;
     }
     .admin-panel-header {
       padding: 20px 24px;
-      border-bottom: 1px solid var(--aci-rule);
+      border-bottom: 1px solid var(--rule);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -236,10 +239,11 @@
       flex-wrap: wrap;
     }
     .admin-panel-title {
-      font-family: var(--aci-font-serif);
+      font-family: var(--font-display);
       font-size: 1.4rem;
-      font-weight: 500;
-      color: var(--aci-ink);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--ink);
     }
     .admin-actions {
       display: flex;
@@ -257,24 +261,24 @@
       text-align: left;
     }
     table.admin-table th {
-      background: #fafaf8;
+      background: rgba(23, 19, 14, 0.03);
       padding: 12px 18px;
-      font-family: var(--aci-font-mono);
+      font-family: var(--font-body);
       font-size: 0.72rem;
-      color: var(--aci-text-muted);
-      text-transform: uppercase;
+      color: var(--muted);
       letter-spacing: 0.5px;
-      border-bottom: 1px solid var(--aci-border);
+      border-bottom: 1px solid var(--rule);
       white-space: nowrap;
+      font-weight: 700;
     }
     table.admin-table td {
       padding: 14px 18px;
-      border-bottom: 1px solid var(--aci-border);
+      border-bottom: 1px solid var(--rule);
       vertical-align: middle;
-      color: var(--aci-text);
+      color: var(--ink);
     }
     table.admin-table tr:hover td {
-      background-color: #fdfdfc;
+      background-color: rgba(23, 19, 14, 0.02);
     }
     table.admin-table tr:last-child td {
       border-bottom: none;
@@ -284,27 +288,27 @@
       padding: 5px 12px;
       border-radius: var(--radius-button);
       font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       border: 1px solid transparent;
       transition: all 0.2s;
     }
     .tbl-btn-view {
-      background: var(--aci-warm-alabaster);
-      border-color: var(--aci-border);
-      color: var(--aci-forest);
+      background: var(--ground);
+      border-color: var(--rule);
+      color: var(--indigo);
       margin-right: 6px;
     }
     .tbl-btn-view:hover {
-      background: var(--aci-forest);
-      color: #fff;
+      background: var(--indigo);
+      color: var(--ground);
     }
     .tbl-btn-del {
       background: #fee2e2;
-      color: #b91c1c;
+      color: var(--red);
     }
     .tbl-btn-del:hover {
-      background: #b91c1c;
+      background: var(--red);
       color: #fff;
     }
 
@@ -312,7 +316,7 @@
     .admin-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(20, 40, 38, 0.6);
+      background: rgba(23, 19, 14, 0.75);
       backdrop-filter: blur(2px);
       display: none;
       align-items: center;
@@ -321,7 +325,8 @@
       z-index: 9999;
     }
     .admin-modal {
-      background: #fff;
+      background: var(--ground);
+      border: 2px solid var(--ink);
       border-radius: var(--radius-card);
       width: 100%;
       max-width: 600px;
@@ -339,7 +344,7 @@
       border: none;
       font-size: 1.5rem;
       cursor: pointer;
-      color: var(--aci-text-muted);
+      color: var(--muted);
     }
   </style>
 </head>
@@ -349,7 +354,7 @@
   <div id="auth-gate">
     <div class="auth-card">
       <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" class="auth-logo">
-      <h1>ACI Africa Admin Portal</h1>
+      <h1>ACI Africa Admin Console</h1>
       <p>Authorized access for governance, outreach administration, and data management.</p>
 
       <div id="auth-error" class="auth-error" role="alert">Invalid credentials. Access denied.</div>
@@ -364,7 +369,7 @@
         </button>
       </form>
       <div style="margin-top: 20px;">
-        <a href="index.html" style="font-size: 0.85rem; color: var(--aci-text-muted); text-decoration: none;">&larr; Return to Website</a>
+        <a href="index.html" style="font-size: 0.85rem; color: var(--muted); text-decoration: none;">&larr; Return to Website</a>
       </div>
     </div>
   </div>
@@ -374,7 +379,7 @@
     <header class="admin-bar">
       <a href="index.html" class="admin-brand">
         <img src="images/aciicon-withgreen.png" alt="ACI Africa Crest">
-        <span class="admin-title">ACI AFRICA | Admin Portal</span>
+        <span class="admin-title">ACI AFRICA | Admin Console</span>
       </a>
 
       <div class="admin-user-nav">
@@ -434,7 +439,7 @@
         </div>
 
         <div class="table-container" id="table-container">
-          <div style="padding: 40px; text-align: center; color: var(--aci-text-muted);">
+          <div style="padding: 40px; text-align: center; color: var(--muted);">
             Loading administrative records...
           </div>
         </div>
@@ -447,7 +452,7 @@
   <div id="detail-modal" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="admin-modal">
       <button class="admin-modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button>
-      <h3 id="modal-title" style="font-family: var(--aci-font-display); color: var(--aci-forest); margin-bottom: 20px; font-size: 1.35rem;">
+      <h3 id="modal-title" style="font-family: var(--font-display); color: var(--indigo); margin-bottom: 20px; font-size: 1.35rem;">
         Record Dossier
       </h3>
       <div id="modal-content" style="line-height: 1.6;"></div>
@@ -572,7 +577,7 @@
 
     async function loadTabData(tabKey) {
       const container = document.getElementById('table-container');
-      container.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--aci-text-muted);">Fetching live records...</div>';
+      container.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--muted);">Fetching live records...</div>';
 
       try {
         const res = await fetch(getApiBase() + '/admin/' + tabKey, {
@@ -594,7 +599,7 @@
         if (statEl) statEl.textContent = rows.length;
 
         if (rows.length === 0) {
-          container.innerHTML = '<div style="padding: 60px 20px; text-align: center; color: var(--aci-text-muted);"><p style="font-size: 1.1rem; margin-bottom: 6px;">No entries recorded yet.</p><p style="font-size: 0.85rem;">New submissions will appear here automatically.</p></div>';
+          container.innerHTML = '<div style="padding: 60px 20px; text-align: center; color: var(--muted);"><p style="font-size: 1.1rem; margin-bottom: 6px;">No entries recorded yet.</p><p style="font-size: 0.85rem;">New submissions will appear here automatically.</p></div>';
           return;
         }
 
@@ -616,12 +621,12 @@
           <tbody>
             ${rows.map((r, i) => `
               <tr>
-                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td style="font-family: var(--font-body); color: var(--aci-text-subtle);">${i + 1}</td>
                 <td><strong>${esc(r.name)}</strong></td>
-                <td><a href="mailto:${esc(r.email)}" style="color: var(--aci-forest); font-weight: 500;">${esc(r.email)}</a></td>
+                <td><a href="mailto:${esc(r.email)}" style="color: var(--indigo); font-weight: 500;">${esc(r.email)}</a></td>
                 <td>${esc(r.subject || 'General Inquiry')}</td>
                 <td style="max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${esc(r.message)}</td>
-                <td style="font-size: 0.82rem; color: var(--aci-text-muted);">${fmt(r.submitted_at)}</td>
+                <td style="font-size: 0.82rem; color: var(--muted);">${fmt(r.submitted_at)}</td>
                 <td style="text-align: right; white-space: nowrap;">
                   <button class="tbl-btn tbl-btn-view" onclick="viewRow(${i})">View</button>
                   <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('contacts', ${r.id}, this)">Delete</button>
@@ -637,12 +642,12 @@
           <tbody>
             ${rows.map((r, i) => `
               <tr>
-                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td style="font-family: var(--font-body); color: var(--aci-text-subtle);">${i + 1}</td>
                 <td><strong>${esc(r.name)}</strong></td>
-                <td><a href="mailto:${esc(r.email)}" style="color: var(--aci-forest); font-weight: 500;">${esc(r.email)}</a></td>
-                <td><span style="font-family: var(--aci-font-mono); font-weight: 700; color: var(--aci-forest);">GH₵ ${esc(r.amount || '0')}</span></td>
+                <td><a href="mailto:${esc(r.email)}" style="color: var(--indigo); font-weight: 500;">${esc(r.email)}</a></td>
+                <td><span style="font-family: var(--font-body); font-weight: 700; color: var(--indigo);">GH₵ ${esc(r.amount || '0')}</span></td>
                 <td style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${esc(r.message || '-')}</td>
-                <td style="font-size: 0.82rem; color: var(--aci-text-muted);">${fmt(r.submitted_at)}</td>
+                <td style="font-size: 0.82rem; color: var(--muted);">${fmt(r.submitted_at)}</td>
                 <td style="text-align: right; white-space: nowrap;">
                   <button class="tbl-btn tbl-btn-view" onclick="viewRow(${i})">View</button>
                   <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('donations', ${r.id}, this)">Delete</button>
@@ -658,13 +663,13 @@
           <tbody>
             ${rows.map((r, i) => `
               <tr>
-                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td style="font-family: var(--font-body); color: var(--aci-text-subtle);">${i + 1}</td>
                 <td><strong>${esc(r.firstname)} ${esc(r.lastname)}</strong><br><span style="font-size: 0.78rem; color: var(--aci-text-subtle);">${esc(r.phone || '')}</span></td>
-                <td><a href="mailto:${esc(r.email)}" style="color: var(--aci-forest); font-weight: 500;">${esc(r.email)}</a></td>
+                <td><a href="mailto:${esc(r.email)}" style="color: var(--indigo); font-weight: 500;">${esc(r.email)}</a></td>
                 <td>${esc(r.country || '-')}</td>
                 <td>${esc(r.occupation || '-')}</td>
                 <td style="max-width: 220px; font-size: 0.82rem;">${esc(r.interests || '-')}</td>
-                <td style="font-size: 0.82rem; color: var(--aci-text-muted);">${fmt(r.submitted_at)}</td>
+                <td style="font-size: 0.82rem; color: var(--muted);">${fmt(r.submitted_at)}</td>
                 <td style="text-align: right; white-space: nowrap;">
                   <button class="tbl-btn tbl-btn-view" onclick="viewRow(${i})">View</button>
                   <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('members', ${r.id}, this)">Delete</button>
@@ -680,13 +685,13 @@
           <tbody>
             ${rows.map((r, i) => `
               <tr>
-                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td style="font-family: var(--font-body); color: var(--aci-text-subtle);">${i + 1}</td>
                 <td><strong>${esc(r.firstname)} ${esc(r.lastname)}</strong><br><span style="font-size: 0.78rem; color: var(--aci-text-subtle);">${esc(r.phone || '')}</span></td>
-                <td><a href="mailto:${esc(r.email)}" style="color: var(--aci-forest); font-weight: 500;">${esc(r.email)}</a></td>
+                <td><a href="mailto:${esc(r.email)}" style="color: var(--indigo); font-weight: 500;">${esc(r.email)}</a></td>
                 <td><strong style="color: var(--aci-gold-dark);">${esc(r.position || '-')}</strong></td>
                 <td>${esc(r.experience || '-')}</td>
                 <td>${esc(r.availability || '-')}</td>
-                <td style="font-size: 0.82rem; color: var(--aci-text-muted);">${fmt(r.submitted_at)}</td>
+                <td style="font-size: 0.82rem; color: var(--muted);">${fmt(r.submitted_at)}</td>
                 <td style="text-align: right; white-space: nowrap;">
                   <button class="tbl-btn tbl-btn-view" onclick="viewRow(${i})">View</button>
                   <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('leaders', ${r.id}, this)">Delete</button>
@@ -702,9 +707,9 @@
           <tbody>
             ${rows.map((r, i) => `
               <tr>
-                <td style="font-family: var(--aci-font-mono); color: var(--aci-text-subtle);">${i + 1}</td>
+                <td style="font-family: var(--font-body); color: var(--aci-text-subtle);">${i + 1}</td>
                 <td><strong>${esc(r.email)}</strong></td>
-                <td style="font-size: 0.85rem; color: var(--aci-text-muted);">${fmt(r.signed_up_at)}</td>
+                <td style="font-size: 0.85rem; color: var(--muted);">${fmt(r.signed_up_at)}</td>
                 <td style="text-align: right; white-space: nowrap;">
                   <button class="tbl-btn tbl-btn-del" onclick="deleteEntry('newsletter', ${r.id}, this)">Remove</button>
                 </td>
@@ -728,8 +733,8 @@
         if (key.includes('_at')) displayVal = fmt(val);
 
         html += `
-          <div style="background: var(--aci-warm-alabaster); padding: 12px 16px; border-radius: var(--radius-card); border-left: 3px solid var(--aci-gold);">
-            <div style="font-family: var(--aci-font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--aci-text-muted); margin-bottom: 4px;">
+          <div style="background: var(--ground); padding: 12px 16px; border-radius: var(--radius-card); border-left: 3px solid var(--aci-gold);">
+            <div style="font-family: var(--font-body); font-size: 0.72rem;  color: var(--muted); margin-bottom: 4px;">
               ${key.replace(/_/g, ' ')}
             </div>
             <div style="font-size: 0.95rem; color: var(--aci-text); white-space: pre-wrap; word-break: break-word;">

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>African Glyph Test Harness — Inter & EB Garamond</title>
+  <style>
+    @font-face {
+      font-family: 'Playfair Display';
+      font-style: normal;
+      font-weight: 700;
+      src: url('fonts/playfair-display-latin-ext-700.woff2') format('woff2'),
+           url('fonts/playfair-display-latin-700.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      src: url('fonts/inter-latin-ext-400.woff2') format('woff2'),
+           url('fonts/inter-latin-400.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 600;
+      src: url('fonts/inter-latin-ext-600.woff2') format('woff2'),
+           url('fonts/inter-latin-600.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      src: url('fonts/inter-latin-ext-700.woff2') format('woff2'),
+           url('fonts/inter-latin-700.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'EB Garamond';
+      font-style: normal;
+      font-weight: 700;
+      src: url('fonts/eb-garamond-latin-ext-700.woff2') format('woff2'),
+           url('fonts/eb-garamond-latin-700.woff2') format('woff2');
+    }
+
+    body {
+      background: #FFFFFF;
+      color: #141414;
+      font-family: 'Inter', sans-serif;
+      padding: 48px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-family: 'Playfair Display', 'EB Garamond', serif;
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+    }
+    .glyph-box {
+      background: #FAFAFA;
+      border: 1px solid #E5E5E5;
+      border-radius: 12px;
+      padding: 24px 32px;
+      margin-bottom: 24px;
+    }
+    .glyph-display {
+      font-size: 3.5rem;
+      letter-spacing: 0.15em;
+      margin: 12px 0;
+      color: #B84700;
+    }
+    .sample-words {
+      font-size: 1.35rem;
+      margin-top: 8px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #F5A623;
+      color: #141414;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      border-radius: 9999px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>African Reference Alphabet Glyph Verification</h1>
+  <p style="color: #5A5A5A; max-width: 650px;">
+    Verifying native rendering of Ghanaian orthographic characters: <strong>Ɛ</strong> (0x0190), <strong>ɛ</strong> (0x025B), <strong>Ɔ</strong> (0x0186), <strong>ɔ</strong> (0x0254), <strong>Ŋ</strong> (0x014A), <strong>ŋ</strong> (0x014B).
+  </p>
+
+  <div class="glyph-box">
+    <span class="badge">Inter Regular 400 (Body Font)</span>
+    <div class="glyph-display" style="font-family: 'Inter'; font-weight: 400;">
+      Ɛ ɛ Ɔ ɔ Ŋ ŋ
+    </div>
+    <div class="sample-words" style="font-family: 'Inter'; font-weight: 400;">
+      Akan: Yɛwɔ ha &bull; Mmodenbo &bull; Ga: Ŋmɛnɛ &bull; Ewe: Ŋkeke
+    </div>
+  </div>
+
+  <div class="glyph-box">
+    <span class="badge">Inter SemiBold 600 (Interface & Labels)</span>
+    <div class="glyph-display" style="font-family: 'Inter'; font-weight: 600;">
+      Ɛ ɛ Ɔ ɔ Ŋ ŋ
+    </div>
+    <div class="sample-words" style="font-family: 'Inter'; font-weight: 600;">
+      Akan: Yɛwɔ ha &bull; Mmodenbo &bull; Ga: Ŋmɛnɛ &bull; Ewe: Ŋkeke
+    </div>
+  </div>
+
+  <div class="glyph-box">
+    <span class="badge">Inter Bold 700 (Headings & Eyebrows)</span>
+    <div class="glyph-display" style="font-family: 'Inter'; font-weight: 700;">
+      Ɛ ɛ Ɔ ɔ Ŋ ŋ
+    </div>
+    <div class="sample-words" style="font-family: 'Inter'; font-weight: 700;">
+      Akan: Yɛwɔ ha &bull; Mmodenbo &bull; Ga: Ŋmɛnɛ &bull; Ewe: Ŋkeke
+    </div>
+  </div>
+
+  <div class="glyph-box">
+    <span class="badge">Heading Stack: Playfair Display + EB Garamond Fallback</span>
+    <div class="glyph-display" style="font-family: 'Playfair Display', 'EB Garamond', Georgia, serif; font-weight: 700;">
+      Ɛ ɛ Ɔ ɔ Ŋ ŋ
+    </div>
+    <div class="sample-words" style="font-family: 'Playfair Display', 'EB Garamond', Georgia, serif; font-weight: 700;">
+      Playfair renders Ŋ ŋ natively; Ɛ ɛ Ɔ ɔ seamlessly rendered via self-hosted EB Garamond fallback
+    </div>
+  </div>
+</body>
+</html>

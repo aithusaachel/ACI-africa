@@ -5,16 +5,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Get Involved | AbleCares Initiative Africa (ACI Africa)</title>
-  <meta name="description"
-    content="Apply to join ACI Africa as a community member, volunteer advocate, or institutional chapter leader.">
+  <meta name="description" content="Volunteer, partner, or deploy skills with AbleCares Initiative Africa across youth education, mental health support, and community action in Ghana.">
   <link rel="icon" type="image/png" href="images/aciicon-withgreen.png">
-  <meta property="og:title" content="Get Involved | ACI Africa">
-  <meta property="og:description"
-    content="Join our Pan-African network of community advocates, educators, and leaders.">
+  <link rel="canonical" href="https://theaciafrica.org/get-involved.html">
+
+  <meta property="og:title" content="Get Involved | AbleCares Initiative Africa (ACI Africa)">
+  <meta property="og:description" content="Volunteer, partner, or deploy skills with AbleCares Initiative Africa across youth education, mental health support, and community action in Ghana.">
   <meta property="og:image" content="images/IMG_8882.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Self-Hosted Typography Preloads -->
+  <link rel="preload" href="fonts/source-sans-3-latin-ext-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-sans-3-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="css/aci-design-system.css">
   <script src="js/aci-config.js" defer></script>
@@ -25,43 +27,23 @@
 
   <!-- ── MASTHEAD ── -->
   <header class="aci-masthead" role="banner">
-    <div class="aci-masthead-inner">
-      <a href="index.html" class="aci-masthead-brand" aria-label="ACI Africa Home">
-        <img src="images/aciicon-withgreen.png" alt="ACI Africa Crest" class="aci-crest">
-        <div class="aci-brand-meta">
-          <span class="aci-brand-title">ACI AFRICA</span>
-        </div>
+    <div class="aci-container aci-nav-inner">
+      <a href="index.html" class="aci-nav-brand" aria-label="ACI Africa Home">
+        <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" width="40" height="40">
+        <span>ACI AFRICA</span>
       </a>
 
-      <nav class="aci-nav-desktop" role="navigation" aria-label="Primary Navigation">
-        <a href="index.html" class="aci-nav-item">Home</a>
-        <a href="about.html" class="aci-nav-item">About</a>
-        <a href="programs.html" class="aci-nav-item">Programs</a>
-        <a href="impact.html" class="aci-nav-item">Impact</a>
-        <a href="get-involved.html" class="aci-nav-item active" aria-current="page">Get Involved</a>
-        <a href="contact.html" class="aci-nav-item">Contact</a>
-        <a href="donate.html" class="aci-btn-support">Donate</a>
+      <nav class="aci-nav-menu" role="navigation" aria-label="Primary Navigation">
+        <a href="about.html" class="aci-nav-link">About</a>
+        <a href="programs.html" class="aci-nav-link">Programs</a>
+        <a href="impact.html" class="aci-nav-link">Impact</a>
+        <a href="get-involved.html" class="aci-nav-link active" aria-current="page">Get involved</a>
+        <a href="contact.html" class="aci-nav-link">Contact</a>
+        <a href="donate.html" class="aci-btn aci-btn-primary aci-nav-donate">Donate</a>
       </nav>
 
-      <div class="aci-masthead-social">
-        <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" class="aci-social-link" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://twitter.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link" aria-label="X">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a href="https://facebook.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener" class="aci-social-link" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
-        </a>
-      </div>
-
-      <button class="aci-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
-        aria-controls="mobile-drawer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <button class="aci-mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -72,412 +54,236 @@
 
   <!-- Mobile Drawer -->
   <div id="mobile-drawer" class="aci-mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
-    <a href="index.html" class="aci-mobile-link">Home</a>
-    <a href="about.html" class="aci-mobile-link">About</a>
-    <a href="programs.html" class="aci-mobile-link">Programs</a>
-    <a href="impact.html" class="aci-mobile-link">Impact</a>
-    <a href="get-involved.html" class="aci-mobile-link">Get Involved</a>
-    <a href="contact.html" class="aci-mobile-link">Contact</a>
-    <a href="donate.html" class="aci-mobile-link" style="color: var(--aci-terracotta);">Donate &rarr;</a>
-
-    <div class="aci-mobile-social">
-      <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" class="aci-social-link" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <a href="https://twitter.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link" aria-label="X">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      </a>
-      <a href="https://facebook.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener" class="aci-social-link" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
-      </a>
-    </div>
+    <a href="about.html" class="aci-nav-link">About</a>
+    <a href="programs.html" class="aci-nav-link">Programs</a>
+    <a href="impact.html" class="aci-nav-link">Impact</a>
+    <a href="get-involved.html" class="aci-nav-link active" aria-current="page">Get involved</a>
+    <a href="contact.html" class="aci-nav-link">Contact</a>
+    <a href="donate.html" class="aci-btn aci-btn-primary" style="margin-top: 16px;">Donate</a>
   </div>
 
   <main id="main-content">
 
-    <!-- ── 2. HERO SECTION: GET INVOLVED (SPLIT HERO) ── -->
-    <section class="aci-page-hero" aria-labelledby="participate-title">
+    <!-- ── IMAGE-LED HERO (PATTERN 4) ── -->
+    <section class="aci-image-hero" aria-labelledby="get-involved-title">
       <div class="aci-container">
-        <div class="aci-page-hero-split aci-reveal">
-          <div>
-            <h1 id="participate-title">
-              Contribute Your Skills to Africa
-            </h1>
-            <p class="aci-lead" style="margin-top: 20px;">
-              Dedicated service pathways for educators, psychologists, tech innovators, and students across Africa.
-            </p>
+        <div style="max-width: 960px;">
+          <div class="aci-lang-badge">
+            Boafo &mdash; Cooperative Support <!-- [VERIFY-LANGUAGE: Akan 'Boafo' for helper / supporter / collective aid] -->
+          </div>
+          <h1 id="get-involved-title" style="font-size: var(--fs-hero); line-height: 0.95; letter-spacing: -0.03em;">
+            Work with us. <span class="highlight-red">On the ground.</span>
+          </h1>
+          <p class="aci-lead" style="margin-top: var(--s-3);">
+            Volunteer your time, partner with an active program, or deploy specialized skills across classrooms, community centres, and clinic spaces in Ghana.
+          </p>
+        </div>
+
+        <div class="aci-hero-banner" style="margin-top: var(--s-6);">
+          <img src="images/IMG_8882.jpg" alt="Volunteers engaging with students during ACI Africa school outreach in Ghana" fetchpriority="high" width="1200" height="600" style="object-position: center 30%;">
+        </div>
+        <div class="aci-caption-slot" style="margin-top: var(--s-2);">
+          <span class="aci-caption-tag">[Ghana, 2023. ACI Africa Youth &amp; Community Volunteer Outreach &mdash; NEED CAPTION]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRACKS ── -->
+    <section class="aci-section open" aria-labelledby="tracks-heading">
+      <div class="aci-container">
+        <div class="aci-grid-12" style="align-items: center;">
+          <div class="aci-col-7">
+            <h2 id="tracks-heading" style="margin-bottom: var(--s-5);">Involvement tracks.</h2>
+            <ul class="aci-editorial-list">
+              <li class="aci-editorial-item">
+                <span class="aci-editorial-item-title"><span class="aci-division-dot edu"></span>Education &amp; Youth</span>
+                <span class="aci-editorial-item-desc">Schoolroom mentoring, learning kit distributions, and youth leadership facilitation.</span>
+              </li>
+              <li class="aci-editorial-item">
+                <span class="aci-editorial-item-title"><span class="aci-division-dot mind"></span>Mental Health (PAMHO)</span>
+                <span class="aci-editorial-item-desc">Community awareness dialogues, workshop logistics, and psychosocial caregiver assistance.</span>
+              </li>
+              <li class="aci-editorial-item">
+                <span class="aci-editorial-item-title"><span class="aci-division-dot climate"></span>Climate &amp; Community</span>
+                <span class="aci-editorial-item-desc">Sanitation cleanup drives, clean water access projects, and field logistics mobilization.</span>
+              </li>
+              <li class="aci-editorial-item">
+                <span class="aci-editorial-item-title"><span class="aci-division-dot" style="background-color: var(--red);"></span>Media &amp; Communications</span>
+                <span class="aci-editorial-item-desc">Documentary photography, community storytelling, and digital educational outreach.</span>
+              </li>
+            </ul>
           </div>
 
-          <div>
-            <div class="aci-plate" style="aspect-ratio: 3/2;">
-              <picture>
-                <img src="images/IMG_8882.jpg" alt="Youth leaders and advocates in a planning workshop"
-                  loading="eager" width="1400" height="933">
-              </picture>
+          <div class="aci-col-5">
+            <div class="aci-media-frame" style="aspect-ratio: 4/5;">
+              <img src="images/IMG_8899.jpg" alt="Volunteers coordinating community resources in Ghana" loading="lazy" width="600" height="750" style="object-position: center 25%;">
+            </div>
+            <div class="aci-caption-slot">
+              <span class="aci-caption-tag">[Ghana, 2023. Volunteer Resource Logistics Session &mdash; NEED CAPTION]</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── 3. APPLICATION TRACKS & ROLE PATHWAYS ── -->
-    <div class="aci-editorial-flow">
+    <!-- ── APPLICATION FORM ── -->
+    <section class="aci-section open aci-band" aria-labelledby="form-heading">
       <div class="aci-container">
-
-        <!-- Role Pathway Selector -->
-        <div class="aci-reveal"
-          style="border-top: 1px solid var(--aci-rule); border-bottom: 1px solid var(--aci-rule); padding: 24px 0; margin-bottom: 50px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-          <div>
-            <span
-              style="font-family: var(--aci-font-display); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em;">Select
-              Application Track:</span>
-          </div>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;" role="tablist">
-            <button id="tab-member-btn" class="aci-action aci-action-primary" role="tab" aria-selected="true"
-              aria-controls="panel-member" onclick="switchGiTab('member')">
-              1. Community Volunteer
-            </button>
-            <button id="tab-leader-btn" class="aci-action aci-action-secondary" role="tab" aria-selected="false"
-              aria-controls="panel-leader" onclick="switchGiTab('leader')">
-              2. Chapter Leadership
-            </button>
-          </div>
-        </div>
-
-        <!-- ── TAB 1: Member Application ── -->
-        <div id="panel-member" class="aci-reveal" role="tabpanel" aria-labelledby="tab-member-btn"
-          style="width: 100%;">
-          <div style="margin-bottom: 32px;">
-            <h2 style="font-size: 2rem; margin-top: 6px;">Volunteer Application</h2>
-            <p style="margin-top: 8px;">
-              Assist with school outreaches, town halls, digital workshops, and peer circles.
+        <div class="aci-grid-12" style="align-items: start;">
+          <div class="aci-col-7">
+            <h2 id="form-heading">Volunteer application.</h2>
+            <p style="margin-top: var(--s-2); margin-bottom: var(--s-6);">
+              Share your skills, regional availability, and preferred division below.
             </p>
+
+            <form id="volunteer-form" novalidate>
+              <div class="aci-grid-12">
+                <div class="aci-col-6 aci-form-group">
+                  <label for="vol-first-name">First name</label>
+                  <input type="text" id="vol-first-name" name="firstName" class="aci-input" required placeholder="First name">
+                </div>
+                <div class="aci-col-6 aci-form-group">
+                  <label for="vol-last-name">Last name</label>
+                  <input type="text" id="vol-last-name" name="lastName" class="aci-input" required placeholder="Last name">
+                </div>
+              </div>
+
+              <div class="aci-form-group">
+                <label for="vol-email">Email address</label>
+                <input type="email" id="vol-email" name="email" class="aci-input" required placeholder="your.name@example.com">
+              </div>
+
+              <div class="aci-form-group">
+                <label for="vol-track">Preferred track</label>
+                <select id="vol-track" name="track" class="aci-select" required>
+                  <option value="">Select an area...</option>
+                  <option value="education">Education: school outreach, mentoring, training</option>
+                  <option value="mental-health">Mental Health: community awareness, PAMHO</option>
+                  <option value="climate">Climate &amp; Community: clean-ups, water, relief</option>
+                  <option value="media">Media &amp; Communications: photography, writing</option>
+                </select>
+              </div>
+
+              <div class="aci-form-group">
+                <label for="vol-location">Your location (City, Region/Country)</label>
+                <input type="text" id="vol-location" name="location" class="aci-input" placeholder="e.g. Accra, Ghana">
+              </div>
+
+              <div class="aci-form-group">
+                <label for="vol-message">Background and availability</label>
+                <textarea id="vol-message" name="message" class="aci-textarea" rows="4" placeholder="Brief note on your professional background and when you can help"></textarea>
+              </div>
+
+              <div style="margin-top: var(--s-4);">
+                <button type="submit" id="volunteer-submit-btn" class="aci-btn aci-btn-primary">Send application</button>
+                <span class="aci-meta" style="display: block; margin-top: var(--s-2);">
+                  We'll reply by email <!-- [VERIFY: reply time, e.g. within 7 days] -->.
+                </span>
+              </div>
+
+              <div id="volunteer-feedback" class="aci-feedback" role="alert"></div>
+            </form>
           </div>
 
-          <form id="member-form" novalidate>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div class="aci-form-group">
-                <label for="m-firstname" class="aci-label">First Name *</label>
-                <input type="text" id="m-firstname" name="firstname" class="aci-input" required
-                  placeholder="e.g. Kwesi">
-              </div>
-              <div class="aci-form-group">
-                <label for="m-lastname" class="aci-label">Last Name *</label>
-                <input type="text" id="m-lastname" name="lastname" class="aci-input" required placeholder="e.g. Mensah">
-              </div>
+          <div class="aci-col-5">
+            <div class="aci-media-frame" style="aspect-ratio: 4/5;">
+              <picture>
+                <source srcset="images/IMG_8880.webp" type="image/webp">
+                <img src="images/IMG_8880.jpg" alt="Two ACI Africa youth volunteers in branded shirts ready to assist community outreach programs in Ghana" loading="lazy" width="800" height="1000" style="object-position: center 20%;">
+              </picture>
             </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div class="aci-form-group">
-                <label for="m-email" class="aci-label">Email Address *</label>
-                <input type="email" id="m-email" name="email" class="aci-input" required
-                  placeholder="kwesi@example.org">
-              </div>
-              <div class="aci-form-group">
-                <label for="m-phone" class="aci-label">Phone Number (with country code)</label>
-                <input type="tel" id="m-phone" name="phone" class="aci-input" placeholder="+233 24 000 0000">
-              </div>
+            <div class="aci-caption-slot">
+              <span class="aci-caption-tag">[Ghana, 2023. ACI Africa Youth Volunteer Corps &mdash; NEED CAPTION]</span>
             </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div class="aci-form-group">
-                <label for="m-country" class="aci-label">Country of Residence *</label>
-                <input type="text" id="m-country" name="country" class="aci-input" required
-                  placeholder="e.g. Ghana, Nigeria, Kenya">
-              </div>
-              <div class="aci-form-group">
-                <label for="m-occupation" class="aci-label">Current Field or Study</label>
-                <input type="text" id="m-occupation" name="occupation" class="aci-input"
-                  placeholder="e.g. Psychology Student, Teacher, Developer">
-              </div>
-            </div>
-
-            <div class="aci-form-group">
-              <label class="aci-label">Primary Interest Areas</label>
-              <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-top: 8px;">
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" name="interest" value="Education: Support a Schoolchild & EMP"> Education &
-                  Youth (EMP, School Support)
-                </label>
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" name="interest" value="Digital Futures & AI Literacy"> Digital Futures & AI
-                  Tech Training
-                </label>
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" name="interest" value="PAMHO Mental Health Advocacy"> PAMHO Mental Health Advocacy (<a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" style="color: var(--aci-terracotta); text-decoration: underline;" onclick="event.stopPropagation();">pamhoafrica.org &#8599;</a>)
-                </label>
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" name="interest" value="AbleKids Special Needs & Inclusion"> AbleKids
-                  Neurodiversity Support
-                </label>
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" name="interest" value="Climate, Sanitation & Community Relief"> Climate,
-                  Sanitation & Social Relief
-                </label>
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" name="interest" value="Field Outreach Logistics"> Field Logistics & Volunteer
-                  Circles
-                </label>
-              </div>
-            </div>
-
-            <div class="aci-form-group">
-              <label for="m-motivation" class="aci-label">Why do you wish to volunteer with ACI Africa? *</label>
-              <textarea id="m-motivation" name="motivation" class="aci-textarea" rows="4" required
-                placeholder="Tell us briefly about your perspective, lived experience, or why African education & mental health matter to you..."></textarea>
-            </div>
-
-            <div id="member-feedback" class="aci-feedback" role="alert"></div>
-
-            <button type="submit" id="member-submit-btn" class="aci-action aci-action-primary"
-              style="width: 100%; margin-top: 14px;">
-              Submit Application
-            </button>
-          </form>
-        </div>
-
-        <!-- ── TAB 2: Leadership Application ── -->
-        <div id="panel-leader" role="tabpanel" aria-labelledby="tab-leader-btn"
-          style="display: none; width: 100%;">
-          <div style="margin-bottom: 32px;">
-            <h2 style="font-size: 2rem; margin-top: 6px;">Executive Leadership</h2>
-            <p style="margin-top: 8px;">
-              Direct regional programs, coordinate curriculum deployment, and lead institutional partnership dialogues.
-            </p>
           </div>
-
-          <form id="leader-form" novalidate>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div class="aci-form-group">
-                <label for="l-firstname" class="aci-label">First Name *</label>
-                <input type="text" id="l-firstname" name="firstname" class="aci-input" required placeholder="e.g. Efua">
-              </div>
-              <div class="aci-form-group">
-                <label for="l-lastname" class="aci-label">Last Name *</label>
-                <input type="text" id="l-lastname" name="lastname" class="aci-input" required placeholder="e.g. Osei">
-              </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div class="aci-form-group">
-                <label for="l-email" class="aci-label">Email Address *</label>
-                <input type="email" id="l-email" name="email" class="aci-input" required placeholder="efua@example.org">
-              </div>
-              <div class="aci-form-group">
-                <label for="l-phone" class="aci-label">Phone Number *</label>
-                <input type="tel" id="l-phone" name="phone" class="aci-input" required placeholder="+233 20 000 0000">
-              </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div class="aci-form-group">
-                <label for="l-country" class="aci-label">Country & City of Residence *</label>
-                <input type="text" id="l-country" name="country" class="aci-input" required
-                  placeholder="e.g. Accra, Ghana">
-              </div>
-              <div class="aci-form-group">
-                <label for="l-position" class="aci-label">Target Leadership Position *</label>
-                <select id="l-position" name="position" class="aci-select" required>
-                  <option value="">Select a leadership role...</option>
-                  <option value="Education & Youth Programs Lead">Education & Youth Programs Lead (EMP & School Support)
-                  </option>
-                  <option value="PAMHO Mental Health Programs Lead">PAMHO Mental Health Programs Lead</option>
-                  <option value="AbleKids Special Education Lead">AbleKids Special Education & Neurodiversity Lead
-                  </option>
-                  <option value="Climate, Sanitation & Social Impact Lead">Climate, Sanitation & Social Impact Lead
-                  </option>
-                  <option value="Digital Futures & Tech Lead">Digital Futures Ghana & Tech Lead</option>
-                  <option value="Regional Chapter Coordinator">Regional Chapter Coordinator</option>
-                  <option value="Partnerships & Grants Officer">Partnerships & Institutional Grants Officer</option>
-                </select>
-              </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div class="aci-form-group">
-                <label for="l-experience" class="aci-label">Years of Relevant Experience *</label>
-                <select id="l-experience" name="experience" class="aci-select" required>
-                  <option value="">Select experience level...</option>
-                  <option value="1-2 years">1-2 years</option>
-                  <option value="3-5 years">3-5 years</option>
-                  <option value="6-10 years">6-10 years</option>
-                  <option value="10+ years">10+ years</option>
-                </select>
-              </div>
-              <div class="aci-form-group">
-                <label for="l-availability" class="aci-label">Estimated Time Availability *</label>
-                <select id="l-availability" name="availability" class="aci-select" required>
-                  <option value="">Select weekly commitment...</option>
-                  <option value="3-5 hours/week">3-5 hours / week</option>
-                  <option value="5-10 hours/week">5-10 hours / week</option>
-                  <option value="10-20 hours/week">10-20 hours / week</option>
-                  <option value="Full-time chapter lead">Full-time chapter lead</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="aci-form-group">
-              <label for="l-linkedin" class="aci-label">LinkedIn Profile or Professional Link</label>
-              <input type="url" id="l-linkedin" name="linkedin" class="aci-input"
-                placeholder="https://linkedin.com/in/yourprofile">
-            </div>
-
-            <div class="aci-form-group">
-              <label for="l-background" class="aci-label">Professional Background & Achievements *</label>
-              <textarea id="l-background" name="background" class="aci-textarea" rows="3" required
-                placeholder="Summarize your professional qualifications and community leadership experience..."></textarea>
-            </div>
-
-            <div class="aci-form-group">
-              <label for="l-vision" class="aci-label">Vision for this Role *</label>
-              <textarea id="l-vision" name="vision" class="aci-textarea" rows="3" required
-                placeholder="How will you expand ACI Africa's presence, safeguard dignity, and ensure measurable impact?"></textarea>
-            </div>
-
-            <div id="leader-feedback" class="aci-feedback" role="alert"></div>
-
-            <button type="submit" id="leader-submit-btn" class="aci-action aci-action-primary"
-              style="width: 100%; margin-top: 14px;">
-              Submit Application
-            </button>
-          </form>
         </div>
-
       </div>
-    </div>
+    </section>
 
   </main>
 
-  <!-- ── COLOPHON ── -->
-  <footer class="aci-colophon" role="contentinfo">
+  <!-- ── FOOTER ── -->
+  <footer class="aci-footer" role="contentinfo">
     <div class="aci-container">
-      <div class="aci-colophon-grid">
+      <div class="aci-footer-grid">
         <div>
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-            <img src="images/aciicon-withgreen.png" alt="ACI Africa Crest" style="height: 38px; width: 38px;">
-            <span style="font-family: var(--aci-font-display); font-weight: 800; font-size: 1.15rem; color: #fff;">ACI
-              AFRICA</span>
+            <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" width="36" height="36">
+            <span style="font-family: var(--font-display); font-weight: 900; font-size: 1.15rem; color: var(--ground); letter-spacing: -0.02em;">ACI AFRICA</span>
           </div>
-          <p style="font-size: 0.9rem; line-height: 1.6; color: #A6B0AB; max-width: 380px;">
-            AbleCares Initiative Africa is a continental non-profit advancing education, mental health, and sustainable
-            social impact across Ghana and Africa.
+          <p style="color: var(--ground); opacity: 0.9; margin-bottom: 20px;">
+            Education, mental health, and community support across Ghana and Africa.
           </p>
-          <div class="aci-social-links" style="margin-top: 16px;">
-            <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" class="aci-social-link" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <div style="display: flex; gap: 16px; align-items: center;" aria-label="Social media">
+            <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
             </a>
-            <a href="https://twitter.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link" aria-label="X">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <a href="https://twitter.com/aciafrica" target="_blank" rel="noopener" aria-label="X">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
             </a>
-            <a href="https://facebook.com/aciafrica" target="_blank" rel="noopener" class="aci-social-link" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="aci-social-link" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26z"/></svg>
+            <a href="https://facebook.com/aciafrica" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
             </a>
           </div>
         </div>
 
         <div>
-          <h4>Divisions & Programs</h4>
-          <ul class="aci-colophon-links">
-            <li><a href="programs.html#education">Education & Youth Development</a></li>
-            <li><a href="programs.html#schoolchild">Support a Schoolchild</a></li>
-            <li><a href="programs.html#emp">Entrepreneurial Mindset (EMP)</a></li>
-            <li><a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer">PAMHO Mental Health &#8599;</a></li>
-            <li><a href="programs.html#ablekids">AbleKids Special Needs</a></li>
-            <li><a href="programs.html#social-impact">Climate & Sanitation Impact</a></li>
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="programs.html#education">Education &amp; Youth</a></li>
+            <li><a href="programs.html#mental-health">Mental Health</a></li>
+            <li><a href="programs.html#climate">Climate &amp; Community</a></li>
+            <li><a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer">PAMHO &#x2197; pamhoafrica.org</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Organization</h4>
-          <ul class="aci-colophon-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="impact.html">Impact & Milestones</a></li>
-            <li><a href="get-involved.html">Get Involved</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+          <h4>Organisation</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="get-involved.html">Get involved</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="donate.html">Donate</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Headquarters</h4>
-          <p style="font-size: 0.88rem; color: #A6B0AB; line-height: 1.6; margin-bottom: 8px;">
-            Greater Accra Region, Ghana<br>
-            Official Email: <a href="mailto:info@aciafrica.org"
-              style="color: var(--aci-ochre);">info@aciafrica.org</a><br>
-            Website: <span style="color: #A6B0AB;">www.aciafrica.org</span>
-          </p>
-          <p style="font-family: var(--aci-font-mono); font-size: 0.72rem; color: #697470;">
-            Continental Non-Profit Civic Charter • Ghana & Africa
+          <h4>Contact</h4>
+          <p style="font-size: var(--fs-small); line-height: 1.6; color: var(--ground); opacity: 0.9;">
+            Greater Accra, Ghana <!-- [NEED: full address] --><br>
+            <a href="mailto:info@aciafrica.org">info@aciafrica.org</a><br>
+            <!-- [VERIFY: theaciafrica.org vs aciafrica.org] -->
           </p>
         </div>
       </div>
 
-      <div class="aci-colophon-bottom">
-        <span>&copy;
-          <script>document.write(new Date().getFullYear());</script> AbleCares Initiative Africa (ACI Africa). All
-          rights reserved.
-        </span>
+      <div class="aci-footer-bottom">
         <div>
-          <a href="contact.html" style="color: #A6B0AB;">Contact Us</a>
+          &copy; <span id="current-year">2026</span> AbleCares Initiative Africa <!-- [VERIFY: AbleCares Initiative Africa or Initiatives] -->
+        </div>
+        <div>
+          <a href="contact.html" style="color: var(--ground); opacity: 0.7;">Contact</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    function switchGiTab(tab) {
-      const pMember = document.getElementById('panel-member');
-      const pLeader = document.getElementById('panel-leader');
-      const btnMember = document.getElementById('tab-member-btn');
-      const btnLeader = document.getElementById('tab-leader-btn');
-
-      if (tab === 'member') {
-        pMember.style.display = 'block';
-        pMember.classList.add('is-revealed');
-        pLeader.style.display = 'none';
-        btnMember.className = 'aci-action aci-action-primary';
-        btnMember.setAttribute('aria-selected', 'true');
-        btnLeader.className = 'aci-action aci-action-secondary';
-        btnLeader.setAttribute('aria-selected', 'false');
-      } else {
-        pMember.style.display = 'none';
-        pLeader.style.display = 'block';
-        pLeader.classList.add('is-revealed');
-        btnLeader.className = 'aci-action aci-action-primary';
-        btnLeader.setAttribute('aria-selected', 'true');
-        btnMember.className = 'aci-action aci-action-secondary';
-        btnMember.setAttribute('aria-selected', 'false');
-      }
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('role') === 'leader') {
-        switchGiTab('leader');
-      }
-
       if (window.initAciForm) {
         window.initAciForm(
-          'member-form',
-          'member-submit-btn',
-          'member-feedback',
-          'join-member',
-          'Your membership application has been submitted successfully. Thank you for your interest in joining ACI Africa.'
-        );
-
-        window.initAciForm(
-          'leader-form',
-          'leader-submit-btn',
-          'leader-feedback',
-          'join-leader',
-          'Your application has been received. Thank you for your interest in contributing to ACI Africa\'s work.'
+          'volunteer-form',
+          'volunteer-submit-btn',
+          'volunteer-feedback',
+          'volunteer',
+          'Thank you. We will write to your email address.'
         );
       }
     });
