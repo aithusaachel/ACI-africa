@@ -154,28 +154,44 @@
     if (!videoWrap) return;
 
     var video = videoWrap.querySelector('video');
+    if (!video) return;
 
     var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     var isSaveData = conn && conn.saveData === true;
     var isSlowNet = conn && (conn.effectiveType === '2g' || conn.effectiveType === '3g');
+    var isMobile = window.innerWidth < 768;
 
-    // If user requested reduced motion, Save-Data, or slow network: poster only
-    if (prefersReducedMotion || isSaveData || isSlowNet) {
-      if (video) {
-        video.pause();
-        video.style.display = 'none';
-      }
+    // If user requested reduced motion, Save-Data, slow network, or mobile: keep poster only, do not stream video
+    if (prefersReducedMotion || isSaveData || isSlowNet || isMobile) {
+      video.pause();
+      video.style.display = 'none';
       return;
     }
 
-    if (video) {
-      var playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(function() {
-          video.muted = true;
-          video.play();
-        });
-      }
+    // On capable desktop, attach video sources and play
+    if (!video.querySelector('source')) {
+      var mp4Src = video.getAttribute('data-src-mp4') || 'assets/hero.mp4';
+      var webmSrc = video.getAttribute('data-src-webm') || 'assets/hero-1080p.webm';
+
+      var sourceWebm = document.createElement('source');
+      sourceWebm.src = webmSrc;
+      sourceWebm.type = 'video/webm';
+      video.appendChild(sourceWebm);
+
+      var sourceMp4 = document.createElement('source');
+      sourceMp4.src = mp4Src;
+      sourceMp4.type = 'video/mp4';
+      video.appendChild(sourceMp4);
+
+      video.load();
+    }
+
+    var playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function() {
+        video.muted = true;
+        video.play().catch(function() {});
+      });
     }
   }
 
