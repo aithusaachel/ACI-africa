@@ -1,11 +1,9 @@
 /**
  * AbleCares Initiative Africa (ACI Africa)
  * Homepage-Specific Stylesheet (Phase 3) — css/aci-home.css
- * Imports aci-site.css for design system and tokens; contains
- * video hero, circular photo collage, and map infographic band.
+ * Loaded alongside css/aci-site.css; contains video hero,
+ * circular photo collage, and map infographic band.
  */
-
-@import url('aci-site.css');
 
 /* Transparent Masthead Over Full-Bleed Video Hero */
                         body.has-hero-video .aci-masthead {
