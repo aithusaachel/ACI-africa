@@ -47,13 +47,14 @@
   </script>
 </head>
 
-<body>
+<body class="has-hero-video">
 
   <!-- ── MASTHEAD (NAVIGATION) [Ref 1: Gainlove] ── -->
   <header class="aci-masthead" role="banner">
     <div class="aci-container aci-nav-inner">
       <a href="index.html" class="aci-nav-brand" aria-label="ACI Africa Home">
-        <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" width="40" height="40">
+        <img src="images/aciicon-white.png" alt="ACI Africa Emblem" class="aci-brand-logo-light" width="40" height="40">
+        <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" class="aci-brand-logo-dark" width="40" height="40">
         <span>ACI AFRICA</span>
       </a>
 
@@ -88,41 +89,38 @@
 
   <main id="main-content">
 
-    <!-- ── 1. HERO SECTION: MASKED & RECTANGULAR VARIANTS [Ref 2: Kalypso & Ref 1: Gainlove] ──
-         Switch variant via class on section: default '.aci-hero--masked' vs rectangular '.aci-hero--rect' -->
-    <section class="aci-hero aci-hero--masked" aria-labelledby="hero-title">
-      <div class="aci-container">
-        <div class="aci-hero-grid">
-          
-          <!-- Hero Text Column -->
-          <div class="aci-hero-content">
-            <span class="aci-eyebrow">AbleCares Initiative Africa</span>
-            <h1 id="hero-title">
-              Education and mental health, <span class="aci-brush-wrap">across Ghana<span class="aci-brush-stroke" aria-hidden="true"></span></span>.
-            </h1>
-            <p class="aci-lead">
-              We run school, mental health, and community programs for young people and families across Ghana.
-            </p>
-            <div class="aci-hero-actions">
-              <a href="programs.html" class="aci-btn aci-btn-primary">See our programs</a>
-              <a href="get-involved.html" class="aci-text-link">Join us &rarr;</a>
-            </div>
-            <!-- Playful 3-Dot Accent [Ref 2: Kalypso] -->
-            <div class="aci-dot-cluster" aria-hidden="true">
-              <span class="dot dot-yellow"></span>
-              <span class="dot dot-orange"></span>
-              <span class="dot dot-green"></span>
-            </div>
-          </div>
+    <!-- ── 1. HERO SECTION: FULL-BLEED VIDEO HERO (DEFAULT) & MASKED VARIANT ──
+         Switch variant via class on section: default '.aci-hero--video' vs masked '.aci-hero--masked' -->
+    <section class="aci-hero aci-hero--video" aria-labelledby="hero-title">
+      <!-- Full-bleed background video & poster fallback -->
+      <div class="aci-hero-bg" aria-hidden="true">
+        <video class="aci-hero-video" muted loop playsinline preload="none" poster="images/hero-poster.webp" data-src-mp4="assets/hero.mp4" data-src-webm="assets/hero-1080p.webm">
+          <img src="images/hero-poster.webp" alt="" class="aci-hero-poster" fetchpriority="high" width="1280" height="944">
+        </video>
+        <img src="images/hero-poster.webp" alt="" class="aci-hero-poster" aria-hidden="true" width="1280" height="944">
+        <div class="aci-hero-overlay"></div>
+      </div>
 
-          <!-- Hero Media Column: Continent Silhouette Mask or Rectangular Fallback -->
-          <div class="aci-hero-media aci-hero-video-wrap">
-            <video class="aci-hero-video" muted loop playsinline preload="none" poster="images/hero-poster.webp" data-src-mp4="assets/hero.mp4" data-src-webm="assets/hero-1080p.webm" aria-hidden="true">
-              <img src="images/hero-poster.webp" alt="Ghanaian young people engaged in learning and community activity" class="aci-hero-poster" fetchpriority="high" width="1280" height="944">
-            </video>
-            <img src="images/hero-poster.webp" alt="" class="aci-hero-poster" aria-hidden="true" width="1280" height="944">
+      <div class="aci-container aci-hero-container">
+        <div class="aci-hero-content">
+          <span class="aci-eyebrow">ABLECARES INITIATIVE AFRICA</span>
+          <!-- [VERIFY-COPY: founder wording, grammar to confirm] -->
+          <h1 id="hero-title">
+            Doing nothing is <span class="aci-brush-wrap">not an option<span class="aci-brush-stroke" aria-hidden="true"></span></span> in our life.
+          </h1>
+          <p class="aci-lead">
+            Education and mental health, across Ghana. We run school, mental health, and community programs for young people and families across Ghana.
+          </p>
+          <div class="aci-hero-actions">
+            <a href="programs.html" class="aci-btn aci-btn-amber">See our programs</a>
+            <a href="get-involved.html" class="aci-btn aci-btn-outline-white">Join us</a>
           </div>
-
+          <!-- Playful 3-Dot Accent [Ref 2: Kalypso] -->
+          <div class="aci-dot-cluster" aria-hidden="true">
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-orange"></span>
+            <span class="dot dot-green"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -141,7 +139,7 @@
               </svg>
             </div>
             <h2 class="aci-feature-title" style="font-size: 1.35rem; margin-bottom: 8px;">Education &amp; Youth</h2>
-            <p class="aci-feature-desc">Learning materials, classroom supplies, and youth leadership training for rural and peri-urban schools.</p>
+            <p class="aci-feature-desc">Learning materials, classroom supplies, and youth leadership training for rural, underserved areas.</p>
           </div>
 
           <!-- Column 2: Mental Health (PAMHO) -->
@@ -210,23 +208,25 @@
               </li>
             </ul>
 
-            <p class="aci-prose-note" style="font-size: var(--fs-small); color: var(--ink-muted); margin-top: var(--s-3); margin-bottom: var(--s-5);">
-              Editorial typography verified for African language orthography, supporting characters such as Ɛ ɛ, Ɔ ɔ, and Ŋ ŋ.
-            </p>
-
-            <a href="about.html" class="aci-btn aci-btn-primary">Learn more about us</a>
+            <a href="about.html" class="aci-btn aci-btn-primary" style="margin-top: var(--s-4);">Learn more about us</a>
           </div>
 
           <!-- Circular Photographic Collage [Ref 1: Gainlove] -->
           <div class="aci-collage-wrap" aria-hidden="true">
             <div class="aci-collage-orbital"></div>
-            <!-- Main Photo: IMG_8886.jpg (Student smiling) -->
+            <!-- Main Photo: IMG_8886.webp (Student smiling) -->
             <div class="aci-circle-main">
-              <img src="images/IMG_8886.jpg" alt="Ghanaian student smiling during community school session" loading="lazy" width="400" height="400">
+              <img src="images/IMG_8886.webp"
+                   srcset="images/IMG_8886-480w.webp 480w, images/IMG_8886-960w.webp 960w, images/IMG_8886-1440w.webp 1440w"
+                   sizes="(max-width: 600px) 300px, 400px"
+                   alt="Ghanaian student smiling during community school session" loading="lazy" width="400" height="400">
             </div>
-            <!-- Sub Photo: IMG_8877.jpg (Classroom collaboration; replaces reserved IMG_8880) -->
+            <!-- Sub Photo: IMG_8877.webp (Classroom collaboration; replaces reserved IMG_8880) -->
             <div class="aci-circle-sub">
-              <img src="images/IMG_8877.jpg" alt="Students learning together in Ghanaian classroom" loading="lazy" width="280" height="280">
+              <img src="images/IMG_8877.webp"
+                   srcset="images/IMG_8877-480w.webp 480w, images/IMG_8877-960w.webp 960w, images/IMG_8877-1440w.webp 1440w"
+                   sizes="(max-width: 600px) 200px, 280px"
+                   alt="Students learning together in Ghanaian classroom" loading="lazy" width="280" height="280">
             </div>
             <div class="aci-badge-pill">Est. Ghana 2023</div>
           </div>
@@ -254,7 +254,10 @@
           <!-- Card 1: Support a Schoolchild -->
           <article class="aci-program-card">
             <div class="aci-card-photo">
-              <img src="images/IMG_8887.jpg" alt="Distribution of school supplies and exercise books to students" loading="lazy" width="600" height="375">
+              <img src="images/IMG_8887.webp"
+                   srcset="images/IMG_8887-480w.webp 480w, images/IMG_8887-960w.webp 960w, images/IMG_8887-1440w.webp 1440w"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 440px"
+                   alt="Distribution of school supplies and exercise books to students" loading="lazy" width="600" height="375">
               <a href="programs.html#education" class="aci-card-plus" aria-label="Learn more about Support a Schoolchild">+</a>
             </div>
             <div class="aci-card-body">
@@ -269,7 +272,10 @@
           <!-- Card 2: PAMHO Mental Health -->
           <article class="aci-program-card">
             <div class="aci-card-photo">
-              <img src="images/IMG_8879.jpg" alt="Community members gathered for a mental health discussion circle" loading="lazy" width="600" height="375">
+              <img src="images/IMG_8879.webp"
+                   srcset="images/IMG_8879-480w.webp 480w, images/IMG_8879-960w.webp 960w, images/IMG_8879-1440w.webp 1440w"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 440px"
+                   alt="Community members gathered for a mental health discussion circle" loading="lazy" width="600" height="375">
               <a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer" class="aci-card-plus" aria-label="Visit PAMHO website">+</a>
             </div>
             <div class="aci-card-body">
@@ -284,7 +290,10 @@
           <!-- Card 3: Environmental & Sanitation Campaigns (User commanded real name) -->
           <article class="aci-program-card">
             <div class="aci-card-photo">
-              <img src="images/IMG_8881.jpg" alt="Volunteers engaged in community cleanup and environmental sanitation" loading="lazy" width="600" height="375">
+              <img src="images/IMG_8881.webp"
+                   srcset="images/IMG_8881-480w.webp 480w, images/IMG_8881-960w.webp 960w, images/IMG_8881-1440w.webp 1440w"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 440px"
+                   alt="Community members and youth engaged in local cleanups and environmental sanitation" loading="lazy" width="600" height="375">
               <a href="programs.html#climate" class="aci-card-plus" aria-label="Learn more about Environmental & Sanitation Campaigns">+</a>
             </div>
             <div class="aci-card-body">
@@ -375,7 +384,10 @@
           <div class="aci-story-col">
             <div class="aci-story-photo-wrap">
               <div class="aci-brush-dab" aria-hidden="true"></div>
-              <img src="images/IMG_8888.jpg" alt="Participants during youth workshop session" loading="lazy" width="400" height="400">
+              <img src="images/IMG_8888.webp"
+                   srcset="images/IMG_8888-480w.webp 480w, images/IMG_8888-960w.webp 960w, images/IMG_8888-1440w.webp 1440w"
+                   sizes="(max-width: 768px) 100vw, 440px"
+                   alt="Participants during youth workshop session" loading="lazy" width="400" height="400">
             </div>
             <!-- [NEED: Verified Beneficiary Story — Name, Location, What Changed] -->
           </div>
@@ -384,7 +396,10 @@
           <div class="aci-story-col">
             <div class="aci-story-photo-wrap">
               <div class="aci-brush-dab" aria-hidden="true"></div>
-              <img src="images/IMG_8890.jpg" alt="Community circle dialogue session" loading="lazy" width="400" height="400">
+              <img src="images/IMG_8890.webp"
+                   srcset="images/IMG_8890-480w.webp 480w, images/IMG_8890-960w.webp 960w, images/IMG_8890-1440w.webp 1440w"
+                   sizes="(max-width: 768px) 100vw, 440px"
+                   alt="Community circle dialogue session" loading="lazy" width="400" height="400">
             </div>
             <!-- [NEED: Community Dialogue Story — Facilitator, Region, Outcome] -->
           </div>
@@ -393,7 +408,10 @@
           <div class="aci-story-col">
             <div class="aci-story-photo-wrap">
               <div class="aci-brush-dab" aria-hidden="true"></div>
-              <img src="images/IMG_8892.jpg" alt="Students in classroom learning session" loading="lazy" width="400" height="400">
+              <img src="images/IMG_8892.webp"
+                   srcset="images/IMG_8892-480w.webp 480w, images/IMG_8892-960w.webp 960w, images/IMG_8892-1440w.webp 1440w"
+                   sizes="(max-width: 768px) 100vw, 440px"
+                   alt="Students in classroom learning session" loading="lazy" width="400" height="400">
             </div>
             <!-- [NEED: School Outreach Story — School Name, Headteacher, Supplies Delivered] -->
           </div>
@@ -403,13 +421,17 @@
     </section>
 
     <!-- ── 7. FULL-WIDTH CALL TO ACTION BANNER [Ref 2: Kalypso] ── -->
-    <div class="aci-container">
-      <section class="aci-cta-banner" aria-labelledby="cta-heading">
-        <!-- Background photo: IMG_8884.jpg (unique, unrepeated) -->
-        <img src="images/IMG_8884.jpg" alt="" class="aci-cta-bg-photo" aria-hidden="true" loading="lazy">
-        <div class="aci-cta-brush-left" aria-hidden="true"></div>
-        <div class="aci-cta-brush-right" aria-hidden="true"></div>
+    <section class="aci-cta-section" aria-labelledby="cta-heading">
+      <!-- Background photo: IMG_8884.webp with responsive srcset -->
+      <picture class="aci-cta-bg-photo" aria-hidden="true">
+        <source srcset="images/IMG_8884-1440w.webp" media="(min-width: 960px)">
+        <source srcset="images/IMG_8884-960w.webp" media="(min-width: 480px)">
+        <img src="images/IMG_8884-480w.webp" alt="" loading="lazy" width="1440" height="960">
+      </picture>
+      <div class="aci-cta-brush-left" aria-hidden="true"></div>
+      <div class="aci-cta-brush-right" aria-hidden="true"></div>
 
+      <div class="aci-container">
         <div class="aci-cta-inner">
           <h2 id="cta-heading" class="aci-cta-headline">
             Join our work. Support communities across Ghana.
@@ -422,8 +444,8 @@
             <a href="get-involved.html" class="aci-btn aci-btn-green">Get involved</a>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- ── 8. NEWSLETTER SUBSCRIPTION ── -->
     <section class="aci-section tight" aria-labelledby="newsletter-heading">
