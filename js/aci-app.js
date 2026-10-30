@@ -172,8 +172,17 @@
       return;
     }
 
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+
     video.addEventListener('playing', function() {
       video.classList.add('is-playing');
+    });
+
+    video.addEventListener('ended', function() {
+      video.currentTime = 0;
+      video.play().catch(function() {});
     });
 
     // On capable desktop, attach video sources and play
