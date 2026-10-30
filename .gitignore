@@ -25,3 +25,9 @@ build/
 logs/
 *.log
 contact_sheet.html
+photo-picker.html
+scratch/
+scratch_*
+build_photo_picker.py
+check_all_watermarks.py
+audit_page.js

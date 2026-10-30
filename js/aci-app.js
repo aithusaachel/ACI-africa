@@ -21,17 +21,16 @@
     // Progressive enhancement marker
     document.documentElement.classList.add('js-enabled');
 
+    var revealTargets = document.querySelectorAll('.aci-reveal, [data-reveal], .aci-mask-rise, .aci-photo-wipe, .aci-brush-wrap, .aci-mosaic-item');
+    if (!revealTargets.length) return;
+
     if (prefersReducedMotion) {
       // User requested reduced motion: ensure all elements are immediately visible
-      var reveals = document.querySelectorAll('.aci-reveal, [data-reveal]');
-      for (var i = 0; i < reveals.length; i++) {
-        reveals[i].classList.add('is-revealed');
+      for (var i = 0; i < revealTargets.length; i++) {
+        revealTargets[i].classList.add('is-revealed');
       }
       return;
     }
-
-    var revealTargets = document.querySelectorAll('.aci-reveal, [data-reveal]');
-    if (!revealTargets.length) return;
 
     if ('IntersectionObserver' in window) {
       var revealObserver = new IntersectionObserver(function(entries, observer) {
@@ -43,15 +42,17 @@
         });
       }, {
         root: null,
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.08
+        rootMargin: '0px 0px -20px 0px',
+        threshold: 0.05
       });
 
       revealTargets.forEach(function(el) {
         var rect = el.getBoundingClientRect();
-        // Only elements below the fold animate
+        // Elements in initial viewport reveal promptly
         if (rect.top < window.innerHeight && rect.bottom > 0) {
-          el.classList.add('is-revealed');
+          setTimeout(function() {
+            el.classList.add('is-revealed');
+          }, 60);
         } else {
           revealObserver.observe(el);
         }
@@ -60,6 +61,67 @@
       // Fallback
       revealTargets.forEach(function(el) {
         el.classList.add('is-revealed');
+      });
+    }
+  }
+
+  // ─── 1b. Sub-Navigation Sliding Underline ─────────────────────────────────
+  function initSubnavSlider() {
+    var subnav = document.querySelector('.aci-subnav');
+    if (!subnav) return;
+    var track = subnav.querySelector('.aci-subnav-track');
+    var slider = subnav.querySelector('.aci-subnav-slider');
+    var links = subnav.querySelectorAll('.aci-subnav-item');
+    if (!track || !slider || !links.length) return;
+
+    function moveTo(link) {
+      if (!link) return;
+      var trackRect = track.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var left = linkRect.left - trackRect.left + track.scrollLeft;
+      var width = linkRect.width;
+      slider.style.left = left + 'px';
+      slider.style.width = width + 'px';
+      links.forEach(function(l) { l.classList.remove('active'); });
+      link.classList.add('active');
+    }
+
+    var activeLink = subnav.querySelector('.aci-subnav-item.active') || links[0];
+    setTimeout(function() {
+      moveTo(activeLink);
+    }, 100);
+
+    links.forEach(function(link) {
+      link.addEventListener('click', function() {
+        moveTo(link);
+      });
+    });
+
+    // Scroll spy for sections
+    var sections = [];
+    links.forEach(function(l) {
+      var href = l.getAttribute('href');
+      if (href && href.indexOf('#') === 0) {
+        var sec = document.querySelector(href);
+        if (sec) sections.push({ id: href, el: sec, link: l });
+      }
+    });
+
+    if (sections.length && 'IntersectionObserver' in window) {
+      var spyObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var matched = sections.find(function(s) { return s.el === entry.target; });
+            if (matched) moveTo(matched.link);
+          }
+        });
+      }, {
+        rootMargin: '-20% 0px -50% 0px',
+        threshold: 0.1
+      });
+
+      sections.forEach(function(s) {
+        spyObserver.observe(s.el);
       });
     }
   }
@@ -203,11 +265,11 @@
 
   // ─── 5. Verified Stat Counters (Only 3 and 1,500) ───────────────────────────
   function initStatCounters() {
-    var counters = document.querySelectorAll('[data-counter-target]');
+    var counters = document.querySelectorAll('[data-counter-target], [data-count], .aci-giant-stat-num');
     if (!counters.length) return;
 
     counters.forEach(function(el) {
-      var targetStr = el.getAttribute('data-counter-target');
+      var targetStr = el.getAttribute('data-counter-target') || el.getAttribute('data-count') || (el.classList.contains('aci-giant-stat-num') ? '1500' : '');
       // Strictly restrict animation to the two verified stats
       if (targetStr !== '3' && targetStr !== '1500') {
         el.textContent = targetStr;
@@ -223,7 +285,7 @@
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             var targetVal = parseInt(targetStr, 10);
-            var duration = 1200;
+            var duration = 800; // <= 900ms rule
             var startTime = null;
 
             function step(timestamp) {
@@ -576,6 +638,7 @@
     initHeroVideo();
     initDivisionTabs();
     initStatCounters();
+    initSubnavSlider();
     initContactChatLink();
   });
 

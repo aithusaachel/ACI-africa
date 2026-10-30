@@ -310,19 +310,28 @@
                           position: relative;
                           display: inline-block;
                           white-space: nowrap;
+                          isolation: isolate;
+                          z-index: 1;
                         }
 
                         .aci-brush-stroke {
                           position: absolute;
-                          left: -3%;
-                          bottom: -6px;
-                          width: 106%;
-                          height: 18px;
+                          left: -2%;
+                          bottom: -4px;
+                          width: 104%;
+                          height: 20px;
                           background-image: url('../images/brush/underline-yellow.svg');
                           background-size: 100% 100%;
                           background-repeat: no-repeat;
                           z-index: -1;
                           pointer-events: none;
+                          clip-path: inset(0 100% 0 0);
+                          transition: clip-path 700ms cubic-bezier(.65, 0, .35, 1);
+                        }
+
+                        .is-revealed .aci-brush-stroke,
+                        .is-drawn .aci-brush-stroke {
+                          clip-path: inset(0 0 0 0);
                         }
 
                         
@@ -1572,5 +1581,686 @@
   color: var(--ink-muted);
   line-height: 1.6;
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   PHASE 3 PASS 2: COMPONENT SYSTEM & EDITORIAL RESTRUCTURE
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Full-Bleed Mission & Vision Edge-to-Edge Panels [about.html] ── */
+.aci-mv-edge-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.aci-mv-panel {
+  padding: clamp(56px, 7vw, 112px) clamp(24px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aci-mv-amber {
+  background-color: var(--amber, #F5A623);
+  color: var(--ink, #141414);
+}
+
+.aci-mv-green {
+  background-color: var(--green-deep, #1E5C38);
+  color: #FFFFFF;
+}
+
+.aci-mv-panel-inner {
+  max-width: 560px;
+  width: 100%;
+}
+
+.aci-mv-panel-inner.left {
+  margin-left: auto;
+}
+
+.aci-mv-panel-inner.right {
+  margin-right: auto;
+}
+
+.aci-mv-panel-inner .aci-eyebrow {
+  margin-bottom: var(--s-2);
+}
+
+.aci-mv-amber .aci-eyebrow {
+  color: #6E3B00;
+}
+
+.aci-mv-green .aci-eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.aci-mv-amber h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink, #141414);
+  margin-bottom: var(--s-3);
+}
+
+.aci-mv-green h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: var(--s-3);
+}
+
+.aci-mv-amber p {
+  font-size: clamp(1rem, 1.25vw, 1.1875rem);
+  line-height: 1.6;
+  color: var(--ink, #141414);
+  margin: 0;
+}
+
+.aci-mv-green p {
+  font-size: clamp(1rem, 1.25vw, 1.1875rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .aci-mv-edge-section {
+    grid-template-columns: 1fr;
+  }
+  .aci-mv-panel-inner.left,
+  .aci-mv-panel-inner.right {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
+/* ── 2. Flat Six-Up Values Grid (01-06 Numerals, Hairline Dividers, No Cards) ── */
+.aci-flat-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule, #E5E5E5);
+  border-left: 1px solid var(--rule, #E5E5E5);
+  margin-top: var(--s-5);
+}
+
+.aci-flat-value-item {
+  border-right: 1px solid var(--rule, #E5E5E5);
+  border-bottom: 1px solid var(--rule, #E5E5E5);
+  padding: clamp(28px, 4vw, 44px);
+  background: transparent;
+  transition: background var(--t-fast) var(--ease);
+}
+
+.aci-flat-value-item:hover,
+.aci-flat-value-item:focus-within {
+  background: rgba(245, 166, 35, 0.05);
+}
+
+.aci-value-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  color: var(--orange-deep, #B84700);
+  line-height: 1;
+  margin-bottom: var(--s-2);
+}
+
+.aci-flat-value-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--s-1);
+}
+
+.aci-flat-value-item p {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .aci-flat-values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .aci-flat-values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 3. Principles Editorial Rows with Hover ── */
+.aci-principles-editorial {
+  list-style: none;
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule, #E5E5E5);
+}
+
+.aci-principle-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
+  padding: clamp(20px, 3vw, 28px) clamp(12px, 2vw, 20px);
+  border-bottom: 1px solid var(--rule, #E5E5E5);
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+  cursor: default;
+}
+
+.aci-principle-row:hover,
+.aci-principle-row:focus-within {
+  transform: translateY(-4px);
+  background: rgba(224, 90, 43, 0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.aci-principle-index {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--orange-deep, #B84700);
+  min-width: 44px;
+}
+
+.aci-principle-statement {
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.aci-row-action {
+  color: var(--orange-deep, #B84700);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: transform var(--t-fast) var(--ease);
+  display: inline-block;
+}
+
+.aci-principle-row:hover .aci-row-action,
+.aci-principle-row:focus-within .aci-row-action {
+  transform: rotate(90deg);
+}
+
+/* ── 4. Charter Bordered Note ── */
+.aci-charter-note {
+  border: 2px solid var(--ink, #141414);
+  border-radius: 8px;
+  padding: clamp(20px, 4vw, 40px);
+  background: #FFFFFF;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.aci-charter-prominent {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink, #141414);
+  margin-top: var(--s-3);
+  padding-left: var(--s-3);
+  border-left: 4px solid var(--orange-deep, #B84700);
+}
+
+/* ── 5. Programs Subnav & Token Division Dots ── */
+.aci-subnav {
+  position: sticky;
+  top: 72px;
+  z-index: 90;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--rule, #E5E5E5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.aci-subnav-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 24px);
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 8px 0;
+  scrollbar-width: none;
+}
+
+.aci-subnav-track::-webkit-scrollbar {
+  display: none;
+}
+
+.aci-subnav-item {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  text-decoration: none;
+  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.15s ease;
+  position: relative;
+  border-radius: 4px;
+}
+
+.aci-subnav-item:hover,
+.aci-subnav-item:focus-visible,
+.aci-subnav-item.active {
+  color: var(--ink);
+}
+
+.aci-subnav-slider {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--orange-deep, #B84700);
+  transition: left 250ms cubic-bezier(.2, .7, .1, 1), width 250ms cubic-bezier(.2, .7, .1, 1);
+  pointer-events: none;
+}
+
+.aci-dot-edu {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--amber, #F5A623);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.aci-dot-mind {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--orange-deep, #B84700);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.aci-dot-climate {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--green-deep, #237326);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ── 6. Programs Full-Bleed Division Bands ── */
+.aci-division-band {
+  width: 100%;
+  padding: clamp(56px, 7vw, 112px) 0;
+  position: relative;
+}
+
+.aci-band-edu {
+  background-color: #FFFDF7;
+  border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+}
+
+.aci-band-mind {
+  background-color: #FFF9F6;
+  border-bottom: 1px solid rgba(184, 71, 0, 0.2);
+}
+
+.aci-band-climate {
+  background-color: #F6FAF7;
+  border-bottom: 1px solid rgba(35, 115, 38, 0.2);
+}
+
+.aci-division-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: stretch;
+}
+
+.aci-division-split > * {
+  min-width: 0;
+}
+
+.aci-division-split.reverse {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.aci-huge-index {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--s-2);
+}
+
+.aci-band-edu .aci-huge-index { color: var(--amber, #F5A623); }
+.aci-band-mind .aci-huge-index { color: var(--orange-deep, #B84700); }
+.aci-band-climate .aci-huge-index { color: var(--green-deep, #237326); }
+
+.aci-division-display-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: var(--s-3);
+}
+
+.aci-sticky-photo-wrap {
+  position: sticky;
+  top: 140px;
+  height: clamp(360px, 60vh, 560px);
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.aci-sticky-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aci-prog-editorial-rows {
+  list-style: none;
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule, #E5E5E5);
+}
+
+.aci-prog-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.5fr auto;
+  gap: clamp(12px, 2vw, 24px);
+  align-items: baseline;
+  padding: clamp(18px, 2.5vw, 26px) clamp(12px, 2vw, 18px);
+  border-bottom: 1px solid var(--rule, #E5E5E5);
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+  cursor: default;
+}
+
+.aci-prog-row:hover,
+.aci-prog-row:focus-within {
+  transform: translateY(-4px);
+  background: rgba(245, 166, 35, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.aci-band-mind .aci-prog-row:hover,
+.aci-band-mind .aci-prog-row:focus-within {
+  background: rgba(184, 71, 0, 0.05);
+}
+
+.aci-band-climate .aci-prog-row:hover,
+.aci-band-climate .aci-prog-row:focus-within {
+  background: rgba(35, 115, 38, 0.05);
+}
+
+.aci-prog-row-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.aci-prog-row-desc {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.aci-prog-row-arrow {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--orange-deep, #B84700);
+  transition: transform var(--t-fast) var(--ease);
+}
+
+.aci-prog-row:hover .aci-prog-row-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .aci-division-split,
+  .aci-division-split.reverse {
+    grid-template-columns: 1fr;
+  }
+  .aci-sticky-photo-wrap {
+    position: static;
+    height: 320px;
+    margin-top: 24px;
+  }
+  .aci-prog-row {
+    grid-template-columns: 1fr auto;
+  }
+  .aci-prog-row-desc {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── 7. Impact Full-Bleed Green Band with Africa Silhouette Outline ── */
+.aci-impact-green-band {
+  width: 100%;
+  background-color: var(--green-deep, #1E5C38);
+  color: #FFFFFF;
+  padding: clamp(64px, 8vw, 120px) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.aci-impact-band-inner {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.aci-giant-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 10vw, 8.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  margin-bottom: var(--s-3);
+}
+
+.aci-giant-stat-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #FFFFFF;
+  margin-bottom: var(--s-2);
+}
+
+.aci-giant-stat-desc {
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 560px;
+}
+
+/* Africa Silhouette Outline [Source: Natural Earth public domain vector data] */
+.aci-africa-silhouette-outline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.aci-africa-silhouette-outline svg {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  fill: none;
+}
+
+@media (max-width: 860px) {
+  .aci-impact-band-inner {
+    grid-template-columns: 1fr;
+  }
+  .aci-africa-silhouette-outline {
+    display: none;
+  }
+}
+
+/* ── 8. Impact Milestones Numbered Rows ── */
+.aci-milestone-rows {
+  list-style: none;
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule, #E5E5E5);
+}
+
+.aci-milestone-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
+  padding: clamp(20px, 3vw, 30px) clamp(12px, 2vw, 20px);
+  border-bottom: 1px solid var(--rule, #E5E5E5);
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+
+.aci-milestone-row:hover,
+.aci-milestone-row:focus-within {
+  transform: translateY(-4px);
+  background: rgba(35, 115, 38, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.aci-milestone-idx {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--green-deep, #237326);
+  min-width: 48px;
+}
+
+.aci-milestone-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+  flex-grow: 1;
+}
+
+/* ── 9. Impact 3-Photo Mosaic ── */
+.aci-mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+  margin-top: clamp(32px, 5vw, 56px);
+}
+
+.aci-mosaic-item {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #EEE;
+}
+
+.aci-mosaic-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .aci-mosaic-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ── 10. Motion System Rules (Transform, Opacity, Clip-path only) ── */
+.aci-line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 14px;
+  margin-bottom: -14px;
+}
+
+.js-enabled .aci-mask-rise {
+  display: inline-block;
+  transform: translateY(105%);
+  opacity: 0;
+  transition: transform 700ms cubic-bezier(.2, .7, .1, 1), opacity 700ms cubic-bezier(.2, .7, .1, 1);
+  will-change: transform, opacity;
+}
+
+.js-enabled .is-revealed .aci-mask-rise,
+.js-enabled .is-revealed.aci-mask-rise {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.js-enabled .aci-line-2 {
+  transition-delay: 80ms;
+}
+
+/* Photo wipe from left with subtle scale */
+.js-enabled .aci-photo-wipe {
+  clip-path: inset(0 100% 0 0);
+  transform: scale(1.06);
+  transition: clip-path 800ms cubic-bezier(.25, 1, .5, 1), transform 1200ms cubic-bezier(.25, 1, .5, 1);
+  will-change: clip-path, transform;
+}
+
+.js-enabled .is-revealed .aci-photo-wipe,
+.js-enabled .is-revealed.aci-photo-wipe {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}
+
+.js-enabled .aci-stagger-1 { transition-delay: 0ms; }
+.js-enabled .aci-stagger-2 { transition-delay: 120ms; }
+.js-enabled .aci-stagger-3 { transition-delay: 240ms; }
+
+/* ── 11. Cultural Layer Quarantined Behind body.aci-cultural-on ── */
+.aci-cultural-element {
+  display: none !important;
+}
+
+body.aci-cultural-on .aci-cultural-element {
+  display: block !important;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .js-enabled .aci-brush-stroke,
+  .js-enabled .aci-mask-rise,
+  .js-enabled .aci-photo-wipe,
+  .aci-subnav-slider {
+    transition: none !important;
+    transform: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+  }
+}
+
 
 

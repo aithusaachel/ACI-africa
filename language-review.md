@@ -1,35 +1,50 @@
-# Proposed Cultural & Language Markers Review
-
-> [!WARNING]
-> None of the Akan language terms or Adinkra cultural markers below have been checked by a native Ghanaian Twi/Fante speaker or formally approved by the founder. Per project rules, they are strictly quarantined in this document and removed from all rendered HTML pages until explicitly approved.
+# Language & Cultural Identity Review
+**Document Purpose:** Questions and verification framework for AbleCares Initiative Africa (ACI Africa) leadership, founders, and native Ghanaian language specialists.
 
 ---
 
-## 1. Proposed Akan Language Expressions
-
-| Term / Expression | Proposed Context & Location | Proposed English Meaning | Status | Notes / Queries for Native Speaker |
-| :--- | :--- | :--- | :--- | :--- |
-| **Akwaaba** | `index.html` (Hero eyebrow) | "Welcome" | **Pending Review** | Common Pan-Ghanaian welcome. Confirm if appropriate as an institutional non-profit eyebrow. |
-| **Ayekoo** | `impact.html` (Hero eyebrow) | "Well done / In praise of effort" | **Pending Review** | Used as an expression of praise for community workers and volunteers. Needs tone check. |
-| **Nkabom** | `index.html` (About checklist) & `about.html` (Hero badge) | "Unity / Togetherness / Solidarity" | **Pending Review** | Intended to signify communal cooperation and collective responsibility. |
-| **Mmodenbo** | `index.html` (About checklist) & `programs.html` (Hero badge) | "Diligence / Sustained effort / Perseverance" | **Pending Review** | Intended to express commitment to continuous youth mentorship and educational diligence. |
-| **Yɛwɔ ha** | `index.html` (About checklist) | "We are here / Grounded presence" | **Pending Review** | Intended to communicate local presence with schools and families. Contains African reference alphabet glyphs `ɛ` and `ɔ`. Verify grammatical naturalness for institutional branding. |
+## 1. Background & Guardrails
+During early design iterations, various indigenous Akan phrases (such as *Mmodenbo*, *Ayekoo*, *Nkabom*) and Adinkra symbols (*Nyansapo*, *Aya*, *Asase Ye Duru*, *Sankofa*) were drafted to give the website an authentic African aesthetic. However, to maintain documentary fidelity and prevent arbitrary cultural appropriation or misrepresentation:
+- All indigenous language terms and traditional symbols are strictly **quarantined** behind `body.aci-cultural-on` (disabled by default in production).
+- No indigenous phrases, proverbs, or cultural symbols may be published visibly until officially reviewed, translated, and approved by the founder and qualified native speakers.
 
 ---
 
-## 2. Proposed Adinkra Cultural Symbols
+## 2. Specific Questions for the Founder
 
-| Adinkra Symbol | File Location | Proposed Thematic Pairing | Status | Verification Needed |
-| :--- | :--- | :--- | :--- | :--- |
-| **Sankofa** (`images/adinkra/sankofa.svg`) | `about.html` | Organizational heritage & foundational mission | **Pending Review** | "Learning from the past to shape the future." Confirm graphical authenticity and community resonance. |
-| **Nyansapo** (`images/adinkra/nyansapo.svg`) | `programs.html` | Division 1: Education & Youth Development | **Pending Review** | "Wisdom knot" — intellect, ingenuity, education. |
-| **Aya** (`images/adinkra/aya.svg`) | `programs.html` | Division 2: PAMHO Mental Health Advocacy | **Pending Review** | "The fern" — endurance, defiance of hardship, mental fortitude. |
-| **Asase Ye Duru** (`images/adinkra/asase-ye-duru.svg`) | `programs.html` | Division 3: Climate & Community Action | **Pending Review** | "Divinity of the Earth" — environmental care and ecological stewardship. |
-| **Woforo Dua Pa A** (`images/adinkra/woforo-dua-pa-a.svg`) | `impact.html` | Collective Impact & Strategic Partnerships | **Pending Review** | "When you climb a good tree, you are given a push" — communal support, cooperation. |
+### A. Core Organizational Naming & Spelling
+1. **Program Name Standardization:**
+   - In Section 5A of the Organizational Profile, the completed initiative is spelled **"EmpowerTalks Africa"**.
+   - In Section 10 of the Organizational Profile, it is spelled **"EmpoweredTalks Africa"**.
+   - *Question:* Which spelling is the definitive institutional name for official publications and historical records?
+2. **Entity Name Consistency:**
+   - The document header uses both "AbleCares Initiative Africa" and "AbleCares Initiatives Africa".
+   - *Question:* Does the official registered Ghanaian NGO charter use the singular (*Initiative*) or plural (*Initiatives*) form?
+3. **Domain & Contact Channels:**
+   - The document lists `info@aciafrica.org` and placeholder `www.aciafrica.org`, while current project URLs reference `theaciafrica.org`.
+   - *Question:* Which domain is the primary canonical web address?
 
 ---
 
-## 3. Recommended Review Protocol
-1. Submit this document to the ACI Africa founder and a native Twi/Fante linguistic advisor.
-2. Verify exact orthography, tone appropriateness for an institutional NGO, and dialect neutrality.
-3. Upon written sign-off, terms may be reintroduced into targeted templates.
+## 3. Questions for Native Language Specialists (Akan / Twi, Ga, Ewe)
+
+### B. Thematic Division Alignments
+ACI Africa operates across three primary divisions. If indigenous mottoes or proverbs are to be featured as cultural accents, which authentic terms accurately capture each division's operational spirit?
+
+1. **Division A: Education & Youth Development**
+   - *Proposed Akan Concept:* *Nyansapo* (knot of wisdom) / *Adesua ma nkɔsoɔ* (learning brings progress).
+   - *Review Question:* Does this resonate accurately with modern secondary and university youth across Ghana, or is there a more culturally precise phrasing in Akan, Ga, or Ewe?
+2. **Division B: Mental Health & Social Psychology (PAMHO)**
+   - *Proposed Akan Concept:* *Adwene ne honhom apɔmuden* (mental and spiritual well-being) / *Aya* (endurance / overcoming adversity).
+   - *Review Question:* How can community mental health support be phrased in indigenous languages without inadvertently evoking stigmatizing traditional or supernatural connotations?
+3. **Division C: Climate, Sanitation & Social Impact**
+   - *Proposed Akan Concept:* *Asase Ye Duru* (the earth has weight / environmental reverence) / *Mpɔtam ahotew* (community sanitation and cleanliness).
+   - *Review Question:* Is there an established Ga or Ewe expression for grassroots communal clean-up exercises that reflects communal solidarity (*Susu / Nkabom*)?
+
+---
+
+## 4. Architectural Implementation in Website
+All candidate cultural slots are maintained in code comments or conditional hooks:
+- **CSS Toggle:** `body.aci-cultural-on` enables cultural graphic bands and authentic proverbs once approved.
+- **Woven Divider:** An original abstract geometric woven vector (`images/patterns/woven-band.svg`) is used in place of copyrighted textile copies.
+- **No Invented Copy:** All public text remains 100% derived from the authoritative ACI Africa Organizational Profile document.

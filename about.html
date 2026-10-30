@@ -11,7 +11,7 @@
 
   <meta property="og:title" content="About Us | AbleCares Initiative Africa (ACI Africa)">
   <meta property="og:description" content="The institutional identity, founding mandate, governance, and operating philosophy of AbleCares Initiative Africa in Accra, Ghana.">
-  <meta property="og:image" content="images/IMG_8896.jpg">
+  <meta property="og:image" content="images/IMG_8896.webp">
 
   <!-- Self-Hosted Typography Preloads -->
   <link rel="preload" href="fonts/playfair-display-latin-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -63,26 +63,28 @@
 
   <main id="main-content">
 
-    <!-- ── 1. OPENER: TEXT-LEFT WITH BRUSH-UNDERLINE & REAL PHOTO ── -->
+    <!-- ── 1. OPENER: EDITORIAL COMPOSITION WITH BRUSH-UNDERLINE & WATERMARK-FREE PHOTO ── -->
     <section class="aci-page-hero" aria-labelledby="about-title">
       <div class="aci-container">
-        <div class="aci-page-hero-grid">
+        <div class="aci-page-hero-grid" style="align-items: center;">
           <div class="aci-page-hero-content">
+            <span class="aci-eyebrow">Institutional Identity</span>
             <h1 id="about-title" class="aci-h1">
-              A Ghana-based, <span class="aci-brush-wrap">Pan-African<span class="aci-brush-stroke" aria-hidden="true"></span></span> non-profit.
+              <span class="aci-line-mask"><span class="aci-mask-rise">A Ghana-based,</span></span>
+              <span class="aci-line-mask"><span class="aci-mask-rise aci-line-2"><span class="aci-brush-wrap">Pan-African<span class="aci-brush-stroke" aria-hidden="true"></span></span> non-profit.</span></span>
             </h1>
             <p class="aci-lead">
               We work on education, mental health, and community wellbeing, with young people at the centre.
             </p>
           </div>
           <div class="aci-page-hero-media">
-            <div class="aci-rounded-frame" style="aspect-ratio: 16/10;">
+            <div class="aci-photo-wipe aci-rounded-frame" style="aspect-ratio: 16/10; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
               <img src="images/IMG_8896.webp"
                    srcset="images/IMG_8896-480w.webp 480w, images/IMG_8896-960w.webp 960w, images/IMG_8896-1440w.webp 1440w, images/IMG_8896.webp 1600w"
                    sizes="(max-width: 991px) 100vw, 45vw"
-                   alt="AbleCares Initiative Africa team members engaging with community members and families in Ghana"
+                   alt="AbleCares Initiative Africa community outreach assembly in Ghana"
                    width="1600"
-                   height="1066"
+                   height="980"
                    fetchpriority="high">
             </div>
             <!-- [NEED: Official outreach date and community site record from archives] -->
@@ -91,55 +93,78 @@
       </div>
     </section>
 
-    <!-- ── 2. MISSION & VISION ── -->
-    <section class="aci-section" id="mission" aria-label="Mission and Vision">
-      <div class="aci-container">
-        <div class="aci-mv-grid">
-          <div class="aci-mv-card">
-            <h2 class="aci-h2">Our mission</h2>
-            <p>
-              To improve the lives of children, youth, families, and communities through education, mental health support, digital empowerment, and social impact initiatives, delivered with compassion, innovation, and cultural relevance.
-            </p>
-          </div>
-          <div class="aci-mv-card">
-            <h2 class="aci-h2">Our vision</h2>
-            <p>
-              To build a world-class, youth-centered African organization that empowers young people, strengthens mental health systems, promotes quality education, and advances sustainable development across the continent.
-            </p>
-          </div>
+    <!-- ── CULTURAL LAYER (QUARANTINED BEHIND body.aci-cultural-on) ── -->
+    <div class="aci-cultural-element" aria-hidden="true">
+      <img src="images/patterns/woven-band.svg" alt="" style="width: 100%; height: 32px; display: block;">
+    </div>
+    <!-- [CULTURAL REVIEW SLOT: Akan Sankofa symbol / proverb pending founder sign-off in language-review.md] -->
+
+    <!-- ── 2. FULL-BLEED MISSION & VISION (SIDE-BY-SIDE EDGE-TO-EDGE PANELS) ── -->
+    <section class="aci-mv-edge-section" aria-label="Mission and Vision">
+      <div class="aci-mv-panel aci-mv-amber">
+        <div class="aci-mv-panel-inner left">
+          <span class="aci-eyebrow">Institutional Mission</span>
+          <h2 class="aci-h2">
+            <span class="aci-line-mask"><span class="aci-mask-rise">Our mission</span></span>
+          </h2>
+          <p>
+            To improve the lives of children, youth, families, and communities through education, mental health support, digital empowerment, and social impact initiatives, delivered with compassion, innovation, and cultural relevance.
+          </p>
+          <!-- [VERIFY-COPY: Canonical statement from ACI Organizational Profile Section 2] -->
+        </div>
+      </div>
+      <div class="aci-mv-panel aci-mv-green">
+        <div class="aci-mv-panel-inner right">
+          <span class="aci-eyebrow">Continental Vision</span>
+          <h2 class="aci-h2">
+            <span class="aci-line-mask"><span class="aci-mask-rise">Our vision</span></span>
+          </h2>
+          <p>
+            To build a world-class, youth-centered African organization that empowers young people, strengthens mental health systems, promotes quality education, and advances sustainable development across the continent.
+          </p>
+          <!-- [VERIFY-COPY: Canonical statement from ACI Organizational Profile Section 3] -->
         </div>
       </div>
     </section>
 
-    <!-- ── 3. VALUES (WHAT WE HOLD TO) ── -->
-    <section class="aci-section aci-band" aria-labelledby="values-heading">
+    <!-- ── 3. VALUES (FLAT SIX-UP GRID WITH PLAYFAIR NUMERALS & HAIRLINE DIVIDERS) ── -->
+    <section class="aci-section" aria-labelledby="values-heading" style="padding: clamp(56px, 7vw, 112px) 0;">
       <div class="aci-container">
-        <div style="margin-bottom: var(--s-6);">
-          <h2 id="values-heading" class="aci-h2">What we hold to</h2>
+        <div>
+          <span class="aci-eyebrow">Foundational Principles</span>
+          <h2 id="values-heading" class="aci-h2">
+            <span class="aci-line-mask"><span class="aci-mask-rise">What we hold to</span></span>
+          </h2>
         </div>
 
-        <div class="aci-values-grid">
-          <div class="aci-value-card">
+        <div class="aci-flat-values-grid">
+          <div class="aci-flat-value-item">
+            <div class="aci-value-numeral" aria-hidden="true">01</div>
             <h3>Integrity</h3>
             <p>Honest, open, and accountable.</p>
           </div>
-          <div class="aci-value-card">
+          <div class="aci-flat-value-item">
+            <div class="aci-value-numeral" aria-hidden="true">02</div>
             <h3>Impact</h3>
             <p>Programs we can measure.</p>
           </div>
-          <div class="aci-value-card">
+          <div class="aci-flat-value-item">
+            <div class="aci-value-numeral" aria-hidden="true">03</div>
             <h3>Compassion</h3>
             <p>Respect and dignity for everyone we serve.</p>
           </div>
-          <div class="aci-value-card">
+          <div class="aci-flat-value-item">
+            <div class="aci-value-numeral" aria-hidden="true">04</div>
             <h3>Innovation</h3>
             <p>Digital tools and new ideas.</p>
           </div>
-          <div class="aci-value-card">
+          <div class="aci-flat-value-item">
+            <div class="aci-value-numeral" aria-hidden="true">05</div>
             <h3>Collaboration</h3>
             <p>Working with schools, governments, and communities.</p>
           </div>
-          <div class="aci-value-card">
+          <div class="aci-flat-value-item">
+            <div class="aci-value-numeral" aria-hidden="true">06</div>
             <h3>Excellence</h3>
             <p>High standards in how we deliver.</p>
           </div>
@@ -147,57 +172,72 @@
       </div>
     </section>
 
-    <!-- ── 4. OPERATING PRINCIPLES (HOW WE WORK) ── -->
-    <section class="aci-section" aria-labelledby="work-heading">
+    <!-- ── 4. OPERATING PRINCIPLES (LARGE EDITORIAL ROWS WITH HOVER) ── -->
+    <section class="aci-section aci-band" aria-labelledby="work-heading" style="padding: clamp(56px, 7vw, 112px) 0;">
       <div class="aci-container">
-        <div style="margin-bottom: var(--s-6);">
-          <h2 id="work-heading" class="aci-h2">How we work.</h2>
+        <div>
+          <span class="aci-eyebrow">Field Methodology</span>
+          <h2 id="work-heading" class="aci-h2">
+            <span class="aci-line-mask"><span class="aci-mask-rise">How we work.</span></span>
+          </h2>
         </div>
 
-        <ol class="aci-principles-list">
-          <li class="aci-principle-item">
-            <span class="aci-principle-num" aria-hidden="true">01</span>
-            <span class="aci-principle-text">Built around real community needs.</span>
+        <ol class="aci-principles-editorial">
+          <li class="aci-principle-row" tabindex="0">
+            <span class="aci-principle-index" aria-hidden="true">01</span>
+            <span class="aci-principle-statement">Built around real community needs.</span>
+            <span class="aci-row-action" aria-hidden="true">+</span>
           </li>
-          <li class="aci-principle-item">
-            <span class="aci-principle-num" aria-hidden="true">02</span>
-            <span class="aci-principle-text">Guided by research.</span>
+          <li class="aci-principle-row" tabindex="0">
+            <span class="aci-principle-index" aria-hidden="true">02</span>
+            <span class="aci-principle-statement">Guided by research.</span>
+            <span class="aci-row-action" aria-hidden="true">+</span>
           </li>
-          <li class="aci-principle-item">
-            <span class="aci-principle-num" aria-hidden="true">03</span>
-            <span class="aci-principle-text">Led by young people.</span>
+          <li class="aci-principle-row" tabindex="0">
+            <span class="aci-principle-index" aria-hidden="true">03</span>
+            <span class="aci-principle-statement">Led by young people.</span>
+            <span class="aci-row-action" aria-hidden="true">+</span>
           </li>
-          <li class="aci-principle-item">
-            <span class="aci-principle-num" aria-hidden="true">04</span>
-            <span class="aci-principle-text">Using digital tools to reach more people.</span>
+          <li class="aci-principle-row" tabindex="0">
+            <span class="aci-principle-index" aria-hidden="true">04</span>
+            <span class="aci-principle-statement">Using digital tools to reach more people.</span>
+            <span class="aci-row-action" aria-hidden="true">+</span>
           </li>
-          <li class="aci-principle-item">
-            <span class="aci-principle-num" aria-hidden="true">05</span>
-            <span class="aci-principle-text">Partnering with schools, agencies, and governments.</span>
+          <li class="aci-principle-row" tabindex="0">
+            <span class="aci-principle-index" aria-hidden="true">05</span>
+            <span class="aci-principle-statement">Partnering with schools, agencies, and governments.</span>
+            <span class="aci-row-action" aria-hidden="true">+</span>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- ── 5. CHARTER (WHAT WE DO, AND DON'T) ── -->
-    <section class="aci-section aci-band" id="charter" aria-labelledby="charter-heading">
+    <!-- ── 5. CHARTER: BORDERED NOTE BESIDE ADULT-ONLY PHOTO ── -->
+    <section class="aci-section" id="charter" aria-labelledby="charter-heading" style="padding: clamp(56px, 7vw, 112px) 0;">
       <div class="aci-container">
-        <div class="aci-charter-grid">
-          <div class="aci-charter-content">
-            <h2 id="charter-heading" class="aci-h2">What we do, and don't.</h2>
-            <p style="margin-top: var(--s-3); font-size: var(--fs-lead);">
-              We provide community mental health education, early emotional support, and work to reduce stigma. We are not a clinic and do not diagnose or treat.
+        <div class="aci-division-split" style="align-items: center;">
+          <div class="aci-charter-note">
+            <span class="aci-eyebrow">Scope &amp; Operating Boundaries</span>
+            <h2 id="charter-heading" class="aci-h2">
+              <span class="aci-line-mask"><span class="aci-mask-rise">What we do,</span></span>
+              <span class="aci-line-mask"><span class="aci-mask-rise aci-line-2">and don't.</span></span>
+            </h2>
+            <p style="margin-top: var(--s-3); font-size: 1.0625rem; line-height: 1.6; color: var(--ink-2);">
+              We provide community mental health education, early emotional support, and work to reduce stigma.
             </p>
+            <div class="aci-charter-prominent">
+              We are not a clinic and do not diagnose or treat.
+            </div>
             <!-- [VERIFY: Confirm psychiatric and medical disclaimer alignment with Ghana Health Service protocols] -->
           </div>
           <div class="aci-charter-media">
-            <div class="aci-rounded-frame" style="aspect-ratio: 3/4; max-width: 440px; margin: 0 auto;">
+            <div class="aci-photo-wipe" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); max-width: 440px; margin: 0 auto;">
               <img src="images/IMG_8878.webp"
-                   srcset="images/IMG_8878-480w.webp 480w, images/IMG_8878-960w.webp 960w, images/IMG_8878-1440w.webp 1440w, images/IMG_8878.webp 1200w"
+                   srcset="images/IMG_8878-480w.webp 480w, images/IMG_8878-960w.webp 960w, images/IMG_8878-1440w.webp 1440w, images/IMG_8878.webp 1600w"
                    sizes="(max-width: 991px) 100vw, 35vw"
-                   alt="AbleCares Initiative Africa adult coordinator at community intake and consultation desk in Ghana"
-                   width="1200"
-                   height="1600"
+                   alt="AbleCares Initiative Africa adult coordinator at intake and consultation desk in Ghana"
+                   width="1600"
+                   height="1040"
                    loading="lazy">
             </div>
             <!-- [NEED: Archival session record and locality documentation] -->
