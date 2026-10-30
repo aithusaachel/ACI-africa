@@ -71,9 +71,12 @@
 
     if (!toggle || !drawer) return;
 
+    var masthead = document.querySelector('.aci-masthead');
+
     function openDrawer() {
       drawer.classList.add('open');
       drawer.classList.add('is-open');
+      if (masthead) masthead.classList.add('is-drawer-open');
       toggle.setAttribute('aria-expanded', 'true');
       drawer.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -85,6 +88,7 @@
     function closeDrawer() {
       drawer.classList.remove('open');
       drawer.classList.remove('is-open');
+      if (masthead) masthead.classList.remove('is-drawer-open');
       toggle.setAttribute('aria-expanded', 'false');
       drawer.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
@@ -150,7 +154,7 @@
 
   // ─── 4. Hero Video Controller (Respects Save-Data & Network Type) ───────────
   function initHeroVideo() {
-    var videoWrap = document.querySelector('.aci-hero-video-wrap');
+    var videoWrap = document.querySelector('.aci-hero-video-wrap, .aci-hero-bg, .aci-hero');
     if (!videoWrap) return;
 
     var video = videoWrap.querySelector('video');
@@ -167,6 +171,10 @@
       video.style.display = 'none';
       return;
     }
+
+    video.addEventListener('playing', function() {
+      video.classList.add('is-playing');
+    });
 
     // On capable desktop, attach video sources and play
     if (!video.querySelector('source')) {
