@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const compression = require('compression');
 const { Pool } = require('pg');
 const cors = require('cors');
 const path = require('path');
@@ -9,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
+app.use(compression());
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
