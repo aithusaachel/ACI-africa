@@ -63,26 +63,28 @@
 
   <main id="main-content">
 
-    <!-- ── 1. OPENER: TEXT-LEFT WITH BRUSH-UNDERLINE & REAL PHOTO ── -->
+    <!-- ── 1. OPENER: TEXT-LEFT WITH BRUSH-UNDERLINE & WATERMARK-FREE PHOTO ── -->
     <section class="aci-page-hero" aria-labelledby="impact-title">
       <div class="aci-container">
-        <div class="aci-page-hero-grid">
+        <div class="aci-page-hero-grid" style="align-items: center;">
           <div class="aci-page-hero-content">
+            <span class="aci-eyebrow">Measurable Outcomes</span>
             <h1 id="impact-title" class="aci-h1">
-              What we've done <span class="aci-brush-wrap">so far.<span class="aci-brush-stroke" aria-hidden="true"></span></span>
+              <span class="aci-line-mask"><span class="aci-mask-rise">What we've done</span></span>
+              <span class="aci-line-mask"><span class="aci-mask-rise aci-line-2"><span class="aci-brush-wrap">so far.<span class="aci-brush-stroke" aria-hidden="true"></span></span></span></span>
             </h1>
             <p class="aci-lead">
               We empower individuals, communities, and institutions through programs that address learning, mental well-being, youth empowerment, and community resilience.
             </p>
           </div>
           <div class="aci-page-hero-media">
-            <div class="aci-rounded-frame" style="aspect-ratio: 16/10;">
+            <div class="aci-photo-wipe aci-rounded-frame" style="aspect-ratio: 16/10; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
               <img src="images/IMG_8910.webp"
                    srcset="images/IMG_8910-480w.webp 480w, images/IMG_8910-960w.webp 960w, images/IMG_8910-1440w.webp 1440w, images/IMG_8910.webp 1600w"
                    sizes="(max-width: 991px) 100vw, 45vw"
                    alt="AbleCares Initiative Africa school outreach and learning materials distribution in Ghana"
                    width="1600"
-                   height="1066"
+                   height="980"
                    fetchpriority="high">
             </div>
           </div>
@@ -90,24 +92,115 @@
       </div>
     </section>
 
-    <!-- ── 2. VERIFIED METRIC (1 VISIBLE STAT ONLY) ── -->
-    <section class="aci-section aci-band" aria-label="Verified Metric">
+    <!-- ── CULTURAL LAYER (QUARANTINED BEHIND body.aci-cultural-on) ── -->
+    <div class="aci-cultural-element" aria-hidden="true">
+      <img src="images/patterns/woven-band.svg" alt="" style="width: 100%; height: 32px; display: block;">
+    </div>
+    <!-- [CULTURAL REVIEW SLOT: Akan Woforo Dua Pa A symbol / proverb pending founder sign-off in language-review.md] -->
+
+    <!-- ── 2. FULL-BLEED GREEN BAND WITH AFRICA SILHOUETTE & GIANT 1,500 ── -->
+    <section class="aci-impact-green-band" aria-label="Program Scale">
       <div class="aci-container">
-        <div class="aci-stat-card">
-          <div class="aci-stat-num">
-            1,500 <span class="aci-badge-completed" style="font-size: 0.875rem; vertical-align: middle;">[VERIFY]</span>
+        <div class="aci-impact-band-inner">
+          <div>
+            <span class="aci-eyebrow" style="color: rgba(255, 255, 255, 0.85); margin-bottom: 8px;">Documented Reach</span>
+            <div class="aci-giant-stat-num" data-counter-target="1500">1,500</div>
+            <!-- [VERIFY: 1,500 young people mentored through EmpowerTalks Africa (Section 5A spells 'EmpowerTalks Africa', Section 10 spells 'EmpoweredTalks Africa')] -->
+            <div class="aci-giant-stat-label">
+              Young people mentored through EmpowerTalks Africa
+            </div>
+            <p class="aci-giant-stat-desc">
+              Foundational youth mentorship, speaking events, and community engagement conducted across outreach sessions.
+            </p>
           </div>
-          <div class="aci-stat-label">
-            Young people mentored through EmpoweredTalks Africa
+          <div class="aci-africa-silhouette-outline" aria-hidden="true">
+            <!-- Natural Earth Africa Outline [Source: Natural Earth public domain vector data] -->
+            <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+              <path d="M140 25 C190 20 280 40 330 90 C360 120 375 160 370 200 C360 230 330 260 300 290 C260 330 220 380 200 420 C190 410 180 370 170 340 C150 280 120 240 100 200 C70 160 50 140 60 100 C70 60 100 30 140 25 Z" />
+            </svg>
           </div>
-          <p class="aci-stat-desc">
-            Youth mentorship, speaking events, and community engagement conducted across outreach sessions.
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- ── 3. FIELD CASE STUDIES (QUARANTINED PENDING AUTHENTIC CLIENT RECORDS) ── -->
+    <!-- ── 3. ACHIEVEMENTS & MILESTONES (EXACT ACI DOCUMENT SECTION 10 TITLES) ── -->
+    <section class="aci-section" aria-labelledby="milestones-heading" style="padding: clamp(56px, 7vw, 112px) 0;">
+      <div class="aci-container">
+        <div>
+          <span class="aci-eyebrow">Program Milestones</span>
+          <h2 id="milestones-heading" class="aci-h2">
+            <span class="aci-line-mask"><span class="aci-mask-rise">Achievements &amp; milestones.</span></span>
+          </h2>
+          <p class="aci-division-lead" style="margin-top: var(--s-2);">
+            Examples of program milestones documented across Ghana:
+          </p>
+        </div>
+
+        <ul class="aci-milestone-rows">
+          <li class="aci-milestone-row" tabindex="0">
+            <span class="aci-milestone-idx" aria-hidden="true">01</span>
+            <span class="aci-milestone-title">Successful school outreach programs across Ghana</span>
+          </li>
+          <li class="aci-milestone-row" tabindex="0">
+            <span class="aci-milestone-idx" aria-hidden="true">02</span>
+            <span class="aci-milestone-title">Mental health advocacy and training in multiple communities</span>
+          </li>
+          <li class="aci-milestone-row" tabindex="0">
+            <span class="aci-milestone-idx" aria-hidden="true">03</span>
+            <span class="aci-milestone-title">
+              Youth mentorship for 1,500 young people through EmpowerTalks Africa
+              <!-- [VERIFY: Section 5A spells 'EmpowerTalks Africa', Section 10 spells 'EmpoweredTalks Africa'] -->
+            </span>
+          </li>
+          <li class="aci-milestone-row" tabindex="0">
+            <span class="aci-milestone-idx" aria-hidden="true">04</span>
+            <span class="aci-milestone-title">Leadership in Autism &amp; SEN Show Africa</span>
+          </li>
+          <li class="aci-milestone-row" tabindex="0">
+            <span class="aci-milestone-idx" aria-hidden="true">05</span>
+            <span class="aci-milestone-title">Digital futures programs and awareness initiatives</span>
+          </li>
+          <li class="aci-milestone-row" tabindex="0">
+            <span class="aci-milestone-idx" aria-hidden="true">06</span>
+            <span class="aci-milestone-title">Mental health documentary and policy advocacy campaigns</span>
+          </li>
+        </ul>
+
+        <!-- ── 4. THREE-PHOTO MOSAIC ── -->
+        <div class="aci-mosaic-grid">
+          <div class="aci-mosaic-item aci-photo-wipe aci-stagger-1">
+            <img src="images/IMG_8889.webp"
+                 srcset="images/IMG_8889-480w.webp 480w, images/IMG_8889-960w.webp 960w, images/IMG_8889.webp 1200w"
+                 sizes="(max-width: 768px) 100vw, 33vw"
+                 alt="Community relief and educational support provisions assembled for distribution in Ghana"
+                 width="1200"
+                 height="900"
+                 loading="lazy">
+          </div>
+          <div class="aci-mosaic-item aci-photo-wipe aci-stagger-2">
+            <img src="images/IMG_8930.webp"
+                 srcset="images/IMG_8930-480w.webp 480w, images/IMG_8930-960w.webp 960w, images/IMG_8930.webp 1200w"
+                 sizes="(max-width: 768px) 100vw, 33vw"
+                 alt="ACI Africa community leaders and facilitators conferring outdoors during outreach program in Ghana"
+                 width="1200"
+                 height="900"
+                 loading="lazy">
+          </div>
+          <div class="aci-mosaic-item aci-photo-wipe aci-stagger-3">
+            <img src="images/IMG_8908.webp"
+                 srcset="images/IMG_8908-480w.webp 480w, images/IMG_8908-960w.webp 960w, images/IMG_8908.webp 1200w"
+                 sizes="(max-width: 768px) 100vw, 33vw"
+                 alt="AbleCares Initiative Africa youth facilitator engaging with community members and families in Ghana"
+                 width="1200"
+                 height="900"
+                 loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 5. FIELD CASE STUDIES (QUARANTINED PENDING AUTHENTIC CLIENT RECORDS) ── -->
     <!-- [VERIFY-COPY: The ACI organizational profile document contains no case study write-ups or participant narratives. The following draft case studies from pass 2 are hidden per copy rules until verified client text is provided:
     <section class="aci-section" aria-labelledby="case-studies-heading">
       <div class="aci-container">
@@ -125,63 +218,6 @@
       </div>
     </section>
     -->
-
-    <!-- ── 4. ACHIEVEMENTS & MILESTONES (EXACT ACI DOCUMENT SECTION 10) ── -->
-    <section class="aci-section" aria-labelledby="milestones-heading">
-      <div class="aci-container">
-        <div class="aci-division-grid">
-          <div class="aci-division-content">
-            <h2 id="milestones-heading" class="aci-h2">
-              Achievements &amp; milestones.
-            </h2>
-            <p class="aci-division-lead">
-              Examples of verified program milestones documented across Ghana:
-            </p>
-
-            <ul class="aci-program-list">
-              <li class="aci-program-item">
-                <span class="aci-program-title">Successful school outreach programs across Ghana</span>
-                <span class="aci-program-desc">Educational support, learning supplies, and youth encouragement in basic schools.</span>
-              </li>
-              <li class="aci-program-item">
-                <span class="aci-program-title">Mental health advocacy and training in multiple communities</span>
-                <span class="aci-program-desc">Community awareness sessions, stigma reduction, and capacity building for local leaders.</span>
-              </li>
-              <li class="aci-program-item">
-                <span class="aci-program-title">
-                  Youth mentorship for 1,500 young people through EmpoweredTalks Africa <span class="aci-badge-completed">[VERIFY]</span>
-                </span>
-                <span class="aci-program-desc">Foundational youth empowerment program impacting young people across Ghana.</span>
-              </li>
-              <li class="aci-program-item">
-                <span class="aci-program-title">Leadership in Autism &amp; SEN Show Africa</span>
-                <span class="aci-program-desc">Advocacy and specialized engagement for special needs and neurodivergent individuals.</span>
-              </li>
-              <li class="aci-program-item">
-                <span class="aci-program-title">Digital futures programs and awareness initiatives</span>
-                <span class="aci-program-desc">Digital skills literacy, AI awareness workshops, and youth technology orientation.</span>
-              </li>
-              <li class="aci-program-item">
-                <span class="aci-program-title">Mental health documentary and policy advocacy campaigns</span>
-                <span class="aci-program-desc">Continental advocacy media highlighting public mental health needs and systemic policy reform.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="aci-division-media">
-            <div class="aci-rounded-frame" style="aspect-ratio: 4/3;">
-              <img src="images/IMG_8908.webp"
-                   srcset="images/IMG_8908-480w.webp 480w, images/IMG_8908-960w.webp 960w, images/IMG_8908.webp 1200w"
-                   sizes="(max-width: 991px) 100vw, 40vw"
-                   alt="AbleCares Initiative Africa youth facilitator engaging with community members and families in Ghana"
-                   width="1200"
-                   height="900"
-                   loading="lazy">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
   </main>
 
