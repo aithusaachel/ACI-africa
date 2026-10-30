@@ -168,6 +168,12 @@
     // If user requested reduced motion, Save-Data, slow network, or mobile: keep poster only, do not stream video
     if (prefersReducedMotion || isSaveData || isSlowNet || isMobile) {
       video.pause();
+      var sources = video.querySelectorAll('source');
+      for (var i = 0; i < sources.length; i++) {
+        sources[i].removeAttribute('src');
+      }
+      video.removeAttribute('src');
+      video.load();
       video.style.display = 'none';
       return;
     }
@@ -175,6 +181,7 @@
     video.autoplay = true;
     video.loop = true;
     video.muted = true;
+    video.playsInline = true;
 
     video.addEventListener('playing', function() {
       video.classList.add('is-playing');
@@ -184,24 +191,6 @@
       video.currentTime = 0;
       video.play().catch(function() {});
     });
-
-    // On capable desktop, attach video sources and play
-    if (!video.querySelector('source')) {
-      var mp4Src = video.getAttribute('data-src-mp4') || 'assets/hero.mp4';
-      var webmSrc = video.getAttribute('data-src-webm') || 'assets/hero-1080p.webm';
-
-      var sourceWebm = document.createElement('source');
-      sourceWebm.src = webmSrc;
-      sourceWebm.type = 'video/webm';
-      video.appendChild(sourceWebm);
-
-      var sourceMp4 = document.createElement('source');
-      sourceMp4.src = mp4Src;
-      sourceMp4.type = 'video/mp4';
-      video.appendChild(sourceMp4);
-
-      video.load();
-    }
 
     var playPromise = video.play();
     if (playPromise !== undefined) {
