@@ -40,6 +40,12 @@ ACI Africa operates across three primary divisions. If indigenous mottoes or pro
 3. **Division C: Climate, Sanitation & Social Impact**
    - *Proposed Akan Concept:* *Asase Ye Duru* (the earth has weight / environmental reverence) / *Mpɔtam ahotew* (community sanitation and cleanliness).
    - *Review Question:* Is there an established Ga or Ewe expression for grassroots communal clean-up exercises that reflects communal solidarity (*Susu / Nkabom*)?
+4. **Community Participation & Volunteering (`get-involved.html`)**
+   - *Draft Concept:* *Boafo* (helper / cooperative mutual support).
+   - *Review Question:* Does *Boafo* appropriately characterize grassroots youth volunteerism in social development contexts?
+5. **Voluntary Giving & Resource Allocation (`donate.html`)**
+   - *Draft Concept:* *Ntoboa* (voluntary collective contribution / communal giving).
+   - *Review Question:* Does *Ntoboa* accurately signify voluntary giving for institutional and community welfare?
 
 ---
 
