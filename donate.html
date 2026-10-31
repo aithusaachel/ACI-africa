@@ -11,20 +11,20 @@
 
   <meta property="og:title" content="Donate &amp; Support | AbleCares Initiative Africa (ACI Africa)">
   <meta property="og:description" content="Support AbleCares Initiative Africa programs across youth education, mental health support, and community action in Ghana.">
-  <meta property="og:image" content="images/IMG_8916.jpg">
+  <meta property="og:image" content="images/IMG_8916.webp">
 
   <!-- Self-Hosted Typography Preloads -->
   <link rel="preload" href="fonts/playfair-display-latin-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/aci-design-system.css">
+  <link rel="stylesheet" href="css/aci-site.css">
   <script src="js/aci-config.js" defer></script>
   <script src="js/aci-app.js" defer></script>
 </head>
 
 <body>
 
-  <!-- ── MASTHEAD ── -->
+  <!-- ── MASTHEAD NAVIGATION (SOLID WHITE ON INNER PAGES) ── -->
   <header class="aci-masthead" role="banner">
     <div class="aci-container aci-nav-inner">
       <a href="index.html" class="aci-nav-brand" aria-label="ACI Africa Home">
@@ -38,7 +38,7 @@
         <a href="impact.html" class="aci-nav-link">Impact</a>
         <a href="get-involved.html" class="aci-nav-link">Get involved</a>
         <a href="contact.html" class="aci-nav-link">Contact</a>
-        <a href="donate.html" class="aci-btn aci-btn-primary aci-nav-donate active" aria-current="page">Donate</a>
+        <a href="donate.html" class="aci-btn aci-btn-donate aci-nav-donate active" aria-current="page">Donate</a>
       </nav>
 
       <button class="aci-mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
@@ -58,141 +58,209 @@
     <a href="impact.html" class="aci-nav-link">Impact</a>
     <a href="get-involved.html" class="aci-nav-link">Get involved</a>
     <a href="contact.html" class="aci-nav-link">Contact</a>
-    <a href="donate.html" class="aci-btn aci-btn-primary" style="margin-top: 16px;">Donate</a>
+    <a href="donate.html" class="aci-btn aci-btn-donate active" aria-current="page" style="margin-top: 16px; text-align: center;">Donate</a>
   </div>
 
   <main id="main-content">
 
-    <!-- ── OVERSIZED PULL STATEMENT HERO (PATTERN 2) ── -->
-    <section class="aci-pull-hero" aria-labelledby="donate-title">
+    <!-- ── 1. OPENER: EDITORIAL COMPOSITION WITH BRUSH-UNDERLINE & WATERMARK-FREE PHOTO ── -->
+    <section class="aci-page-hero" aria-labelledby="donate-title">
       <div class="aci-container">
-        <div style="max-width: 1100px;">
-          <div class="aci-lang-badge">
-            Ntoboa &mdash; Voluntary Contributions &amp; Mutual Aid <!-- [VERIFY-LANGUAGE: Akan 'Ntoboa' for communal fund contributions, donation, and collective welfare] -->
+        <div class="aci-page-hero-grid" style="align-items: center;">
+          <div class="aci-page-hero-content">
+            <span class="aci-eyebrow">Frontline Resource Allocation</span>
+            <!-- [PROPOSED-LANGUAGE: Ntoboa — Voluntary Contributions & Mutual Aid (Quarantined in language-review.md pending review)] -->
+            <h1 id="donate-title" class="aci-h1">
+              <span class="aci-line-mask"><span class="aci-mask-rise">Direct resources to</span></span>
+              <span class="aci-line-mask"><span class="aci-mask-rise aci-line-2"><span class="aci-brush-wrap">frontline programs.<span class="aci-brush-stroke" aria-hidden="true"></span></span></span></span>
+            </h1>
+            <p class="aci-lead">
+              Every contribution directly backs verified field programs: primary school learning kits, community mental health training, or clean water and sanitation actions across Ghana.
+            </p>
           </div>
-          <h1 id="donate-title" class="aci-pull-title">
-            Direct resources to <span class="highlight-red">frontline programs.</span>
-          </h1>
-          <p class="aci-pull-statement">
-            Every contribution directly backs verified field programs: primary school learning kits, community mental health training, or clean water and sanitation actions across Ghana.
-          </p>
+          <div class="aci-page-hero-media">
+            <div class="aci-photo-wipe aci-rounded-frame" style="aspect-ratio: 16/10; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+              <img src="images/IMG_8916.webp"
+                   srcset="images/IMG_8916-480w.webp 480w, images/IMG_8916-960w.webp 960w, images/IMG_8916-1440w.webp 1440w, images/IMG_8916.webp 1600w"
+                   sizes="(max-width: 991px) 100vw, 45vw"
+                   alt="AbleCares Initiative Africa field program delivery and community support session in Ghana"
+                   width="1600"
+                   height="980"
+                   fetchpriority="high">
+            </div>
+            <!-- [NEED: Field distribution archival record and verified community locality] -->
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ── PLEDGE FORM & MEDIA ── -->
-    <section class="aci-section open aci-band" aria-labelledby="pledge-heading">
+    <!-- ── CULTURAL LAYER (QUARANTINED BEHIND body.aci-cultural-on) ── -->
+    <div class="aci-cultural-element" aria-hidden="true">
+      <img src="images/patterns/woven-band.svg" alt="" style="width: 100%; height: 32px; display: block;">
+    </div>
+
+    <!-- ── 2. FULL-BLEED PROGRAM ALLOCATION PILLARS ── -->
+    <section class="aci-division-band aci-band-climate" aria-labelledby="pillars-heading">
+      <div class="aci-container">
+        <div>
+          <span class="aci-eyebrow" style="color: var(--green-deep, #237326);">Division Allocations</span>
+          <h2 id="pillars-heading" class="aci-division-display-title">
+            <span class="aci-line-mask"><span class="aci-mask-rise">Where resources go.</span></span>
+          </h2>
+          <p class="aci-division-lead">
+            Contributions fund real, documented frontline activity across our three core continental divisions:
+          </p>
+        </div>
+
+        <ul class="aci-track-rows" style="margin-top: var(--s-5);">
+          <li class="aci-track-row" tabindex="0">
+            <span class="aci-track-row-title">
+              <span class="aci-dot-edu" aria-hidden="true"></span>
+              Division 01: Education &amp; Youth
+            </span>
+            <span class="aci-track-row-desc">
+              Directly purchases exercise books, stationery, and learning materials for schoolchildren in rural and underserved Ghanaian schools.
+            </span>
+            <span class="aci-track-row-action" aria-hidden="true">&rarr;</span>
+          </li>
+          <li class="aci-track-row" tabindex="0">
+            <span class="aci-track-row-title">
+              <span class="aci-dot-mind" aria-hidden="true"></span>
+              Division 02: Mental Health (PAMHO)
+            </span>
+            <span class="aci-track-row-desc">
+              Sponsors free community mental health workshops, psychosocial counseling logistics, and public anti-stigma educational materials.
+            </span>
+            <span class="aci-track-row-action" aria-hidden="true">&rarr;</span>
+          </li>
+          <li class="aci-track-row" tabindex="0">
+            <span class="aci-track-row-title">
+              <span class="aci-dot-climate" aria-hidden="true"></span>
+              Division 03: Climate &amp; Community
+            </span>
+            <span class="aci-track-row-desc">
+              Funds field cleanup equipment, community sanitation drives, clean water access projects, and relief provisions.
+            </span>
+            <span class="aci-track-row-action" aria-hidden="true">&rarr;</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── 3. PLEDGE FORM & DIRECT GUARANTEE ── -->
+    <section class="aci-section" aria-labelledby="pledge-heading" style="padding: clamp(56px, 7vw, 112px) 0;">
       <div class="aci-container">
         <div class="aci-grid-12" style="align-items: start;">
+
+          <!-- Pledge Form Card -->
           <div class="aci-col-7">
-            <h2 id="pledge-heading">Make a contribution.</h2>
-            <p style="margin-top: var(--s-2); margin-bottom: var(--s-6);">
-              Select an area of focus below. Your support is routed directly to active project budgets.
-            </p>
-
-            <form id="pledge-form" novalidate>
-              <!-- Allocation Selector -->
-              <div class="aci-form-group">
-                <label for="pledge-allocation">Program allocation</label>
-                <select id="pledge-allocation" name="allocation" class="aci-select" required>
-                  <option value="Education & Youth">Education &amp; Youth (Support a Schoolchild, Digital Futures)</option>
-                  <option value="Mental Health (PAMHO)">Mental Health (PAMHO, AbleKids, Community Workshops)</option>
-                  <option value="Climate & Community">Climate &amp; Community (Cleanups, Water &amp; Relief)</option>
-                  <option value="Where it's needed most" selected>Where it's needed most (Flexible Core Support)</option>
-                </select>
-              </div>
-
-              <!-- Frequency -->
-              <div class="aci-form-group">
-                <label>Frequency</label>
-                <div style="display: flex; gap: var(--s-5);">
-                  <label style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer;">
-                    <input type="radio" name="frequency" value="one-time" checked> One-time gift
-                  </label>
-                  <label style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer;">
-                    <input type="radio" name="frequency" value="monthly"> Monthly partner
-                  </label>
-                </div>
-              </div>
-
-              <!-- Amount Presets -->
-              <!-- [NEED: confirm currency, GHS and/or USD; confirm mobile money (MTN MoMo, Telecel Cash) and bank options] -->
-              <div class="aci-form-group">
-                <label for="pledge-amount">Amount (USD or GHS equivalent)</label>
-                <input type="number" id="pledge-amount" name="amount" class="aci-input" required min="5" placeholder="50" value="50">
-              </div>
-
-              <div class="aci-grid-12">
-                <div class="aci-col-6 aci-form-group">
-                  <label for="pledge-name">Full name</label>
-                  <input type="text" id="pledge-name" name="name" class="aci-input" required placeholder="Your full name">
-                </div>
-                <div class="aci-col-6 aci-form-group">
-                  <label for="pledge-email">Email address</label>
-                  <input type="email" id="pledge-email" name="email" class="aci-input" required placeholder="your.name@example.com">
-                </div>
-              </div>
-
-              <div class="aci-form-group">
-                <label for="pledge-note">Optional note or corporate matching details</label>
-                <textarea id="pledge-note" name="note" class="aci-textarea" rows="3" placeholder="Tell us if this gift is in honor of someone or from an organization"></textarea>
-              </div>
-
-              <div style="margin-top: var(--s-4);">
-                <button type="submit" id="pledge-submit-btn" class="aci-btn aci-btn-primary">Make a pledge</button>
-                <!-- [VERIFY: if the form takes a real payment gateway, change to "Give now"] -->
-                <span class="aci-meta" style="display: block; margin-top: var(--s-2);">
-                  <!-- [NEED: what happens next, e.g. 'A team member will email you payment details.'] -->
-                  A team coordinator will contact you directly with verified banking / Mobile Money routing information and tax acknowledgment.
-                </span>
-              </div>
-
-              <div id="pledge-feedback" class="aci-feedback" role="alert"></div>
-            </form>
-          </div>
-
-          <div class="aci-col-5">
-            <div class="aci-media-frame" style="aspect-ratio: 4/3;">
-              <img src="images/IMG_8916.jpg" alt="Field activity supporting communities and young people in Ghana" fetchpriority="high" width="800" height="600" style="object-position: center 30%;">
-            </div>
-            <!-- [NEED CAPTION: Ghana, 2023. Field Distribution & Community Relief] -->
-
-            <div style="margin-top: var(--s-6); background: var(--ground); border: 2px solid var(--ink); border-radius: 4px; padding: var(--s-5);">
-              <h3 style="font-size: var(--fs-h3); margin-bottom: var(--s-2);">Direct Allocation Guarantee</h3>
-              <p style="font-size: var(--fs-small); margin: 0; line-height: 1.5; color: var(--ink-2);">
-                Contributions are restricted to the selected program division. Expenditure reports are audited and presented in our annual governance reviews.
+            <div class="aci-form-card">
+              <span class="aci-eyebrow">Program Pledge</span>
+              <h2 id="pledge-heading" class="aci-h2" style="margin-bottom: var(--s-2);">Make a contribution.</h2>
+              <p style="margin-bottom: var(--s-5); font-size: 0.9375rem; color: var(--ink-2); line-height: 1.6;">
+                Select your preferred program focus. Your pledge is directed directly to active project operations.
               </p>
+
+              <form id="pledge-form" novalidate>
+                <div class="aci-form-group">
+                  <label for="pledge-allocation">Program allocation</label>
+                  <select id="pledge-allocation" name="allocation" class="aci-select" required>
+                    <option value="Education &amp; Youth">Division 01: Education &amp; Youth (School Supplies &amp; Mentoring)</option>
+                    <option value="Mental Health (PAMHO)">Division 02: Mental Health &amp; Social Psychology (PAMHO)</option>
+                    <option value="Climate &amp; Community">Division 03: Climate, Sanitation &amp; Social Impact</option>
+                    <option value="Where it's needed most" selected>Flexible Core Support (Where Most Needed)</option>
+                  </select>
+                </div>
+
+                <div class="aci-form-group">
+                  <label>Frequency</label>
+                  <div style="display: flex; gap: var(--s-5);">
+                    <label style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; color: var(--ink);">
+                      <input type="radio" name="frequency" value="one-time" checked> One-time gift
+                    </label>
+                    <label style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; color: var(--ink);">
+                      <input type="radio" name="frequency" value="monthly"> Monthly partner
+                    </label>
+                  </div>
+                </div>
+
+                <div class="aci-form-group">
+                  <label for="pledge-amount">Pledge Amount (USD or GHS equivalent)</label>
+                  <input type="number" id="pledge-amount" name="amount" class="aci-input" required min="5" placeholder="50" value="50">
+                  <!-- [NEED: Confirm formal domestic and international banking rails: MTN Mobile Money, Telecel Cash, Bank Wire] -->
+                </div>
+
+                <div class="aci-grid-12">
+                  <div class="aci-col-6 aci-form-group">
+                    <label for="pledge-name">Full name</label>
+                    <input type="text" id="pledge-name" name="name" class="aci-input" required placeholder="Your full name">
+                  </div>
+                  <div class="aci-col-6 aci-form-group">
+                    <label for="pledge-email">Email address</label>
+                    <input type="email" id="pledge-email" name="email" class="aci-input" required placeholder="your.name@example.com">
+                  </div>
+                </div>
+
+                <div class="aci-form-group">
+                  <label for="pledge-note">Optional note or institutional co-funding details</label>
+                  <textarea id="pledge-note" name="note" class="aci-textarea" rows="3" placeholder="Tell us if this gift is designated for a specific school or organization"></textarea>
+                </div>
+
+                <div style="margin-top: var(--s-4);">
+                  <button type="submit" id="pledge-submit-btn" class="aci-btn aci-btn-donate" style="width: 100%;">Record pledge</button>
+                  <span class="aci-meta" style="display: block; margin-top: var(--s-2); font-size: 0.8125rem; color: var(--ink-muted);">
+                    A program coordinator will provide verified banking / Mobile Money routing information and receipt documentation.
+                  </span>
+                </div>
+
+                <div id="pledge-feedback" class="aci-feedback" role="alert"></div>
+              </form>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ── INSTITUTIONAL PARTNERS ── -->
-    <section class="aci-section tight" aria-labelledby="institutional-heading">
-      <div class="aci-container">
-        <div style="max-width: var(--prose);">
-          <h2 id="institutional-heading" style="font-size: var(--fs-h2);">Institutional partnerships.</h2>
-          <p class="aci-lead" style="margin-top: var(--s-3);">
-            For multilateral foundations, diplomatic missions, and corporate CSR partners seeking co-funding arrangements or program audits, please email our executive desk at <a href="mailto:info@aciafrica.org" style="font-weight: 700; color: var(--indigo);">info@aciafrica.org</a>.
-          </p>
+          <!-- Direct Allocation Guarantee & Institutional Partnerships -->
+          <div class="aci-col-5">
+            <div class="aci-charter-note" style="background: #FFFFFF;">
+              <span class="aci-eyebrow">Governance Protocol</span>
+              <h3 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ink); margin-bottom: var(--s-2);">
+                Direct Allocation Guarantee
+              </h3>
+              <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--ink-2); margin-bottom: var(--s-4);">
+                Every contribution is restricted to the selected program division. Program budgets and distribution records are documented in our operational reporting.
+              </p>
+
+              <div class="aci-charter-prominent" style="margin-bottom: var(--s-4);">
+                100% of earmarked funds go directly to active field operations.
+              </div>
+
+              <div style="border-top: 1px solid var(--rule, #E5E5E5); padding-top: var(--s-3);">
+                <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: var(--s-2);">
+                  Institutional Partnerships
+                </h4>
+                <p style="font-size: 0.875rem; line-height: 1.55; color: var(--ink-2); margin: 0;">
+                  For foundations, diplomatic missions, and corporate partners seeking formal grant agreements, please contact: <a href="mailto:info@aciafrica.org" style="color: var(--orange-deep, #B84700); font-weight: 700;">info@aciafrica.org</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ── FOOTER ── -->
+  <!-- ── FOOTER (CLEAN WHITE PER REFERENCE DESIGN) ── -->
   <footer class="aci-footer" role="contentinfo">
     <div class="aci-container">
       <div class="aci-footer-grid">
         <div>
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
             <img src="images/aciicon-withgreen.png" alt="ACI Africa Emblem" width="36" height="36">
-            <span style="font-family: var(--font-display); font-weight: 900; font-size: 1.15rem; color: var(--ground); letter-spacing: -0.02em;">ACI AFRICA</span>
+            <span style="font-family: var(--font-display); font-weight: 900; font-size: 1.15rem; color: var(--ink); letter-spacing: -0.02em;">ACI AFRICA</span>
           </div>
-          <p style="color: var(--ground); opacity: 0.9; margin-bottom: 20px;">
-            Education, mental health, and community support across Ghana and Africa.
+          <p style="color: var(--ink-2); line-height: 1.6; margin-bottom: 20px;">
+            Education, mental health, and community wellbeing across Ghana and Africa.
           </p>
           <div style="display: flex; gap: 16px; align-items: center;" aria-label="Social media">
             <a href="https://instagram.com/aci.africa" target="_blank" rel="noopener" aria-label="Instagram">
@@ -218,7 +286,7 @@
           <ul>
             <li><a href="programs.html#education">Education &amp; Youth</a></li>
             <li><a href="programs.html#mental-health">Mental Health</a></li>
-            <li><a href="programs.html#climate">Climate &amp; Community</a></li>
+            <li><a href="programs.html#climate">Climate, Sanitation &amp; Impact</a></li>
             <li><a href="https://pamhoafrica.org" target="_blank" rel="noopener noreferrer">PAMHO &#x2197; pamhoafrica.org</a></li>
           </ul>
         </div>
@@ -235,39 +303,25 @@
         </div>
 
         <div>
-          <h4>Contact</h4>
-          <p style="font-size: var(--fs-small); line-height: 1.6; color: var(--ground); opacity: 0.9;">
-            Greater Accra, Ghana <!-- [NEED: full address] --><br>
-            <a href="mailto:info@aciafrica.org">info@aciafrica.org</a><br>
-            <!-- [VERIFY: theaciafrica.org vs aciafrica.org] -->
+          <h4>Secretariat</h4>
+          <p style="font-size: 0.875rem; line-height: 1.6; color: var(--ink-2);">
+            Greater Accra, Ghana<br>
+            <a href="mailto:info@aciafrica.org" style="color: var(--ink); font-weight: 600;">info@aciafrica.org</a>
           </p>
         </div>
       </div>
 
       <div class="aci-footer-bottom">
         <div>
-          &copy; <span id="current-year">2026</span> AbleCares Initiative Africa <!-- [VERIFY: AbleCares Initiative Africa or Initiatives] -->
+          &copy; <span id="current-year">2026</span> AbleCares Initiative Africa
         </div>
-        <div>
-          <a href="contact.html" style="color: var(--ground); opacity: 0.7;">Contact</a>
+        <div style="display: flex; gap: 24px;">
+          <span>Accra, Ghana</span>
+          <span>Pan-African NGO</span>
         </div>
       </div>
     </div>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.initAciForm) {
-        window.initAciForm(
-          'pledge-form',
-          'pledge-submit-btn',
-          'pledge-feedback',
-          'donate',
-          'Thank you for your pledge. We will write to you with confirmation and routing details.'
-        );
-      }
-    });
-  </script>
 
 </body>
 
