@@ -278,10 +278,10 @@
                           grid-row: 1;
                           width: 100%;
                           max-width: 480px;
-                          aspect-ratio: 600 / 680;
+                          aspect-ratio: 681 / 722;
                           margin: 0 auto;
-                          mask-image: url('../images/africa-mask.svg');
-                          -webkit-mask-image: url('../images/africa-mask.svg');
+                          mask-image: url('../images/africa-silhouette.svg');
+                          -webkit-mask-image: url('../images/africa-silhouette.svg');
                           mask-size: contain;
                           mask-repeat: no-repeat;
                           mask-position: center;

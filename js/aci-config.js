@@ -25,6 +25,7 @@
   window.ACI_API_BASE = apiBase;
   window.ACI_CONFIG = {
     apiBase: apiBase,
+    /* [VERIFY: Canonical entity name is AbleCares Initiative Africa (singular Initiative)] */
     org: {
       name: 'AbleCares Initiative Africa',
       shortName: 'ACI Africa',

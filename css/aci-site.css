@@ -293,6 +293,11 @@
                           color: var(--orange-deep);
                         }
 
+                        img {
+                          max-width: 100%;
+                          height: auto;
+                        }
+
                         /* Section Eyebrow (Deep Earth Amber on White: 6.22:1 AA Pass) */
                         .aci-eyebrow {
                           display: inline-block;
@@ -2096,22 +2101,21 @@
   max-width: 560px;
 }
 
-/* Africa Silhouette Outline [Source: Natural Earth public domain vector data] */
+/* Africa Silhouette [Source: Natural Earth 1:110m data] */
 .aci-africa-silhouette-outline {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  opacity: 0.35;
+  opacity: 0.14;
   pointer-events: none;
 }
 
 .aci-africa-silhouette-outline svg {
   width: 100%;
-  max-width: 360px;
+  max-width: 480px;
   height: auto;
-  stroke: #FFFFFF;
-  stroke-width: 2;
-  fill: none;
+  fill: #FFFFFF;
+  stroke: none;
 }
 
 @media (max-width: 860px) {
@@ -2196,7 +2200,10 @@
   }
 }
 
-/* ── 10. Motion System Rules (Transform, Opacity, Clip-path only) ── */
+/* ── 10. Motion System Rules (Transform, Opacity, Clip-path only) ──
+   Content is visible by default. With JS off, all content remains 100% visible.
+   Only elements explicitly tagged with .aci-will-reveal by JS are animated.
+*/
 .aci-line-mask {
   display: block;
   overflow: hidden;
@@ -2204,6 +2211,26 @@
   margin-bottom: -14px;
 }
 
+/* Default: fully visible for no-JS environments */
+.aci-mask-rise {
+  display: inline-block;
+  transform: none;
+  opacity: 1;
+}
+
+.aci-photo-wipe {
+  clip-path: none;
+  transform: none;
+}
+
+.aci-photo-wipe img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Progressive enhancement: arm transitions once JS is enabled */
 .js-enabled .aci-mask-rise {
   display: inline-block;
   transform: translateY(105%);
@@ -2214,8 +2241,8 @@
 
 .js-enabled .is-revealed .aci-mask-rise,
 .js-enabled .is-revealed.aci-mask-rise {
-  transform: translateY(0);
-  opacity: 1;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
 }
 
 .js-enabled .aci-line-2 {
@@ -2232,8 +2259,8 @@
 
 .js-enabled .is-revealed .aci-photo-wipe,
 .js-enabled .is-revealed.aci-photo-wipe {
-  clip-path: inset(0 0 0 0);
-  transform: scale(1);
+  clip-path: inset(0 0 0 0) !important;
+  transform: scale(1) !important;
 }
 
 .js-enabled .aci-stagger-1 { transition-delay: 0ms; }

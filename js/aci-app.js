@@ -18,19 +18,19 @@
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function initMotionSystem() {
-    // Progressive enhancement marker
     document.documentElement.classList.add('js-enabled');
 
     var revealTargets = document.querySelectorAll('.aci-reveal, [data-reveal], .aci-mask-rise, .aci-photo-wipe, .aci-brush-wrap, .aci-mosaic-item');
     if (!revealTargets.length) return;
 
     if (prefersReducedMotion) {
-      // User requested reduced motion: ensure all elements are immediately visible
-      for (var i = 0; i < revealTargets.length; i++) {
-        revealTargets[i].classList.add('is-revealed');
-      }
+      revealTargets.forEach(function(el) {
+        el.classList.add('is-revealed');
+      });
       return;
     }
+
+    var windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
     if ('IntersectionObserver' in window) {
       var revealObserver = new IntersectionObserver(function(entries, observer) {
@@ -42,14 +42,14 @@
         });
       }, {
         root: null,
-        rootMargin: '0px 0px -20px 0px',
-        threshold: 0.05
+        rootMargin: '120px 0px 40px 0px',
+        threshold: 0.01
       });
 
       revealTargets.forEach(function(el) {
         var rect = el.getBoundingClientRect();
-        // Elements in initial viewport reveal promptly
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
+        // Above-the-fold elements animate with a crisp entrance stagger
+        if (rect.top < windowHeight && rect.bottom > 0) {
           setTimeout(function() {
             el.classList.add('is-revealed');
           }, 60);
@@ -58,11 +58,17 @@
         }
       });
     } else {
-      // Fallback
       revealTargets.forEach(function(el) {
         el.classList.add('is-revealed');
       });
     }
+
+    // Safety fallback: reveal everything after 1200ms to guarantee no blank content ever persists
+    setTimeout(function() {
+      revealTargets.forEach(function(el) {
+        el.classList.add('is-revealed');
+      });
+    }, 1200);
   }
 
   // ─── 1b. Sub-Navigation Sliding Underline ─────────────────────────────────
@@ -229,16 +235,22 @@
 
     // If user requested reduced motion, Save-Data, slow network, or mobile: keep poster only, do not stream video
     if (prefersReducedMotion || isSaveData || isSlowNet || isMobile) {
-      video.pause();
-      var sources = video.querySelectorAll('source');
-      for (var i = 0; i < sources.length; i++) {
-        sources[i].removeAttribute('src');
-      }
-      video.removeAttribute('src');
-      video.load();
       video.style.display = 'none';
       return;
     }
+
+    var webmSrc = video.getAttribute('data-webm') || 'assets/hero.webm';
+    var mp4Src = video.getAttribute('data-mp4') || 'assets/hero.mp4';
+
+    var sWebm = document.createElement('source');
+    sWebm.src = webmSrc;
+    sWebm.type = 'video/webm';
+    video.appendChild(sWebm);
+
+    var sMp4 = document.createElement('source');
+    sMp4.src = mp4Src;
+    sMp4.type = 'video/mp4';
+    video.appendChild(sMp4);
 
     video.autoplay = true;
     video.loop = true;
@@ -254,6 +266,7 @@
       video.play().catch(function() {});
     });
 
+    video.load();
     var playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(function() {
@@ -559,7 +572,7 @@
     }
 
     var chatHistory = [];
-    var systemPrompt = "You are the institutional assistant for AbleCares Initiatives Africa (ACI Africa), headquartered in Accra, Ghana. " +
+    var systemPrompt = "You are the institutional assistant for AbleCares Initiative Africa (ACI Africa), headquartered in Accra, Ghana. " +
       "Tagline: Education, Mental Health, Social Impact. " +
       "We run school, mental health, and community programs for young people and families. " +
       "Divisions: Education & Youth, Mental Health (PAMHO: pamhoafrica.org), Climate & Community. " +
@@ -630,6 +643,17 @@
     }
   }
 
+  // ─── 8b. Non-Blocking Backend Wake-Up Ping (Render Free-Tier Spinup) ─────────
+  function initBackendWakeup() {
+    try {
+      if (window.fetch) {
+        var base = (window.ACI_CONFIG && window.ACI_CONFIG.apiBase) || 'https://aci-africa.onrender.com/api';
+        var pingUrl = base.replace(/\/api\/?$/, '') + '/';
+        fetch(pingUrl, { mode: 'no-cors', cache: 'no-store' }).catch(function() {});
+      }
+    } catch (e) {}
+  }
+
   // ─── 9. Document Lifecycle Initialization ──────────────────────────────────
   document.addEventListener('DOMContentLoaded', function() {
     initMotionSystem();
@@ -640,6 +664,7 @@
     initStatCounters();
     initSubnavSlider();
     initContactChatLink();
+    initBackendWakeup();
   });
 
 })(window, document);

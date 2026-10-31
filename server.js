@@ -250,9 +250,9 @@ app.post('/api/chat', async (req, res) => {
       res.json({ reply: data.candidates[0].content.parts[0].text });
     } else if (data.error) {
       console.error('Gemini API Error:', data.error.message);
-      res.json({ reply: "Thank you for contacting ACI Africa! How can we assist you with our mental health (pamhoafrica.org), neurodiversity, or youth education initiatives today? You can also email us directly at info@aciafrica.org." });
+      res.json({ reply: "Thank you for contacting ACI Africa! How can we assist you with our mental health (pamhoafrica.org), neurodiversity, or youth education programs today? You can also email us directly at info@aciafrica.org." });
     } else {
-      res.json({ reply: "Thank you for reaching out to ACI Africa! Please let us know if you have questions regarding our PAMHO mental health initiatives (visit pamhoafrica.org), AbleKids, or getting involved." });
+      res.json({ reply: "Thank you for reaching out to ACI Africa! Please let us know if you have questions regarding our PAMHO mental health programs (visit pamhoafrica.org), AbleKids, or getting involved." });
     }
   } catch (err) {
     console.error('Chat endpoint error:', err.message);
